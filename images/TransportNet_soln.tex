@@ -1,0 +1,49 @@
+\documentclass[tikz]{standalone}
+\usepackage{helvet}
+\usepackage[T1]{sansmath}
+\renewcommand{\familydefault}{\sfdefault}
+\normalfont
+
+\begin{document}
+\begin{sansmath}
+
+\tikzstyle{circ} = [circle,draw,thick,fill=blue!10,minimum size = 1.2cm,thick]
+
+\begin{tikzpicture}[auto]
+    %\draw[help lines] (0,0) grid (8,12);
+
+    \node [circ] (Arn) at (1,7) {Arn}; 
+    \node [circ] (Gou) at (1,3) {Gou}; 
+    
+    \node [circ] (Lon) at (6,10) {Lon}; 
+    \node [circ] (Ber) at (6, 8) {Ber}; 
+    \node [circ] (Maa) at (6, 6) {Maa}; 
+    \node [circ] (Ams) at (6, 4) {Ams}; 
+    \node [circ] (Utr) at (6, 2) {Utr}; 
+    \node [circ] (Hag) at (6, 0) {Hag}; 
+    
+    \draw (Lon) ++(1.5,1) node {Demand};
+    \draw (Lon) ++(1.5,0) node {125};
+    \draw (Ber) ++(1.5,0) node {175};
+    \draw (Maa) ++(1.5,0) node {225};
+    \draw (Ams) ++(1.5,0) node {250};
+    \draw (Utr) ++(1.5,0) node {225};
+    \draw (Hag) ++(1.5,0) node {200};
+
+    \draw (Arn) ++(-1.5,1) node {Supply};
+    \draw (Arn) ++(-1.5,0) node {550};
+    \draw (Gou) ++(-1.5,0) node {700};
+   
+    \draw [->,ultra thick] (Arn) -- (Ber) node[midway,above] {175};
+    \draw [->,ultra thick] (Arn) -- (Maa) node[midway,above] {225};
+    \draw [->,ultra thick] (Arn) -- (Utr) node[midway,above] {150};
+
+    \draw [->,ultra thick] (Gou) -- (Lon) node[midway,below] {125};
+    \draw [->,ultra thick] (Gou) -- (Ams) node[midway,below] {250};
+    \draw [->,ultra thick] (Gou) -- (Utr) node[midway,below] {75};
+    \draw [->,ultra thick] (Gou) -- (Hag) node[midway,below] {200};
+
+\end{tikzpicture}
+
+\end{sansmath}
+\end{document}

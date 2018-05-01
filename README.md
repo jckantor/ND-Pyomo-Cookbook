@@ -18,7 +18,7 @@
 
 ## Scheduling Problems with Disjunctive Constraints
 
-* [Machine Bottleneck]()
+* [Machine Bottleneck](notebooks/scheduling/Machine_Bottleneck.ipynb)
 * [Job Shop Scheduling]()
 
 
