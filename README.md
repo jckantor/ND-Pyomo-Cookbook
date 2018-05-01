@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-* [Getting Started with Pyomo](notebooks/Getting_Started_with_Pyomo.ipynb)
+* [Getting Started with Pyomo](notebooks/intro/Getting_Started_with_Pyomo.ipynb)
 
 ## Linear Programming
 
