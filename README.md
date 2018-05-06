@@ -25,6 +25,9 @@ This repository provides examples of Pyomo models that have been developed for i
 * [Machine Bottleneck](notebooks/scheduling/Machine_Bottleneck.ipynb)
 * [Job Shop Scheduling](notebooks/scheduling/Job_Shop_Scheduling.ipynb)
 
+## Dynamic Model Simulation
+
+* [Linear First Order System](notebooks/dynamics/Linear_First_Order_System.ipynb)
 
 ## Differential Algebraic Equations
 
