@@ -4,6 +4,8 @@
 
 This repository provides examples of Pyomo models that have been developed for instructional purposes at Notre Dame.
 
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/master)
+
 
 ## Getting Started
 
