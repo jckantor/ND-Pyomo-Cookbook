@@ -19,24 +19,23 @@ This repository provides examples of Pyomo models that have been developed for i
 
 ## Assignment Problems
 
-* [Transportation Networks](notebooks/lp/Transportation_Networks.ipynb)
+* [Transportation Networks](notebooks/assignment/Transportation_Networks.ipynb)
 
 ## Scheduling Problems with Disjunctive Constraints
 
 * [Machine Bottleneck](notebooks/scheduling/Machine_Bottleneck.ipynb)
 * [Job Shop Scheduling](notebooks/scheduling/Job_Shop_Scheduling.ipynb)
 
-## Dynamic Model Simulation
+## Simulation
 
-* [Linear First Order System](notebooks/dynamics/Linear_First_Order_System.ipynb)
+* [Linear First Order System](notebooks/simulation/Linear_First_Order_System.ipynb)
+* [Simulation of an Exothermic Stirred Tank Reactor](notebooks/simulation/Exothermic_CSTR.ipynb)
+* [Heat Conduction in Various Geometries](notebooks/simulation/Heat_Conduction_in_Various_Geometries.ipynb)
 
 ## Differential Algebraic Equations
 
-* [Simulation of an Exothermic Stirred Tank Reactor](notebooks/dae/Exothermic_CSTR.ipynb)
 * [Path Planning for a Simple Car Model](notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb)
-* [Heat Conduction in Various Geometries](notebooks/pde/Heat_Conduction_in_Various_Geometries.ipynb)
 
 ## Finance
 
-* [Binomial Model for Pricing Options](notebooks/finance/Binomial_Model_for_Pricing_Options.ipynb)
 * [Real Options](notebooks/finance/Real_Options.ipynb)
