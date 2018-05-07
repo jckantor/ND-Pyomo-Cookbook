@@ -9,6 +9,7 @@ This repository provides examples of Pyomo models that have been developed for i
 ## Getting Started
 
 * [Getting Started with Pyomo](notebooks/intro/Getting_Started_with_Pyomo.ipynb)
+* [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb)
 
 ## Linear Programming
 
