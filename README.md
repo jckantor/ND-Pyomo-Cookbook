@@ -41,4 +41,5 @@ This repository provides examples of Pyomo models that have been developed for i
 
 ## Finance
 
+* [Binomial Model for Pricing Options](notebooks/finance/Binomial_Model_for_Pricing_Options.ipynb)
 * [Real Options](notebooks/finance/Real_Options.ipynb)
