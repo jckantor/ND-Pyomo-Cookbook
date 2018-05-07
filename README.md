@@ -26,6 +26,7 @@ This repository provides examples of Pyomo models that have been developed for i
 
 * [Machine Bottleneck](notebooks/scheduling/Machine_Bottleneck.ipynb)
 * [Job Shop Scheduling](notebooks/scheduling/Job_Shop_Scheduling.ipynb)
+* [Scheduling Multipurpose Batch Processes using State-Task Networks](notebooks/scheduling/Scheduling_Multipurpose_Batch_Processes_using_State-Task_Networks.ipynb)
 
 ## Simulation
 
