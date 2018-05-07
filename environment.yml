@@ -1,7 +1,6 @@
 name: pyomo-environment
 channels:
   - conda-forge
-  - defaults
 dependencies:
   - python
   - numpy
