@@ -9,6 +9,7 @@ This repository provides examples of Pyomo models that have been developed for i
 ## Getting Started
 
 * [Getting Started with Pyomo](notebooks/intro/Getting_Started_with_Pyomo.ipynb)
+* [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb)
 
 ## Linear Programming
 
@@ -34,6 +35,7 @@ This repository provides examples of Pyomo models that have been developed for i
 
 ## Differential Algebraic Equations
 
+* [Maximizing Concentration of an Intermediate in a Batch Reactor](notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb)
 * [Path Planning for a Simple Car Model](notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb)
 
 ## Finance
