@@ -1,5 +1,6 @@
 # additional ignores
 .idea/*
+.idea
 .DS_Store
 
 # keep api_key a secret
