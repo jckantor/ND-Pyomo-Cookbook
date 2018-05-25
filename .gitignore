@@ -1,3 +1,10 @@
+# additional ignores
+.idea/*
+.DS_Store
+
+# keep api_key a secret
+api_key.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
