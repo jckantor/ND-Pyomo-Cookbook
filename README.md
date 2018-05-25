@@ -10,7 +10,7 @@ PyomoFest will include a mixture of presentations, hands-on workshop sessions, a
 
 3. A key goal of PyomoFest is to help new users apply Pyomo to their own research. We encourage you to identify a potential application of signficance to your research, and bring this with you to the workshop. Data, for example, could be arranged and arranged in the form of simple spreadsheets (.csv files, for example), or literature models could be summarized in your research notes.
 
-4. Professor Jeff Kantor will be offering a pre-workshop session on Friday, June 1, for those interested in a brief high-level overview of basic optimization concepts, or help solve problems you may with getting your laptop ready for the workshop.
+4. Professor Jeff Kantor will be offering a pre-workshop session on Friday, June 1, for those interested in a brief high-level overview of basic optimization concepts, or help solve problems you may with getting your laptop ready for the workshop. Details will be sent to registered participants.
 
 ## Getting Started with Pyomo
 
