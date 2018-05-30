@@ -1,14 +1,23 @@
-# ND-Pyomo-Cookbook
+# Welcome to Notre Dame PyomoFest!
 
-[Pyomo](http://www.pyomo.org/) is a state-of-the-art package for modeling and solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision **variables**, **constraints**, and an optimization **objective**. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.
+We are delighted to be hosting PyomoFest at Notre Dame on June 5-7. Thanks to gracious support from the Notre Dame Center for Research Computing and Sandia National Laboratory at Albequerque, this unique event will bring together campus researchers from a wide range of disciplines to a build an exciting new community of Pyomo users.
 
-This repository provides examples of Pyomo models that have been developed for instructional purposes at Notre Dame.
+PyomoFest will include a mixture of presentations, hands-on sessions, and opportunities to consult with instructors on model development relevant to your own research. To make the best use of these opportunities, we urge PyomoFest participants to take several actions in preparation for the event.  These include:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/master?filepath=index.ipynb)
+1. Download and install a Pyomo/Python development environment that you can use at the workshop.  The **Getting Started** guides below provide instructions on how to install Python, Pyomo, and a basic set of solvers. 
 
-## Getting Started
+2. Review basic conceptual frameworks for optimization modeling. The notebooks in this repository include examples of linear programming (LP), mixed-integer linear programming (MILP), nonlinear programming (NLP), and more. 
 
-* [Getting Started with Pyomo](notebooks/intro/Getting_Started_with_Pyomo.ipynb)
+3. A goal of PyomoFest is to help new users apply Pyomo to their research. We encourage you to bring a research relevant application problem with you to the workshop. Unique data sets could arranged as simple spreadsheet.csv files, for example, and literature models could be summarized in some mathematical form.
+
+4. Jeff Kantor will be offering a pre-workshop session on Friday, June 1, for those interested in a brief high-level overview of basic optimization concepts, or need help getting your laptop ready for the workshop. Details will be sent to registered participants.
+
+## Getting Started with Pyomo
+
+[Pyomo](http://www.pyomo.org/) is a state-of-the-art package for modeling and solving optimization problems embedded within Python. Using Pyomo, complex models are described by specifying an optimization **objective**, one or more sets of decision **variables**, and collections of linear, nonlinear, discrete, and dynamical **constraints**. Pyomo includes a rich set of features to enable high-level modeling of complex systems, specifying solvers, and using Python to display the solution.
+
+* [Installing Pyomo](notebooks/intro/Installing_Pyomo.ipynb)
+* [Pyomo Basics](notebooks/intro/Pyomo_Basics.ipynb)
 * [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb)
 
 ## Linear Programming
