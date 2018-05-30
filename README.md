@@ -1,6 +1,6 @@
 # Welcome to Notre Dame PyomoFest!
 
-We are delighted to be hosting PyomoFest at Notre Dame on June 5-7. Thanks to gracious support from the Notre Dame Center for Research Computing and Sandia National Laboratory at Albequerque, this unique event will bring together campus researchers from a wide range of disciplines to a build an exciting new community of Pyomo users.
+We are delighted to be hosting [PyomoFest at Notre Dame on June 5-7](ND-Pyomo-Workshop-Agenda.pdf). Thanks to gracious support from the Notre Dame Center for Research Computing and Sandia National Laboratory at Albequerque, this unique event will bring together campus researchers from a wide range of disciplines to a build an exciting new community of Pyomo users.
 
 PyomoFest will include a mixture of presentations, hands-on sessions, and opportunities to consult with instructors on model development relevant to your own research. To make the best use of these opportunities, we urge PyomoFest participants to take several actions in preparation for the event.  These include:
 
@@ -10,7 +10,9 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 3. A goal of PyomoFest is to help new users apply Pyomo to their research. We encourage you to bring a research relevant application problem with you to the workshop. Unique data sets could arranged as simple spreadsheet.csv files, for example, and literature models could be summarized in some mathematical form.
 
-4. Jeff Kantor will be offering a pre-workshop session on Friday, June 1, for those interested in a brief high-level overview of basic optimization concepts, or need help getting your laptop ready for the workshop. Details will be sent to registered participants.
+4. A pre-workshop session will be held at 10-12am on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour we will offe help getting your laptop or a research problem ready for the workshop. Details will be sent to registered participants.
+
+[PyomoFest Agenda](ND-Pyomo-Workshop-Agenda.pdf)
 
 ## Getting Started with Pyomo
 
