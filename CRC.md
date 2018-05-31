@@ -280,6 +280,68 @@ Next, you may want to customize some of the [Ipopt options](https://www.coin-or.
 solver.options['linear_solver'] = "ma57"
 ```
 
+Here is the output when using MA57:
+
+```
+Ipopt 3.12.8: linear_solver=ma57
+
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+This is Ipopt version 3.12.8, running with linear solver ma57.
+
+Number of nonzeros in equality constraint Jacobian...:        0
+Number of nonzeros in inequality constraint Jacobian.:        5
+Number of nonzeros in Lagrangian Hessian.............:        0
+
+Total number of variables............................:        3
+                     variables with only lower bounds:        3
+                variables with lower and upper bounds:        0
+                     variables with only upper bounds:        0
+Total number of equality constraints.................:        0
+Total number of inequality constraints...............:        2
+        inequality constraints with only lower bounds:        1
+   inequality constraints with lower and upper bounds:        0
+        inequality constraints with only upper bounds:        1
+
+iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls
+   0 -9.9999900e-03 2.70e-01 6.00e-01  -1.0 0.00e+00    -  0.00e+00 0.00e+00   0
+   1 -2.3096613e-02 1.48e-01 3.42e+00  -1.7 1.87e-01    -  1.10e-01 4.70e-01h  1
+   2 -7.1865937e-02 0.00e+00 8.39e-01  -1.7 1.42e-01    -  4.87e-01 1.00e+00f  1
+   3 -8.1191843e-01 0.00e+00 4.70e-01  -1.7 1.47e+00    -  1.00e+00 5.02e-01f  1
+   4 -7.9286713e-01 0.00e+00 2.00e-07  -1.7 1.91e-02    -  1.00e+00 1.00e+00f  1
+   5 -8.4402296e-01 0.00e+00 3.48e-03  -3.8 5.61e-02    -  9.40e-01 9.12e-01f  1
+   6 -8.4949514e-01 0.00e+00 1.50e-09  -3.8 7.04e-03    -  1.00e+00 1.00e+00f  1
+   7 -8.4999437e-01 0.00e+00 1.84e-11  -5.7 4.99e-04    -  1.00e+00 1.00e+00f  1
+   8 -8.5000001e-01 0.00e+00 2.51e-14  -8.6 5.65e-06    -  1.00e+00 1.00e+00f  1
+
+Number of Iterations....: 8
+
+                                   (scaled)                 (unscaled)
+Objective...............:  -8.5000001246787615e-01   -8.5000001246787615e-01
+Dual infeasibility......:   2.5143903682766679e-14    2.5143903682766679e-14
+Constraint violation....:   0.0000000000000000e+00    0.0000000000000000e+00
+Complementarity.........:   2.5342284749259295e-09    2.5342284749259295e-09
+Overall NLP error.......:   2.5342284749259295e-09    2.5342284749259295e-09
+
+
+Number of objective function evaluations             = 9
+Number of objective gradient evaluations             = 9
+Number of equality constraint evaluations            = 0
+Number of inequality constraint evaluations          = 9
+Number of equality constraint Jacobian evaluations   = 0
+Number of inequality constraint Jacobian evaluations = 9
+Number of Lagrangian Hessian evaluations             = 8
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.004
+Total CPU secs in NLP function evaluations           =      0.000
+
+EXIT: Optimal Solution Found.
+```
+
 ### MOSEK
 
 ### Coming Soon
