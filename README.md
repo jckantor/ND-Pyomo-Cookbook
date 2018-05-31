@@ -22,7 +22,7 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 Need help either installing Pyomo or identifying a getting started problem (i.e., mini-project)? Please take advantage of these opportunities:
 * 10 AM - 12 PM on Friday, June 1 in Room 116 DeBartolo Hall. Pre-workshop tutorial and one-on-one help.
-* 10 AM - 12 PM on Monday, June 4 in Room 182 Fitzpatrick Hall. One-on-one help.
+* 10 AM - 12 PM on Monday, June 4 in Room 181 Fitzpatrick Hall (conference room next to CBE main office). One-on-one help.
 * Setup an appointment with Prof. Alex Dowling (adowling at nd.edu) or Prof. Jeff Kantor (kantor.1 at nd.edu) for advice on identifying a getting started problem.
 * Setup an appointment with Jacob Gerace (jgerace at nd.edu) for help installing software.
 
