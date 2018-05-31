@@ -2,6 +2,9 @@
 .idea/*
 .idea
 .DS_Store
+.texpadtmp
+README.pdf
+README.tex
 
 # keep api_key a secret
 api_key.txt
