@@ -16,13 +16,19 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 1. (Required) A laptop computer with Python, Pyomo, and a few solvers installed. See **Getting Started** for more information. Don't forget your power cord!
 
-2. (Recommended) A simple optimization problem that is relavent to your research. This may come from literature or be adapted from the Pyomo examples (see below for some informaton).
+2. (Recommended) A simple optimization problem that is relavent to your research. This may come from literature or be adapted from the Pyomo examples (see below). For best results, bring the mathematical model for your problem, posed as algebraic or differential equations, on paper. During PyomoFest, you will have the opportunity to work on implemented these problems in Pyomo and interact directly with expert users and developers.
 
-Need help either installing Pyomo or identifying a getting started problem? Please take advantage of these opportunities:
+Need help either installing Pyomo or identifying a getting started problem (i.e., mini-project)? Please take advantage of these opportunities:
 * 10 AM - 12 PM on Friday, June 1 in Room 116 DeBartolo Hall. Pre-workshop tutorial and one-on-one help.
 * 10 AM - 12 PM on Monday, June 4 in Room 182 Fitzpatrick Hall. One-on-one help.
 * Setup an appointment with Prof. Alex Dowling (adowling at nd.edu) or Prof. Jeff Kantor (kantor.1 at nd.edu) for advice on identifying a getting started problem.
 * Setup an appointment with Jacob Gerace (jgerace at nd.edu) for help installing software.
+
+## We will Provide
+
+1. Coffee, lunch, and afternoon snacks
+2. Pyomo examples and instructional material (via a download link)
+3. Advice on implementing your own research problems in Pyomo
 
 ## PyomoFest Agenda and Location
 
@@ -30,7 +36,7 @@ Need help either installing Pyomo or identifying a getting started problem? Plea
 
 ### Day 1 - Tuesday, June 5
 
-B01 McCourtney Hall (entire day)
+**B01 McCourtney Hall** (entire day)
 
 8:30 AM - 12:00 PM
 * Python Tutorial
@@ -50,7 +56,7 @@ B01 McCourtney Hall (entire day)
 
 ### Day 2 - Wednesday, June 6
 
-B01 McCourtney Hall (entire day)
+**B01 McCourtney Hall** (entire day)
 
 8:30 AM - 12:00 PM
 * Nonlinear Programming (NLP) Algorithms
@@ -71,13 +77,13 @@ B01 McCourtney Hall (entire day)
 
 ### Day 3 - Thursday, June 7
 
-B01 McCourtney Hall (morning)
+**B01 McCourtney Hall** (morning)
 
 8:30 AM - 12:00 PM
 * Pyomo.PySP: Stochastic Programming
 
 
-W210 Duncan Student Center (lunch and afternoon)
+**W210 Duncan Student Center** (lunch and afternoon)
 
 12:00 PM - 1:00 PM
 * Lunch Break
