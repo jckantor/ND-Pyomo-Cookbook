@@ -10,15 +10,81 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 3. A goal of PyomoFest is to help new users apply Pyomo to their research. We encourage you to bring a research relevant application problem with you to the workshop. Unique data sets could arranged as simple spreadsheet.csv files, for example, and literature models could be summarized in some mathematical form.
 
-4. A pre-workshop session will be held at 10-12am on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour we will offe help getting your laptop or a research problem ready for the workshop. Details will be sent to registered participants.
+4. A pre-workshop session will be held at 10-12am on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour, we will offer help getting your laptop or a research problem ready for the workshop.
 
-## PyomoFest Agenda
+## What to Bring to PyomoFest
 
-[PDF with supplemental Pyomo installation instructions](ND-Pyomo-Workshop-Agenda.pdf)
+1. (Required) A laptop computer with Python, Pyomo, and a few solvers installed. See **Getting Started** for more information. Don't forget your power cord!
 
-### Day 1 - June 5
+2. (Recommended) A simple optimization problem that is relavent to your research. This may come from literature or be adapted from the Pyomo examples (see below for some informaton).
+
+Need help either installing Pyomo or identifying a getting started problem? Please take advantage of these opportunities:
+* 10 AM - 12 PM on Friday, June 1 in Room 116 DeBartolo Hall. Pre-workshop tutorial and one-on-one help.
+* 10 AM - 12 PM on Monday, June 4 in Room 182 Fitzpatrick Hall. One-on-one help.
+* Setup an appointment with Prof. Alex Dowling (adowling at nd.edu) or Prof. Jeff Kantor (kantor.1 at nd.edu) for advice on identifying a getting started problem.
+* Setup an appointment with Jacob Gerace (jgerace at nd.edu) for help installing software.
+
+## PyomoFest Agenda and Location
+
+[Printable agenda with supplemental Pyomo installation instructions](ND-Pyomo-Workshop-Agenda.pdf)
+
+### Day 1 - Tuesday, June 5
+
+B01 McCourtney Hall (entire day)
+
+8:30 AM - 12:00 PM
+* Python Tutorial
+* Pyomo Fundamentals & Overview
+* Introductory Excercises
 
 
+12:00 PM - 1:00 PM
+* Lunch Break
+
+
+1:00 PM - 4:30 PM
+* Introduction to Mixed Integer Programming (MIP) Algorithms
+* MIP Excercises
+* Pyomo Cookbooks by Prof. Kantor
+
+
+### Day 2 - Wednesday, June 6
+
+B01 McCourtney Hall (entire day)
+
+8:30 AM - 12:00 PM
+* Nonlinear Programming (NLP) Algorithms
+* Introduction to IPOPT
+* NLP Excercises
+* Structured Modeling and Pyomo Blocks
+* Transformations
+
+
+12:00 PM - 1:00 PM
+* Lunch Break
+
+
+1:00 PM - 4:30 PM
+* Pyomo.DAE: Dynamic Optimization
+* Pyomo.GDP: Sequencing and Switching
+* Other Advanced Capabilities of Pyomo
+
+### Day 3 - Thursday, June 7
+
+B01 McCourtney Hall (morning)
+
+8:30 AM - 12:00 PM
+* Pyomo.PySP: Stochastic Programming
+
+
+W210 Duncan Student Center (lunch and afternoon)
+
+12:00 PM - 1:00 PM
+* Lunch Break
+
+
+1:00 PM - 4:30 PM
+* Collaboration Time
 
 ## Getting Started with Pyomo
 
