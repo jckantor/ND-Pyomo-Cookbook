@@ -12,7 +12,13 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 4. A pre-workshop session will be held at 10-12am on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour we will offe help getting your laptop or a research problem ready for the workshop. Details will be sent to registered participants.
 
-[PyomoFest Agenda](ND-Pyomo-Workshop-Agenda.pdf)
+## PyomoFest Agenda
+
+[PDF with supplemental Pyomo installation instructions](ND-Pyomo-Workshop-Agenda.pdf)
+
+### Day 1 - June 5
+
+
 
 ## Getting Started with Pyomo
 
