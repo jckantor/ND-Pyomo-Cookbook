@@ -159,7 +159,7 @@ Per CRC policies, the interative nodes should only be used for testing short com
 
 ## Available Solvers
 
-The CRC clusters support five (and counting) high-performance optimization solvers that are directly callable from Pyomo. This makes it increadily easy - often one only needs to change a few lines of code - to try different solvers for an optimization problem.
+The CRC clusters supports three (and counting) high-performance optimization solvers that are directly callable from Pyomo. This makes it increadily easy - often one only needs to change a few lines of code - to try different solvers for an optimization problem.
 
 The following contains instructions on using solvers currently available on the CRC cluster. By modifying the `SolverFactory` in `pyomo_test.py`, you can try all of these solvers on the simple test problem.
 
@@ -341,8 +341,6 @@ Total CPU secs in NLP function evaluations           =      0.000
 
 EXIT: Optimal Solution Found.
 ```
-
-### MOSEK
 
 ### Coming Soon
 
