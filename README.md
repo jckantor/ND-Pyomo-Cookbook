@@ -10,7 +10,9 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 3. A goal of PyomoFest is to help new users apply Pyomo to their research. We encourage you to bring a research relevant application problem with you to the workshop. Unique data sets could arranged as simple spreadsheet.csv files, for example, and literature models could be summarized in some mathematical form.
 
-4. A pre-workshop session will be held at 10-12am on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour, we will offer help getting your laptop or a research problem ready for the workshop.
+4. A pre-workshop session will be held at 10am-12pm on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour, we will offer help getting your laptop or a research problem ready for the workshop.
+
+5. (Optional) [Register for a CRC account](https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account). Many optimization solvers supported by Pyomo currently available on the CRC clusters.
 
 ## What to Bring to PyomoFest
 
@@ -24,7 +26,7 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 * Setup an appointment with Prof. Alex Dowling (adowling at nd.edu) or Prof. Jeff Kantor (kantor.1 at nd.edu) for advice on identifying a getting started problem.
 * Setup an appointment with Jacob Gerace (jgerace at nd.edu) for help installing software.
 
-## We will Provide
+## What will be Provided
 
 1. Coffee, lunch, and afternoon snacks
 2. Pyomo examples and instructional material (via a download link)
@@ -37,6 +39,10 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 ### Day 1 - Tuesday, June 5
 
 **B01 McCourtney Hall** (entire day)
+
+8:00 AM - 8:30 AM
+* Last minute help installing software
+
 
 8:30 AM - 12:00 PM
 * Python Tutorial
@@ -53,10 +59,13 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 * MIP Excercises
 * Pyomo Cookbooks by Prof. Kantor
 
-
 ### Day 2 - Wednesday, June 6
 
 **B01 McCourtney Hall** (entire day)
+
+8:00 AM - 8:30 AM
+* One-on-one advice from instructors
+
 
 8:30 AM - 12:00 PM
 * Nonlinear Programming (NLP) Algorithms
@@ -78,6 +87,9 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 ### Day 3 - Thursday, June 7
 
 **B01 McCourtney Hall** (morning)
+
+8:00 AM - 8:30 AM
+* One-on-one advice from instructors
 
 8:30 AM - 12:00 PM
 * Pyomo.PySP: Stochastic Programming
