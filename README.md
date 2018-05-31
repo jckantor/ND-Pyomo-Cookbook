@@ -12,7 +12,7 @@ PyomoFest will include a mixture of presentations, hands-on sessions, and opport
 
 4. A pre-workshop session will be held at 10am-12pm on Friday, June 1, in Room 116 DeBartolo Hall. The first hour provide a brief high-level overview of basic optimization concepts. During the second hour, we will offer help getting your laptop or a research problem ready for the workshop.
 
-5. (Optional) [Register for a CRC account](https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account). Many optimization solvers supported by Pyomo currently available on the CRC clusters.
+5. (Optional) [Register for a CRC account](https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account). Many optimization solvers supported by Pyomo are now available on the CRC clusters.
 
 ## What to Bring to PyomoFest
 
