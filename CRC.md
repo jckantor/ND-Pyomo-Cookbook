@@ -256,7 +256,7 @@ Freed default Gurobi environment
 
 ### Ipopt
 
-Two versions (modules) of Ipopt are available to CRC users: `ipopt/3.12.8` and `ipopt/hsl/3.12.8`. The latter supports HSL linear algebra routines whereas the former does not (and relies on the open-source library MUMPS). In general, the HSL linear algebra routines are more stable and are significantly faster for large-scale problems. All IPOPT users are strongly encouraged to use the HSL libraries. To obtain access to `ipopt/hsl/3.12.8`, ND users must apply for a [free academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/) and then forward the approval email to crcsupport@crc.nd.edu. 
+Two versions (modules) of Ipopt are available to CRC users: `ipopt/3.12.8` and `ipopt/hsl/3.12.8`. The latter supports HSL linear algebra routines whereas the former does not (and relies on the open-source library MUMPS). In general, the HSL linear algebra routines are more stable and are significantly faster for large-scale problems. All IPOPT users are strongly encouraged to use the HSL libraries. To obtain access to `ipopt/hsl/3.12.8`, ND users must apply for a [free academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/) and then forward the approval email to CRCSupport@nd.edu. 
 
 To use either version of Ipopt, first load the module. For example,
 
