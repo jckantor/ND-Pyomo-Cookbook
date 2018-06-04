@@ -80,7 +80,6 @@ ssh crcfe02.crc.nd.edu
 2. Load your preferred version of python and your favorite optimization solver.
 
 ```bash
-module load python/3.6.0
 module load ipopt
 ```
 
@@ -154,8 +153,36 @@ EXIT: Optimal Solution Found.
 ### Submitting to a Queue
 
 Per CRC policies, the interative nodes should only be used for testing short computational jobs. All other jobs should be submitted to a queue.
-
-** Jacob and Xian - please fill this in **
+ 
+ To submit the previous project on the CRC queue, write a script that contains the following:
+ 
+ ```
+ #!/bin/csh
+ 
+ #$ -M netid@nd.edu		# Email address for job notification
+ #$ -m abe		 		      # Send mail when job aborts, begins, and ends
+ #$ -q long		 		     # Specify queue
+ #$ -N job_name	     # Specify job name
+ 
+ module load python/3.6.4     # Required modules
+ module load ipopt
+ 
+ python3 pyomo_test.py 		  # Command to execute
+ ```
+ 
+ Name it something logical, such as `submission_script`. Then type:
+ 
+ ```
+ qsub submission_script
+ ```
+ 
+ You should get an email when your job begins/ends/aborts. You can also monitor its process through
+ 
+```
+ qstat –u username
+ ```
+ 
+ More info is available at the [ND CRC wiki](https://wiki.crc.nd.edu/w/index.php/CRC_Quick_Start_Guide). 
 
 ## Available Solvers
 
