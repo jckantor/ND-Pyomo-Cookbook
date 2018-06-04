@@ -13,7 +13,7 @@ First, you must [register for a CRC account](https://wiki.crc.nd.edu/w/index.php
 
 ### Install Pyomo on CRC Cluster
 
-Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must install their own private copy on the CRC cluster. This can be easily done on a few steps:
+Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must [install their own private (i.e., local) copy](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally) on the CRC cluster. This can be easily done on a few steps:
 
 First, `ssh` into a CRC interative node. For example,
 
@@ -21,7 +21,7 @@ First, `ssh` into a CRC interative node. For example,
 ssh crcfe02.crc.nd.edu
 ```
 
-Next, load your preferred version of Python. Pyomo supports both 2.7 and 3.x:
+Next (optional), may load your preferred version of Python. If you do not, the system default (2.7) will be used. Pyomo supports both 2.7 and 3.x:
 
 ```bash
 module load python/3.6.4
@@ -33,7 +33,7 @@ Then, install Pyomo using `pip`, a popular package manager for Python:
 pip install --user pyomo
 ```
 
-By default, Pyomo will be installed in ```.local/bin```.
+By default, Pyomo will be installed in ```.local/bin```. You will need to add this folder to your PATH. See the [CRC wiki](https://wiki.crc.nd.edu/w/index.php/Python#Adding_.24.7BHOME.7D.2F.local.2Fbin_to_your_path) for additional instructions.
 
 After the base Pyomo install is complete, install the extras (including the DAE toolbox):
 
