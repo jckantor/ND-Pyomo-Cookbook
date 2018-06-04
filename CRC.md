@@ -179,7 +179,7 @@ qsub submission_script
 
 You should get an email when your job begins/ends/aborts. You can also monitor its process through
 
-``
+```
 qstat –u username
 ```
 
