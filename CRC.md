@@ -155,35 +155,7 @@ EXIT: Optimal Solution Found.
 
 Per CRC policies, the interative nodes should only be used for testing short computational jobs. All other jobs should be submitted to a queue.
 
-To submit the previous project on the CRC queue, write a script that contains the following:
-
-```
-#!/bin/csh
-
-#$ -M netid@nd.edu		# Email address for job notification
-#$ -m abe		 		      # Send mail when job aborts, begins, and ends
-#$ -q long		 		     # Specify queue
-#$ -N job_name	     # Specify job name
-
-module load python/3.6.0     # Required modules
-module load ipopt
-
-python pyomo_test.py 		  # Command to execute
-```
-
-Name it something logical, submission_script for instance. Then type:
-
-```
-qsub submission_script
-```
-
-You should get an email when your job begins/ends/aborts. You can also monitor its process through
-
-```
-qstat –u username
-```
-
-More info is available at the [ND CRC wiki](https://wiki.crc.nd.edu/w/index.php/CRC_Quick_Start_Guide). 
+** Jacob and Xian - please fill this in **
 
 ## Available Solvers
 
@@ -370,9 +342,164 @@ Total CPU secs in NLP function evaluations           =      0.000
 EXIT: Optimal Solution Found.
 ```
 
-### Coming Soon
+### Coin-OR
 
-* SCIP
-* Bonmin
-* Cbc and Clp
-* Couenne
+Several solvers are availabe in the COIN-OR module.
+
+The first step to using any of these solvers is loading the module:
+
+```module load coin-or```
+
+#### Clp
+
+The Clp solver executable should now be callable from Pyomo:
+
+```python
+solver=SolverFactory('clp')
+```
+
+If needed, you can explicitly specify the path to the executable:
+
+```python
+solver=SolverFactory('clp', executable="/afs/crc.nd.edu/x86_64_linux/c/coin-or/clp/1.16.11/bin/clp")
+```
+
+Output for the test problem:
+```
+Coin LP version 1.16.11, build Jun  4 2018
+command line - /afs/crc.nd.edu/x86_64_linux/c/coin-or/clp/1.16.11/bin/clp /afs/crc.nd.edu/user/a/adowling/Private/tmpEsGwQH.pyomo.nl -AMPL
+```
+
+#### Cbc
+
+The Cbc solver executable should now be callable from Pyomo:
+
+```python
+solver=SolverFactory('cbc')
+```
+
+If needed, you can explicitly specify the path to the executable:
+
+```python
+solver=SolverFactory('cbc', executable="/afs/crc.nd.edu/x86_64_linux/c/coin-or/cbc/2.9.9/bin/cbc")
+```
+
+Output for the test problem:
+```
+Welcome to the CBC MILP Solver 
+Version: 2.9.6 
+Build Date: Jun  3 2018 
+
+command line - /afs/crc.nd.edu/x86_64_linux/c/coin-or/cbc/2.9.9/bin/cbc -printingOptions all -import /afs/crc.nd.edu/user/a/adowling/Private/tmp5jMyQq.pyomo.lp -stat=1 -solve -solu /afs/crc.nd.edu/user/a/adowling/Private/tmp5jMyQq.pyomo.soln (default strategy 1)
+Option for printingOptions changed from normal to all
+ CoinLpIO::readLp(): Maximization problem reformulated as minimization
+Presolve 2 (-1) rows, 3 (-1) columns and 5 (-1) elements
+Statistics for presolved model
+
+
+Problem has 2 rows, 3 columns (1 with objective) and 5 elements
+There are 1 singletons with objective 
+Column breakdown:
+3 of type 0.0->inf, 0 of type 0.0->up, 0 of type lo->inf, 
+0 of type lo->up, 0 of type free, 0 of type fixed, 
+0 of type -inf->0.0, 0 of type -inf->up, 0 of type 0.0->1.0 
+Row breakdown:
+0 of type E 0.0, 1 of type E 1.0, 0 of type E -1.0, 
+0 of type E other, 0 of type G 0.0, 0 of type G 1.0, 
+1 of type G other, 0 of type L 0.0, 0 of type L 1.0, 
+0 of type L other, 0 of type Range 0.0->1.0, 0 of type Range other, 
+0 of type Free 
+Presolve 2 (-1) rows, 3 (-1) columns and 5 (-1) elements
+0  Obj 0 Primal inf 1.299998 (2) Dual inf 0.999999 (1)
+2  Obj -0.85
+Optimal - objective value -0.85
+After Postsolve, objective -0.85, infeasibilities - dual 0 (0), primal 0 (0)
+Optimal objective -0.85 - 2 iterations time 0.002, Presolve 0.00
+Total time (CPU seconds):       0.00   (Wallclock seconds):       0.01
+```
+
+#### Bonmin
+
+The Bonmin solver executable should now be callable from Pyomo:
+
+```python
+solver=SolverFactory('bonmin')
+```
+
+If needed, you can explicitly specify the path to the executable:
+
+```python
+solver=SolverFactory('bonmin', executable="/afs/crc.nd.edu/x86_64_linux/c/coin-or/bonmin/1.8.6/bin/bonmin")
+```
+
+Output for the test problem:
+```
+Bonmin 1.8.6 using Cbc 2.9.9 and Ipopt 3.12.8
+bonmin: 
+Cbc3007W No integer variables - nothing to do
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -0.85000002        6 0.00295
+Cbc3007W No integer variables - nothing to do
+
+ 	"Finished"
+```
+
+#### Couenne
+
+The Couenne solver executable should now be callable from Pyomo:
+
+```python
+solver=SolverFactory('couenne')
+```
+
+If needed, you can explicitly specify the path to the executable:
+
+```python
+solver=SolverFactory('couenne', executable="/afs/crc.nd.edu/x86_64_linux/c/coin-or/couenne/0.5.6/bin/couenne")
+```
+
+Output for the test problem:
+```
+Couenne 0.5.6 -- an Open-Source solver for Mixed Integer Nonlinear Optimization
+Mailing list: couenne@list.coin-or.org
+Instructions: http://www.coin-or.org/Couenne
+couenne: 
+ANALYSIS TEST: Couenne: new cutoff value -8.5000000000e-01 (0.045811 seconds)
+NLP0012I 
+              Num      Status      Obj             It       time                 Location
+NLP0014I             1         OPT -0.85000002        9 0.004882
+Loaded instance "/afs/crc.nd.edu/user/a/adowling/Private/tmps3yXIf.pyomo.nl"
+Constraints:            2
+Variables:              3 (0 integer)
+Auxiliaries:            1 (0 integer)
+
+Coin0506I Presolve 2 (-1) rows, 3 (-1) columns and 5 (-2) elements
+Clp0006I 0  Obj -0.849815 Primal inf 0.00018408442 (1) Dual inf 0.999999 (1)
+Clp0006I 2  Obj -0.85
+Clp0000I Optimal - objective value -0.85
+Clp0032I Optimal objective -0.85 - 2 iterations time 0.002, Presolve 0.00
+Cbc3007W No integer variables - nothing to do
+Clp0000I Optimal - objective value -0.85
+
+ 	"Finished"
+
+Linearization cuts added at root node:          3
+Linearization cuts added in total:              3  (separation time: 6.5e-05s)
+Total solve time:                        0.001362s (0.001362s in branch-and-bound)
+Lower bound:                                -0.85
+Upper bound:                                -0.85  (gap: 0.00%)
+Branch-and-bound nodes:                         0
+Performance of                           FBBT:	    2.6e-05s,        3 runs. fix:          0 shrnk:    10.7635 ubd:   0.666667 2ubd:          0 infeas:          0
+```
+
+### SCIP
+
+Coming soon.
