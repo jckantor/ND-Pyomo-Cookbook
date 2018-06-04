@@ -420,7 +420,9 @@ Total time (CPU seconds):       0.00   (Wallclock seconds):       0.01
 
 #### Bonmin
 
-The Bonmin solver executable should now be callable from Pyomo:
+**Warning**: Bonmin has been compiled using the HSL linear algebra routines. All users that have access to Ipopt with HSL also have access to Bonmin.
+
+After you submit your HSL license approval email to CRCsupport@nd.edu, the Bonmin solver executable will be callable from Pyomo:
 
 ```python
 solver=SolverFactory('bonmin')
@@ -454,7 +456,9 @@ Cbc3007W No integer variables - nothing to do
 
 #### Couenne
 
-The Couenne solver executable should now be callable from Pyomo:
+**Warning**: Couenne has been compiled using the HSL linear algebra routines. All users that have access to Ipopt with HSL also have access to Couenne.
+
+After you submit your HSL license approval email to CRCsupport@nd.edu, the Couenne solver executable will be callable from Pyomo:
 
 ```python
 solver=SolverFactory('couenne')
