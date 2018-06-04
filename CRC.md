@@ -13,7 +13,7 @@ First, you must [register for a CRC account](https://wiki.crc.nd.edu/w/index.php
 
 ### Install Pyomo on CRC Cluster
 
-Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must [install their own private (i.e., local) copy](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally) on the CRC cluster. This can be easily done on a few steps:
+Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must [install their own private (i.e., local) copy](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally) on the CRC cluster. This can be easily done in a few steps:
 
 First, `ssh` into a CRC interative node. For example,
 
