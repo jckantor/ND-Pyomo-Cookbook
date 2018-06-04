@@ -15,7 +15,7 @@ First, you must [register for a CRC account](https://wiki.crc.nd.edu/w/index.php
 
 Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must [install their own private (i.e., local) copy](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally) on the CRC cluster. This can be easily done in a few steps:
 
-First, `ssh` into a CRC interative node. For example,
+First, `ssh` into a CRC interactive node. For example,
 
 ```bash
 ssh crcfe02.crc.nd.edu
@@ -152,7 +152,7 @@ EXIT: Optimal Solution Found.
 
 ### Submitting to a Queue
 
-Per CRC policies, the interative nodes should only be used for testing short computational jobs. All other jobs should be submitted to a queue.
+Per CRC policies, the interactive nodes should only be used for testing short computational jobs. All other jobs should be submitted to a queue.
  
  To submit the previous project on the CRC queue, write a script that contains the following:
  
