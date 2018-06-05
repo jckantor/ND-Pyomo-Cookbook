@@ -5,6 +5,7 @@
 .texpadtmp
 README.pdf
 README.tex
+*.nl
 
 # keep api_key a secret
 api_key.txt
