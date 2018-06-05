@@ -31,7 +31,7 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 ## What will be Provided
 
 1. Coffee, lunch, and afternoon snacks
-2. Pyomo examples and instructional material (via a download link)
+2. [Pyomo examples and instructional material](http://www.pyomo.org/workshop-examples/)
 3. Advice on implementing your own research problems in Pyomo
 
 ## PyomoFest Agenda and Location
