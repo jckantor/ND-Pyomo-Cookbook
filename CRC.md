@@ -35,10 +35,6 @@ pip install --user pyomo
 
 By default, Pyomo will be installed in ```.local/bin```. You will need to add this folder to your PATH. See the [CRC wiki](https://wiki.crc.nd.edu/w/index.php/Python#Adding_.24.7BHOME.7D.2F.local.2Fbin_to_your_path) for additional instructions.
 
-After the base Pyomo install is complete, install the extras (including the DAE toolbox):
-
-TODO: Rebug error message and update instructions.
-
 ## Running on the CRC
 
 There are two ways to run Pyomo on the CRC cluster: on an interactive mode (for testing only) or by submitting a job to the queue. The following shows how to do this for a simple optimization problem.
