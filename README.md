@@ -113,6 +113,8 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 * [Installing Pyomo](notebooks/intro/Installing_Pyomo.ipynb)
 * [Pyomo Basics](notebooks/intro/Pyomo_Basics.ipynb)
 * [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb)
+* [Pyomo Textbook](https://link-springer-com.proxy.library.nd.edu/book/10.1007%2F978-3-319-58821-6)
+* [Running Pyomo on CRC Cluster](CRC.md)
 
 ## Linear Programming
 
