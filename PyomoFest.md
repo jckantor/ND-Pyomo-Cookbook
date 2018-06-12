@@ -2,7 +2,7 @@
 
 ![](images/pyomo.png)
 
-We are delighted to be hosting [PyomoFest at Notre Dame on June 5-7](PyomoFest/ND-Pyomo-Workshop-Agenda.pdf). Thanks to gracious support from the Notre Dame Center for Research Computing and Sandia National Laboratory at Albequerque, this unique event will bring together campus researchers from a wide range of disciplines to a build an exciting new community of Pyomo users.
+We are delighted to be hosting [PyomoFest at Notre Dame](PyomoFest/ND-Pyomo-Workshop-Agenda.pdf) on June 5-7, 2018. Thanks to gracious support from the Notre Dame Center for Research Computing and Sandia National Laboratory at Albequerque, this unique event will bring together campus researchers from a wide range of disciplines to a build an exciting new community of Pyomo users.
 
 PyomoFest will include a mixture of presentations, hands-on sessions, and opportunities to consult with instructors on model development relevant to your own research. To make the best use of these opportunities, we urge PyomoFest participants to take several actions in preparation for the event.  These include:
 
@@ -105,7 +105,7 @@ Need help either installing Pyomo or identifying a getting started problem (i.e.
 
 1:00 PM - 4:30 PM
 * Collaboration Time
-* Presentation [*A Framework for Modeling and Optimizing Complex, Structured Problems*](PyomoFest/slides/Nicholson_AIChE2017.pdf) by B. Nicholson
+* Presentation *A Framework for Modeling and Optimizing Complex, Structured Problems* by B. Nicholson
 
 ## Getting Started with Pyomo
 
