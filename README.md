@@ -1,16 +1,15 @@
 # ND-Pyomo-Cookbook
 
-
-
 [Pyomo](http://www.pyomo.org/) is a state-of-the-art package for modeling and solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision **variables**, **constraints**, and an optimization **objective**. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.
 
-This repository provides examples of Pyomo models that have been developed for instructional purposes at Notre Dame.
+This repository provides instructions on getting started with Pyomo, and a collection of Pyomo modeling examples that have been developed for instructional purposes at Notre Dame.
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/master?filepath=index.ipynb)
 
 ## Getting Started
 
 * [Getting Started with Pyomo](notebooks/intro/Getting_Started_with_Pyomo.ipynb)
+* [Running Pyomo on the CRC Cluster](docs/CRC.md)
 * [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb)
 
 ## Linear Programming
