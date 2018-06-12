@@ -6,6 +6,8 @@
 README.pdf
 README.tex
 *.nl
+*.lp
+*.glp
 
 # keep api_key a secret
 api_key.txt
