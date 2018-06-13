@@ -4,7 +4,7 @@
 
 This repository provides instructions on getting started with Pyomo, and a collection of Pyomo modeling examples that have been developed for instructional purposes at Notre Dame.
 
-PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), [slides](PyomoFest/slides/) and [exercises](PyomoFest/exercises_wo_soln.zip) distributed during that event.
+PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), [slides](PyomoFest/slides/) and [exercises](PyomoFest/exercises_wo_soln/exercises/) distributed during that event.
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/master?filepath=index.ipynb)
 
