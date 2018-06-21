@@ -42,6 +42,9 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 * [Maximizing Concentration of an Intermediate in a Batch Reactor](notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb)
 * [Path Planning for a Simple Car Model](notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb)
 
+## Parameter Estimation
+* [Parameter Estimation for a Catalytic Reactor](notebooks/estimation/Parameter_Estimation_Catalytic_Reactor.ipynb)
+
 ## Finance
 
 * [Binomial Model for Pricing Options](notebooks/finance/Binomial_Model_for_Pricing_Options.ipynb)
