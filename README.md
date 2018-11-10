@@ -8,7 +8,10 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 
 | 0. Getting Started | |
 | :--- | :--- |
-| Getting Started with Pyomo | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) |
+| Getting Started with Pyomo on Google Colab| [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) |
+|[Running Pyomo on the CRC Cluster](docs/CRC.md)| |
+| [Unconstrained Scalar Optimization](notebooks/intro/Unconstrained_Scalar_Optimization.ipynb) | |
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Getting Started
 
