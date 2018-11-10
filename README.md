@@ -15,13 +15,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Linear Programming
-
-* [Production Models with Linear Constraints](notebooks/lp/Production_Models_with_Linear_Constraints.ipynb)
-* [Linear Blending Problems](notebooks/lp/Linear_Blending_Problem.ipynb)
-* [Mixture Design for a Cold Weather Camping Fuel](notebooks/lp/Mixture_Design_Cold_Weather_Fuel.ipynb)
-* [Simple Gasoline Blending Example](notebooks/lp/Gasoline_Blending.ipynb)
-
-| Linear Programming | |
+| | |
 | :--- | :--- |
 | Production Models with Linear Constraints | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Production_Models_with_Linear_Constraints.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Production_Models_with_Linear_Constraints.ipynb) |
 | Linear Blending Problems | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Linear_Blending_Problem.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Linear_Blending_Problem.ipynb) |
@@ -30,59 +24,41 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Assignment Problems
-
-* [Transportation Networks](notebooks/assignment/Transportation_Networks.ipynb)
-
-| Assignment Problems | |
+| | |
 | :--- | :--- |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
+| Transportation Networks | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/assignment/Transportation_Networks.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/assignment/Transportation_Networks.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Scheduling Problems with Disjunctive Constraints
-
-* [Machine Bottleneck](notebooks/scheduling/Machine_Bottleneck.ipynb)
-* [Job Shop Scheduling](notebooks/scheduling/Job_Shop_Scheduling.ipynb)
-* [Scheduling Multipurpose Batch Processes using State-Task Networks](notebooks/scheduling/Scheduling_Multipurpose_Batch_Processes_using_State-Task_Networks.ipynb)
-
-| Scheduling Problems with Disjunctive Constraints | |
+| | |
 | :--- | :--- |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
+| Machine Bottleneck | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Machine_Bottleneck.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Machine_Bottleneck.ipynb) |
+| Job Shop Scheduling | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Job_Shop_Scheduling.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Job_Shop_Scheduling.ipynb) |
+| Scheduling Multipurpose Batch Processes using State-Task Networks | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Scheduling_Multipurpose_Batch_Processes_using_State-Task_Networks.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/scheduling/Scheduling_Multipurpose_Batch_Processes_using_State-Task_Networks.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Simulation
-
-* [Linear First Order System](notebooks/simulation/Linear_First_Order_System.ipynb)
-* [Simulation of an Exothermic Stirred Tank Reactor](notebooks/simulation/Exothermic_CSTR.ipynb)
-* [Heat Conduction in Various Geometries](notebooks/simulation/Heat_Conduction_in_Various_Geometries.ipynb)
-
-| Simulation | |
+| | |
 | :--- | :--- |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
+| Linear First Order System | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Linear_First_Order_System.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Linear_First_Order_System.ipynb) |
+| Simulation of an Exothermic Stirred Tank Reactor | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Exothermic_CSTR.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Exothermic_CSTR.ipynb) |
+| Heat Conduction in Various Geometries | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Heat_Conduction_in_Various_Geometries.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/simulation/Heat_Conduction_in_Various_Geometries.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
 ## Differential Algebraic Equations
-
-* [Maximizing Concentration of an Intermediate in a Batch Reactor](notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb)
-* [Path Planning for a Simple Car Model](notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb)
-
-| Differential Algebraic Equations | |
+| | |
 | :--- | :--- |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
+| Maximizing Concentration of an Intermediate in a Batch Reactor | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb) |
+| Path Planning for a Simple Car Model | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
-### Parameter Estimation
+## Parameter Estimation
 | | |
 | :--- | :--- |
 | Parameter Estimation for a Catalytic Reactor | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/estimation/Parameter_Estimation_Catalytic_Reactor.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/estimation/Parameter_Estimation_Catalytic_Reactor.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
 
-### Finance
+## Finance
 | | |
 | :--- | :--- |
 | Binomial Model for Pricing Options | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/finance/Binomial_Model_for_Pricing_Options.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/finance/Binomial_Model_for_Pricing_Options.ipynb) |
