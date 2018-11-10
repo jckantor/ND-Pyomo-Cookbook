@@ -6,7 +6,7 @@ This repository provides instructions on getting started with Pyomo, and a colle
 
 PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), [slides](PyomoFest/slides/) and [exercises](PyomoFest/exercises_wo_soln/exercises/) distributed during that event.
 
-|<span style="font-size:larger;">Getting Started </span>| |
+|<span style="font-size:14;">Getting Started </span>| |
 | :--- | :--- |
 | Getting Started with Pyomo on Google Colab| [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/intro/Getting_Started_with_Pyomo_on_Google_Colab.ipynb) |
 | [Running Pyomo on the CRC Cluster](docs/CRC.md) | |
