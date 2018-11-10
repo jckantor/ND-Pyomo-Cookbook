@@ -22,18 +22,17 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 
 | Linear Programming | |
 | :--- | :--- |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
+| Production Models with Linear Constraints | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Production_Models_with_Linear_Constraints.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Production_Models_with_Linear_Constraints.ipynb) |
+| Linear Blending Problems | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Linear_Blending_Problem.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Linear_Blending_Problem.ipynb) |
+| Mixture Design for a Cold Weather Camping Fuel | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Mixture_Design_Cold_Weather_Fuel.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Mixture_Design_Cold_Weather_Fuel.ipynb) |
+| Simple Gasoline Blending Example | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Gasoline_Blending.ipynb) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/lp/Gasoline_Blending.ipynb) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
-|  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 
 ## Assignment Problems
 
 * [Transportation Networks](notebooks/assignment/Transportation_Networks.ipynb)
 
-| Linear Programming | |
+| Assignment Problems | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
@@ -44,7 +43,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 * [Job Shop Scheduling](notebooks/scheduling/Job_Shop_Scheduling.ipynb)
 * [Scheduling Multipurpose Batch Processes using State-Task Networks](notebooks/scheduling/Scheduling_Multipurpose_Batch_Processes_using_State-Task_Networks.ipynb)
 
-| Linear Programming | |
+| Scheduling Problems with Disjunctive Constraints | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
@@ -57,7 +56,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 * [Simulation of an Exothermic Stirred Tank Reactor](notebooks/simulation/Exothermic_CSTR.ipynb)
 * [Heat Conduction in Various Geometries](notebooks/simulation/Heat_Conduction_in_Various_Geometries.ipynb)
 
-| Linear Programming | |
+| Simulation | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
@@ -69,7 +68,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 * [Maximizing Concentration of an Intermediate in a Batch Reactor](notebooks/dae/Maximizing_Concentration_of_an_Intermediate_in_a_Batch_Reactor.ipynb)
 * [Path Planning for a Simple Car Model](notebooks/dae/Path_Planning_for_a_Simple_Car.ipynb)
 
-| Linear Programming | |
+| Differential Algebraic Equations | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
@@ -79,7 +78,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 ## Parameter Estimation
 * [Parameter Estimation for a Catalytic Reactor](notebooks/estimation/Parameter_Estimation_Catalytic_Reactor.ipynb)
 
-| Linear Programming | |
+| Parameter Estimation | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |
@@ -92,7 +91,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [a
 * [MAD Portfolio Optimization](notebooks/finance/MAD_Portfolio_Optimization.ipynb)
 * [Real Options](notebooks/finance/Real_Options.ipynb)
 
-| Linear Programming | |
+| Finance | |
 | :--- | :--- |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
 |  | [![Open In Colab](images/badges/colab-badge.svg)](https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) [![nbviewer](images/badges/nbviewer_badge.svg)](https://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/) |
