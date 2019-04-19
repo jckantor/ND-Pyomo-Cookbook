@@ -53,7 +53,7 @@ event.
 REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
 
 def iter_notebooks():
-    """Return list of notebooks matched by regular expression"""
+    """Return sorted list of notebooks matched by regular expression"""
     return sorted(nb_file for nb_file in os.listdir(NOTEBOOK_DIR) if REG.match(nb_file))
 
 def get_notebook_title(nb_file):
