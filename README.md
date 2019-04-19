@@ -26,7 +26,6 @@ event.
 
 ### [Chapter 1. Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Installing-Pyomo.ipynb)
 - [1.1 Getting Started with Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Getting-Started-with-Pyomo-on-Google-Colab.ipynb)
-- [1.2 Unconstrained Scalar Optimization](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Unconstrained-Scalar-Optimization.ipynb)
 
 ### [Chapter 2. Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
 - [2.1 Production Models with Linear Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb)
@@ -48,8 +47,9 @@ event.
 - [5.3 Transient Heat Conduction in Various Geometries](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb)
 
 ### [Chapter 6. Differential-Algebraic Equations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.00-Differential-Algebraic-Equations.ipynb)
-- [6.1 Maximizing Concentration of an Intermediate in a Batch Reactor](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.01-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.ipynb)
-- [6.2 Path Planning for a Simple Car](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.02-Path-Planning-for-a-Simple-Car.ipynb)
+- [6.1 Unconstrained Scalar Optimization](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.01-Unconstrained-Scalar-Optimization.ipynb)
+- [6.2 Maximizing Concentration of an Intermediate in a Batch Reactor](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.ipynb)
+- [6.3 Path Planning for a Simple Car](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb)
 
 ### [Chapter 7. Parameter Estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.00-Parameter-Estimation.ipynb)
 - [7.1 Parameter Estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb)
