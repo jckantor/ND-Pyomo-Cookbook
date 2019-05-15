@@ -1,7 +1,7 @@
 
 # ND Pyomo Cookbook
 
-T[Pyomo](http://www.pyomo.org/) is a state-of-the-art Python package for 
+[Pyomo](http://www.pyomo.org/) is a state-of-the-art Python package for 
 modeling and solving optimization problems. Using Pyomo, a user can embed an 
 optimization model consisting of **decision variables**, **constraints**, and 
 an optimization **objective** within Python. Pyomo includes a rich set of 
