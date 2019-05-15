@@ -29,8 +29,7 @@ README_HEADER = """
 modeling and solving optimization problems. Using Pyomo, a user can embed an 
 optimization model consisting of **decision variables**, **constraints**, and 
 an optimization **objective** within Python. Pyomo includes a rich set of 
-features to enable modeling of complex systems, specifying a solver, and 
-accessing the solution.
+features to enable modeling of complex systems.
 
 This repository provides instructions on getting started with Pyomo, and a 
 collection of Pyomo modeling notebooks that have been developed for 
