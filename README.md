@@ -20,7 +20,6 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the
 [exercises](PyomoFest/exercises_wo_soln/exercises/) distributed during that 
 event.
 
-## Contents
 ---
 
 ### [Chapter 1. Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Installing-Pyomo.ipynb)
