@@ -7,7 +7,7 @@ import itertools
 from configure import *
 
 # Header on index page pointing back to github.io
-INDEX_HEADER = "# [{0}]({1})".format(DESC, PAGE)
+INDEX_HEADER = "## [{0}]({1})".format(DESC, PAGE)
 
 # location of remote notebook directory
 NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(USER, REPO)
@@ -38,6 +38,9 @@ COURSE_INFO = COURSE_COMMENT + COURSE_INFO_HEADER
 # regular expression that matches notebook filenames to be included in the TOC
 REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
 
+# regular expression to match markdown figures
+FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
+
 # functions to create Nav bar
 PREV_TEMPLATE = "< [{title}]({url}) "
 CONTENTS = "| [Contents](index.ipynb) |"
@@ -62,6 +65,7 @@ class notebook():
         self.navbar = None
         self.toc_entry = self.get_toc_entry()
         self.toc = self.get_toc()
+        self.figs = self.find_figs()
 
     def read_title(self):
         title = None
@@ -98,11 +102,11 @@ class notebook():
         if self.chapter.isdigit():
             self.chapter = int(self.chapter)
             if self.chapter == 0:
-                fmt = "\n### [{2}]({3})" if self.section in '00' else "- [{2}]({3})"
+                fmt = "\n### [{2}]({3})" if self.section in '00' else "#### [{2}]({3})"
             else:
-                fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
+                fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "#### [{0}.{1} {2}]({3})"
         else:
-            fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
+            fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "#### [{0}.{1} {2}]({3})"
         return fmt.format(self.chapter, int(self.section), self.title, self.url)
 
     def get_toc(self):
@@ -115,6 +119,13 @@ class notebook():
                     url = '#'.join([self.url, '-'.join(header[1:])])
                     toc.append(FMT[header[0]].format(txt, url))
         return toc
+
+    def find_figs(self):
+        figs = []
+        for cell in self.nb.cells:
+            if cell.cell_type == "markdown":
+                figs.extend(FIG.findall(cell.source))
+        return figs
 
     def __gt__(self, nb):
         return self.filename > nb.filename
@@ -151,4 +162,12 @@ with open(INDEX_FILE, 'w') as f:
     f.write(INDEX_HEADER)
     f.write('\n'.join(['\n'.join([n.toc_entry, *n.toc]) for n in notebooks]))
 
+with open('./notebooks/figures.md', 'w') as f:
+    f.write('# Figures')
+    for n in notebooks:
+        if n.figs:
+            f.write('\n' + n.toc_entry + '\n')
+            f.write('\n'.join(["#### [{0}]({1})".format(fig[0] if fig[0] else fig[1], fig[1]) for fig in n.figs]))
+
 os.system(' '.join(['notedown', INDEX_FILE, '>', INDEX_NB]))
+os.system(' '.join(['notedown', './notebooks/figures.md', '>', './notebooks/figures.ipynb']))
