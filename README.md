@@ -1,27 +1,18 @@
 
 # ND Pyomo Cookbook
 
-[Pyomo](http://www.pyomo.org/) is a state-of-the-art Python package for 
-modeling and solving optimization problems. Using Pyomo, a user can embed an 
-optimization model consisting of **decision variables**, **constraints**, and 
-an optimization **objective** within Python. Pyomo includes a rich set of 
-features to enable modeling of complex systems.
+[Pyomo](http://www.pyomo.org/) is a state-of-the-art Python package for modeling and solving optimization problems. 
+Using Pyomo, a user can embed an optimization model consisting of **decision variables**, **constraints**, and 
+an optimization **objective** within Python. Pyomo includes a rich set of features to enable modeling of complex systems.
 
-This repository provides instructions on getting started with Pyomo, and a 
-collection of Pyomo modeling notebooks that have been developed for 
-instructional purposes at Notre Dame. The notebooks were originally developed 
-using the [Anaconda distribution of Python](https://www.anaconda.com/download/).
-The notebooks have been recently updated to open directly on 
-[Google Colaboratory](https://colab.research.google.com/) which enables their 
-using only a browser window.
+This repository provides instructions on getting started with Pyomo, and a collection of Pyomo modeling notebooks that 
+have been developed for instructional purposes at Notre Dame. The notebooks were originally developed using the 
+[Anaconda distribution of Python](https://www.anaconda.com/download/).The notebooks have been recently updated to open 
+directly on [Google Colaboratory](https://colab.research.google.com/) which requires only a browser window to run.
 
-PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the 
-[agenda](PyomoFest.md), [slides](PyomoFest/slides/) and 
-[exercises](PyomoFest/exercises_wo_soln/exercises/) distributed during that 
-event.
-
----
-
+PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), 
+[slides](PyomoFest/slides/) and [exercises](PyomoFest/exercises_wo_soln/exercises/) distributed during that event.
+### [Table of Contents](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/index.ipynb?flush=true)
 ### [Chapter 1. Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Installing-Pyomo.ipynb)
 - [1.1 Getting Started with Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Getting-Started-with-Pyomo-on-Google-Colab.ipynb)
 - [1.2 Running Pyomo on the Notre Dame CRC Cluster](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb)
@@ -61,3 +52,4 @@ event.
 - [8.3 Charting Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.03-Charting-Stock-Data.ipynb)
 - [8.4 MAD Portfolio Optimization](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb)
 - [8.5 Real Options](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb)
+
