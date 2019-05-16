@@ -101,7 +101,10 @@ class notebook():
     def get_readme(self):
         if self.chapter.isdigit():
             self.chapter = int(self.chapter)
-            fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
+            if self.chapter == 0:
+                fmt = "\n### [{2}]({3})" if self.section in '00' else "- [{2}]({3})"
+            else:
+                fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
         else:
             fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
         return fmt.format(self.chapter, int(self.section), self.title, self.url)
