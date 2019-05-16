@@ -7,13 +7,13 @@ import itertools
 from configure import *
 
 # Header on index page pointing back to github.io
-INDEX_HEADER = "## [{0}]({1})".format(DESC, PAGE)
+INDEX_HEADER = "# [{0}]({1})".format(DESC, PAGE)
 
 # location of remote notebook directory
 NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(USER, REPO)
 
 # Header point to Table of Contents page viewed on nbviewer
-TOC_HEADER = "### [Table of Contents]({0}index.ipynb?flush=true)".format(NBVIEWER_BASE_URL)
+README_TOC = "### [Table of Contents]({0}index.ipynb?flush=true)".format(NBVIEWER_BASE_URL)
 
 # template for link to open notebooks in Google colaboratory
 COLAB_TEMPLATE = """
@@ -47,10 +47,10 @@ CONTENTS = "| [Contents](index.ipynb) |"
 NEXT_TEMPLATE = " [{title}]({url}) >"
 NAV_COMMENT = "<!--NAVIGATION-->\n"
 
-FMT = {'##':   '    - [{0}]({1})',
-       '###':  '        - [{0}]({1})',
-       '####': '            - [{0}]({1})',
-       '#####':'                - [{0}]({1})'}
+FMT = {'##':   '- [{0}]({1})',
+       '###':  '    - [{0}]({1})',
+       '####': '        - [{0}]({1})',
+       '#####':'            - [{0}]({1})'}
 
 
 class notebook():
@@ -63,9 +63,9 @@ class notebook():
         self.nb = nbformat.read(self.path, as_version=4)
         self.title = self.read_title()
         self.navbar = None
-        self.toc_entry = self.get_toc_entry()
-        self.toc = self.get_toc()
-        self.figs = self.find_figs()
+        self.readme = self.get_readme()
+        self.index = self.get_index()
+        self.figs = self.get_figs()
 
     def read_title(self):
         title = None
@@ -98,19 +98,21 @@ class notebook():
             self.nb.cells.append(new_markdown_cell(source=self.navbar))
         nbformat.write(self.nb, self.path)
 
-    def get_toc_entry(self):
+    def get_readme(self):
         if self.chapter.isdigit():
             self.chapter = int(self.chapter)
-            if self.chapter == 0:
-                fmt = "\n### [{2}]({3})" if self.section in '00' else "#### [{2}]({3})"
-            else:
-                fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "#### [{0}.{1} {2}]({3})"
+            fmt = "\n### [Chapter {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
         else:
-            fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "#### [{0}.{1} {2}]({3})"
+            fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
         return fmt.format(self.chapter, int(self.section), self.title, self.url)
 
-    def get_toc(self):
-        toc = []
+    def get_index(self):
+        if isinstance(self.chapter, int):
+            self.chapter = int(self.chapter)
+            fmt = "\n## [Chapter {0}. {2}]({3})" if self.section in '00' else "\n### [{0}.{1} {2}]({3})"
+        else:
+            fmt = "\n## [Appendix {0}. {2}]({3})" if self.section in '00' else "\n### [{0}.{1} {2}]({3})"
+        toc = [fmt.format(self.chapter, int(self.section), self.title, self.url)]
         for cell in self.nb.cells:
             if cell.cell_type == "markdown":
                 if cell.source.startswith('##'):
@@ -120,7 +122,7 @@ class notebook():
                     toc.append(FMT[header[0]].format(txt, url))
         return toc
 
-    def find_figs(self):
+    def get_figs(self):
         figs = []
         for cell in self.nb.cells:
             if cell.cell_type == "markdown":
@@ -154,20 +156,15 @@ for n in notebooks:
 
 with open(README_FILE, 'w') as f:
     f.write(README_HEADER)
-    f.write(TOC_HEADER)
-    f.write('\n'.join([n.toc_entry for n in notebooks]))
+    f.write(README_TOC)
+    f.write('\n'.join([n.readme for n in notebooks]))
     f.write('\n' + README_FOOTER)
 
 with open(INDEX_FILE, 'w') as f:
     f.write(INDEX_HEADER)
-    f.write('\n'.join(['\n'.join([n.toc_entry, *n.toc]) for n in notebooks]))
-
-with open('./notebooks/figures.md', 'w') as f:
-    f.write('# Figures')
+    #f.write('\n'.join(['\n'.join(n.index) for n in notebooks]))
     for n in notebooks:
-        if n.figs:
-            f.write('\n' + n.toc_entry + '\n')
-            f.write('\n'.join(["#### [{0}]({1})".format(fig[0] if fig[0] else fig[1], fig[1]) for fig in n.figs]))
+        f.write('\n' + '\n'.join(n.index))
+        f.write('\n' + '\n'.join(["* Figure: [{0}]({1})".format(fig[0] if fig[0] else fig[1], fig[1]) for fig in n.figs]))
 
 os.system(' '.join(['notedown', INDEX_FILE, '>', INDEX_NB]))
-os.system(' '.join(['notedown', './notebooks/figures.md', '>', './notebooks/figures.ipynb']))
