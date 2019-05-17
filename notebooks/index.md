@@ -252,7 +252,7 @@
 - [European Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#European-Put-Option)
 - [Early Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#Early-Exercise)
 - [American Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#American-Put-Option)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel.png?raw=1)
+* Figure: [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel.png?raw=1)
 * Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/img/BinomialModel_Options.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/img/BinomialModel_Options.png?raw=1)
 
 ### [8.2 Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb)
@@ -283,5 +283,5 @@
 - [Example 2. Simplico Gold Mine](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-2.-Simplico-Gold-Mine)
 - [Example 3. Simplico Gold Mine Capital Investment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-3.-Simplico-Gold-Mine-Capital-Investment)
 - [Growth Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Growth-Model)
-* Figure: [../../images/TimelineRealOption.png](../../images/TimelineRealOption.png)
-* Figure: [../../images/BinomialRealOption.png](../../images/BinomialRealOption.png)
+* Figure: [TimeLineRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TimelineRealOption.png?raw=1)
+* Figure: [BinomialRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialRealOption.png?raw=1)
