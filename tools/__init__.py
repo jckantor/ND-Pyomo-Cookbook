@@ -1,4 +1,4 @@
-import os
+"""Managing a Collection of Jupyter Notebooks
+"""
 
-import nbformat
-from nbformat.v4.nbbase import new_markdown_cell
+__version__ = '0.0.1dev'

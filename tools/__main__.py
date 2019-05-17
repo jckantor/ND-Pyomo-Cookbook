@@ -6,19 +6,19 @@ import itertools
 
 from configure import *
 
-# Header on index page pointing back to github.io
-INDEX_HEADER = "# [{0}]({1})".format(DESC, PAGE)
+# Header on TOC page pointing back to github.io
+TOC_HEADER = "# [{0}]({1})".format(PAGE_TITLE, PAGE_URL)
 
 # location of remote notebook directory
 NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(USER, REPO)
 
 # Header point to Table of Contents page viewed on nbviewer
-README_TOC = "### [Table of Contents]({0}index.ipynb?flush=true)".format(NBVIEWER_BASE_URL)
+README_TOC = "### [Table of Contents](" + NBVIEWER_BASE_URL + "toc.ipynb?flush=true)"
 
 # template for link to open notebooks in Google colaboratory
-COLAB_TEMPLATE = """
-<p><a href="https://colab.research.google.com/github/{0}/{1}/blob/master/notebooks/{2}"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a>
-"""
+COLAB_TEMPLATE = '<p><a href="https://colab.research.google.com/github/{0}/{1}/blob/master/notebooks/{2}">'
+COLAB_TEMPLATE += '<img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" '
+COLAB_TEMPLATE += 'alt="Open in Colab" title="Open in Google Colaboratory"></a>'
 COLAB_LINK = COLAB_TEMPLATE.format(USER, REPO, "{notebook_filename}")
 
 # location of the README.md file in the local repository
@@ -27,13 +27,13 @@ README_FILE = os.path.join(os.path.dirname(__file__), '..', 'README.md')
 # location of notebook directory in the local repository
 NOTEBOOK_DIR = os.path.join(os.path.dirname(__file__), '..', 'notebooks')
 
-# location of the index files in the local respository
-INDEX_FILE = os.path.join(NOTEBOOK_DIR, 'index.md')
-INDEX_NB = os.path.join(NOTEBOOK_DIR, 'index.ipynb')
+# location of the table of contents files in the local respository
+TOC_FILE = os.path.join(NOTEBOOK_DIR, 'toc.md')
+TOC_NB = os.path.join(NOTEBOOK_DIR, 'toc.ipynb')
 
-# html comment used to tag the location of the course information in each notebook
-COURSE_COMMENT = "<!--COURSE_INFORMATION-->"
-COURSE_INFO = COURSE_COMMENT + COURSE_INFO_HEADER
+# tag the location of the course information in each notebook
+NOTEBOOK_HEADER_TAG = "<!--NOTEBOOK_HEADER-->"
+NOTEBOOK_HEADER = NOTEBOOK_HEADER_TAG + NOTEBOOK_HEADER_CONTENT
 
 # regular expression that matches notebook filenames to be included in the TOC
 REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
@@ -46,7 +46,7 @@ IMG = re.compile(r'<img')
 
 # functions to create Nav bar
 PREV_TEMPLATE = "< [{title}]({url}) "
-CONTENTS = "| [Contents](index.ipynb) |"
+CONTENTS = "| [Contents](toc.ipynb) |"
 NEXT_TEMPLATE = " [{title}]({url}) >"
 NAV_COMMENT = "<!--NAVIGATION-->\n"
 
@@ -67,7 +67,7 @@ class notebook():
         self.title = self.read_title()
         self.navbar = None
         self.readme = self.get_readme()
-        self.index = self.get_index()
+        self.toc = self.get_toc()
         self.figs = self.get_figs()
         self.imgs = self.get_imgs()
 
@@ -81,12 +81,12 @@ class notebook():
         return title
 
     def write_course_info(self):
-        if self.nb.cells[0].source.startswith(COURSE_COMMENT):
+        if self.nb.cells[0].source.startswith(NOTEBOOK_HEADER_TAG):
             print('- amending comment for: {0}'.format(self.filename))
-            self.nb.cells[0].source = COURSE_INFO
+            self.nb.cells[0].source = NOTEBOOK_HEADER
         else:
             print('- inserting comment for {0}'.format(self.filename))
-            self.nb.cells.insert(0, new_markdown_cell(COURSE_INFO))
+            self.nb.cells.insert(0, new_markdown_cell(NOTEBOOK_HEADER))
         nbformat.write(self.nb, self.path)
 
     def write_navbar(self):
@@ -113,7 +113,7 @@ class notebook():
             fmt = "\n### [Appendix {0}. {2}]({3})" if self.section in '00' else "- [{0}.{1} {2}]({3})"
         return fmt.format(self.chapter, int(self.section), self.title, self.url)
 
-    def get_index(self):
+    def get_toc(self):
         if isinstance(self.chapter, int):
             self.chapter = int(self.chapter)
             fmt = "\n## [Chapter {0}. {2}]({3})" if self.section in '00' else "\n### [{0}.{1} {2}]({3})"
@@ -178,11 +178,11 @@ with open(README_FILE, 'w') as f:
     f.write('\n'.join([n.readme for n in notebooks]))
     f.write('\n' + README_FOOTER)
 
-with open(INDEX_FILE, 'w') as f:
-    f.write(INDEX_HEADER)
-    #f.write('\n'.join(['\n'.join(n.index) for n in notebooks]))
+with open(TOC_FILE, 'w') as f:
+    f.write(TOC_HEADER)
+    #f.write('\n'.join(['\n'.join(n.toc) for n in notebooks]))
     for n in notebooks:
-        f.write('\n' + '\n'.join(n.index))
+        f.write('\n' + '\n'.join(n.toc))
         f.write('\n' + '\n'.join(["* Figure: [{0}]({1})".format(fig[0] if fig[0] else fig[1], fig[1]) for fig in n.figs]))
 
-os.system(' '.join(['notedown', INDEX_FILE, '>', INDEX_NB]))
+os.system(' '.join(['notedown', TOC_FILE, '>', TOC_NB]))

@@ -2,11 +2,11 @@
 # Edit the following string variables to customize tools to a new notebook repository
 USER = "jckantor"
 REPO = "ND-Pyomo-Cookbook"
-DESC = "ND Pyomo Cookbook"
-PAGE = "http://jckantor.github.io/ND-Pyomo-Cookbook/"
+PAGE_TITLE = "ND Pyomo Cookbook"
+PAGE_URL = "http://jckantor.github.io/ND-Pyomo-Cookbook/"
 
 # header to be inserted at the top of each notebook
-COURSE_INFO_HEADER = """
+NOTEBOOK_HEADER_CONTENT = """
 *This notebook contains material from [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/) by 
 Jeffrey Kantor (jeff at nd.edu); the content is available [on GitHub](https://github.com/jckantor/ND-Pyomo-Cookbook).
 *The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
@@ -27,7 +27,9 @@ have been developed for instructional purposes at Notre Dame. The notebooks were
 directly on [Google Colaboratory](https://colab.research.google.com/) which requires only a browser window to run.
 
 PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), 
-[slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises) distributed during that event.
+[slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
+[exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
+distributed during that event.
 """
 
 README_FOOTER = """
