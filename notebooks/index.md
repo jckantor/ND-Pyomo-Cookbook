@@ -253,7 +253,7 @@
 - [Early Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#Early-Exercise)
 - [American Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#American-Put-Option)
 * Figure: [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel.png?raw=1)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/img/BinomialModel_Options.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/img/BinomialModel_Options.png?raw=1)
+* Figure: [BinomialModel_Options.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel_Options.png?raw=1)
 
 ### [8.2 Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb)
 - [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Alpha-Vantage)
