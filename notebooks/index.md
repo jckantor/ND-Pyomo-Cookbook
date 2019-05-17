@@ -11,8 +11,8 @@
 - [Step 1. Install Anaconda](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-1.-Install-Anaconda)
 - [Step 2. Install Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-2.-Install-Pyomo)
 - [Step 3. Install Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-3.-Install-Solvers)
-- [Step 4. (Optional) Compile Ipopt with HSL Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-4.-(Optional)-Compile-Ipopt-with-HSL-Solvers)
-- [Step 5. (Optional) Install Additional Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-5.-(Optional)-Install-Additional-Solvers)
+- [Step 4. Optional: Compile Ipopt with HSL Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-4.-Optional:-Compile-Ipopt-with-HSL-Solvers)
+- [Step 5. Optional: Install Additional Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-5.-Optional:-Install-Additional-Solvers)
     - [COIN-OR CBC](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#COIN-OR-CBC)
 
 
