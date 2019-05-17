@@ -55,9 +55,9 @@
 - [What are the active constraints?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-are-the-active-constraints?)
 - [What is the incremental value of labor?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-is-the-incremental-value-of-labor?)
 - [Theory of Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#Theory-of-Constraints)
-* Figure: [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductX.png?raw=1)
-* Figure: [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductY.png?raw=1)
-* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductXY.png?raw=1)
+* Figure: [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductX.png?raw=1)
+* Figure: [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
+* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/images/LP_ProductXY.png?raw=1)
 
 ### [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
 - [Problem Statement (Jenchura, 2017)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb#Problem-Statement-(Jenchura,-2017))
@@ -75,7 +75,7 @@
 - [Cold Weather Product Requirements](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Cold-Weather-Product-Requirements)
 - [Optimization Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Optimization-Model)
 - [Pyomo Implementation and Solution](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Pyomo-Implementation-and-Solution)
-* Figure: [alcohol-stove.jpeg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/alcohol-stove.jpeg?raw=1)
+* Figure: [alcohol-stove.jpeg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/alcohol-stove.jpeg?raw=1)
 
 ### [2.4 Gasoline Blending](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb)
 - [Gasoline Product Specifications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Gasoline-Product-Specifications)
@@ -89,7 +89,7 @@
     - [Expand product list with mid-grade gasoline](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Expand-product-list-with-mid-grade-gasoline)
     - [Impact of regulatory change](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-regulatory-change)
     - [Impact of a change in refinery operations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-a-change-in-refinery-operations)
-* Figure: [CEP-refinery-diagram](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/CEP-refinery-diagram.png?raw=1)
+* Figure: [CEP-refinery-diagram](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/CEP-refinery-diagram.png?raw=1)
 
 ### [2.5 Model Predictive Control of a Double Integrator](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb)
 - [Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb#Model)
@@ -114,10 +114,10 @@
     - [Analysis by Source](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Source)
     - [Analysis by Customer](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Customer)
 - [Exercises](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Exercises)
-* Figure: [TransportationNetworksMap.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportationNetworksMap.png?raw=1)
-* Figure: [TransportNet.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet.png?raw=1)
-* Figure: [TransportNet_soln.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_soln.png?raw=1)
-* Figure: [TransportNet_sens.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_sens.png?raw=1)
+* Figure: [TransportationNetworksMap.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportationNetworksMap.png?raw=1)
+* Figure: [TransportNet.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet.png?raw=1)
+* Figure: [TransportNet_soln.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_soln.png?raw=1)
+* Figure: [TransportNet_sens.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_sens.png?raw=1)
 
 ## [Chapter 4. Scheduling with Disjunctive Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.00-Scheduling-with-Disjunctive-Constraints.ipynb)
 
@@ -153,8 +153,8 @@
     - [Zero Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Zero-Wait-Policy)
 - [Benchmark Problems LA19](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Benchmark-Problems-LA19)
     - [Recalculate Benchmark Problem with a Zero-Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Recalculate-Benchmark-Problem-with-a-Zero-Wait-Policy)
-* Figure: [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/jobshopdiagram.jpg?raw=1)
-* Figure: [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/flowshop-Dunn-2013.png?raw=1)
+* Figure: [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/jobshopdiagram.jpg?raw=1)
+* Figure: [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/flowshop-Dunn-2013.png?raw=1)
 
 ### [4.3 Maintenance Planning](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb)
 - [Problem Statement](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Problem-Statement)
@@ -185,7 +185,7 @@
     - [Unit Batch Inventories](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Unit-Batch-Inventories)
     - [Gannt Chart](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Gannt-Chart)
 - [Trace of Events and States](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Trace-of-Events-and-States)
-* Figure: [Kondili_1993.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/Kondili_1993.png?raw=1)
+* Figure: [Kondili_1993.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Kondili_1993.png?raw=1)
 
 ## [Chapter 5. Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.00-Simulation.ipynb)
 
@@ -207,7 +207,7 @@
     - [Visualization Function](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Visualization-Function)
     - [Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Simulation)
 - [Effect of Cooling Temperature](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Effect-of-Cooling-Temperature)
-* Figure: [Agitated_vessel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/Agitated_vessel.png?raw=1)
+* Figure: [Agitated_vessel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Agitated_vessel.png?raw=1)
 
 ### [5.3 Transient Heat Conduction in Various Geometries](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb)
 - [Rescaling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Rescaling)
@@ -271,8 +271,8 @@
 - [European Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#European-Put-Option)
 - [Early Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#Early-Exercise)
 - [American Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#American-Put-Option)
-* Figure: [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel.png?raw=1)
-* Figure: [BinomialModel_Options.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialModel_Options.png?raw=1)
+* Figure: [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel.png?raw=1)
+* Figure: [BinomialModel_Options.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel_Options.png?raw=1)
 
 ### [8.2 Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb)
 - [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Alpha-Vantage)
@@ -302,5 +302,5 @@
 - [Example 2. Simplico Gold Mine](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-2.-Simplico-Gold-Mine)
 - [Example 3. Simplico Gold Mine Capital Investment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-3.-Simplico-Gold-Mine-Capital-Investment)
 - [Growth Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Growth-Model)
-* Figure: [TimeLineRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TimelineRealOption.png?raw=1)
-* Figure: [BinomialRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/BinomialRealOption.png?raw=1)
+* Figure: [TimeLineRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TimelineRealOption.png?raw=1)
+* Figure: [BinomialRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialRealOption.png?raw=1)
