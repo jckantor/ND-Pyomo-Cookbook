@@ -10,7 +10,8 @@ have been developed for instructional purposes at Notre Dame. The notebooks were
 [Anaconda distribution of Python](https://www.anaconda.com/download/).The notebooks have been recently updated to open 
 directly on [Google Colaboratory](https://colab.research.google.com/) which requires only a browser window to run.
 
-PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the [agenda](PyomoFest.md), 
+PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the 
+[agenda](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/PyomoFest.md), 
 [slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
 distributed during that event.

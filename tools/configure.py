@@ -1,7 +1,7 @@
 
 # Edit the following string variables to customize tools to a new notebook repository
-USER = "jckantor"
-REPO = "ND-Pyomo-Cookbook"
+GITHUB_USER = "jckantor"
+GITHUB_REPO = "ND-Pyomo-Cookbook"
 PAGE_TITLE = "ND Pyomo Cookbook"
 PAGE_URL = "http://jckantor.github.io/ND-Pyomo-Cookbook/"
 

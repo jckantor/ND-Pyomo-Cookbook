@@ -10,7 +10,7 @@ from configure import *
 TOC_HEADER = "# [{0}]({1})".format(PAGE_TITLE, PAGE_URL)
 
 # location of remote notebook directory
-NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(USER, REPO)
+NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(GITHUB_USER, GITHUB_REPO)
 
 # Header point to Table of Contents page viewed on nbviewer
 README_TOC = "### [Table of Contents](" + NBVIEWER_BASE_URL + "toc.ipynb?flush=true)"
@@ -19,7 +19,7 @@ README_TOC = "### [Table of Contents](" + NBVIEWER_BASE_URL + "toc.ipynb?flush=t
 COLAB_TEMPLATE = '<p><a href="https://colab.research.google.com/github/{0}/{1}/blob/master/notebooks/{2}">'
 COLAB_TEMPLATE += '<img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" '
 COLAB_TEMPLATE += 'alt="Open in Colab" title="Open in Google Colaboratory"></a>'
-COLAB_LINK = COLAB_TEMPLATE.format(USER, REPO, "{notebook_filename}")
+COLAB_LINK = COLAB_TEMPLATE.format(GITHUB_USER, GITHUB_REPO, "{notebook_filename}")
 
 # location of the README.md file in the local repository
 README_FILE = os.path.join(os.path.dirname(__file__), '..', 'README.md')
@@ -44,12 +44,13 @@ FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
 # images
 IMG = re.compile(r'<img')
 
-# functions to create Nav bar
+# nav bar templates
 PREV_TEMPLATE = "< [{title}]({url}) "
 CONTENTS = "| [Contents](toc.ipynb) |"
 NEXT_TEMPLATE = " [{title}]({url}) >"
-NAV_COMMENT = "<!--NAVIGATION-->\n"
+NAVBAR_TAG = "<!--NAVIGATION-->\n"
 
+# formatting headers for table of contents
 FMT = {'##':   '- [{0}]({1})',
        '###':  '    - [{0}]({1})',
        '####': '        - [{0}]({1})',
@@ -90,13 +91,13 @@ class notebook():
         nbformat.write(self.nb, self.path)
 
     def write_navbar(self):
-        if self.nb.cells[1].source.startswith(NAV_COMMENT):
+        if self.nb.cells[1].source.startswith(NAVBAR_TAG):
             print("- amending navbar for {0}".format(self.filename))
             self.nb.cells[1].source = self.navbar
         else:
             print("- inserting navbar for {0}".format(self.filename))
             self.nb.cells.insert(1, new_markdown_cell(source=self.navbar))
-        if self.nb.cells[-1].source.startswith(NAV_COMMENT):
+        if self.nb.cells[-1].source.startswith(NAVBAR_TAG):
             self.nb.cells[-1].source = self.navbar
         else:
             self.nb.cells.append(new_markdown_cell(source=self.navbar))
@@ -138,7 +139,7 @@ class notebook():
 
     def get_imgs(self):
         imgs = []
-        for cell in self.nb.cells:
+        for cell in self.nb.cells[1:-1]:
             if cell.cell_type == "markdown":
                 imgs.extend(IMG.findall(cell.source))
         return imgs
@@ -154,7 +155,7 @@ def set_navbars(notebooks):
     a, b, c = itertools.tee(notebooks, 3)
     next (c)
     for prev_nb, this_nb, next_nb in zip(itertools.chain([None], a), b, itertools.chain(c, [None])):
-        this_nb.navbar = NAV_COMMENT
+        this_nb.navbar = NAVBAR_TAG
         this_nb.navbar += PREV_TEMPLATE.format(title=prev_nb.title, url=prev_nb.url) if prev_nb else ''
         this_nb.navbar += CONTENTS
         this_nb.navbar += NEXT_TEMPLATE.format(title=next_nb.title, url=next_nb.url) if next_nb else ''
