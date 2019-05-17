@@ -48,7 +48,9 @@
 - [What are the active constraints?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-are-the-active-constraints?)
 - [What is the incremental value of labor?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-is-the-incremental-value-of-labor?)
 - [Theory of Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#Theory-of-Constraints)
-
+* Figure: [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductX.png?raw=1)
+* Figure: [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductY.png?raw=1)
+* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/LP_ProductXY.png?raw=1)
 
 ### [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
 - [Problem Statement (Jenchura, 2017)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb#Problem-Statement-(Jenchura,-2017))
@@ -66,7 +68,7 @@
 - [Cold Weather Product Requirements](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Cold-Weather-Product-Requirements)
 - [Optimization Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Optimization-Model)
 - [Pyomo Implementation and Solution](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Pyomo-Implementation-and-Solution)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/alcohol_stove.jpeg?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/alcohol_stove.jpeg?raw=1)
+* Figure: [alcohol-stove.jpeg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/alcohol-stove.jpeg?raw=1)
 
 ### [2.4 Gasoline Blending](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb)
 - [Gasoline Product Specifications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Gasoline-Product-Specifications)
@@ -80,7 +82,7 @@
     - [Expand product list with mid-grade gasoline](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Expand-product-list-with-mid-grade-gasoline)
     - [Impact of regulatory change](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-regulatory-change)
     - [Impact of a change in refinery operations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-a-change-in-refinery-operations)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/refinery_CEP.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/refinery_CEP.png?raw=1)
+* Figure: [CEP-refinery-diagram](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/CEP-refinery-diagram.png?raw=1)
 
 ### [2.5 Model Predictive Control of a Double Integrator](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb)
 - [Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb#Model)

@@ -41,6 +41,9 @@ REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
 # regular expression to match markdown figures
 FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
 
+# images
+IMG = re.compile(r'<img')
+
 # functions to create Nav bar
 PREV_TEMPLATE = "< [{title}]({url}) "
 CONTENTS = "| [Contents](index.ipynb) |"
@@ -66,6 +69,7 @@ class notebook():
         self.readme = self.get_readme()
         self.index = self.get_index()
         self.figs = self.get_figs()
+        self.imgs = self.get_imgs()
 
     def read_title(self):
         title = None
@@ -132,6 +136,13 @@ class notebook():
                 figs.extend(FIG.findall(cell.source))
         return figs
 
+    def get_imgs(self):
+        imgs = []
+        for cell in self.nb.cells:
+            if cell.cell_type == "markdown":
+                imgs.extend(IMG.findall(cell.source))
+        return imgs
+
     def __gt__(self, nb):
         return self.filename > nb.filename
 
@@ -156,6 +167,10 @@ set_navbars(notebooks)
 for n in notebooks:
     n.write_course_info()
     n.write_navbar()
+
+for n in notebooks:
+    if len(n.imgs)>2:
+        print(n.filename, n.imgs)
 
 with open(README_FILE, 'w') as f:
     f.write(README_HEADER)
