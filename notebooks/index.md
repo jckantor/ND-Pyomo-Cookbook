@@ -107,10 +107,10 @@
     - [Analysis by Source](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Source)
     - [Analysis by Customer](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Customer)
 - [Exercises](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Exercises)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportationNetworksMap.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportationNetworksMap.png?raw=1)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet.png?raw=1)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_soln.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_soln.png?raw=1)
-* Figure: [https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_sens.png?raw=1](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_sens.png?raw=1)
+* Figure: [TransportationNetworksMap.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportationNetworksMap.png?raw=1)
+* Figure: [TransportNet.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet.png?raw=1)
+* Figure: [TransportNet_soln.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_soln.png?raw=1)
+* Figure: [TransportNet_sens.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/TransportNet_sens.png?raw=1)
 
 ## [Chapter 4. Scheduling with Disjunctive Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.00-Scheduling-with-Disjunctive-Constraints.ipynb)
 
@@ -134,7 +134,6 @@
 
 
 ### [4.2 Job Shop Scheduling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb)
-- [Contents](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Contents)
 - [Background](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Background)
 - [Job Shop Example](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Job-Shop-Example)
 - [Pyomo Implementation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Pyomo-Implementation)
@@ -145,10 +144,10 @@
     - [Overlapping Tasks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Overlapping-Tasks)
     - [Unit Cleanout](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Unit-Cleanout)
     - [Zero Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Zero-Wait-Policy)
-- [Benchmark Problems](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Benchmark-Problems)
+- [Benchmark Problems LA19](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Benchmark-Problems-LA19)
     - [Recalculate Benchmark Problem with a Zero-Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Recalculate-Benchmark-Problem-with-a-Zero-Wait-Policy)
 * Figure: [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/jobshopdiagram.jpg?raw=1)
-* Figure: [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/flowshop-Dunn-2013.png)
+* Figure: [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/flowshop-Dunn-2013.png?raw=1)
 
 ### [4.3 Maintenance Planning](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb)
 - [Problem Statement](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Problem-Statement)
