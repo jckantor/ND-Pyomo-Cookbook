@@ -17,14 +17,14 @@ and code is released under the [MIT license](https://opensource.org/licenses/MIT
 README_HEADER = """
 # ND Pyomo Cookbook
 
-[Pyomo](http://www.pyomo.org/) is a state-of-the-art Python package for modeling and solving optimization problems. 
-Using Pyomo, a user can embed an optimization model consisting of **decision variables**, **constraints**, and 
-an optimization **objective** within Python. Pyomo includes a rich set of features to enable modeling of complex systems.
+This **ND Pyomo Cookbook** is a collection of notebooks with information and recipes for the use of 
+[Pyomo](http://www.pyomo.org/) to solve modeling and optimization problems. With Pyomo, one can embed an 
+optimization model consisting of **decision variables**, **constraints**, and an optimization **objective** within
+Python. Pyomo includes a rich set of features to enable modeling of complex systems.
 
-This repository provides instructions on getting started with Pyomo, and a collection of Pyomo modeling notebooks that 
-have been developed for instructional purposes at Notre Dame. The notebooks were originally developed using the 
-[Anaconda distribution of Python](https://www.anaconda.com/download/).The notebooks have been recently updated to open 
-directly on [Google Colaboratory](https://colab.research.google.com/) which requires only a browser window to run.
+The notebooks in this collection were developed for instructional purposes at Notre Dame. The notebooks were originally
+developed using the [Anaconda distribution of Python](https://www.anaconda.com/download/). They have been subsequently
+updated to open in [Google Colaboratory](https://colab.research.google.com/) where they can be run in a browser window.
 
 PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the 
 [agenda](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/PyomoFest.md), 
