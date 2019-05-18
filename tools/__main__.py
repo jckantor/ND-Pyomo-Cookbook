@@ -10,13 +10,13 @@ from configure import *
 TOC_HEADER = f"# [{PAGE_TITLE}]({PAGE_URL})"
 
 # location of remote notebook directory
-NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(GITHUB_USER, GITHUB_REPO)
+NBVIEWER_BASE_URL = f"http://nbviewer.jupyter.org/github/{GITHUB_USER}/{GITHUB_REPO}/blob/master/notebooks/"
 
 # Header point to Table of Contents page viewed on nbviewer
-README_TOC = "### [Table of Contents](" + NBVIEWER_BASE_URL + "toc.ipynb?flush=true)"
+README_TOC = f"### [Table of Contents]({NBVIEWER_BASE_URL}toc.ipynb?flush=true)"
 
 # template for link to open notebooks in Google colaboratory
-COLAB_LINK = '<p><a href="https://colab.research.google.com/github/' + GITHUB_USER + '/' + GITHUB_REPO + \
+COLAB_LINK = f'<p><a href="https://colab.research.google.com/github/{GITHUB_USER}/{GITHUB_REPO}' \
              '/blob/master/notebooks/{notebook_filename}">' + \
              '<img align="left" src="https://colab.research.google.com/assets/colab-badge.svg"' + \
              ' alt="Open in Colab" title="Open in Google Colaboratory"></a>'
@@ -38,9 +38,6 @@ NOTEBOOK_HEADER = NOTEBOOK_HEADER_TAG + NOTEBOOK_HEADER_CONTENT
 # regular expression that matches notebook filenames to be included in the TOC
 REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
 
-# images
-IMG = re.compile(r'<img')
-
 # nav bar templates
 PREV_TEMPLATE = "< [{title}]({url}) "
 CONTENTS = "| [Contents](toc.ipynb) |"
@@ -53,6 +50,16 @@ FMT = {'##':   '- [{0}]({1})',
        '####': '        - [{0}]({1})',
        '#####':'            - [{0}]({1})'}
 
+class md_header():
+    def __init__(self, txt, url, lvl):
+        self.txt = txt
+        self.url = url
+        self.lvl = lvl
+
+    def __repr__(self):
+        s = "#"*self.lvl + " " + "[{0}]({1})"
+        return s.format(self.txt, self.url)
+
 
 class notebook():
     def __init__(self, filename):
@@ -61,7 +68,7 @@ class notebook():
         self.chapter, self.section, _ = REG.match(filename).groups()
         self.url = os.path.join(NBVIEWER_BASE_URL, filename)
         self.colab_link = COLAB_LINK.format(notebook_filename=os.path.basename(self.filename))
-        self.nb = nbformat.read(self.path, as_version=4)
+        self.source = nbformat.read(self.path, as_version=4)
         self.navbar = None
         self.readme = self.get_readme()
         self.toc = self.get_toc()
@@ -69,7 +76,7 @@ class notebook():
     @property
     def title(self):
         title = None
-        for cell in self.nb.cells:
+        for cell in self.source.cells:
             if cell.cell_type == "markdown":
                 if cell.source.startswith('#'):
                     title = cell.source[1:].splitlines()[0].strip()
@@ -80,7 +87,7 @@ class notebook():
     @property
     def figs(self):
         figs = []
-        for cell in self.nb.cells:
+        for cell in self.source.cells:
             if cell.cell_type == "markdown":
                 figs.extend(self.__class__.FIG.findall(cell.source))
         return figs
@@ -89,40 +96,38 @@ class notebook():
     @property
     def links(self):
         links = []
-        for cell in self.nb.cells[2:-1]:
+        for cell in self.source.cells[2:-1]:
             if cell.cell_type == "markdown":
                 links.extend(self.__class__.LINK.findall(cell.source))
         return links
 
+    IMG = re.compile(r'<img')
     @property
     def imgs(self):
         imgs = []
-        for cell in self.nb.cells[2:-1]:
+        for cell in self.source.cells[2:-1]:
             if cell.cell_type == "markdown":
-                imgs.extend(IMG.findall(cell.source))
+                imgs.extend(self.__class__.IMG.findall(cell.source))
         return imgs
 
     def write_course_info(self):
-        if self.nb.cells[0].source.startswith(NOTEBOOK_HEADER_TAG):
+        if self.source.cells[0].source.startswith(NOTEBOOK_HEADER_TAG):
             print('- amending comment for: {0}'.format(self.filename))
-            self.nb.cells[0].source = NOTEBOOK_HEADER
+            self.source.cells[0].source = NOTEBOOK_HEADER
         else:
             print('- inserting comment for {0}'.format(self.filename))
-            self.nb.cells.insert(0, new_markdown_cell(NOTEBOOK_HEADER))
-        nbformat.write(self.nb, self.path)
+            self.source.cells.insert(0, new_markdown_cell(NOTEBOOK_HEADER))
+        nbformat.write(self.source, self.path)
 
     def write_navbar(self):
-        if self.nb.cells[1].source.startswith(NAVBAR_TAG):
-            print("- amending navbar for {0}".format(self.filename))
-            self.nb.cells[1].source = self.navbar
-        else:
-            print("- inserting navbar for {0}".format(self.filename))
-            self.nb.cells.insert(1, new_markdown_cell(source=self.navbar))
-        if self.nb.cells[-1].source.startswith(NAVBAR_TAG):
-            self.nb.cells[-1].source = self.navbar
-        else:
-            self.nb.cells.append(new_markdown_cell(source=self.navbar))
-        nbformat.write(self.nb, self.path)
+        for cell in [self.source.cells[1], self.source.cells[-1]]:
+            if cell.source.startswith(NAVBAR_TAG):
+                print(f"- amending navbar for {self.filename}")
+                cell.source = self.navbar
+            else:
+                print(f"- inserting navbar for {self.filename}")
+                cell.insert(1, new_markdown_cell(source=self.navbar))
+        nbformat.write(self.source, self.path)
 
     def get_readme(self):
         if self.chapter.isdigit():
@@ -142,13 +147,16 @@ class notebook():
         else:
             fmt = "## [Appendix {0}. {2}]({3})" if self.section in '00' else "### [{0}.{1} {2}]({3})"
         toc = [fmt.format(self.chapter, int(self.section), self.title, self.url)]
-        for cell in self.nb.cells:
+        th = []
+        for cell in self.source.cells:
             if cell.cell_type == "markdown":
                 if cell.source.startswith('##'):
                     header = cell.source.splitlines()[0].strip().split()
                     txt = ' '.join(header[1:])
                     url = '#'.join([self.url, '-'.join(header[1:])])
                     toc.append(FMT[header[0]].format(txt, url))
+                    th.append(md_header(txt, url, len(header[0])))
+        print(th)
         return toc
 
     def __gt__(self, nb):
