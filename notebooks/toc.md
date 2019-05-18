@@ -57,7 +57,7 @@
 - [Theory of Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#Theory-of-Constraints)
 * Figure: [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductX.png?raw=1)
 * Figure: [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
-* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/images/LP_ProductXY.png?raw=1)
+* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
 
 ### [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
 - [Problem Statement (Jenchura, 2017)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb#Problem-Statement-(Jenchura,-2017))
@@ -129,7 +129,7 @@
     - [Key Performance Indicators](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Key-Performance-Indicators)
     - [Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Exercise)
 - [Empirical Scheduling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Empirical-Scheduling)
-    - [First-In First-Out (FIFO) Scheduling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#First-In-First-Out-(FIFO)-Scheduling)
+    - [First-In First-Out](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#First-In-First-Out)
     - [Last-In, First-Out](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Last-In,-First-Out)
     - [Earliest Due Date](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Earliest-Due-Date)
     - [Shortest Processing Time](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb#Shortest-Processing-Time)
@@ -237,8 +237,8 @@
 ### [6.3 Path Planning for a Simple Car](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb)
 - [Pyomo Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Pyomo-Model)
 - [Accessing Solution Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Accessing-Solution-Data)
-- [Visualizing Car Path](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Visualizing-Car-Path)
-* Figure: [Simple Car](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/images/SimpleCar.png?raw=1)
+- [Visualizing the Car Path](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Visualizing-the-Car-Path)
+* Figure: [Simple Car](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/SimpleCar.png?raw=1)
 
 ## [Chapter 7. Parameter Estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.00-Parameter-Estimation.ipynb)
 
