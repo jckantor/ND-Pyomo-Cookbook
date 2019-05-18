@@ -7,7 +7,7 @@ import itertools
 from configure import *
 
 # Header on TOC page pointing back to github.io
-TOC_HEADER = "# [{0}]({1})".format(PAGE_TITLE, PAGE_URL)
+TOC_HEADER = f"# [{PAGE_TITLE}]({PAGE_URL})"
 
 # location of remote notebook directory
 NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/notebooks/".format(GITHUB_USER, GITHUB_REPO)
@@ -16,10 +16,10 @@ NBVIEWER_BASE_URL = "http://nbviewer.jupyter.org/github/{0}/{1}/blob/master/note
 README_TOC = "### [Table of Contents](" + NBVIEWER_BASE_URL + "toc.ipynb?flush=true)"
 
 # template for link to open notebooks in Google colaboratory
-COLAB_TEMPLATE = '<p><a href="https://colab.research.google.com/github/{0}/{1}/blob/master/notebooks/{2}">'
-COLAB_TEMPLATE += '<img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" '
-COLAB_TEMPLATE += 'alt="Open in Colab" title="Open in Google Colaboratory"></a>'
-COLAB_LINK = COLAB_TEMPLATE.format(GITHUB_USER, GITHUB_REPO, "{notebook_filename}")
+COLAB_LINK = '<p><a href="https://colab.research.google.com/github/' + GITHUB_USER + '/' + GITHUB_REPO + \
+             '/blob/master/notebooks/{notebook_filename}">' + \
+             '<img align="left" src="https://colab.research.google.com/assets/colab-badge.svg"' + \
+             ' alt="Open in Colab" title="Open in Google Colaboratory"></a>'
 
 # location of the README.md file in the local repository
 README_FILE = os.path.join(os.path.dirname(__file__), '..', 'README.md')
@@ -37,9 +37,6 @@ NOTEBOOK_HEADER = NOTEBOOK_HEADER_TAG + NOTEBOOK_HEADER_CONTENT
 
 # regular expression that matches notebook filenames to be included in the TOC
 REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
-
-# regular expression to match markdown figures
-FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
 
 # images
 IMG = re.compile(r'<img')
@@ -65,14 +62,12 @@ class notebook():
         self.url = os.path.join(NBVIEWER_BASE_URL, filename)
         self.colab_link = COLAB_LINK.format(notebook_filename=os.path.basename(self.filename))
         self.nb = nbformat.read(self.path, as_version=4)
-        self.title = self.read_title()
         self.navbar = None
         self.readme = self.get_readme()
         self.toc = self.get_toc()
-        self.figs = self.get_figs()
-        self.imgs = self.get_imgs()
 
-    def read_title(self):
+    @property
+    def title(self):
         title = None
         for cell in self.nb.cells:
             if cell.cell_type == "markdown":
@@ -80,6 +75,32 @@ class notebook():
                     title = cell.source[1:].splitlines()[0].strip()
                     break
         return title
+
+    FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
+    @property
+    def figs(self):
+        figs = []
+        for cell in self.nb.cells:
+            if cell.cell_type == "markdown":
+                figs.extend(self.__class__.FIG.findall(cell.source))
+        return figs
+
+    LINK = re.compile(r'(?:[^!]\[(.*?)\]\((.*?)\))')
+    @property
+    def links(self):
+        links = []
+        for cell in self.nb.cells[2:-1]:
+            if cell.cell_type == "markdown":
+                links.extend(self.__class__.LINK.findall(cell.source))
+        return links
+
+    @property
+    def imgs(self):
+        imgs = []
+        for cell in self.nb.cells[2:-1]:
+            if cell.cell_type == "markdown":
+                imgs.extend(IMG.findall(cell.source))
+        return imgs
 
     def write_course_info(self):
         if self.nb.cells[0].source.startswith(NOTEBOOK_HEADER_TAG):
@@ -117,9 +138,9 @@ class notebook():
     def get_toc(self):
         if isinstance(self.chapter, int):
             self.chapter = int(self.chapter)
-            fmt = "\n## [Chapter {0}. {2}]({3})" if self.section in '00' else "\n### [{0}.{1} {2}]({3})"
+            fmt = "## [Chapter {0}. {2}]({3})" if self.section in '00' else "### [{0}.{1} {2}]({3})"
         else:
-            fmt = "\n## [Appendix {0}. {2}]({3})" if self.section in '00' else "\n### [{0}.{1} {2}]({3})"
+            fmt = "## [Appendix {0}. {2}]({3})" if self.section in '00' else "### [{0}.{1} {2}]({3})"
         toc = [fmt.format(self.chapter, int(self.section), self.title, self.url)]
         for cell in self.nb.cells:
             if cell.cell_type == "markdown":
@@ -129,20 +150,6 @@ class notebook():
                     url = '#'.join([self.url, '-'.join(header[1:])])
                     toc.append(FMT[header[0]].format(txt, url))
         return toc
-
-    def get_figs(self):
-        figs = []
-        for cell in self.nb.cells:
-            if cell.cell_type == "markdown":
-                figs.extend(FIG.findall(cell.source))
-        return figs
-
-    def get_imgs(self):
-        imgs = []
-        for cell in self.nb.cells[1:-1]:
-            if cell.cell_type == "markdown":
-                imgs.extend(IMG.findall(cell.source))
-        return imgs
 
     def __gt__(self, nb):
         return self.filename > nb.filename
@@ -180,10 +187,13 @@ with open(README_FILE, 'w') as f:
     f.write('\n' + README_FOOTER)
 
 with open(TOC_FILE, 'w') as f:
-    f.write(TOC_HEADER)
-    #f.write('\n'.join(['\n'.join(n.toc) for n in notebooks]))
+    print(TOC_HEADER, file=f)
     for n in notebooks:
-        f.write('\n' + '\n'.join(n.toc))
-        f.write('\n' + '\n'.join(["* Figure: [{0}]({1})".format(fig[0] if fig[0] else fig[1], fig[1]) for fig in n.figs]))
+        f.write('\n')
+        f.write('\n'.join(n.toc) + '\n')
+        for txt,url in n.figs:
+            print("* Figure: [{0}]({1})".format(txt if txt else url, url), file=f)
+        for txt,url in n.links:
+            print(f"* Link: [{txt}]({url})", file=f)
 
 os.system(' '.join(['notedown', TOC_FILE, '>', TOC_NB]))
