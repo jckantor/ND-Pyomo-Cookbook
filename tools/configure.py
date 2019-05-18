@@ -3,21 +3,23 @@
 GITHUB_USER = "jckantor"
 GITHUB_REPO = "ND-Pyomo-Cookbook"
 PAGE_TITLE = "ND Pyomo Cookbook"
-PAGE_URL = "http://jckantor.github.io/ND-Pyomo-Cookbook/"
+
+
+PAGE_URL = f"http://{GITHUB_USER}.github.io/{GITHUB_REPO}/"
 
 # header to be inserted at the top of each notebook
-NOTEBOOK_HEADER_CONTENT = """
-*This notebook contains material from the [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/) by 
-Jeffrey Kantor (jeff at nd.edu); the content is available [on GitHub](https://github.com/jckantor/ND-Pyomo-Cookbook).
+NOTEBOOK_HEADER_CONTENT = f"""
+*This notebook contains material from the [{PAGE_TITLE}]({PAGE_URL}) by 
+Jeffrey Kantor (jeff at nd.edu); the content is available [on GitHub](https://github.com/{GITHUB_USER}/{GITHUB_REPO}).
 *The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
 and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
 """
 
 # header for README.md
-README_HEADER = """
-# ND Pyomo Cookbook
+README_HEADER = f"""
+# {PAGE_TITLE}
 
-This **ND Pyomo Cookbook** is a collection of notebooks showing how to use [Pyomo](http://www.pyomo.org/) to solve
+**{PAGE_TITLE}** is a collection of notebooks showing how to use [Pyomo](http://www.pyomo.org/) to solve
 modeling and optimization problems. With Pyomo, one can embed within Python an optimization model consisting of
 **decision variables**, **constraints**, and an optimization **objective**. A rich set of features enables the modeling
 and analysis of complex systems.
@@ -32,6 +34,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the
 [slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
 distributed during that event.
+
 """
 
 README_FOOTER = """

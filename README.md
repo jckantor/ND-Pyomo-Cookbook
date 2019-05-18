@@ -1,7 +1,7 @@
 
 # ND Pyomo Cookbook
 
-This **ND Pyomo Cookbook** is a collection of notebooks showing how to use [Pyomo](http://www.pyomo.org/) to solve
+**ND Pyomo Cookbook** is a collection of notebooks showing how to use [Pyomo](http://www.pyomo.org/) to solve
 modeling and optimization problems. With Pyomo, one can embed within Python an optimization model consisting of
 **decision variables**, **constraints**, and an optimization **objective**. A rich set of features enables the modeling
 and analysis of complex systems.
@@ -16,6 +16,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the
 [slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
 distributed during that event.
+
 ### [Table of Contents](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/toc.ipynb?flush=true)
 ### [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
 - [1.1 Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb)

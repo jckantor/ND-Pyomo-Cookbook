@@ -1,18 +1,20 @@
 # [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/)
 
+
 ## [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
 - [Pyomo Home Page](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-Home-Page)
 - [Pyomo Book](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-Book)
 - [Pyomo On-Line Resources](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-On-Line-Resources)
 - [Pyomo Bibliography](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-Bibliography)
-* Link: [Pyomo home page](http://www.pyomo.org/)
-* Link: [Hart, William E., Carl D. Laird, Jean-Paul Watson, David L. Woodruff, Gabriel A. Hackebeil, Bethany L. Nicholson, and John D. Siirola. Pyomo – Optimization Modeling in Python. Second Edition.  Vol. 67. Springer, 2017.](https://www.springer.com/gp/book/9783319588193)
-* Link: [Read the Docs](https://pyomo.readthedocs.io/en/latest/)
-* Link: [Pyomo Questions on Stack Overflow](https://stackoverflow.com/questions/tagged/pyomo)
-* Link: [Pyomo Forum on Google Groups](https://groups.google.com/forum/#!forum/pyomo-forum)
-* Link: [Pyomo Examples](https://github.com/Pyomo/pyomo/tree/master/examples)
-* Link: [Pyomo Github Repository](https://github.com/Pyomo/pyomo)
-* Link: [PyomoGallery](https://github.com/Pyomo/PyomoGallery/wiki)
+* Links
+    - [Pyomo home page](http://www.pyomo.org/)
+    - [Hart, William E., Carl D. Laird, Jean-Paul Watson, David L. Woodruff, Gabriel A. Hackebeil, Bethany L. Nicholson, and John D. Siirola. Pyomo – Optimization Modeling in Python. Second Edition.  Vol. 67. Springer, 2017.](https://www.springer.com/gp/book/9783319588193)
+    - [Read the Docs](https://pyomo.readthedocs.io/en/latest/)
+    - [Pyomo Questions on Stack Overflow](https://stackoverflow.com/questions/tagged/pyomo)
+    - [Pyomo Forum on Google Groups](https://groups.google.com/forum/#!forum/pyomo-forum)
+    - [Pyomo Examples](https://github.com/Pyomo/pyomo/tree/master/examples)
+    - [Pyomo Github Repository](https://github.com/Pyomo/pyomo)
+    - [PyomoGallery](https://github.com/Pyomo/PyomoGallery/wiki)
 
 ### [1.1 Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb)
 - [Step 1. Install Anaconda](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-1.-Install-Anaconda)
@@ -20,27 +22,29 @@
 - [Step 3. Install Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-3.-Install-Solvers)
 - [Step 4. Optional: Compile Ipopt with HSL Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-4.-Optional:-Compile-Ipopt-with-HSL-Solvers)
 - [Step 5. Optional: Install Additional Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-5.-Optional:-Install-Additional-Solvers)
+    - [Gurobi](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Gurobi)
     - [COIN-OR CBC](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#COIN-OR-CBC)
-* Link: [Python](https://www.python.org/)
-* Link: [Python distributions](https://wiki.python.org/moin/PythonDistributions)
-* Link: [Anaconda.com](https://www.anaconda.com/)
-* Link: [free download](https://www.anaconda.com/download/)
-* Link: [Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/)
-* Link: [conda](https://conda.io/docs/index.html)
-* Link: [uninstall the earlier version](https://docs.anaconda.com/anaconda/install/uninstall)
-* Link: [Download](https://www.anaconda.com/download/)
-* Link: [detailed instructions](https://docs.anaconda.com/anaconda/install/)
-* Link: [Verify](https://docs.anaconda.com/anaconda/install/verify-install)
-* Link: [terminal window on MacOS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac)
-* Link: [command window on Windows](https://www.digitalcitizen.life/7-ways-launch-command-prompt-windows-7-windows-8)
-* Link: [glpk](https://en.wikibooks.org/wiki/GLPK)
-* Link: [ipopt](https://en.wikipedia.org/wiki/IPOPT)
-* Link: [mumps](http://mumps.enseeiht.fr/)
-* Link: [HSL makes available a collection of high-performance solvers for use with Ipopt](http://www.hsl.rl.ac.uk/ipopt/)
-* Link: [Instructions for downloading, compiling, and installing the necessary software are available from COIN-OR](https://projects.coin-or.org/Ipopt/browser/stable/3.11/Ipopt/doc/documentation.pdf)
-* Link: [Gurobi](http://www.gurobi.com/index)
-* Link: [cbc](https://projects.coin-or.org/Cbc)
-* Link: [CPLEX](https://www.ibm.com/products/ilog-cplex-optimization-studio/pricing)
+* Links
+    - [Python](https://www.python.org/)
+    - [Python distributions](https://wiki.python.org/moin/PythonDistributions)
+    - [Anaconda.com](https://www.anaconda.com/)
+    - [free download](https://www.anaconda.com/download/)
+    - [Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/)
+    - [conda](https://conda.io/docs/index.html)
+    - [uninstall the earlier version](https://docs.anaconda.com/anaconda/install/uninstall)
+    - [Download](https://www.anaconda.com/download/)
+    - [detailed instructions](https://docs.anaconda.com/anaconda/install/)
+    - [Verify](https://docs.anaconda.com/anaconda/install/verify-install)
+    - [terminal window on MacOS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac)
+    - [command window on Windows](https://www.digitalcitizen.life/7-ways-launch-command-prompt-windows-7-windows-8)
+    - [glpk](https://en.wikibooks.org/wiki/GLPK)
+    - [ipopt](https://en.wikipedia.org/wiki/IPOPT)
+    - [mumps](http://mumps.enseeiht.fr/)
+    - [HSL makes available a collection of high-performance solvers for use with Ipopt](http://www.hsl.rl.ac.uk/ipopt/)
+    - [Instructions for downloading, compiling, and installing the necessary software are available from COIN-OR](https://projects.coin-or.org/Ipopt/browser/stable/3.11/Ipopt/doc/documentation.pdf)
+    - [Gurobi](http://www.gurobi.com/index)
+    - [cbc](https://projects.coin-or.org/Cbc)
+    - [CPLEX](https://www.ibm.com/products/ilog-cplex-optimization-studio/pricing)
 
 ### [1.2 Running Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb)
 - [Basic Installation of Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb#Basic-Installation-of-Pyomo)
@@ -50,10 +54,11 @@
 - [COIN-OR Bonmin Installation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb#COIN-OR-Bonmin-Installation)
 - [COIN-OR Couenne Installation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb#COIN-OR-Couenne-Installation)
 - [Gecode Installation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb#Gecode-Installation)
-* Link: [GLPK](https://en.wikibooks.org/wiki/GLPK)
-* Link: [COIN-OR CBC](https://github.com/coin-or/Cbc)
-* Link: [COIN-OR Ipopt](https://github.com/coin-or/Ipopt)
-* Link: [COIN-OR Bonmin](https://www.coin-or.org/Bonmin/Intro.html)
+* Links
+    - [GLPK](https://en.wikibooks.org/wiki/GLPK)
+    - [COIN-OR CBC](https://github.com/coin-or/Cbc)
+    - [COIN-OR Ipopt](https://github.com/coin-or/Ipopt)
+    - [COIN-OR Bonmin](https://www.coin-or.org/Bonmin/Intro.html)
 
 ### [1.3 Running Pyomo on the Notre Dame CRC Cluster](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb)
 - [Preliminaries](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Preliminaries)
@@ -68,13 +73,19 @@
     - [Gurobi](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Gurobi)
     - [Ipopt](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Ipopt)
     - [Coin-OR](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Coin-OR)
+        - [Clp](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Clp)
+        - [Cbc](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Cbc)
+        - [Bonmin](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Bonmin)
+        - [Couenne](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#Couenne)
     - [SCIP](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb#SCIP)
-* Link: [register for a CRC account](https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account)
-* Link: [install a private copy of standalone Python packages](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally)
-* Link: [ND CRC wiki instructions for adding `.local/bin` to your PATH](https://wiki.crc.nd.edu/w/index.php/Python#Adding_.24.7BHOME.7D.2F.local.2Fbin_to_your_path)
-* Link: [ND CRC wiki Quick Start Guide](https://wiki.crc.nd.edu/w/index.php/CRC_Quick_Start_Guide)
-* Link: [free HSL academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/)
-* Link: [Ipopt options](https://www.coin-or.org/Ipopt/documentation/node40.html)
+* Links
+    - [register for a CRC account](https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account)
+    - [install a private copy of standalone Python packages](https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally)
+    - [ND CRC wiki instructions for adding `.local/bin` to your PATH](https://wiki.crc.nd.edu/w/index.php/Python#Adding_.24.7BHOME.7D.2F.local.2Fbin_to_your_path)
+    - [ND CRC wiki Quick Start Guide](https://wiki.crc.nd.edu/w/index.php/CRC_Quick_Start_Guide)
+    - [free HSL academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/)
+    - [Ipopt options](https://www.coin-or.org/Ipopt/documentation/node40.html)
+
 
 ## [Chapter 2. Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
 
@@ -88,11 +99,13 @@
 - [What are the active constraints?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-are-the-active-constraints?)
 - [What is the incremental value of labor?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#What-is-the-incremental-value-of-labor?)
 - [Theory of Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb#Theory-of-Constraints)
-* Figure: [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductX.png?raw=1)
-* Figure: [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
-* Figure: [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
-* Link: [Pyomo](http://www.pyomo.org/)
-* Link: [glpk](https://en.wikibooks.org/wiki/GLPK)
+* Figures
+    - [LP_ProductX.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductX.png?raw=1)
+    - [LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
+    - [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
+* Links
+    - [Pyomo](http://www.pyomo.org/)
+    - [glpk](https://en.wikibooks.org/wiki/GLPK)
 
 ### [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
 - [Problem Statement (Jenchura, 2017)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb#Problem-Statement-(Jenchura,-2017))
@@ -109,8 +122,10 @@
 - [Cold Weather Product Requirements](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Cold-Weather-Product-Requirements)
 - [Optimization Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Optimization-Model)
 - [Pyomo Implementation and Solution](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb#Pyomo-Implementation-and-Solution)
-* Figure: [alcohol-stove.jpeg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/alcohol-stove.jpeg?raw=1)
-* Link: [manufacturer's product](https://www.korellis.com/wordpress/wp-content/uploads/2016/05/Alcohol-Denatured.pdf)
+* Figures
+    - [alcohol-stove.jpeg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/alcohol-stove.jpeg?raw=1)
+* Links
+    - [manufacturer's product](https://www.korellis.com/wordpress/wp-content/uploads/2016/05/Alcohol-Denatured.pdf)
 
 ### [2.4 Gasoline Blending](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb)
 - [Gasoline Product Specifications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Gasoline-Product-Specifications)
@@ -124,8 +139,10 @@
     - [Expand product list with mid-grade gasoline](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Expand-product-list-with-mid-grade-gasoline)
     - [Impact of regulatory change](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-regulatory-change)
     - [Impact of a change in refinery operations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb#Impact-of-a-change-in-refinery-operations)
-* Figure: [CEP-refinery-diagram](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/CEP-refinery-diagram.png?raw=1)
-* Link: [pdf available here.](http://www2.emersonprocess.com/siteadmincenter/PM%20Articles/OilRefineryWalk-Through_CEP_May2014_Hi-Res.pdf)
+* Figures
+    - [CEP-refinery-diagram](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/CEP-refinery-diagram.png?raw=1)
+* Links
+    - [pdf available here.](http://www2.emersonprocess.com/siteadmincenter/PM%20Articles/OilRefineryWalk-Through_CEP_May2014_Hi-Res.pdf)
 
 ### [2.5 Model Predictive Control of a Double Integrator](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb)
 - [Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb#Model)
@@ -136,23 +153,28 @@
     - [Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb#Google-Colab)
 - [Model Predictive Control as a Feedback Controller](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb#Model-Predictive-Control-as-a-Feedback-Controller)
 
+
 ## [Chapter 3. Assignment Problems](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.00-Assignment-Problems.ipynb)
 
 ### [3.1 Transportation Networks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb)
 - [Background](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Background)
     - [Table of Transportation Costs, Customer Demand, and Available Supplies](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Table-of-Transportation-Costs,-Customer-Demand,-and-Available-Supplies)
 - [Pyomo Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Pyomo-Model)
+    - [Data File](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Data-File)
     - [Model File](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Model-File)
 - [Solution](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Solution)
 - [Sensitivity Analysis](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Sensitivity-Analysis)
     - [Analysis by Source](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Source)
     - [Analysis by Customer](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Analysis-by-Customer)
 - [Exercises](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb#Exercises)
-* Figure: [TransportationNetworksMap.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportationNetworksMap.png?raw=1)
-* Figure: [TransportNet.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet.png?raw=1)
-* Figure: [TransportNet_soln.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_soln.png?raw=1)
-* Figure: [TransportNet_sens.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_sens.png?raw=1)
-* Link: ["AIMMS Optimization Modeling", AIMMS B. V., 2014](http://download.aimms.com/aimms/download/manuals/AIMMS3_OM.pdf)
+* Figures
+    - [TransportationNetworksMap.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportationNetworksMap.png?raw=1)
+    - [TransportNet.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet.png?raw=1)
+    - [TransportNet_soln.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_soln.png?raw=1)
+    - [TransportNet_sens.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TransportNet_sens.png?raw=1)
+* Links
+    - ["AIMMS Optimization Modeling", AIMMS B. V., 2014](http://download.aimms.com/aimms/download/manuals/AIMMS3_OM.pdf)
+
 
 ## [Chapter 4. Scheduling with Disjunctive Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.00-Scheduling-with-Disjunctive-Constraints.ipynb)
 
@@ -176,6 +198,8 @@
 ### [4.2 Job Shop Scheduling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb)
 - [Background](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Background)
 - [Job Shop Example](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Job-Shop-Example)
+- [Task Decomposition](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Task-Decomposition)
+- [Model Formulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Model-Formulation)
 - [Pyomo Implementation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Pyomo-Implementation)
 - [Printing Schedules](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Printing-Schedules)
 - [Visualizing Results with Gantt Charts](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Visualizing-Results-with-Gantt-Charts)
@@ -186,14 +210,21 @@
     - [Zero Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Zero-Wait-Policy)
 - [Benchmark Problems LA19](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Benchmark-Problems-LA19)
     - [Recalculate Benchmark Problem with a Zero-Wait Policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Recalculate-Benchmark-Problem-with-a-Zero-Wait-Policy)
-* Figure: [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/jobshopdiagram.jpg?raw=1)
-* Figure: [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/flowshop-Dunn-2013.png?raw=1)
-* Link: [`jobshop1.txt` is a well known collection of 82 benchmark problems](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/jobshop1.txt)
-* Link: [OR-Library maintained by J. E. Beasley](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
+* Figures
+    - [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/jobshopdiagram.jpg?raw=1)
+    - [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/flowshop-Dunn-2013.png?raw=1)
+* Links
+    - [`jobshop1.txt` is a well known collection of 82 benchmark problems](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/jobshop1.txt)
+    - [OR-Library maintained by J. E. Beasley](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
 
 ### [4.3 Maintenance Planning](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb)
 - [Problem Statement](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Problem-Statement)
 - [Modeling with Disjunctive Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Modeling-with-Disjunctive-Constraints)
+    - [Objective](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Objective)
+    - [Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Constraints)
+        - [Number of planning periods is equal to P.](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Number-of-planning-periods-is-equal-to-P.)
+        - [No more than one maintenance period can start in any consecutive set of M days.](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#No-more-than-one-maintenance-period-can-start-in-any-consecutive-set-of-M-days.)
+        - [The unit must shut down for M days following a maintenance start.](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#The-unit-must-shut-down-for-M-days-following-a-maintenance-start.)
 - [Pyomo Solution using the Generalized Disjunctive Constraints Extension](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Pyomo-Solution-using-the-Generalized-Disjunctive-Constraints-Extension)
     - [Initialization for Google Colaboratory](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Initialization-for-Google-Colaboratory)
     - [Parameter Values](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Parameter-Values)
@@ -202,10 +233,13 @@
 - [Ramping Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Ramping-Constraints)
 - [Introducing a Minimum Number of Operational Days between Maintenance Periods](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Introducing-a-Minimum-Number-of-Operational-Days-between-Maintenance-Periods)
 - [Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Exercise)
-* Link: [Generalized Disjunctive Programming](https://pyomo.readthedocs.io/en/latest/modeling_extensions/gdp.html)
+* Links
+    - [Generalized Disjunctive Programming](https://pyomo.readthedocs.io/en/latest/modeling_extensions/gdp.html)
 
 ### [4.4 Scheduling Multipurpose Batch Processes using State-Task Networks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb)
+- [References](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#References)
 - [Example (Kondili, et al., 1993)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Example-(Kondili,-et-al.,-1993))
+    - [Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Exercise)
 - [Encoding the STN data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Encoding-the-STN-data)
     - [Setting a Time Grid](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Setting-a-Time-Grid)
 - [Creating a Pyomo Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Creating-a-Pyomo-Model)
@@ -220,7 +254,9 @@
     - [Unit Batch Inventories](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Unit-Batch-Inventories)
     - [Gannt Chart](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Gannt-Chart)
 - [Trace of Events and States](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb#Trace-of-Events-and-States)
-* Figure: [Kondili_1993.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Kondili_1993.png?raw=1)
+* Figures
+    - [Kondili_1993.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Kondili_1993.png?raw=1)
+
 
 ## [Chapter 5. Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.00-Simulation.ipynb)
 
@@ -240,7 +276,8 @@
     - [Visualization Function](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Visualization-Function)
     - [Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Simulation)
 - [Effect of Cooling Temperature](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Effect-of-Cooling-Temperature)
-* Figure: [Agitated_vessel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Agitated_vessel.png?raw=1)
+* Figures
+    - [Agitated_vessel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Agitated_vessel.png?raw=1)
 
 ### [5.3 Transient Heat Conduction in Various Geometries](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb)
 - [Rescaling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Rescaling)
@@ -249,6 +286,7 @@
 - [Planar Coordinates](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Planar-Coordinates)
 - [Cylindrical Coordinates](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Cylindrical-Coordinates)
 - [Spherical Coordinates](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Spherical-Coordinates)
+
 
 ## [Chapter 6. Differential-Algebraic Equations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.00-Differential-Algebraic-Equations.ipynb)
 
@@ -267,7 +305,9 @@
 - [Pyomo Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Pyomo-Model)
 - [Accessing Solution Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Accessing-Solution-Data)
 - [Visualizing the Car Path](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb#Visualizing-the-Car-Path)
-* Figure: [Simple Car](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/SimpleCar.png?raw=1)
+* Figures
+    - [Simple Car](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/SimpleCar.png?raw=1)
+
 
 ## [Chapter 7. Parameter Estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.00-Parameter-Estimation.ipynb)
 
@@ -278,6 +318,7 @@
 - [Step 3. Define a "figure of merit"](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-3.-Define-a-"figure-of-merit")
 - [Step 4. Find a Best Fit](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-4.-Find-a-Best-Fit)
 - [Step 5. Evaluate the Goodness of Fit](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-5.-Evaluate-the-Goodness-of-Fit)
+    - [Plotting Residuals](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Plotting-Residuals)
     - [Separable Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Separable-Model)
 - [Step 6. Estimate Confidence Intervals](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-6.-Estimate-Confidence-Intervals)
 - [Step 7. Determine if a Better Fit is Possible](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-7.-Determine-if-a-Better-Fit-is-Possible)
@@ -286,9 +327,11 @@
     - [Pyomo Model - Version 3](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Pyomo-Model---Version-3)
     - [F-ratio Test](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#F-ratio-Test)
     - [Levene Test](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Levene-Test)
-* Link: ["Model Fitting and Error Estimation", Costa, Kleinstein, Hershberg](http://clip.med.yale.edu/courses/brdu/Costa_ODE.pdf)
-* Link: [Pandas](https://pandas.pydata.org/)
-* Link: [Levene test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html)
+* Links
+    - ["Model Fitting and Error Estimation", Costa, Kleinstein, Hershberg](http://clip.med.yale.edu/courses/brdu/Costa_ODE.pdf)
+    - [Pandas](https://pandas.pydata.org/)
+    - [Levene test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html)
+
 
 ## [Chapter 8. Financial Applications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.00-Financial-Applications.ipynb)
 
@@ -301,15 +344,18 @@
 - [European Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#European-Put-Option)
 - [Early Exercise](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#Early-Exercise)
 - [American Put Option](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Binomial-Model-for-Pricing-Options.ipynb#American-Put-Option)
-* Figure: [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel.png?raw=1)
-* Figure: [BinomialModel_Options.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel_Options.png?raw=1)
-* Link: [Luenberger (2013)](https://global.oup.com/ushe/product/investment-science-9780199740086?cc=us&lang=en&)
+* Figures
+    - [BinomialModel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel.png?raw=1)
+    - [BinomialModel_Options.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialModel_Options.png?raw=1)
+* Links
+    - [Luenberger (2013)](https://global.oup.com/ushe/product/investment-science-9780199740086?cc=us&lang=en&)
 
 ### [8.2 Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb)
 - [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Alpha-Vantage)
 - [Download Selected Ticker Symbols](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Download-Selected-Ticker-Symbols)
-* Link: [Alpha Vantage](https://www.alphavantage.co/)
-* Link: [here](https://www.alphavantage.co/support/#api-key)
+* Links
+    - [Alpha Vantage](https://www.alphavantage.co/)
+    - [here](https://www.alphavantage.co/support/#api-key)
 
 ### [8.3 Charting Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.03-Charting-Stock-Data.ipynb)
 - [Loading Stock Data from Data Directory](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.03-Charting-Stock-Data.ipynb#Loading-Stock-Data-from-Data-Directory)
@@ -318,23 +364,36 @@
 
 ### [8.4 MAD Portfolio Optimization](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb)
 - [Investment Objectives](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Investment-Objectives)
+- [Why Diversify?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Why-Diversify?)
+    - [Reduce Risk through Law of Large Numbers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Reduce-Risk-through-Law-of-Large-Numbers)
     - [Value at Risk (VaR)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Value-at-Risk-(VaR))
 - [Import Historical Stock Price Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Import-Historical-Stock-Price-Data)
 - [Select a Subperiod of the Historical Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Select-a-Subperiod-of-the-Historical-Data)
 - [Return on a Portfolio](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Return-on-a-Portfolio)
+    - [Equally Weighted Portfolio](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Equally-Weighted-Portfolio)
+        - [Constant Fixed Allocation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Constant-Fixed-Allocation)
+        - [Continually Rebalanced](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Continually-Rebalanced)
     - [Component Returns](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Component-Returns)
 - [Measuring Deviation in Component Returns](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Measuring-Deviation-in-Component-Returns)
+    - [Standard Deviation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Standard-Deviation)
+    - [Mean Absolute Deviation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Mean-Absolute-Deviation)
 - [MAD Porfolio](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#MAD-Porfolio)
 - [Problem 1: Solve for Dominating MAD Portfolio](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb#Problem-1:-Solve-for-Dominating-MAD-Portfolio)
-* Link: [GLPK Wikibook tutorial on the subject](http://en.wikibooks.org/wiki/GLPK/Portfolio_Optimization)
-* Link: [Value at risk (VaR)](https://en.wikipedia.org/wiki/Value_at_risk)
-* Link: [conditional value at risk](https://en.wikipedia.org/wiki/Expected_shortfall)
+* Links
+    - [Value at risk (VaR)](https://en.wikipedia.org/wiki/Value_at_risk)
+    - [conditional value at risk](https://en.wikipedia.org/wiki/Expected_shortfall)
 
 ### [8.5 Real Options](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb)
+- [Implementing a Replicating Portfolio in Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Implementing-a-Replicating-Portfolio-in-Pyomo)
 - [Example 1. Value of a fixed cash flow](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-1.-Value-of-a-fixed-cash-flow)
 - [Example 2. Simplico Gold Mine](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-2.-Simplico-Gold-Mine)
+    - [Solution](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Solution)
 - [Example 3. Simplico Gold Mine Capital Investment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-3.-Simplico-Gold-Mine-Capital-Investment)
-- [Growth Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Growth-Model)
-* Figure: [TimeLineRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TimelineRealOption.png?raw=1)
-* Figure: [BinomialRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialRealOption.png?raw=1)
-* Link: [analysis of Martin Haugh](http://www.columbia.edu/~mh2078/FoundationsFE/RealOptions.pdf)
+- [Example 4. Tree Farm Harvesting](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Example-4.-Tree-Farm-Harvesting)
+    - [Price Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Price-Model)
+    - [Growth Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.05-Real-Options.ipynb#Growth-Model)
+* Figures
+    - [TimeLineRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/TimelineRealOption.png?raw=1)
+    - [BinomialRealOption.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/BinomialRealOption.png?raw=1)
+* Links
+    - [Real Options analysis by Martin Haugh](http://www.columbia.edu/~mh2078/FoundationsFE/RealOptions.pdf)
