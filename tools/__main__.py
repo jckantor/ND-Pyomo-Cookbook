@@ -300,10 +300,10 @@ class nbcollection():
 
 
 notebooks = nbcollection()
-#notebooks.write_headers()
-#notebooks.write_navbars()
-#notebooks.write_toc()
-#notebooks.write_readme()
-notebooks.write_book()
-#notebooks.lint()
+notebooks.write_headers()
+notebooks.write_navbars()
+notebooks.write_toc()
+notebooks.write_readme()
+#notebooks.write_book()
+notebooks.lint()
 
