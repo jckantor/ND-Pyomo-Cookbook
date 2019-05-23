@@ -33,14 +33,14 @@ README_FILE = os.path.join(os.path.dirname(__file__), '..', 'README.md')
 
 # location of notebook directory in the local repository
 NOTEBOOK_DIR = os.path.join(os.path.dirname(__file__), '..', 'notebooks')
-HTML_DIR = os.path.join(os.path.dirname(__file__), '..', 'html')
-PDF_DIR = os.path.join(os.path.dirname(__file__), '..', 'pdf')
-CUSTOM_CSS = os.path.join(os.path.dirname(__file__), 'custom.css')
-if not os.path.exists(HTML_DIR):
-    os.mkdir(HTML_DIR)
-if not os.path.exists(PDF_DIR):
-    os.mkdir(PDF_DIR)
-shutil.copy(CUSTOM_CSS, os.path.join(HTML_DIR, 'custom.css'))
+#HTML_DIR = os.path.join(os.path.dirname(__file__), '..', 'html')
+#PDF_DIR = os.path.join(os.path.dirname(__file__), '..', 'pdf')
+#CUSTOM_CSS = os.path.join(os.path.dirname(__file__), 'custom.css')
+#if not os.path.exists(HTML_DIR):
+#    os.mkdir(HTML_DIR)
+#if not os.path.exists(PDF_DIR):
+ #   os.mkdir(PDF_DIR)
+#shutil.copy(CUSTOM_CSS, os.path.join(HTML_DIR, 'custom.css'))
 
 # location of the table of contents files in the local respository
 TOC_FILE = os.path.join(NOTEBOOK_DIR, 'toc.md')
@@ -66,8 +66,8 @@ class nb():
     def __init__(self, filename):
         self.filename = filename
         self.path = os.path.join(NOTEBOOK_DIR, filename)
-        self.html = os.path.join(HTML_DIR, filename.replace('.ipynb', '.html'))
-        self.pdf = os.path.join(PDF_DIR, filename.replace('.ipynb', '.pdf'))
+        #self.html = os.path.join(HTML_DIR, filename.replace('.ipynb', '.html'))
+        #self.pdf = os.path.join(PDF_DIR, filename.replace('.ipynb', '.pdf'))
         self.chapter, self.section, _ = REG.match(filename).groups()
         self.isfrontmatter = self.chapter in "00"
         self.ischapter = self.chapter.isdigit() and (not self.chapter in "00")
@@ -129,7 +129,7 @@ class nb():
 
     @property
     def link(self):
-        return f"[{self.numbered_title}]({self.url}]"
+        return f"[{self.numbered_title}]({self.url})"
 
     @property
     def readme(self):
