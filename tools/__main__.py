@@ -286,7 +286,6 @@ class nbcollection():
         pdf_writer.write(f)
         f.close()
 
-
     def lint(self):
         for nb in self.notebooks:
             if nb.imgs:
