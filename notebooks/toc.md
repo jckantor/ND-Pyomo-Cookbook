@@ -23,7 +23,7 @@
 - [Step 4. Optional: Compile Ipopt with HSL Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-4.-Optional:-Compile-Ipopt-with-HSL-Solvers)
 - [Step 5. Optional: Install Additional Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-5.-Optional:-Install-Additional-Solvers)
     - [Gurobi](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Gurobi)
-    - [COIN-OR CBC](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#COIN-OR-CBC)
+    - [GLPK](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#GLPK)
 * Links
     - [Python](https://www.python.org/)
     - [Python distributions](https://wiki.python.org/moin/PythonDistributions)
@@ -37,13 +37,13 @@
     - [Verify](https://docs.anaconda.com/anaconda/install/verify-install)
     - [terminal window on MacOS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac)
     - [command window on Windows](https://www.digitalcitizen.life/7-ways-launch-command-prompt-windows-7-windows-8)
-    - [glpk](https://en.wikibooks.org/wiki/GLPK)
+    - [COIN-OR CBC](    conda install -c conda-forge glpk)
     - [ipopt](https://en.wikipedia.org/wiki/IPOPT)
     - [mumps](http://mumps.enseeiht.fr/)
     - [HSL makes available a collection of high-performance solvers for use with Ipopt](http://www.hsl.rl.ac.uk/ipopt/)
     - [Instructions for downloading, compiling, and installing the necessary software are available from COIN-OR](https://projects.coin-or.org/Ipopt/browser/stable/3.11/Ipopt/doc/documentation.pdf)
     - [Gurobi](http://www.gurobi.com/index)
-    - [cbc](https://projects.coin-or.org/Cbc)
+    - [GLPK](https://en.wikibooks.org/wiki/GLPK)
     - [CPLEX](https://www.ibm.com/products/ilog-cplex-optimization-studio/pricing)
 
 ### [1.2 Running Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb)
@@ -86,6 +86,9 @@
     - [free HSL academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/)
     - [Ipopt options](https://www.coin-or.org/Ipopt/documentation/node40.html)
 
+### [1.4 Pyomo Coding for Cross-Platform Use](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb)
+- [Cross-Platform Coding for the Use of Ipopt](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb#Cross-Platform-Coding-for-the-Use-of-Ipopt)
+
 
 ## [Chapter 2. Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
 
@@ -105,7 +108,7 @@
     - [LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
 * Links
     - [Pyomo](http://www.pyomo.org/)
-    - [glpk](https://en.wikibooks.org/wiki/GLPK)
+    - [COINOR-CBC](https://github.com/coin-or/Cbc)
 
 ### [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
 - [Problem Statement (Jenchura, 2017)](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb#Problem-Statement-(Jenchura,-2017))

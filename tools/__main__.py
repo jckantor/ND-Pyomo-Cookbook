@@ -167,13 +167,18 @@ class nb():
         nbformat.write(self.content, self.path)
 
     def write_navbar(self):
-        for cell in [self.content.cells[1], self.content.cells[-1]]:
-            if cell.source.startswith(NAVBAR_TAG):
-                print(f"- amending navbar for {self.filename}")
-                cell.source = self.navbar
-            else:
-                print(f"- inserting navbar for {self.filename}")
-                self.content.cells.insert(1, new_markdown_cell(source=self.navbar))
+        if self.content.cells[1].source.startswith(NAVBAR_TAG):
+            print(f"- amending navbar for {self.filename}")
+            self.content.cells[1].source = self.navbar
+        else:
+            print(f"- inserting navbar for {self.filename}")
+            self.content.cells.insert(1, new_markdown_cell(source=self.navbar))
+        if self.content.cells[-1].source.startswith(NAVBAR_TAG):
+            print(f"- amending navbar for {self.filename}")
+            self.content.cells[-1].source = self.navbar
+        else:
+            print(f"- inserting navbar for {self.filename}")
+            self.content.cells.append(new_markdown_cell(source=self.navbar))
         nbformat.write(self.content, self.path)
 
     def write_html(self):
