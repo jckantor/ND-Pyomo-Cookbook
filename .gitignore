@@ -2,7 +2,8 @@ ipopt
 */ipopt
 
 in-development/
-html
+html/
+pdf/
 
 # additional ignores
 .idea/*
