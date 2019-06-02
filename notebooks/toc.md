@@ -338,6 +338,7 @@
 ## [Chapter 7. Parameter Estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.00-Parameter-Estimation.ipynb)
 
 ### [7.1 Parameter estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb)
+- [Imports and Installations](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Imports-and-Installations)
 - [Steps in model fitting](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Steps-in-model-fitting)
 - [Step 1. The data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-1.-The-data)
 - [Step 2. Select a model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb#Step-2.-Select-a-model)
@@ -378,6 +379,7 @@
 
 ### [8.2 Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb)
 - [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Alpha-Vantage)
+- [Download selected ticker Symbols](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Historical-Stock_-ata.ipynb#Download-selected-ticker-Symbols)
 * Links
     - [Alpha Vantage](https://www.alphavantage.co/)
     - [here](https://www.alphavantage.co/support/#api-key)
