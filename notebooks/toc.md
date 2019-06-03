@@ -264,12 +264,14 @@
 ## [Chapter 5. Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.00-Simulation.ipynb)
 
 ### [5.1 Response of a First Order System to Step and Square Wave Inputs](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb#Imports)
 - [First-order differential equation with constant input](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb#First-order-differential-equation-with-constant-input)
 - [Encapsulating into a function](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb#Encapsulating-into-a-function)
 - [Analytical approximation to a step input](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb#Analytical-approximation-to-a-step-input)
 - [Analytical approximation to a square wave input](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb#Analytical-approximation-to-a-square-wave-input)
 
 ### [5.2 Exothermic CSTR](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Imports)
 - [Description](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Description)
 - [Arrehenius law kinetics for a first-order reaction](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Arrehenius-law-kinetics-for-a-first-order-reaction)
 - [Modeling and parameter values](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.02-Exothermic-CSTR.ipynb#Modeling-and-parameter-values)
@@ -283,7 +285,8 @@
     - [Agitated_vessel.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Agitated_vessel.png?raw=1)
 
 ### [5.3 Transient Heat Conduction in Various Geometries](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb)
-- [Rescaling](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Rescaling)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Imports)
+- [Rescaling the heat equation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Rescaling-the-heat-equation)
 - [Dimensionless model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Dimensionless-model)
 - [Preliminary code](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Preliminary-code)
 - [Planar coordinates](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb#Planar-coordinates)
@@ -327,6 +330,9 @@
     - [How much fuel is burned?](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb#How-much-fuel-is-burned?)
     - [Minimize fuel consumption](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb#Minimize-fuel-consumption)
 - [Version 3: Rocket model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb#Version-3:-Rocket-model)
+* Figures
+    - [https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg/368px-Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg/368px-Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg)
+    - [https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LM_illustration_02-IT.png/368px-LM_illustration_02-IT.png](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LM_illustration_02-IT.png/368px-LM_illustration_02-IT.png)
 * Links
     - [Apollo 11 Landing on the Moon, July 20, 1969](https://youtu.be/k_OD2V6fMLQ)
     - [SpaceX Falcon Heavy Side Boosters Landing at Kennedy Space Center, February 6, 2018 ](https://youtu.be/u0-pfzKbh2k)
