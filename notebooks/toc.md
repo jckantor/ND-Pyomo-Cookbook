@@ -2,19 +2,23 @@
 
 
 ## [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
-- [Pyomo home page](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-home-page)
-- [Pyomo book](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-book)
-- [Pyomo online resources](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-online-resources)
-- [Pyomo bibliography](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Pyomo-bibliography)
+- [Online resources](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#Online-resources)
+- [References](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb#References)
 * Links
+    - [Pyomo](http://www.pyomo.org/)
     - [Pyomo home page](http://www.pyomo.org/)
-    - [Hart, William E., Carl D. Laird, Jean-Paul Watson, David L. Woodruff, Gabriel A. Hackebeil, Bethany L. Nicholson, and John D. Siirola. Pyomo – Optimization Modeling in Python. Second Edition.  Vol. 67. Springer, 2017.](https://www.springer.com/gp/book/9783319588193)
     - [Read the Docs](https://pyomo.readthedocs.io/en/latest/)
     - [Pyomo Questions on Stack Overflow](https://stackoverflow.com/questions/tagged/pyomo)
     - [Pyomo Forum on Google Groups](https://groups.google.com/forum/#!forum/pyomo-forum)
     - [Pyomo Examples](https://github.com/Pyomo/pyomo/tree/master/examples)
     - [Pyomo Github Repository](https://github.com/Pyomo/pyomo)
     - [PyomoGallery](https://github.com/Pyomo/PyomoGallery/wiki)
+    - [Pyomo – Optimization Modeling in Python. Second Edition.](https://www.springer.com/gp/book/9783319588193)
+    - ["Pyomo: modeling and solving mathematical programs in Python."](https://link.springer.com/article/10.1007/s12532-011-0026-8)
+    - ["pyomo.dae: a modeling and automatic discretization framework for optimization with differential and algebraic equations."](https://link.springer.com/article/10.1007/s12532-017-0127-0)
+    - [Presentation slides.](https://www.osti.gov/servlets/purl/1392761)
+    - ["Pyomo Tutorial."](https://www.osti.gov/servlets/purl/1376827)
+    - ["PySP: modeling and solving stochastic programs in Python."](https://link.springer.com/article/10.1007/s12532-012-0036-1)
 
 ### [1.1 Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb)
 - [Step 1. Install Anaconda](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Step-1.-Install-Anaconda)
@@ -25,6 +29,7 @@
     - [Gurobi](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#Gurobi)
     - [GLPK](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb#GLPK)
 * Links
+    - [CoCalc](https://cocalc.com/)
     - [Python](https://www.python.org/)
     - [Python distributions](https://wiki.python.org/moin/PythonDistributions)
     - [Anaconda.com](https://www.anaconda.com/)
@@ -87,7 +92,7 @@
     - [Ipopt options](https://www.coin-or.org/Ipopt/documentation/node40.html)
 
 ### [1.4 Pyomo Coding for Cross-Platform Use](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb)
-- [Cross-Platform coding for the use of Ipopt](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb#Cross-Platform-coding-for-the-use-of-Ipopt)
+- [Cross-platform coding for Pyomo and solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb#Cross-platform-coding-for-Pyomo-and-solvers)
 
 
 ## [Chapter 2. Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
