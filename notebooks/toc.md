@@ -91,8 +91,8 @@
     - [free HSL academic license](http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/)
     - [Ipopt options](https://www.coin-or.org/Ipopt/documentation/node40.html)
 
-### [1.4 Pyomo Coding for Cross-Platform Use](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb)
-- [Cross-platform coding for Pyomo and solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Pyomo-Coding-for-Cross-Platform-Use.ipynb#Cross-platform-coding-for-Pyomo-and-solvers)
+### [1.4 Cross-Platform Installation of Pyomo and Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.ipynb)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.ipynb#Imports)
 
 
 ## [Chapter 2. Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
@@ -221,17 +221,26 @@
 - [Visualizing Results with Gantt Charts](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Visualizing-Results-with-Gantt-Charts)
 - [Application to the scheduling of batch processes](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Application-to-the-scheduling-of-batch-processes)
     - [Single product strategies](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Single-product-strategies)
-    - [Overlapping tasks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Overlapping-tasks)
-    - [Unit cleanout](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Unit-cleanout)
-    - [Zero wait policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Zero-wait-policy)
-- [Benchmark problems: LA19](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Benchmark-problems:-LA19)
-    - [Recalculate benchmark problem with a zero-wait policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Recalculate-benchmark-problem-with-a-zero-wait-policy)
+    - [Multiple Overlapping tasks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Multiple-Overlapping-tasks)
+    - [Adding time for unit clean out](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Adding-time-for-unit-clean-out)
+    - [Adding a zero wait policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Adding-a-zero-wait-policy)
+- [Solving the LA19 benchmark problem with NEOS](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Solving-the-LA19-benchmark-problem-with-NEOS)
+- [References](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#References)
+- [Exercises](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Exercises)
+    - [Task specific cleanout](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Task-specific-cleanout)
+    - [Computational impact of a zero-wait policy](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.02-Job-Shop-Scheduling.ipynb#Computational-impact-of-a-zero-wait-policy)
 * Figures
     - [jobshopdiagram.jpg](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/jobshopdiagram.jpg?raw=1)
     - [flowshop-Dunn-2013.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/flowshop-Dunn-2013.png?raw=1)
 * Links
-    - [`jobshop1.txt` is a well known collection of 82 benchmark problems](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/jobshop1.txt)
+    - [`jobshop1.txt` contains 82 benchmark problems](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/jobshop1.txt)
     - [OR-Library maintained by J. E. Beasley](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
+    - [NEOS](https://neos-server.org/neos/)
+    - [CPLEX](https://www.ibm.com/analytics/cplex-optimizer)
+    - ["OR-Library: distributing test problems by electronic mail."](https://www.jstor.org/stable/pdf/2582903.pdf?casa_token=RWUXQ6e2VngAAAAA:g-dwMXjJfCUWqoLJk5y-MpDDhLmJKSGE36YU5kpkXZ71dmos25vntN0RlDFLxDme_QsOw8Oc3oi6juXCkVCfm2gcycCK0SYNoOnOZqRYDp3EqSrXP6nDeQ)
+    - [OR-Library](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
+    - ["Applications of optimization with Xpress-MP."](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.9634&rep=rep1&type=pdf)
+    - ["On the job-shop scheduling problem."](https://doi.org/10.1287/opre.8.2.219)
 
 ### [4.3 Maintenance Planning](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb)
 - [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.03-Maintenance-Planning.ipynb#Imports)
