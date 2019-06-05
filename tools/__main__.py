@@ -80,6 +80,7 @@ class nb():
 
     @property
     def title(self):
+        """returns notebook first level one header as notebook title"""
         for cell in self.content.cells:
             if cell.cell_type == "markdown":
                 if cell.source.startswith('#'):
@@ -88,6 +89,7 @@ class nb():
     FIG = re.compile(r'(?:!\[(.*?)\]\((.*?)\))')
     @property
     def figs(self):
+        """list of all markdown figures in this notebook"""
         figs = []
         for cell in self.content.cells:
             if cell.cell_type == "markdown":
@@ -97,6 +99,7 @@ class nb():
     LINK = re.compile(r'(?:[^!]\[(.*?)\]\((.*?)\))')
     @property
     def links(self):
+        """list of all markdown links in this notebook"""
         links = []
         for cell in self.content.cells[2:-1]:
             if cell.cell_type == "markdown":
@@ -106,6 +109,7 @@ class nb():
     IMG = re.compile(r'<img[^>]*>')
     @property
     def imgs(self):
+        """list of all html img tags in this notebook"""
         imgs = []
         for cell in self.content.cells[2:-1]:
             if cell.cell_type == "markdown":
@@ -129,10 +133,12 @@ class nb():
 
     @property
     def link(self):
+        """markdown link to html view of this notebook"""
         return f"[{self.numbered_title}]({self.url})"
 
     @property
     def readme(self):
+        """formatted entry for this notebook in the repository readme file"""
         return "- " + self.link if self.issection else "\n### " + self.link
 
     @property
@@ -150,7 +156,7 @@ class nb():
     @property
     def orphan_headers(self):
         orphans = []
-        for cell in self.content.cells:
+        for cell in self.content.cells[2:-1]:
             if cell.cell_type == "markdown":
                  for line in cell.source.splitlines()[1:]:
                      if self.__class__.ORPHAN.match(line):

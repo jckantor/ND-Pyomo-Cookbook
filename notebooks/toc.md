@@ -237,6 +237,8 @@
     - [OR-Library maintained by J. E. Beasley](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
     - [NEOS](https://neos-server.org/neos/)
     - [CPLEX](https://www.ibm.com/analytics/cplex-optimizer)
+    - ["A computational study of the job-shop scheduling problem."](https://doi.org/10.1287/ijoc.3.2.149)
+    - [pdf available](http://www.math.uwaterloo.ca/~bico/papers/jobshop.pdf)
     - ["OR-Library: distributing test problems by electronic mail."](https://www.jstor.org/stable/pdf/2582903.pdf?casa_token=RWUXQ6e2VngAAAAA:g-dwMXjJfCUWqoLJk5y-MpDDhLmJKSGE36YU5kpkXZ71dmos25vntN0RlDFLxDme_QsOw8Oc3oi6juXCkVCfm2gcycCK0SYNoOnOZqRYDp3EqSrXP6nDeQ)
     - [OR-Library](http://people.brunel.ac.uk/~mastjjb/jeb/info.html)
     - ["Applications of optimization with Xpress-MP."](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.9634&rep=rep1&type=pdf)
