@@ -262,7 +262,7 @@ class nbcollection():
 
     def write_toc(self):
         with open(TOC_FILE, 'w') as f:
-            print(TOC_HEADER + " Contents", file=f)
+            print(TOC_HEADER, file=f)
             for nb in self.notebooks:
                 f.write('\n')
                 f.write('\n'.join(nb.toc) + '\n')
@@ -279,7 +279,7 @@ class nbcollection():
     def write_readme(self):
         with open(README_FILE, 'w') as f:
             f.write(README_HEADER)
-            f.write(README_TOC)
+            f.write(README_TOC + "\n")
             f.write(README_INDEX)
             f.write('\n'.join([nb.readme for nb in self.notebooks]))
             f.write('\n' + README_FOOTER)

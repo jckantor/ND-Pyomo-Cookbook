@@ -1,4 +1,4 @@
-# [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/) Contents
+# [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/)
 
 
 ## [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
