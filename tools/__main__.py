@@ -328,7 +328,7 @@ class nbcollection():
         keywords = sorted(index.keys(), key=str.lower)
         if keywords:
             with open(INDEX_FILE, 'w') as f:
-                print(TOC_HEADER + " Index", file=f)
+                print(TOC_HEADER + "\n## Keyword Index", file=f)
                 f.write("\n")
                 for keyword in keywords:
                     f.write("* " + keyword + "\n")
