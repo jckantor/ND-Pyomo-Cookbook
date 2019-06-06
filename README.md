@@ -17,7 +17,7 @@ PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
 distributed during that event.
 
-### [Table of Contents](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/toc.ipynb?flush=true)
+### [Table of Contents](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/toc.ipynb?flush=true)### [Keyword Index](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/keywords.ipynb?flush=true)
 ### [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
 - [1.1 Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb)
 - [1.2 Running Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb)
@@ -55,7 +55,7 @@ distributed during that event.
 - [7.1 Parameter estimation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb)
 
 ### [Chapter 8. Financial Applications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.00-Financial-Applications.ipynb)
-- [8.1 Obtaining Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb)
+- [8.1 Obtaining Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb)
 - [8.2 Consolidating and Charting Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.02-Consolidating-and-Charting-Stock-Data.ipynb)
 - [8.3 Binomial Model for Pricing Options](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.03-Binomial-Model-for-Pricing-Options.ipynb)
 - [8.4 MAD Portfolio Optimization](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.04-MAD-Portfolio-Optimization.ipynb)

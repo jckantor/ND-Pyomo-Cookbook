@@ -1,4 +1,4 @@
-# [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/)
+# [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/) Contents
 
 
 ## [Chapter 1. Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
@@ -391,11 +391,11 @@
 
 ## [Chapter 8. Financial Applications](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.00-Financial-Applications.ipynb)
 
-### [8.1 Obtaining Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb)
-- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb#Imports)
-- [Select Stocks to Download](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb#Select-Stocks-to-Download)
-- [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb#Alpha-Vantage)
-- [Download selected ticker Symbols](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-ObtainingHistorical-Stock_-ata.ipynb#Download-selected-ticker-Symbols)
+### [8.1 Obtaining Historical Stock Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb#Imports)
+- [Select Stocks to Download](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb#Select-Stocks-to-Download)
+- [Alpha Vantage](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb#Alpha-Vantage)
+- [Download selected ticker Symbols](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb#Download-selected-ticker-Symbols)
 * Links
     - [Alpha Vantage](https://www.alphavantage.co/)
     - [here](https://www.alphavantage.co/support/#api-key)
@@ -467,6 +467,7 @@
 - [Notebook title and headers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Notebook-title-and-headers)
     - [Title](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Title)
     - [Subheadings](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Subheadings)
+    - [Keywords](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Keywords)
 - [External Files](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#External-Files)
     - [Figures](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Figures)
     - [Data](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/A.00-Style-Guide.ipynb#Data)

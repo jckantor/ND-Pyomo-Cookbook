@@ -4,6 +4,7 @@ import nbformat
 from nbformat.v4.nbbase import new_markdown_cell
 import itertools
 import copy
+import json
 
 from nbconvert import HTMLExporter
 import shutil
@@ -21,6 +22,7 @@ NBVIEWER_BASE_URL = f"http://nbviewer.jupyter.org/github/{GITHUB_USER}/{GITHUB_R
 
 # Header point to Table of Contents page viewed on nbviewer
 README_TOC = f"### [Table of Contents]({NBVIEWER_BASE_URL}toc.ipynb?flush=true)"
+README_INDEX = f"### [Keyword Index]({NBVIEWER_BASE_URL}keywords.ipynb?flush=true)"
 
 # template for link to open notebooks in Google colaboratory
 COLAB_LINK = f'<p><a href="https://colab.research.google.com/github/{GITHUB_USER}/{GITHUB_REPO}' \
@@ -46,6 +48,10 @@ NOTEBOOK_DIR = os.path.join(os.path.dirname(__file__), '..', 'notebooks')
 TOC_FILE = os.path.join(NOTEBOOK_DIR, 'toc.md')
 TOC_NB = os.path.join(NOTEBOOK_DIR, 'toc.ipynb')
 
+# location of the keyword index file
+INDEX_FILE = os.path.join(NOTEBOOK_DIR, 'index.md')
+INDEX_NB= os.path.join(NOTEBOOK_DIR, 'index.ipynb')
+
 # tag the location of the course information in each notebook
 #NOTEBOOK_HEADER_TAG = "<!--NOTEBOOK_HEADER-->"
 NOTEBOOK_HEADER_TAG = "<!--NOTEBOOK_HEADER-->"
@@ -56,7 +62,7 @@ REG = re.compile(r'(\d\d|[A-Z])\.(\d\d)-(.*)\.ipynb')
 
 # nav bar templates
 PREV_TEMPLATE = "< [{title}]({url}) "
-CONTENTS = "| [Contents](toc.ipynb) |"
+CONTENTS = "| [Contents](toc.ipynb) | [Index](index.ipynb) |"
 NEXT_TEMPLATE = " [{title}]({url}) >"
 NAVBAR_TAG = "<!--NAVIGATION-->\n"
 
@@ -118,6 +124,7 @@ class nb():
 
     @property
     def numbered_title(self):
+        """formatted title with Chapter/section/Appendix numbering"""
         if self.isfrontmatter:
             return f"{self.title}"
         elif self.ischapter:
@@ -151,6 +158,20 @@ class nb():
             url = '#'.join([self.url, '-'.join(header[1:])])
             toc.append("    "*(len(header[0])-2) + f"- [{txt}]({url})")
         return toc
+
+    @property
+    def keywordindex(self):
+        index = dict()
+        headercells = (cell for cell in self.content.cells if cell.cell_type == "markdown" and cell.source.startswith("#"))
+        for headercell in headercells:
+            lines = headercell.source.splitlines()
+            header = lines[0].strip().split()
+            txt = ' '.join(header[1:])
+            url = '#'.join([self.url, '-'.join(header[1:])])
+            for keywordline in [line.strip() for line in lines[1:] if line.lower().startswith("keywords: ")]:
+                for word in keywordline.split(':')[1].split(','):
+                    index.setdefault(word.strip(), []).append(f"[{txt}]({url})")
+        return index
 
     ORPHAN = re.compile(r"^#+")
     @property
@@ -241,7 +262,7 @@ class nbcollection():
 
     def write_toc(self):
         with open(TOC_FILE, 'w') as f:
-            print(TOC_HEADER, file=f)
+            print(TOC_HEADER + " Contents", file=f)
             for nb in self.notebooks:
                 f.write('\n')
                 f.write('\n'.join(nb.toc) + '\n')
@@ -259,6 +280,7 @@ class nbcollection():
         with open(README_FILE, 'w') as f:
             f.write(README_HEADER)
             f.write(README_TOC)
+            f.write(README_INDEX)
             f.write('\n'.join([nb.readme for nb in self.notebooks]))
             f.write('\n' + README_FOOTER)
 
@@ -297,6 +319,23 @@ class nbcollection():
         pdf_writer.write(f)
         f.close()
 
+    def keywordindex(self):
+        index = {}
+        for nb in self.notebooks:
+            for word, links in nb.keywordindex.items():
+                for link in links:
+                    index.setdefault(word, []).append(link)
+        keywords = sorted(index.keys(), key=str.lower)
+        if keywords:
+            with open(INDEX_FILE, 'w') as f:
+                print(TOC_HEADER + " Index", file=f)
+                f.write("\n")
+                for keyword in keywords:
+                    f.write("* " + keyword + "\n")
+                    for link in index[keyword]:
+                        f.write("    - " + link + "\n" )
+        os.system(' '.join(['notedown', INDEX_FILE, ">", INDEX_NB]))
+
     def lint(self):
         for nb in self.notebooks:
             if nb.imgs:
@@ -308,12 +347,20 @@ class nbcollection():
                 for orphan in nb.orphan_headers:
                     print(orphan)
 
+    def metadata(self):
+        """print metadata for all notebooks"""
+        for nb in self.notebooks:
+            print(json.dumps(nb.content['metadata'], sort_keys=True, indent=4))
+
 
 notebooks = nbcollection()
 notebooks.write_headers()
 notebooks.write_navbars()
 notebooks.write_toc()
 notebooks.write_readme()
+notebooks.keywordindex()
 #notebooks.write_book()
+
 notebooks.lint()
+
 
