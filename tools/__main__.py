@@ -22,7 +22,7 @@ NBVIEWER_BASE_URL = f"http://nbviewer.jupyter.org/github/{GITHUB_USER}/{GITHUB_R
 
 # Header point to Table of Contents page viewed on nbviewer
 README_TOC = f"### [Table of Contents]({NBVIEWER_BASE_URL}toc.ipynb?flush=true)"
-README_INDEX = f"### [Keyword Index]({NBVIEWER_BASE_URL}keywords.ipynb?flush=true)"
+README_INDEX = f"### [Keyword Index]({NBVIEWER_BASE_URL}index.ipynb?flush=true)"
 
 # template for link to open notebooks in Google colaboratory
 COLAB_LINK = f'<p><a href="https://colab.research.google.com/github/{GITHUB_USER}/{GITHUB_REPO}' \
