@@ -284,6 +284,15 @@
 * Figures
     - [Kondili_1993.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Kondili_1993.png?raw=1)
 
+### [4.5 Unit Commitment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb)
+- [Imports](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Imports)
+- [Problem statement](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Problem-statement)
+- [Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Model)
+    - [Demand](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Demand)
+    - [Generating Units](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Generating-Units)
+* Links
+    - ["Recent advances in mathematical programming with semi-continuous variables and cardinality constraint."](https://link.springer.com/article/10.1007/s40305-013-0004-0)
+
 
 ## [Chapter 5. Simulation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/05.00-Simulation.ipynb)
 
