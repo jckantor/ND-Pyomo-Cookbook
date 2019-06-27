@@ -290,6 +290,8 @@
 - [Model](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Model)
     - [Demand](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Demand)
     - [Generating Units](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Generating-Units)
+    - [Pyomo model 1: Conventional implementation for emi-continuous variables](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Pyomo-model-1:-Conventional-implementation-for-emi-continuous-variables)
+    - [Pyomo model 2: GDP implementation](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.05-Unit-Commitment.ipynb#Pyomo-model-2:-GDP-implementation)
 * Links
     - ["Recent advances in mathematical programming with semi-continuous variables and cardinality constraint."](https://link.springer.com/article/10.1007/s40305-013-0004-0)
 
