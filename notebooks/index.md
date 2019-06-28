@@ -1,4 +1,5 @@
-# [ND Pyomo Cookbook](http://jckantor.github.io/ND-Pyomo-Cookbook/)
+# [ND-Pyomo-Cookbook](https://jckantor.github.io/ND-Pyomo-Cookbook)
+
 ## Keyword Index
 
 * assignment
