@@ -13097,7 +13097,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.00-Linear-Programming.html">2.0 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.02-Linear-Blending-Problem.html">2.2 Linear Blending Problem</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.00-Linear-Programming.html">2.0 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.02-Production-Model-Sensitivity-Analysis.html">2.2 Production Model Sensitivity Analysis</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -13860,191 +13860,6 @@ Units of Y =  60.0
 
 
     
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.1.6-What-is-the-incremental-value-of-labor?">2.1.6 What is the incremental value of labor?<a class="anchor-link" href="#2.1.6-What-is-the-incremental-value-of-labor?">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-
-<span class="c1"># for access to dual solution for constraints</span>
-<span class="n">model</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
-
-<span class="c1"># declare decision variables</span>
-<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-
-<span class="c1"># declare objective</span>
-<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span>
-    <span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-    <span class="n">sense</span> <span class="o">=</span> <span class="n">maximize</span><span class="p">)</span>
-
-<span class="c1"># declare constraints</span>
-<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># solve</span>
-<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre># ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 2600.0
-  Upper bound: 2600.0
-  Number of objectives: 1
-  Number of constraints: 4
-  Number of variables: 3
-  Number of nonzeros: 2
-  Sense: maximize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  User time: -1.0
-  System time: 0.01
-  Wallclock time: 0.0
-  Termination condition: optimal
-  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: None
-      Number of created subproblems: None
-    Black box: 
-      Number of iterations: 2
-  Error rc: 0
-  Time: 0.023640871047973633
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Analysis of the constraints.</p>
-
-</div>
-</div>
-</div>
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;   </span><span class="si">{0:7.2f}</span><span class="s2"> </span><span class="si">{1:7.2f}</span><span class="s2"> </span><span class="si">{2:7.2f}</span><span class="s2"> </span><span class="si">{3:7.2f}</span><span class="s2">&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Constraint  value  lslack  uslack    dual&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">lslack</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">uslack</span><span class="p">(),</span> <span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Constraint  value  lslack  uslack    dual
-demand      20.00     inf   20.00    0.00
-laborA      80.00     inf    0.00  -20.00
-laborB     100.00     inf    0.00  -10.00
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.1.7-Theory-of-constraints">2.1.7 Theory of constraints<a class="anchor-link" href="#2.1.7-Theory-of-constraints">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>For $n$ decisions you should expect to find $n$ 'active' constraints.</li>
-<li>Each inactive constraint has an associated 'slack.'  The associated resources have no incremental value.</li>
-<li>Each active constraint has an associated 'shadow price'.  This is additional value of additional resources.</li>
-</ul>
-
-</div>
-</div>
-</div>
-
-
-
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -14066,7 +13881,7 @@ laborB     100.00     inf    0.00  -10.00
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.00-Linear-Programming.html">2.0 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.02-Linear-Blending-Problem.html">2.2 Linear Blending Problem</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.00-Linear-Programming.html">2.0 Linear Programming</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.02-Production-Model-Sensitivity-Analysis.html">2.2 Production Model Sensitivity Analysis</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.01-Production-Models-with-Linear-Constraints.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
