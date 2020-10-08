@@ -13142,7 +13142,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -13207,7 +13207,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
@@ -13288,7 +13288,7 @@ y = 60.0
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -13422,7 +13422,7 @@ P + \delta P  = c^T {A_a}^{-1} (b_a + \delta b_a) \implies \delta P  = \underbra
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">A_augment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
@@ -13520,7 +13520,7 @@ c = [40 30]
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A_active</span><span class="p">),</span> <span class="n">b_active</span><span class="p">)</span>
@@ -13690,7 +13690,7 @@ y^T = c^T {A_a}^{-1} \implies y^T A_a = c^T \implies A_a^T y = c
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
@@ -13720,9 +13720,9 @@ y^T = c^T {A_a}^{-1} \implies y^T A_a = c^T \implies A_a^T y = c
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = {model.y()}&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sensitivity Analysis&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_demand = </span><span class="si">{model.dual[model.demand]}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborA = </span><span class="si">{model.dual[model.laborA]}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborB = </span><span class="si">{model.dual[model.laborB]}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_demand = {-model.dual[model.demand]}&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborA = {-model.dual[model.laborA]}&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborB = {-model.dual[model.laborB]}&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13745,9 +13745,9 @@ x = 20.0
 y = 60.0
 
 Sensitivity Analysis
-y_demand = 0.0
-y_laborA = -20.0
-y_laborB = -10.0
+y_demand = -0.0
+y_laborA = 20.0
+y_laborB = 10.0
 </pre>
 </div>
 </div>
