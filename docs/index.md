@@ -43,11 +43,12 @@ distributed during that event.
 - [3.1 Transportation Networks](https://jckantor.github.io/ND-Pyomo-Cookbook/03.01-Transportation-Networks.html)
 
 ### [Chapter 4.0 Scheduling with Disjunctive Constraints](https://jckantor.github.io/ND-Pyomo-Cookbook/04.00-Scheduling-with-Disjunctive-Constraints.html)
-- [4.1 Machine Bottleneck](https://jckantor.github.io/ND-Pyomo-Cookbook/04.01-Machine-Bottleneck.html)
-- [4.2 Job Shop Scheduling](https://jckantor.github.io/ND-Pyomo-Cookbook/04.02-Job-Shop-Scheduling.html)
-- [4.3 Maintenance Planning](https://jckantor.github.io/ND-Pyomo-Cookbook/04.03-Maintenance-Planning.html)
-- [4.4 Scheduling Multipurpose Batch Processes using State-Task Networks](https://jckantor.github.io/ND-Pyomo-Cookbook/04.04-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html)
-- [4.5 Unit Commitment](https://jckantor.github.io/ND-Pyomo-Cookbook/04.05-Unit-Commitment.html)
+- [4.1 Introduction to Disjunctive Programming](https://jckantor.github.io/ND-Pyomo-Cookbook/04.01-Introduction_to_Disjunctive_Programming.html)
+- [4.2 Machine Bottleneck](https://jckantor.github.io/ND-Pyomo-Cookbook/04.02-Machine-Bottleneck.html)
+- [4.3 Job Shop Scheduling](https://jckantor.github.io/ND-Pyomo-Cookbook/04.03-Job-Shop-Scheduling.html)
+- [4.4 Maintenance Planning](https://jckantor.github.io/ND-Pyomo-Cookbook/04.04-Maintenance-Planning.html)
+- [4.5 Scheduling Multipurpose Batch Processes using State-Task Networks](https://jckantor.github.io/ND-Pyomo-Cookbook/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html)
+- [4.6 Unit Commitment](https://jckantor.github.io/ND-Pyomo-Cookbook/04.06-Unit-Commitment.html)
 
 ### [Chapter 5.0 Simulation](https://jckantor.github.io/ND-Pyomo-Cookbook/05.00-Simulation.html)
 - [5.1 Response of a First Order System to Step and Square Wave Inputs](https://jckantor.github.io/ND-Pyomo-Cookbook/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html)
