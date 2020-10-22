@@ -13146,7 +13146,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -13181,6 +13181,56 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>     |████████████████████████████████| 9.4MB 537kB/s 
+     |████████████████████████████████| 51kB 5.9MB/s 
+     |████████████████████████████████| 256kB 25.0MB/s 
+     |████████████████████████████████| 163kB 30.3MB/s 
+Selecting previously unselected package coinor-libcoinutils3v5.
+(Reading database ... 144611 files and directories currently installed.)
+Preparing to unpack .../0-coinor-libcoinutils3v5_2.10.14+repack1-1_amd64.deb ...
+Unpacking coinor-libcoinutils3v5 (2.10.14+repack1-1) ...
+Selecting previously unselected package coinor-libosi1v5.
+Preparing to unpack .../1-coinor-libosi1v5_0.107.9+repack1-1_amd64.deb ...
+Unpacking coinor-libosi1v5 (0.107.9+repack1-1) ...
+Selecting previously unselected package coinor-libclp1.
+Preparing to unpack .../2-coinor-libclp1_1.16.11+repack1-1_amd64.deb ...
+Unpacking coinor-libclp1 (1.16.11+repack1-1) ...
+Selecting previously unselected package coinor-libcgl1.
+Preparing to unpack .../3-coinor-libcgl1_0.59.10+repack1-1_amd64.deb ...
+Unpacking coinor-libcgl1 (0.59.10+repack1-1) ...
+Selecting previously unselected package coinor-libcbc3.
+Preparing to unpack .../4-coinor-libcbc3_2.9.9+repack1-1_amd64.deb ...
+Unpacking coinor-libcbc3 (2.9.9+repack1-1) ...
+Selecting previously unselected package coinor-cbc.
+Preparing to unpack .../5-coinor-cbc_2.9.9+repack1-1_amd64.deb ...
+Unpacking coinor-cbc (2.9.9+repack1-1) ...
+Setting up coinor-libcoinutils3v5 (2.10.14+repack1-1) ...
+Setting up coinor-libosi1v5 (0.107.9+repack1-1) ...
+Setting up coinor-libclp1 (1.16.11+repack1-1) ...
+Setting up coinor-libcgl1 (0.59.10+repack1-1) ...
+Setting up coinor-libcbc3 (2.9.9+repack1-1) ...
+Setting up coinor-cbc (2.9.9+repack1-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+/sbin/ldconfig.real: /usr/local/lib/python3.6/dist-packages/ideep4py/lib/libmkldnn.so.0 is not a symbolic link
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 
 
@@ -13200,7 +13250,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">JOBS</span> <span class="o">=</span> <span class="p">{</span>
@@ -13225,19 +13275,19 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;A&#39;: {&#39;release&#39;: 2, &#39;duration&#39;: 5, &#39;due&#39;: 10},
- &#39;B&#39;: {&#39;release&#39;: 5, &#39;duration&#39;: 6, &#39;due&#39;: 21},
- &#39;C&#39;: {&#39;release&#39;: 4, &#39;duration&#39;: 8, &#39;due&#39;: 15},
- &#39;D&#39;: {&#39;release&#39;: 0, &#39;duration&#39;: 4, &#39;due&#39;: 10},
- &#39;E&#39;: {&#39;release&#39;: 0, &#39;duration&#39;: 2, &#39;due&#39;: 5},
- &#39;F&#39;: {&#39;release&#39;: 8, &#39;duration&#39;: 3, &#39;due&#39;: 15},
- &#39;G&#39;: {&#39;release&#39;: 9, &#39;duration&#39;: 2, &#39;due&#39;: 22}}</pre>
+<pre>{&#39;A&#39;: {&#39;due&#39;: 10, &#39;duration&#39;: 5, &#39;release&#39;: 2},
+ &#39;B&#39;: {&#39;due&#39;: 21, &#39;duration&#39;: 6, &#39;release&#39;: 5},
+ &#39;C&#39;: {&#39;due&#39;: 15, &#39;duration&#39;: 8, &#39;release&#39;: 4},
+ &#39;D&#39;: {&#39;due&#39;: 10, &#39;duration&#39;: 4, &#39;release&#39;: 0},
+ &#39;E&#39;: {&#39;due&#39;: 5, &#39;duration&#39;: 2, &#39;release&#39;: 0},
+ &#39;F&#39;: {&#39;due&#39;: 15, &#39;duration&#39;: 3, &#39;release&#39;: 8},
+ &#39;G&#39;: {&#39;due&#39;: 22, &#39;duration&#39;: 2, &#39;release&#39;: 9}}</pre>
 </div>
 
 </div>
@@ -13264,7 +13314,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gantt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="o">=</span><span class="p">{}):</span>
@@ -13365,7 +13415,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">JOBS</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
@@ -13393,19 +13443,19 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;A&#39;: {&#39;start&#39;: 2, &#39;finish&#39;: 7},
- &#39;B&#39;: {&#39;start&#39;: 7, &#39;finish&#39;: 13},
- &#39;C&#39;: {&#39;start&#39;: 13, &#39;finish&#39;: 21},
- &#39;D&#39;: {&#39;start&#39;: 21, &#39;finish&#39;: 25},
- &#39;E&#39;: {&#39;start&#39;: 25, &#39;finish&#39;: 27},
- &#39;F&#39;: {&#39;start&#39;: 27, &#39;finish&#39;: 30},
- &#39;G&#39;: {&#39;start&#39;: 30, &#39;finish&#39;: 32}}</pre>
+<pre>{&#39;A&#39;: {&#39;finish&#39;: 7, &#39;start&#39;: 2},
+ &#39;B&#39;: {&#39;finish&#39;: 13, &#39;start&#39;: 7},
+ &#39;C&#39;: {&#39;finish&#39;: 21, &#39;start&#39;: 13},
+ &#39;D&#39;: {&#39;finish&#39;: 25, &#39;start&#39;: 21},
+ &#39;E&#39;: {&#39;finish&#39;: 27, &#39;start&#39;: 25},
+ &#39;F&#39;: {&#39;finish&#39;: 30, &#39;start&#39;: 27},
+ &#39;G&#39;: {&#39;finish&#39;: 32, &#39;start&#39;: 30}}</pre>
 </div>
 
 </div>
@@ -13432,7 +13482,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gantt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]))</span>
@@ -13498,7 +13548,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gantt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">)</span>
@@ -13564,7 +13614,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">kpi</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">):</span>
@@ -13590,18 +13640,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 32,
+<pre>{&#39;Fraction on Time&#39;: 0.2857142857142857,
+ &#39;Makespan&#39;: 32,
  &#39;Max Pastdue&#39;: 22,
- &#39;Sum of Pastdue&#39;: 68,
  &#39;Number Pastdue&#39;: 5,
  &#39;Number on Time&#39;: 2,
- &#39;Fraction on Time&#39;: 0.2857142857142857}</pre>
+ &#39;Sum of Pastdue&#39;: 68}</pre>
 </div>
 
 </div>
@@ -13628,7 +13678,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13646,18 +13696,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 39,
+<pre>{&#39;Fraction on Time&#39;: 0.2857142857142857,
+ &#39;Makespan&#39;: 39,
  &#39;Max Pastdue&#39;: 29,
- &#39;Sum of Pastdue&#39;: 76,
  &#39;Number Pastdue&#39;: 5,
  &#39;Number on Time&#39;: 2,
- &#39;Fraction on Time&#39;: 0.2857142857142857}</pre>
+ &#39;Sum of Pastdue&#39;: 76}</pre>
 </div>
 
 </div>
@@ -13732,7 +13782,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fifo</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -13754,18 +13804,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30,
+<pre>{&#39;Fraction on Time&#39;: 0.14285714285714285,
+ &#39;Makespan&#39;: 30,
  &#39;Max Pastdue&#39;: 13,
- &#39;Sum of Pastdue&#39;: 31,
  &#39;Number Pastdue&#39;: 6,
  &#39;Number on Time&#39;: 1,
- &#39;Fraction on Time&#39;: 0.14285714285714285}</pre>
+ &#39;Sum of Pastdue&#39;: 31}</pre>
 </div>
 
 </div>
@@ -13821,7 +13871,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">lifo</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -13851,18 +13901,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30,
+<pre>{&#39;Fraction on Time&#39;: 0.5714285714285714,
+ &#39;Makespan&#39;: 30,
  &#39;Max Pastdue&#39;: 20,
- &#39;Sum of Pastdue&#39;: 34,
  &#39;Number Pastdue&#39;: 3,
  &#39;Number on Time&#39;: 4,
- &#39;Fraction on Time&#39;: 0.5714285714285714}</pre>
+ &#39;Sum of Pastdue&#39;: 34}</pre>
 </div>
 
 </div>
@@ -13918,7 +13968,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">edd</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -13948,18 +13998,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30,
+<pre>{&#39;Fraction on Time&#39;: 0.2857142857142857,
+ &#39;Makespan&#39;: 30,
  &#39;Max Pastdue&#39;: 8,
- &#39;Sum of Pastdue&#39;: 27,
  &#39;Number Pastdue&#39;: 5,
  &#39;Number on Time&#39;: 2,
- &#39;Fraction on Time&#39;: 0.2857142857142857}</pre>
+ &#39;Sum of Pastdue&#39;: 27}</pre>
 </div>
 
 </div>
@@ -13972,7 +14022,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -13987,7 +14037,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAscAAABVCAYAAAClx0lPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjIsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+WH4yJAAAVKklEQVR4nO3deZRcZZnH8e+PTjobwQ5kMZClIySBJGMChCASYqOAICgoygFGBXRQRzzqmXGZ8biAo2fUIzOcUQGjIgImyAzIIsgQlE6CI0sCQXbCkpCFLBA6K9mf+ePeJkWnq7uSVNW93fX7nFOnqm7VrXrufe5771tvvfe9igjMzMzMzAz2yzoAMzMzM7O8cOXYzMzMzCzlyrGZmZmZWcqVYzMzMzOzlCvHZmZmZmYpV47NzMzMzFKuHJuZlYmkayV9r4PXN0h6RzVj6oikZkn/UKbPulTSDeV+r5lZtblybGY1Q9IiSVslDWwz/VFJIamxkt8fEftHxIvl/lxJ4yXdI2mNpBZJ8yV9oNzfY2ZWC1w5NrNa8xJwXusTSX8H9M0unLK4A5gFvB0YDHwRWJdpRGZmXZQrx2ZWa64HPlnw/ALgusI3SDo9bU1eJ2mJpEvbvD5V0v+lrbRLJF1Y8PIASXdKWi/pQUmHFswXkg5LH18r6WcdvPdwSbPS1uBnJZ3T3sKkreCjgF9ExNb09peIuL/gPWdKWpAuzwuSTi34iJGS/pLGcE9hq7qkdxUs52OSmgpeGyVpdjrfLKBwviZJS9vEuUjSSUWWoej3mJlVmyvHZlZrHgAOkHSEpDrgXKBt/9eNJBXoBuB04B8lnQUgaSTwR+AnwCBgErCgYN5zgcuAAcDzwPc7iKXd90rqR9ISPIOkJfhc4EpJ49r5jNfSeW+QdJakIYUvSppCUvn/aro804BFBW85H7go/Z564CvpfIcAdwLfAw5Mp98saVA63wxgPkml+N9IfmTssRK+x8ysqlw5NrNa1Np6fDLwNLCs8MWIaI6IxyNiZ0T8DZgJvCd9+Xzg3oiYGRHbIuK1iCisHP8+Ih6KiO3Ab0kqz8UUe+8ZwKKI+HVEbI+IR4GbgY+1/YCICOBEkgrv5cArkuZIGp2+5dPANRExK12eZRHxTMFH/DoinouIN4CbCmL4OHBXRNyVzjcLmAd8QNII4BjgWxGxJSLmkHTt2BtFv2cvP8/MbJ+4cmxmteh6kkruhbTpUgEg6VhJ90laLWkt8Dl2dRsYDrzQwWevKHi8Cdh/L947Ejg27WbQIqkF+HuSPsW7iYilEfGFiDg0nXdjwXLtbbwjgY+1iWEqMBQ4GHg9IjYWzLu4g+/oSEffY2ZWdT2yDsDMrNoiYrGkl0haJz/dzltmAD8FTouIzZKuYFfleAkwpcIhLgFmR8TJezpjRCyR9DOS1u7Wzzq0g1k6iuH6iLi47Qtp15IBkvoVVJBHAJE+3kjBSY5p95Vi3SSKfo+ZWRbccmxmterTwHvbtH626g+sSSvGU0hamVv9FjhJ0jmSekg6SFJHXSf2xh+AMZI+IalnejtG0hFt3yhpgKTLJB0mab/0hLpPkfStBvgVcJGk96WvHyLp8BJiuAH4oKT3S6qT1Ds90W5YRCwm6fpwmaR6SVOBDxbM+xzQOz2xsSfwTaDXnn5PKSvKzKzcXDk2s5oUES9ExLwiL38e+K6k9cC3Sfrits73MkmL8z8Da0hOxptY5tjWA6eQnIi3nKTrww9pv4K5FWgE7iUZvu0JYAtJlxEi4iGSE+7+E1gLzCbpytBZDEuAM4FvAKtJWni/yq7jxvnAsSTr4DsUdE+JiLUk6/CXJP25NwJvGb1iD77HzKyqlJzLYWZmZmZm/mVuZmZmZpZy5djMzMzMLOXKsZmZmZlZqqTKsaSPSeqfPv6mpFskHVXZ0MzMzMzMqqvUluNvRcT6dLiek0iGBrqqcmGZmZmZmVVfqRcB2ZHenw5Mj4g7JX2v3MEMHDgwGhsby/2xndq4cSP9+vWr+vdacc5JPjkv+eOc5JPzkj/OST5llZf58+e/GhHtXpyo1MrxMkk/B04GfiipFxXor9zY2Mi8ecWGHa2c5uZmmpqaqv69Vpxzkk/OS/44J/nkvOSPc5JPWeVFUtFL3pdawT0H+F/g/RHRAhxIMki7mZmZmVm3UVLlOCI2AauAqemk7cDCSgVlZmZmZpaFUker+A7wdeBf00k9gRsqFZSZmZmZWRZK7VbxYeBDwEaAiFgO9K9UUGZmZmZmWSj1hLytERGSAkBStzndc/r06Vx55ZU0NDRkHUpRr7zyChHBwQcfnHUoVdPS0pLrnCxfvhxJDB06NOtQqqqceanF7boS8l5WuoJKlOc856VWy16ec1IJXeU4dfTRR+fuRMlSK8c3paNVNEi6GPgU8IvKhVU9M2bM4PmFC5ncP78N4S+sWgURHLxuXdahVE9DAzzzTNZRFPVimpOha9dmHUp1lTEvNbldV0LOy0pXUJHynOO81GzZy3FOKqErHKcWrFlDy8qVcPnlWYfyFiVVjiPix5JOBtYBY4FvR8SsikZWRYcNH07zuedmHUZRDT/4AWzdSvPnPpd1KFXTPHYsTc8+m3UYRdViTqC8eanVdVhueS8rXUEltsU856VWy16ec1IJXSHPTddeS0tE1mHsptSWY9LKcLepEJuZmZmZtVXqaBUfkbRQ0lpJ6yStl1Rj/8eYmZmZWXdXasvxj4APRsTTlQzGzMzMzCxLpQ7lttIVYzMzMzPr7kptOZ4n6XfArcCW1okRcUtFojIzMzMzy0CpleMDgE3AKQXTAqiNyvGll8KqVXDllcXfc9ZZMGkSTJ8Oy5d3/Hlf/nIypEyhq6+GFSv2OdSqKvd6ARg0CC65hCaAO+6A+fPLE2tXV6ltcMcO2Lw52fbmzoVFi8oZte2NPc11KY45BqZMgQED4I034Nln4Q9/KEu4VsDHiuqp5Lpu3SfeeSesXl22kHOnEsfwyZOT/c1BB8G2bcn6u+8+eOmlsoVdDaUO5XbRnn6wpGuAM4BVETFhT+fv9rZvh1tv3fW8pSW7WPJkQrKpxM6daPx4V44raft2uO02GDwYjj0WPvlJuP76LrcTs040NSW3116De+6BHj3giCOyjspK5WNF9bSu68GDYdo0OPlkmDEj66i6jtZ9zeuvw5/+lDS+NDbCsGFd7rjSYeVY0tci4keSfkLSUvwWEfHFDma/FvgpcN0+RZgndXVw0klJBa5nz6SV7a67oHAg9QkT4Pzzk19Mt99efIPYuRNefHHX882bKxp6RZVzvYwfD+vWsfr11xnc2Aj9+sHGjdVYiq6h3Nvg448nj1etgrPPTnZsXWwn1m2VmOt3H3VU0hrcXq579oTjj08O+tddB60XA/jrX6u2GDWpro5DjzwSzjjDx4pK24N94rEAW7d2vq43bEgqx716VWEBcqAcx5XCfc211+7a1zz0UPKDvIvp7IS81pPw5gHz27kVFRFzgDX7GmCuTJsGxx0HL7wA998PY8YkFYpChxwCs2dD377wkY8kG1176uvha1/bdevKyrVehgyBgQPh6adZ9fLLsN9+MG5cdZahqyjnNlho4cLkvsYuJ5trJeZ60RNPFM/14MHJQevVV3cdrAByOOh+tzJtGsMPP9zHimrYg31iz169SlvXF16YVJT//OeKh58L5TiutN3XSMl7+/Yt7RiUMx1W5yPijvT+N9UJJ+dGj04KzB13JH8XjBkDI0YkBapVc3Pyi2rYMJg4MansrVy5+2dt2wYzZ1Yt9Ioq13oZPz65X7qUTb17J581fjw8/HDVFiX3yrkNFpKSe1ea8qPEXC+vr2dMz57t59r5zMbo0UnXMB8rKm8P9omvjhvH20eN6nxd9++ftPqfeGLSCtrdleO40rqvab0fMgRar8y3aFGXW48ltXVLGgN8BWgsnCci3ruvAUj6DPAZgCFDhtDc3LyvH7lHWlpa2FFXR/PYsUXf0wRsrK9nZ10d+wNzxowhdu7kyD59eJvE3NGjGX3AAbwdeGz4cF6vr+eIt72NIcDDjY1sbHNCxbt69KAnMLdnz10TO/j+7XV10KtXhzFmoYnyrpcpRx5JX4Czz2ZKOi1GjOCvEyeyNWd/JVY7J01UYBuUmJvGP3jkSMaRlIcFHSzThjIuc16366w1sWe53tDSwsoiud6vro7jt29Hgwbx4KRJbHnjjWwWKufKtS02UZA7idlVPlaUqjuUvSb2fJ94WNqC2em63ryZo9au5YDGRuaMG8fOHTuqvHTl0VmemyjfceXNfc3gwTwwaRI7tm1jwNy5TDjhBFr69Cl6XGnp25cdUtXrfp0ptSPIfwNXA78EyrqVRMR0YDrA5MmTo6mpqZwf36mGhgZaVqzo9Hrr/bZuhaeegqYm3jNmTPLXwUEHwaJFnPDkk8kvL2DioYcm/f+GDoX16zlm3rzkl1ih006D3r1pKtzhLV4M69e3+909duyArVtzeU34sq2XoUOTX+vPPguPPsoTBx/MBAmdcALv7t0bHnssoyVsXxY5qcg2WF+fjBAyeTLs3EnDH/9IUwd9jpvHji3bMud5u87anuS6z+rVDOko14MHQ1MTx02dCg8+uOuEvGuuyWDJ8qmc22LZy2l9fdnLSHcpe3u6rreXelzu3z8Z2WXDBqY99VQGS1YepeS5rNtruq9599SpSV/j9HyhhjfeKBpDw6ZNtPTuTbXrfp0ptXK8PSKuqmgkedWnT3K/eXMy1FXv3slf/UccAc89l3RaL7RsGUydmmxEt922+8bTqkcP+OhHdz2/8UZ45pnKLEMllHu9tHapWLAAnnmGVyNg6dJknvHjk4N6rarkNnjWWcnnLlkCc+YkP9IsO3uR6xETJ3ac6+Zm2LQpGV7p1FN3DeVm5dUmd0uHDmXYYYftezm13e3lPnH7li30uOWWzo/L27YlJynfc09llyNLlTiuFO5rTjkFtmxJumLMm1fxxSm3zkarODB9eIekzwO/560XASl6wp2kmSSt9gMlLQW+ExG/2ueIq2nUqOTsfYCXX042hrvvTm5t3XrrruF2OitQV1xR1jCrrhLr5d57k1uhjRvhssvKEnKX5W2wduxlrh9YvLjzFsCHHkpuVhnt5O75Rx5hWHt9hV1O980+7BMfGDu2+D9jtbSuK3VcgW6zr+ms5Xg+yRBu6dk6fLXgtQDeUWzGiDhv30LLgREjkk7njz6atKpZwuuleryua4dz3XU5d9Xjdb3vvA471dloFaOqFUguzZ6d3OytvF6qx+u6djjXXZdzVz1e1/vO67BTnY1zDICkSyQ1FDwfkHazMDMzMzPrNkqqHAMXR8Sb16yMiNeBiysTkpmZmZlZNkqtHNdJrVcJAEl1QH0H7zczMzMz63JKHcrtbuB3kn6ePv9sOs3MzMzMrNtQlHB5UUn7kVSI35dOmgX8MiLKOjDj5MmTY16Vx8NrbRB/z8iRVf3ePTE7HXs2zzGWW0vfvjRs2pR1GEXVYk6gvHmp1XVYbnkvK11BJbbFPOelVstennNSCV0hzwtWrKCxsZEFGVznQdL8iJjc3msltRxHxE7gqvTWPeXs8sTt6goxlkvv3l1jebtCjOVUibzU2jost65SVrqCcq7HrpCXvMdXbl0hJ5WQ42We1NDA0ccfn3UYuympcixpNPDvwDigd+v0iCg6znFXERE0Nzfn7tKFtc45ySfnJX+ck3xyXvLHOcmn5ubmrEPYTakn5P2apNV4O3AicB1wQ6WCMjMzMzPLQqmV4z4R8SeSPsqLI+JS4PTKhWVmZmZmVn2ljlaxJT0pb6GkLwDLgP0rF5aZmZmZWfWV2nL8JaAv8EXgaOATwAWVCsrMzMzMLAuljlbxcPpwA3BR5cIxMzMzM8tOh5VjSbd39HpEfKi84ZiZmZmZZafDi4BIWg0sAWYCDwIqfD0iZpc1mOT7FpfzM0s0EHg1g++14pyTfHJe8sc5ySfnJX+ck3zKKi8jI2JQey90VjmuA04GzgPeCdwJzIyIJysRZVYkzSt2lRTLhnOST85L/jgn+eS85I9zkk95zEuHJ+RFxI6IuDsiLgDeBTwPNKcjVpiZmZmZdSudnpAnqRfJmMbnAY3AfwG/r2xYZmZmZmbV19kJedcBE4C7gMsi4omqRFV907MOwHbjnOST85I/zkk+OS/545zkU+7y0lmf453AxvRp4RsFREQcUMHYzMzMzMyqqsPKsZmZmZlZLSn1CnndlqRTJT0r6XlJ/5J1PAaSFkl6XNICSfOyjqdWSbpG0ipJTxRMO1DSLEkL0/sBWcZYa4rk5FJJy9LyskDSB7KMsdZIGi7pPklPSXpS0pfS6S4rGeogLy4vGZHUW9JDkh5Lc3JZOn2UpAfTetjvJNVnHmsttxynQ9U9RzJc3VLgYeC8iHgq08BqnKRFwOSI8HiUGZI0jeSqmNdFxIR02o+ANRHxg/TH5ICI+HqWcdaSIjm5FNgQET/OMrZaJWkoMDQiHpHUH5gPnAVciMtKZjrIyzm4vGRCkoB+EbFBUk/gfuBLwD8Bt0TEjZKuBh6LiKuyjLXWW46nAM9HxIsRsRW4ETgz45jMciEi5gBr2kw+E/hN+vg3JAcbq5IiObEMRcQrEfFI+ng98DRwCC4rmeogL5aRSGxIn/ZMbwG8F/ifdHouykqtV44PIbkCYKuluPDkQQD3SJov6TNZB2NvMSQiXkkfrwCGZBmMvekLkv6Wdrvw3/cZkdQIHElyRVmXlZxokxdwecmMpDpJC4BVwCzgBaAlIranb8lFPazWK8eWT1Mj4ijgNOCS9K9ky5lI+mTVbr+s/LgKOBSYBLwCXJ5tOLVJ0v7AzcCXI2Jd4WsuK9lpJy8uLxlKLy43CRhG8u/94RmH1K5arxwvA4YXPB+WTrMMRcSy9H4VyQVnpmQbkRVYmfbla+3TtyrjeGpeRKxMDzg7gV/g8lJ1af/Jm4HfRsQt6WSXlYy1lxeXl3yIiBbgPuA4oEFS63U3clEPq/XK8cPA6PRMyXrgXOD2jGOqaZL6pSdPIKkfcArQXS8+0xXdDlyQPr4AuC3DWIw3K16tPozLS1WlJxn9Cng6Iv6j4CWXlQwVy4vLS3YkDZLUkD7uQzIYwtMkleSPpm/LRVmp6dEqANJhXK4A6oBrIuL7GYdU0yS9g12XJ+8BzHBOsiFpJtAEDARWAt8BbgVuAkYAi4FzIsIniFVJkZw0kfxFHMAi4LMFfV2twiRNBeYCjwM708nfIOnf6rKSkQ7ych4uL5mQ9E6SE+7qSBpnb4qI76bH/RuBA4FHgY9HxJbsInXl2MzMzMzsTbXercLMzMzM7E2uHJuZmZmZpVw5NjMzMzNLuXJsZmZmZpZy5djMzMzMLOXKsZmZmZlZypVjMzMzM7OUK8dmZmZmZqn/BwwDFEYiP2k0AAAAAElFTkSuQmCC
 "
 >
 </div>
@@ -14015,7 +14065,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">spt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14045,18 +14095,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30,
+<pre>{&#39;Fraction on Time&#39;: 0.42857142857142855,
+ &#39;Makespan&#39;: 30,
  &#39;Max Pastdue&#39;: 15,
- &#39;Sum of Pastdue&#39;: 18,
  &#39;Number Pastdue&#39;: 4,
  &#39;Number on Time&#39;: 3,
- &#39;Fraction on Time&#39;: 0.42857142857142855}</pre>
+ &#39;Sum of Pastdue&#39;: 18}</pre>
 </div>
 
 </div>
@@ -14229,7 +14279,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14279,18 +14329,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 8.0,
+<pre>{&#39;Fraction on Time&#39;: 1.0,
+ &#39;Makespan&#39;: 8.0,
  &#39;Max Pastdue&#39;: 0,
- &#39;Sum of Pastdue&#39;: 0,
  &#39;Number Pastdue&#39;: 0,
  &#39;Number on Time&#39;: 7,
- &#39;Fraction on Time&#39;: 1.0}</pre>
+ &#39;Sum of Pastdue&#39;: 0}</pre>
 </div>
 
 </div>
@@ -14347,7 +14397,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14398,18 +14448,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 12.0,
+<pre>{&#39;Fraction on Time&#39;: 1.0,
+ &#39;Makespan&#39;: 12.0,
  &#39;Max Pastdue&#39;: 0,
- &#39;Sum of Pastdue&#39;: 0,
  &#39;Number Pastdue&#39;: 0,
  &#39;Number on Time&#39;: 7,
- &#39;Fraction on Time&#39;: 1.0}</pre>
+ &#39;Sum of Pastdue&#39;: 0}</pre>
 </div>
 
 </div>
@@ -14465,7 +14515,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14523,18 +14573,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30.0,
+<pre>{&#39;Fraction on Time&#39;: 0.42857142857142855,
+ &#39;Makespan&#39;: 30.0,
  &#39;Max Pastdue&#39;: 15.0,
- &#39;Sum of Pastdue&#39;: 37.0,
  &#39;Number Pastdue&#39;: 4,
  &#39;Number on Time&#39;: 3,
- &#39;Fraction on Time&#39;: 0.42857142857142855}</pre>
+ &#39;Sum of Pastdue&#39;: 37.0}</pre>
 </div>
 
 </div>
@@ -14590,7 +14640,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14650,18 +14700,18 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30.0,
+<pre>{&#39;Fraction on Time&#39;: 0.7142857142857143,
+ &#39;Makespan&#39;: 30.0,
  &#39;Max Pastdue&#39;: 15.0,
- &#39;Sum of Pastdue&#39;: 16.0,
  &#39;Number Pastdue&#39;: 2,
  &#39;Number on Time&#39;: 5,
- &#39;Fraction on Time&#39;: 0.7142857142857143}</pre>
+ &#39;Sum of Pastdue&#39;: 16.0}</pre>
 </div>
 
 </div>
@@ -14717,7 +14767,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -14785,7 +14835,10 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre># ==========================================================
+<pre>WARNING: DEPRECATED: The &#39;gdp.chull&#39; name is deprecated. Please use the more
+    apt &#39;gdp.hull&#39; instead.  (deprecated in 5.7) (called from
+    /usr/local/lib/python3.6/dist-packages/pyutilib/factory/factory.py:43)
+# ==========================================================
 # = Solver Results                                         =
 # ==========================================================
 # ----------------------------------------------------------
@@ -14808,18 +14861,18 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.84
-  Wallclock time: 0.46
+  System time: 0.47
+  Wallclock time: 0.47
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
     Branch and bound: 
-      Number of bounded subproblems: 28
-      Number of created subproblems: 28
+      Number of bounded subproblems: 30
+      Number of created subproblems: 30
     Black box: 
-      Number of iterations: 5980
+      Number of iterations: 5588
   Error rc: 0
-  Time: 0.48078298568725586
+  Time: 0.493694543838501
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -14832,18 +14885,18 @@ Solution:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 30.0,
+<pre>{&#39;Fraction on Time&#39;: 0.7142857142857143,
+ &#39;Makespan&#39;: 30.0,
  &#39;Max Pastdue&#39;: 15.0,
- &#39;Sum of Pastdue&#39;: 16.0,
  &#39;Number Pastdue&#39;: 2,
  &#39;Number on Time&#39;: 5,
- &#39;Fraction on Time&#39;: 0.7142857142857143}</pre>
+ &#39;Sum of Pastdue&#39;: 16.0}</pre>
 </div>
 
 </div>
@@ -14907,7 +14960,7 @@ Solution:
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">MACHINES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
@@ -14954,136 +15007,9 @@ Solution:
     <span class="n">m</span><span class="o">.</span><span class="n">c6</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
             <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
     <span class="n">m</span><span class="o">.</span><span class="n">d1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">MACHINES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">schedule_machines</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">MACHINES</span><span class="p">):</span>
-    
-    <span class="c1"># create model</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-    
-    <span class="c1"># index set to simplify notation</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">J</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">JOBS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">MACHINES</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="p">:</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span>
-
-    <span class="c1"># decision variables</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">start</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">makespan</span>   <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span>    <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">early</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    
-    <span class="c1"># additional decision variables for use in the objecive</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span>  <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">maxpastdue</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    
-    <span class="c1"># for binary assignment of jobs to machines</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-
-    <span class="c1"># for modeling disjunctive constraints</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-    <span class="n">BigM</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span>
-
-    <span class="n">m</span><span class="o">.</span><span class="n">OBJ</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">),</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
-
-    <span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;due&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">]</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c4</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">BigM</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c5</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">maxpastdue</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c6</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">d1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span>
             <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])))</span>
     <span class="n">m</span><span class="o">.</span><span class="n">d2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> 
             <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])))</span>
-    
-    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-    
-    <span class="n">SCHEDULE</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">:</span>
-        <span class="n">SCHEDULE</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">](),</span> 
-            <span class="s1">&#39;finish&#39;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]()</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;machine&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mach</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">MACHINES</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">}</span>
-        
-    <span class="k">return</span> <span class="n">SCHEDULE</span>
-        
-<span class="n">SCHEDULE</span> <span class="o">=</span> <span class="n">schedule_machines</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span><span class="n">MACHINES</span><span class="p">)</span>
-<span class="n">gantt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">)</span>
-<span class="n">kpi</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">)))</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">d2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])))</span>
-    
-    <span class="n">m</span><span class="o">.</span><span class="n">d0</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span>
-                      <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">(</span><span class="n">MACHINES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">schedule_machines</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">MACHINES</span><span class="p">):</span>
-    
-    <span class="c1"># create model</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-    
-    <span class="c1"># index set to simplify notation</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">J</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">JOBS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">MACHINES</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="p">:</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span>
-
-    <span class="c1"># decision variables</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">start</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">makespan</span>   <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span>    <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">early</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    
-    <span class="c1"># additional decision variables for use in the objecive</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span>  <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">maxpastdue</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    
-    <span class="c1"># for binary assignment of jobs to machines</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-
-    <span class="c1"># for modeling disjunctive constraints</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
-    <span class="n">BigM</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span>
-
-    <span class="n">m</span><span class="o">.</span><span class="n">OBJ</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">),</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
-
-    <span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;due&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">]</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c4</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">BigM</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c5</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">maxpastdue</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c6</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">d1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span>
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])))</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">d2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> 
-            <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])))</span>
-    
-    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-    
-    <span class="n">SCHEDULE</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">:</span>
-        <span class="n">SCHEDULE</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">](),</span> 
-            <span class="s1">&#39;finish&#39;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]()</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">],</span>
-            <span class="s1">&#39;machine&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mach</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">MACHINES</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="p">}</span>
-        
-    <span class="k">return</span> <span class="n">SCHEDULE</span>
-        
-<span class="n">SCHEDULE</span> <span class="o">=</span> <span class="n">schedule_machines</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span><span class="n">MACHINES</span><span class="p">)</span>
-<span class="n">gantt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">)</span>
-<span class="n">kpi</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">SCHEDULE</span><span class="p">)))</span>
     
     <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
     
@@ -15139,8 +15065,8 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.9
-  Wallclock time: 0.5
+  System time: 0.46
+  Wallclock time: 0.49
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
@@ -15150,7 +15076,7 @@ Solver:
     Black box: 
       Number of iterations: 3784
   Error rc: 0
-  Time: 0.5204658508300781
+  Time: 0.5037832260131836
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -15163,18 +15089,18 @@ Solution:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Makespan&#39;: 15.0,
+<pre>{&#39;Fraction on Time&#39;: 1.0,
+ &#39;Makespan&#39;: 15.0,
  &#39;Max Pastdue&#39;: 0,
- &#39;Sum of Pastdue&#39;: 0,
  &#39;Number Pastdue&#39;: 0,
  &#39;Number on Time&#39;: 7,
- &#39;Fraction on Time&#39;: 1.0}</pre>
+ &#39;Sum of Pastdue&#39;: 0}</pre>
 </div>
 
 </div>
@@ -15220,7 +15146,7 @@ Solution:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="4.2.9-Disjuctive-Version">4.2.9 Disjuctive Version<a class="anchor-link" href="#4.2.9-Disjuctive-Version">&#182;</a></h2>
+<h2 id="4.2.9-Disjunctive-Version">4.2.9 Disjunctive Version<a class="anchor-link" href="#4.2.9-Disjunctive-Version">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15230,7 +15156,7 @@ Solution:
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">MACHINES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
@@ -15248,8 +15174,8 @@ Solution:
     <span class="c1"># decision variables</span>
     <span class="n">m</span><span class="o">.</span><span class="n">start</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
     <span class="n">m</span><span class="o">.</span><span class="n">makespan</span>   <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span>    <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">early</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span>    <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">early</span>      <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
     
     <span class="c1"># additional decision variables for use in the objecive</span>
     <span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span>  <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
@@ -15259,28 +15185,34 @@ Solution:
     <span class="n">m</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
 
     <span class="c1"># for modeling disjunctive constraints</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
     <span class="n">BigM</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">])</span>
 
     <span class="n">m</span><span class="o">.</span><span class="n">OBJ</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">)</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">),</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
 
+    <span class="c1"># job starts after it is released</span>
     <span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;release&#39;</span><span class="p">])</span>
+
+    <span class="c1"># defines early and pastdue</span>
     <span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;due&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">]</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">c4</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">BigM</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">d1</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">early</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># each job is assigned to one and only one machine</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">mach</span><span class="p">]</span> <span class="k">for</span> <span class="n">mach</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># defines a binary variable indicating if a job is past due</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">c4</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">ispastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># all jobs must be finished before max pastdue</span>
     <span class="n">m</span><span class="o">.</span><span class="n">c5</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">maxpastdue</span><span class="p">)</span>
+
+    <span class="c1"># defining make span</span>
     <span class="n">m</span><span class="o">.</span><span class="n">c6</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">J</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
-    
-    <span class="c1">#m.d1 = Constraint(m.M, m.PAIRS, rule = lambda m, mach, j, k:</span>
-    <span class="c1">#        m.start[j] + JOBS[j][&#39;duration&#39;] &lt;= m.start[k] + BigM*(m.y[j,k] + (1-m.z[j,mach]) + (1-m.z[k,mach])))</span>
-    <span class="c1">#m.d2 = Constraint(m.M, m.PAIRS, rule = lambda m, mach, j, k: </span>
-    <span class="c1">#        m.start[k] + JOBS[k][&#39;duration&#39;] &lt;= m.start[j] + BigM*((1-m.y[j,k]) + (1-m.z[j,mach]) + (1-m.z[k,mach])))</span>
-    
-    <span class="n">m</span><span class="o">.</span><span class="n">d0</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span>
-            <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">])),</span>
-             <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">mach</span><span class="p">]))</span>
-            <span class="p">])</span>
-    
+ 
+    <span class="c1"># disjuctions</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">d0</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">mach</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> 
+                       <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">mach</span><span class="p">])),</span>
+                        <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">JOBS</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">BigM</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">mach</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">mach</span><span class="p">]))])</span>
+  
     <span class="n">transform</span> <span class="o">=</span> <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;gdp.hull&#39;</span><span class="p">)</span>
     <span class="n">transform</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
@@ -15314,26 +15246,98 @@ Solution:
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-33-6dcb4b6bcd41&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     62</span>     <span class="ansi-green-fg">return</span> SCHEDULE
-<span class="ansi-green-intense-fg ansi-bold">     63</span> 
-<span class="ansi-green-fg">---&gt; 64</span><span class="ansi-red-fg"> </span>SCHEDULE <span class="ansi-blue-fg">=</span> schedule_machines<span class="ansi-blue-fg">(</span>JOBS<span class="ansi-blue-fg">,</span>MACHINES<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     65</span> gantt<span class="ansi-blue-fg">(</span>JOBS<span class="ansi-blue-fg">,</span> SCHEDULE<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     66</span> kpi<span class="ansi-blue-fg">(</span>JOBS<span class="ansi-blue-fg">,</span> SCHEDULE<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-33-6dcb4b6bcd41&gt;</span> in <span class="ansi-cyan-fg">schedule_machines</span><span class="ansi-blue-fg">(JOBS, MACHINES)</span>
-<span class="ansi-green-intense-fg ansi-bold">     48</span> 
-<span class="ansi-green-intense-fg ansi-bold">     49</span>     transform <span class="ansi-blue-fg">=</span> TransformationFactory<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;gdp.hull&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 50</span><span class="ansi-red-fg">     </span>transform<span class="ansi-blue-fg">.</span>apply_to<span class="ansi-blue-fg">(</span>m<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     51</span> 
-<span class="ansi-green-intense-fg ansi-bold">     52</span>     SolverFactory<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;cbc&#39;</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>solve<span class="ansi-blue-fg">(</span>m<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>write<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;apply_to&#39;</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: -15.0
+  Upper bound: -15.0
+  Number of objectives: 1
+  Number of constraints: 637
+  Number of variables: 435
+  Number of binary variables: 133
+  Number of integer variables: 133
+  Number of nonzeros: 15
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  User time: -1.0
+  System time: 2.07
+  Wallclock time: 2.12
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 477
+      Number of created subproblems: 477
+    Black box: 
+      Number of iterations: 7096
+  Error rc: 0
+  Time: 2.1357791423797607
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre>
 </div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Fraction on Time&#39;: 1.0,
+ &#39;Makespan&#39;: 15.0,
+ &#39;Max Pastdue&#39;: 0,
+ &#39;Number Pastdue&#39;: 0,
+ &#39;Number on Time&#39;: 7,
+ &#39;Sum of Pastdue&#39;: 0}</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAscAAAB7CAYAAACYYS0JAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjIsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+WH4yJAAAYOUlEQVR4nO3de5AcZbnH8e/DXrLZkLCRZMMmJGyEbMzFSjABxIQ4eADBywHxUsDxiB6PiGIpVQrHsrzAUUv0yJHjJWJUjICJlxIDEaQC6CTBC5BIFLmEEEgIuQJhQrLJZrO7z/nj7XWHJbvbu5np3p35faqmZqZnuvvpnmd6nn337bfN3RERERERETgq7QBERERERAYLFcciIiIiIhEVxyIiIiIiERXHIiIiIiIRFcciIiIiIhEVxyIiIiIiERXHIiIFYmaLzewrvby+z8xem2RMvTGzrJn9Z4GWdY2Z3Vro94qIJE3FsYiUDTPbZGatZjam2/SHzczNrLGY63f3o9396UIv18xmmNkKM9ttZjkzW2tmbyv0ekREyoGKYxEpN88AF3c+MbPXA7XphVMQy4F7gOOAeuCTwMupRiQiMkSpOBaRcnML8IG855cCN+e/wczeHrUmv2xmW8zsmm6vzzezP0WttFvM7IN5L482szvNbK+ZPWBmJ+bN52Z2UvR4sZl9r5f3vs7M7olag9eb2fsOtzFRK/hk4Ifu3hrd/uju9+e953wzWxdtz0YzOzdvESeY2R+jGFbkt6qb2RvztvNvZpbJe22yma2M5rsHyJ8vY2bPdYtzk5md1cM29LgeEZGkqTgWkXLzF2CUmU0zswrgIqB7/9dmQgFdB7wd+JiZXQBgZicAvwO+A4wFZgPr8ua9CLgWGA08BXy1l1gO+14zG0FoCV5CaAm+CFhoZtMPs4wXo3lvNbMLzGxc/otmdiqh+L8q2p4FwKa8t1wCfChaTzXwmWi+CcCdwFeA10TTf21mY6P5lgBrCUXxlwl/ZPRbjPWIiCRKxbGIlKPO1uOzgceBrfkvunvW3R9x9w53/zuwFHhz9PIlwL3uvtTdD7n7i+6eXxz/xt0fdPc24GeE4rknPb33HcAmd/+Ju7e5+8PAr4H3dl+AuztwJqHgvR7YbmarzGxK9JYPAze5+z3R9mx19yfyFvETd3/S3Q8Av8yL4f3AXe5+VzTfPcAa4G1mNgk4BfiCux9091WErh0D0eN6Brg8EZEjouJYRMrRLYQi94N061IBYGanmdkfzOx5M9sDXE5Xt4GJwMZelr0j7/F+4OgBvPcE4LSom0HOzHLAvxH6FL+Kuz/n7p9w9xOjeZvztmug8Z4AvLdbDPOBBmA88JK7N+fNu7mXdfSmt/WIiCSuMu0ARESS5u6bzewZQuvkhw/zliXAd4Hz3L3FzG6gqzjeApxa5BC3ACvd/ez+zujuW8zse4TW7s5lndjLLL3FcIu7f6T7C1HXktFmNiKvQJ4EePS4mbyTHKPuKz11k+hxPSIiaVDLsYiUqw8Db+nW+tlpJLA7KoxPJbQyd/oZcJaZvc/MKs3sWDPrrevEQPwWaDKzfzezquh2iplN6/5GMxttZtea2UlmdlR0Qt1/EPpWA/wY+JCZ/Uv0+gQze12MGG4F3mlmbzWzCjOriU60O97dNxO6PlxrZtVmNh94Z968TwI10YmNVcDngWH9XU+cHSUiUmgqjkWkLLn7Rndf08PLHwf+28z2Al8k9MXtnO9ZQovzp4HdhJPxZhU4tr3AOYQT8bYRuj58ncMXmK1AI3AvYfi2fwAHCV1GcPcHCSfcfQvYA6wkdGXoK4YtwPnA54DnCS28V9H1u3EJcBphH3yJvO4p7r6HsA9/ROjP3Qy8YvSKfqxHRCRRFs7lEBERERER/WUuIiIiIhJRcSwiIiIiElFxLCIiIiISUXEsIiIiIhJRcSwiIiIiEhlUFwEZM2aMNzY2prLu5uZmRowYkcq6ZehQnkgcyhOJS7kicShPimPt2rUvuPurLlA0qIrjxsZG1qzpadjR4spms2QymVTWLUOH8kTiUJ5IXMoViUN5UhxmdtjL3qtbhYiIiIhIRMWxiIiIiEhExbGIiIiISETFsYiIiIhIZFCdkJeWRYsWsXDhQurq6tIOpeC2b9+OuzN+/Pi0QykJuVyuJPNk27ZtmBkNDQ1ph1ISSjVPklYOeTlnzhydaCUyyKg4BpYsWcJTGzYwd+TItEMpuI27doE7419+Oe1QSkNdHTzxRNpRFNzTUZ407NmTdiiloUTzJGmlnpfrdu8mt3MnXH992qGISB4Vx5GTJk4ke9FFaYdRcHXXXQetrWQvvzztUEpCdupUMuvXpx1GwSlPCqtU8yRppZ6XmcWLybmnHYaIdKM+xyIiIiIiERXHIiIiIiIRFcciIiIiIhEVxyIiIiIiERXHIiIiIiIRjVZRCNdcA7t2wcKFPb/nggtg9mxYtAi2bet9eVdeGYaCynfjjbBjxxGHWpIKvf8Bxo6FK64Ij5cvh7VrCxKqDEHF/H63tITv9Z13wvPPFyxkiRTj2DB3LpxyChx7LBw6FD63P/wBnnmmYGGLSLqKVhybWTvwCGBAO/AJd/9TsdZXctraYNmyrue5XHqxlKOZM8N9RwfMmKHiWAqr8/tdXw8LFsDZZ8OSJWlHJX3JZMLtpZfgvvugvR0aG+H441Uci5SQYrYcH3D32QBm9lbga8Cbi7i+9FVUwFlnhcKqqgo2bYK77oL8C3DMnAmXXBJaHO64o+cDakcHPP101/OWlqKGXhIKuf9nzAjzPfssTJ8OI0ZAc3MimyGDVD/y6zSA1ta+v9/79oXieNiwBDagjBXi2FBVBfPmhT9sFi+GzguTPPggVOqfsCKlJFafYzN7r5mNjB5/3sxuM7M39GM9o4CXBhLgkLJgAZx+OmzcCPffD01N8O53v/I9EybAypVQWwsXXhgO2odTXQ1XX911k74Vav+PGwdjxsDjj8Ojj8JRR4UCWcpbP/KratiweN/vD34wFMq//33Rwy9rhTg21NeHAvmFF0JhbBbeW1vb8+csIkNS3D93v+DuvzKz+cBZwP8A34fQQNKD4Wa2DqgBGoC3HFGkQ8GUKeGHbvny8O+2piaYNCn8EHbKZkOLxPHHw6xZoQjbufPVyzp0CJYuTSz0klCo/T9jRrh/7rnwQ9jeHqY99FBimyKDUD/y64Xp0zlu8uS+v98jR8I73gFnnhlaI6U4CnFs6LySXef9uHHQeeW+TZv0+YmUkLjFcXt0/3ZgkbvfaWZf6WOe/G4VpwM3m9lM91deK9PMLgMuAxg3bhzZbDZ28IWSy+Vor6ggO3XqgObPAM3V1XRUVHA0sKqpCe/o4OThwznGjNVTpjBl1CiOA/42cSIvVVcz7ZhjGAc81NhIc7eT795YWUkVsLqqqmviAGNrq6iAYcMGvG1DQYbC7v9TTz6ZWnhFy5JPmsSfZ81in3tJ7styyJOBytD//Dopakns8/vd0sIb9uxhVGMjq6ZPp6O9HelypHmZoXDHhqMqKpjX1obV1/OX2bNpP3SI0atXM/OMM8gNH866AcSYq62l3SyV3z0ZWvbt26c8SVDc4nirmf0AOBv4upkNox/DwLn7n81sDDAW2NXttUXAIoC5c+d6JpOJu9iCqaurI7djB5n16we8jBGtrfDYY5DJ8OamptDieOyxsGkTZzz6aGi5AGadeCIcOAANDbB3L6esWRNaMvKddx7U1JDJL443b4a9e/sdV2V7O7S2HtG2DQUF2/8NDaE1b/16ePjhMG3CBOyMM3hTTQ3ZXK4k92W55MlA9Te/2uJ+v0eOhNGjYd8+Fjz2WApbNrgVIi8Lemyur4dMhjfNnx/6GkfnIdQdODCgGOv27ydXU0Mav3sytGSzWeVJguIWx+8DzgW+6e45M2sAroq7EjN7HVABvNj/EAe54cPDfUsLrF4NNTXhX/DTpsGTT4aTPvJt3Qrz54eD8O23v/rg26myEt7znq7nP/85PPFEcbZhKCv0/u/sUrFuXdf+3rIlzDNjBvzxj8XdHhlcBphfbQcPUnnbbX1/vw8dCkONrVhR3O0oR8U4NmezsH9/GMrtnHPg4MHQFWPNmqJvjogkJ1Zx7O77zWwXMB/YALRF973p7HMMYTi3S929tP5nOHlyGNYHwqgG7e1w993h1t2yZV1Ds/X1Q3jDDQUNs2QVY//fe2+45WtuhmuvDY/V7aB8HEF+/WXqVDI9jVSh73fxFevYDKHF+MEHCxaqiAw+sYpjM/sSMBeYCvwEqAJuBeb1NI+7l/7pu5MmhZM2Hn4YVq1KO5ryo/0vxaT8Grr02YnIEYjbreJdwMnAXwHcfVvn0G5lbeXKcJN0aP9LMSm/hi59diJyBOKeVNcajTLhAGY2onghiYiIiIikI25x/MtotIo6M/sIcC/ww+KFJSIiIiKSvLgn5H3TzM4GXib0O/6iu99T1MhERERERBIW+4LwUTGsglhERERESlbc0SouBL4O1BOGZTPA3X1UEWNLzMroxI1MCV7+c8/Bg0BpblsacrW11O3fn3YYBac8KaxSzZOklXpertuxg8bGxrTDEJFu4rYcfwN4p7s/XsxgUtfSknYExVPK25akmprS3pelvG1JKvU8SVqJ7svZdXXMmdfjiKgikpK4xfHOUi6M3V2XZpRYlCcSh/JE4spms2mHICLdxC2O15jZL4BlwMHOie5+W1GiEhERERFJQdzieBSwHzgnb5oDKo5FREREpGTEHcrtQ8UOREREREQkbb0Wx2Z2tbt/w8y+Q3R1vHzu/smiRSYiIiIikrC+Wo47T8JbU+xARERERETS1mtx7O7Lo/ufJhOOiIiIiEh64l4EpAn4DNCYP4+7v6U4YYmIiIiIJC/uaBW/Am4EfgS0Fy8cEREREZH0xC2O29z9+0WNREREREQkZX2NVvGa6OFyM/s48BteeRGQ3UWMTUREREQkUX21HK8lDOFm0fOr8l5z4LXFCEpEREREJA19jVYxOalARERERETSFne0iiuAn7l7Lno+GrjY3RcWM7ikLFq0iIULF1JXV5d2KNIP27dvx90ZP358YuvM5XLKE+lTKefJtm3bMDMaGhrSDqUkzJkzh0wmk3YYIpIn7gl5H3H373U+cfeXzOwjQEkUx0uWLOGpDRuYO3Jk2qFIP2zctQvcGf/yy8mttK4OnngiufXJ0FTCefJ09L1r2LMn7VCGvHW7d5PbuROuvz7tUEQkT9ziuMLMzN0dwMwqgOrihZW8kyZOJHvRRWmHIf1Qd9110NpK9vLLE1tndupUMuvXJ7Y+GZpKOU/S+N6VqszixeTCz6qIDCJxi+O7gV+Y2Q+i5x+NpomIiIiIlIy4xfF/EQrij0XP7yFcEEREREREpGTEKo7dvQP4fnQTERERESlJcUermAJ8DZgO1HROd3eNcywiIiIiJeOomO/7CaHVuA04E7gZuLVYQYmIiIiIpCFun+Ph7n5fNGLFZuAaM1sLfLGIscnhXHMN7NoFC3sZRe+CC2D2bFi0CLZt6315V14Zhp1qb4eWFtixA1avhk2bChm1lLpC5yXAKafAqafC6NFw4ACsXw+//W3BQpYhpljHvnw33hiOgSJS1uIWxwfN7Chgg5l9AtgKHN3XTGZ2AfAbYJq7l+agn6WgrQ1uvx3q6+G00+ADH4BbboFnnkk7MilXmUy4vfgirFgBlZUwbVraUUmpaWuDZcu6nudy6cUiIoNG3OL4U0At8Engy8BbgEtjzHcxcH90/6WBBCg9qKiAs86CmTOhqiq09N51F+RfEGPmTLjkEjh0CO64o+dit6MDHnkkPN61C9797lCYqDiW/ipEXlZVwbx5oXC5+WbovNjEn/+c2GbIIFboY9/TT3c9b2kpaugiMjTE6nPs7g+5+z53f87dP+TuF7r7X3qbx8yOBuYDHwZ0dY1CW7AATj8dNm6E+++HpqZQ1OabMAFWroTaWrjwwvCj0pcNG8J9gpdklhJSiLysrw9FzwsvdBXGALpYgkBhj33V1XD11V03ERH6aDk2szt6e93d/7WXl88H7nb3J83sRTOb4+5rBxKkHMaUKaHVY/ny0F+4qQkmTQoH+07ZbGgxOf54mDULxoyBnTt7X65ZuFchIgNRiLxU7klvCnnsO3QIli5NLHQRGRr66lZxOrAFWAo8AFg/ln0x8H/R459Hz19VHJvZZcBlAOPGjSObzfZjFYWRy+Vor6ggO3Vq4uvurwzQXF1NR0UFRwOrmprwjg5OHj6cY8xYPWUKU0aN4jjgbxMn8lJ1NdOOOYZxwEONjTR3OwHljZWVVJmxOtr2+hNOYDphn6wb5PujraIChg1L9HPbl/D6hooMhcvLoyoqmNfWho0dywOzZ3PwwIF0NuoIlHKepPG9gyId+4DVVVVdExPeplxtLe1mqfzuydCyb98+5UmC+iqOjwPOJhS2lwB3Akvd/dHeZjKz1xD6Jb/ezByoANzMrnJ/ZbOQuy8CFgHMnTvXM5nMQLbjiNTV1ZHbsYPM+vWJr3sgRrS2wmOPQSbDm5uawr+fjz0WNm3ijEcfDS0rwKwTTwxn+Tc0wN69nLJmTWhpyXfeeVBTQ6a6GsaOhblzoaODut/9jswg73Nc2d4Ora2Jfm7ZqVOHTJ4kraB5WV8PmQynz58PDzzQdULeTTelsGX9V8p5ksb3rlPBj33V1al+TnX795OrqSGN3z0ZWrLZrPIkQb0Wx+7eDtwN3G1mwwhFctbMrnX37/Yy63uAW9z9o50TzGwlcAaw6sjDLlPDh4f7lpYw3FpNDcyYEYqGJ58MJ6Xk27oV5s8PPxK33/7qH4dOlZVhCKSWFtiyBVatgs2bi7stUjqKkZfZLOzfH4ZzO/fcrqHcpDwV69gnInIYfY5WERXFbycUxo3AtwnDs/XmYuDr3ab9Opqu4nggJk8OI0gAPPtsONjffXe4dbdsWdfwRCtW9L7cG24oaJhSZoqVlwAPPhhuUt507BORhPV1Qt7NwEzgLuBad/9HnIW6+5mHmfbtAUUowaRJ4aSShx8OLbsig4HyUopNOSYiCeur5fj9QDNhnONPmv3zfDwD3N1HFTE2ybdyZbiJDCbKSyk25ZiIJKyvPsexxkEWERERESkFKn5FRERERCIqjkVEREREIiqORUREREQifQ7lVg5WRid7ZBYvTjcQ6Zc9Bw8CyX5uudpa6vbvT2x9MjSVcp6k8b0rVet27KCxsTHtMESkGxXH+Vpa0o5ABiLJz62mRnkifSuHPCn17UvA7Lo65sybl3YYItKNimPA3XVpRolFeSJxKE8krmw2m3YIItKN+hyLiIiIiERUHIuIiIiIRFQci4iIiIhEVByLiIiIiERUHIuIiIiIRFQci4iIiIhEzN3TjuGfzOx5YHNKqx8DvJDSumXoUJ5IHMoTiUu5InEoT4rjBHcf233ioCqO02Rma9x9btpxyOCmPJE4lCcSl3JF4lCeJEvdKkREREREIiqORUREREQiKo67LEo7ABkSlCcSh/JE4lKuSBzKkwSpz7GIiIiISEQtxyIiIiIikbIvjs3sXDNbb2ZPmdln045HBicz22Rmj5jZOjNbk3Y8MniY2U1mtsvM/pE37TVmdo+ZbYjuR6cZo6Svhzy5xsy2RseVdWb2tjRjlPSZ2UQz+4OZPWZmj5rZp6LpOqYkqKyLYzOrAL4HnAdMBy42s+npRiWD2JnuPlvD6Ug3i4Fzu037LHCfu08B7oueS3lbzKvzBOBb0XFltrvflXBMMvi0AZ929+nAG4ErorpEx5QElXVxDJwKPOXuT7t7K/Bz4PyUYxKRIcTdVwG7u00+H/hp9PinwAWJBiWDTg95IvIK7r7d3f8aPd4LPA5MQMeURJV7cTwB2JL3/Llomkh3Dqwws7VmdlnawcigN87dt0ePdwDj0gxGBrVPmNnfo24X+le5/JOZNQInAw+gY0qiyr04Folrvru/gdAF5wozW5B2QDI0eBgSSMMCyeF8HzgRmA1sB65PNxwZLMzsaODXwJXu/nL+azqmFF+5F8dbgYl5z4+Ppom8grtvje53Ab8hdMkR6clOM2sAiO53pRyPDELuvtPd2929A/ghOq4IYGZVhML4Z+5+WzRZx5QElXtx/BAwxcwmm1k1cBFwR8oxySBjZiPMbGTnY+Ac4B+9zyVl7g7g0ujxpcDtKcYig1RnsRN5FzqulD0zM+DHwOPu/r95L+mYkqCyvwhINHTODUAFcJO7fzXlkGSQMbPXElqLASqBJcoT6WRmS4EMMAbYCXwJWAb8EpgEbAbe5+46GauM9ZAnGUKXCgc2AR/N61cqZcjM5gOrgUeAjmjy5wj9jnVMSUjZF8ciIiIiIp3KvVuFiIiIiMg/qTgWEREREYmoOBYRERERiag4FhERERGJqDgWEREREYmoOBYRERERiag4FhERERGJqDgWEREREYn8P23ox1suRlHTAAAAAElFTkSuQmCC
+"
+>
+</div>
+
 </div>
 
 </div>
