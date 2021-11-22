@@ -38,6 +38,7 @@ distributed during that event.
 - [2.4 Design of a Cold Weather Fuel for a Camping Stove](https://jckantor.github.io/ND-Pyomo-Cookbook/02.04-Mixture-Design-Cold-Weather-Fuel.html)
 - [2.5 Gasoline Blending](https://jckantor.github.io/ND-Pyomo-Cookbook/02.05-Gasoline-Blending.html)
 - [2.6 Model Predictive Control of a Double Integrator](https://jckantor.github.io/ND-Pyomo-Cookbook/02.06-Model-Predictive-Control-of-a-Double-Integrator.html)
+- [2.7 Non-Continuous Objectives](https://jckantor.github.io/ND-Pyomo-Cookbook/02.07-Non-Continuous-Objective.html)
 
 ### [Chapter 3.0 Assignment Problems](https://jckantor.github.io/ND-Pyomo-Cookbook/03.00-Assignment-Problems.html)
 - [3.1 Transportation Networks](https://jckantor.github.io/ND-Pyomo-Cookbook/03.01-Transportation-Networks.html)

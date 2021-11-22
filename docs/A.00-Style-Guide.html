@@ -13989,7 +13989,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.07-Non-Continuous-Objective.html">2.7 Non-Continuous Objectives</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/03.01-Transportation-Networks.html">3.1 Transportation Networks</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/03.00-Assignment-Problems.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/03.00-Assignment-Problems.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/08.05-Real-Options.html">8.5 Real Options</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> |<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/A.00-Style-Guide.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/A.00-Style-Guide.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
@@ -13999,8 +13999,241 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="3.0-Assignment-Problems">3.0 Assignment Problems<a class="anchor-link" href="#3.0-Assignment-Problems">&#182;</a></h1>
+<h1 id="A.0-Style-Guide">A.0 Style Guide<a class="anchor-link" href="#A.0-Style-Guide">&#182;</a></h1><p>Keywords: style guide, notebook format</p>
+
 </div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Maintaining a collection of Jupyter notebooks requires attention several important details, among them are the structure and style of the individual notebooks. Maintaining a consistent notebook structure and style enables the use of tools to automate management of the overall collection. The purpose of this notebook is document the standards adopted for this particular collection.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A.0.1-Notebook-naming-and-ancillary/generated-files">A.0.1 Notebook naming and ancillary/generated files<a class="anchor-link" href="#A.0.1-Notebook-naming-and-ancillary/generated-files">&#182;</a></h2><p>All notebooks in a repository should reside in a top-level directory named <code>notebooks</code>. The filenames begin with a prefix indicating their position in book-like organization. The first two digits indicate a chapter number with 00 reserved for front matter. Replacing the digits with a character indicates an appendix. Following a separating '.', a second pair of digits indicates a section with the front matter, chapter, or appendix. A hyphen separates the prefix from the rest of the filename. The standard <code>.ipynb</code> Jupyter notebook suffix is required.</p>
+
+<pre><code>my-repository-title/
+|-- notebooks/
+    |--data/
+    |--figures/
+    |--00.00-Front-Matter.ipynb
+    |--00.01-Preface.ipynb
+    |--00.02-Acknowledgments.ipynb
+    |--01.00-Getting-Started.ipynb
+    |--01.01-First-Section.ipynb
+    |--02.00-Second-Chapter.ipynb
+    |--A.00-Style-Guid
+
+</code></pre>
+<p>This style guide assumes the use of software tools to manage the collection of notebooks. The software tools will perform the following tasks:</p>
+<ul>
+<li>Generate a <code>Readme.md</code> file to be written to the top-level directory.</li>
+<li>Generate a table of contents written to <code>toc.md</code> and <code>toc.ipynb</code> in the notebooks directory.</li>
+<li>Insert and update a common header for all notebooks</li>
+<li>Insert and update a navigation bar located in the second and terminal cell of each notebook.</li>
+<li>A listing of all links and figures found in the notebooks.</li>
+<li>A listing of stylistic <code>lint</code> encountered during the processing of the notebooks.</li>
+</ul>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A.0.2-Notebook-title-and-headers">A.0.2 Notebook title and headers<a class="anchor-link" href="#A.0.2-Notebook-title-and-headers">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.2.1-Title">A.0.2.1 Title<a class="anchor-link" href="#A.0.2.1-Title">&#182;</a></h3><p>Each notebook begins with a markdown level 1 header containing the title of the corresponding chapter or section. This should be capitalized following the Chicago Manual of Style. The hashtag <code>#</code> appears as the first line in the cell, and there is one and only one level 1 header per notebook. The title cell may include a brief summary of the notebook contents.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.2.2-Subheadings">A.0.2.2 Subheadings<a class="anchor-link" href="#A.0.2.2-Subheadings">&#182;</a></h3><p>A notebook will typically consist of multiple sections.  The sections are organized heirarchically as markdown headings. Following the document title, the highest level heading begins as markdown level 2 (i.e., <code>##</code>). The heirarchy is strict meaning that the next level in the heirarchy, <code>###</code>, and must appear before the first heading of the next higher level. This, for example, is an allowable heirarchy:</p>
+
+<pre><code># Notebook Title
+## First section
+### First subsection
+#### First sub-subsection
+#### Second sub-subsection
+### Second subsection
+## Second section
+### Another subsection
+
+</code></pre>
+<p>This is not allowable because it skips from <code>##</code> to <code>####</code> without an intervening <code>###</code>:</p>
+
+<pre><code># Notebook Title
+## First section
+#### First sub-subsection
+#### Second sub-subsection
+### Second subsection
+## Second section
+### Another subsection
+
+</code></pre>
+<p>The following guidelines apply to headings and subheadings:</p>
+<ul>
+<li>Following the Chicago Manual of Style, only the first word in headings and subheadings are capitalized.</li>
+<li>Each heading or subheading appears as the first line in a markdown cell.</li>
+<li>At this point in the development this style guide, titles, headings, and subheadings should remain unnumbered.</li>
+</ul>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.2.3-Keywords">A.0.2.3 Keywords<a class="anchor-link" href="#A.0.2.3-Keywords">&#182;</a></h3><p>Keywords should be included in the level 1 headers designating a title. The keywords are specified in a new line beginning with <code>Keywords:</code> followed by a comma separated list of keyword phrases. Keywords are used to construct an index for the notebook collection.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A.0.3-External-Files">A.0.3 External Files<a class="anchor-link" href="#A.0.3-External-Files">&#182;</a></h2><p>Notebooks will often incorporate figures, data, or video. Any external files must be appropriately licensed for reuse. If that isn't possible, then that information should be accessed by linking to a resource showing the user how to properly access that information.</p>
+<p>In general, external resources should be referenced by an external link whenever possible. If the resource is in the same repository, the link should be the public repository. This practice enables cross-platform use of notebooks, and streamlines the import and use of notebooks by other users.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.3.1-Figures">A.0.3.1 Figures<a class="anchor-link" href="#A.0.3.1-Figures">&#182;</a></h3><p>Figures included within the repository should located within a common figures directory. This practice enables reuse of figures, and streamlines the editing and maintanence of figures. Figures should be <code>.png</code> or <code>.jpg</code> format as appropriate, and resized for use with the stndard markdown <code>![]()</code> markup.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.3.2-Data">A.0.3.2 Data<a class="anchor-link" href="#A.0.3.2-Data">&#182;</a></h3><p>Data files distributed with the repository should be located within a common data directory.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A.0.4-Design-for-Portability">A.0.4 Design for Portability<a class="anchor-link" href="#A.0.4-Design-for-Portability">&#182;</a></h2><p>Notebooks are intended as durable and robust means of communicating with a diverse audience. To this end, special effort attemtion must be given to making it possible to run the notebooks on multiple platforms.</p>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.4.1-Installations-and-Imports">A.0.4.1 Installations and Imports<a class="anchor-link" href="#A.0.4.1-Installations-and-Imports">&#182;</a></h3><p>It is good practice to include all necessary installations and imports in first few executable cells of a notebook, and may be included in a special section entitled <strong>Installations and imports</strong>.</p>
+<p>To the extent possible, the installation and import cells should be written to run cross-platform without raising exceptions. Code can written with the assumption that standard Python libraries, including Matplotlib, Numpy, Pandas, and Scipy, are present. Any needed installations should included in the first code cell of the notebook and written for ross-platform use. For example,</p>
+
+<pre><code>import sys
+if 'google.colab' in sys.modules:
+    !pip install pyomo
+    !pin install glpk
+
+</code></pre>
+<p>Conditional installs may have been previously installed on the user's computer.</p>
+
+<pre><code>try:
+    import glpk
+except
+    !pip install glpk
+    import glpk</code></pre>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="A.0.4.2-Markdown">A.0.4.2 Markdown<a class="anchor-link" href="#A.0.4.2-Markdown">&#182;</a></h3><p>Plain github-flavored markdown should be used whereever possible. Avoid use of non-markdown constructs, such as html tags.</p>
+<ul>
+<li>Any references should be collected under a separate heading entitled References, and formatted using the Chicago Manual of Style.</li>
+<li>Additional sections entitled Exercises, Additional resources, Further reading may be included in the notebooks. Each exercise should be given a separate subsection to be included in the table of contents.</li>
+</ul>
+
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A.0.5-Further-reading">A.0.5 Further reading<a class="anchor-link" href="#A.0.5-Further-reading">&#182;</a></h2>
+</div>
+</div>
+
+
+
+    
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li><a href="https://github.com/spacetelescope/style-guides/blob/master/guides/jupyter-notebooks.md">Space Telescope Science Institute Style Guide</a></li>
+<li><a href="https://github.com/chrisvoncsefalvay/jupyter-best-practices">Jupyter notebook best practices and style guide</a></li>
+<li><a href="https://www.dataquest.io/blog/data-science-project-style-guide/">Dataquest: An In-Depth Style Guide for Data Science Projects</a></li>
+<li><a href="https://www.esri.com/about/newsroom/arcuser/coding-standards-for-jupyter-notebook/">ESRI: Coding Standards for Jupyter Notebook</a></li>
+</ul>
+
+</div>
+</div>
+
+
+
+    <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 
 
@@ -14009,7 +14242,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><!--NAVIGATION-->
-&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/02.07-Non-Continuous-Objective.html">2.7 Non-Continuous Objectives</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> | <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/03.01-Transportation-Networks.html">3.1 Transportation Networks</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/03.00-Assignment-Problems.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/03.00-Assignment-Problems.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
+&lt; <a href="https://jckantor.github.io/ND-Pyomo-Cookbook/08.05-Real-Options.html">8.5 Real Options</a> | <a href="toc.html">Contents</a> | <a href="tag_index.html">Tag Index</a> |<p><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/master/docs/A.00-Style-Guide.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/ND-Pyomo-Cookbook/A.00-Style-Guide.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 
 </div>
 </div>
