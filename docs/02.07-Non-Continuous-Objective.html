@@ -14028,7 +14028,7 @@ and code is released under the <a href="https://opensource.org/licenses/MIT">MIT
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -14108,7 +14108,7 @@ z &amp; \leq 50
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14177,7 +14177,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.05996584892272949
+  Time: 0.02187371253967285
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -14209,7 +14209,7 @@ Solution:
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profit = $</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -14262,17 +14262,14 @@ z &amp; = z_0 + z_1 \\
 <p>The profit objective becomes (after some arithmetic)</p>
 $$ P = 40x + 30y_0 + 50y_1 + 600 b_y + 50z_0 + 60 z_1 + 600 b_z $$<p>For a sufficiently large value of $M$, the constraints</p>
 \begin{align*}
-0 &amp; \geq y_1 - M b_y \\
-0 &amp; \leq y_1 + M(1-b_y)
+y_1 &amp; \leq M b_y \\
+z_1 &amp; \leq M b_z \\
 \end{align*}\begin{align*}
-0 &amp; \geq z_1 - M b_z \\
-0 &amp; \leq z_1 + M(1-b_z)
+y_0 &amp; \leq 20 \\
+y_0 &amp; \geq 20 - M(1-b_y)
 \end{align*}\begin{align*}
-20 &amp; \geq y_0 - M b_y \\
-20 &amp; \leq y_0 + M(1-b_y)
-\end{align*}\begin{align*}
-30 &amp; \geq z_0 - M b_z \\
-30 &amp; \leq z_0 + M(1-b_z)
+z_0 &amp; \leq 30 \\
+z_0 &amp; \geq 30 - M(1-b_z)
 \end{align*}<p>enforce the bonus conditions.</p>
 <p>Let's verify this formulation and new objective before proceeding further.</p>
 
@@ -14284,7 +14281,7 @@ $$ P = 40x + 30y_0 + 50y_1 + 600 b_y + 50z_0 + 60 z_1 + 600 b_z $$<p>For a suffi
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
@@ -14373,7 +14370,7 @@ $$ P = 40x + 30y_0 + 50y_1 + 600 b_y + 50z_0 + 60 z_1 + 600 b_z $$<p>For a suffi
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[101]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14381,19 +14378,17 @@ $$ P = 40x + 30y_0 + 50y_1 + 600 b_y + 50z_0 + 60 z_1 + 600 b_z $$<p>For a suffi
 <span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">y1</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">by</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
 
+<span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">z1</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">dz</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">z1</span><span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">by</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">bz</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">,</span> <span class="n">expr</span> <span class="o">=</span> 
@@ -14401,22 +14396,18 @@ $$ P = 40x + 30y_0 + 50y_1 + 600 b_y + 50z_0 + 60 z_1 + 600 b_z $$<p>For a suffi
                          <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">+</span> <span class="mi">50</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y1</span> <span class="o">+</span> <span class="mi">600</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">by</span> \
                          <span class="o">+</span> <span class="mi">50</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">+</span> <span class="mi">60</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">z1</span> <span class="o">+</span> <span class="mi">600</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">)</span>
 
+<span class="n">model</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">dz</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">z1</span><span class="p">)</span>
+
 <span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">laborC</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_y00</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_y01</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">+</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">))</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_z00</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_z01</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">+</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">))</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_y10</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">y1</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_y11</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">y1</span> <span class="o">+</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">))</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_z10</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&gt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">z1</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">bonus_z11</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">z1</span> <span class="o">+</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bonus_y0</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y0</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bonus_z0</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z0</span> <span class="o">&gt;=</span> <span class="mi">30</span> <span class="o">-</span> <span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bonus_y1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y1</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">by</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">bonus_z1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z1</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">bz</span><span class="p">)</span>
 
 <span class="c1"># solve</span>
 <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -14463,7 +14454,7 @@ Solver:
 - Status: ok
   User time: -1.0
   System time: 0.05
-  Wallclock time: 0.15
+  Wallclock time: 0.06
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
@@ -14473,7 +14464,7 @@ Solver:
     Black box: 
       Number of iterations: 0
   Error rc: 0
-  Time: 0.18625497817993164
+  Time: 0.08483672142028809
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -14495,7 +14486,7 @@ Solution:
     <div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[102]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profit = $</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
