@@ -61,6 +61,7 @@ distributed during that event.
 - [6.2 Maximizing Concentration of an Intermediate in a Batch Reactor](https://jckantor.github.io/ND-Pyomo-Cookbook/06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html)
 - [6.3 Path Planning for a Simple Car](https://jckantor.github.io/ND-Pyomo-Cookbook/06.03-Path-Planning-for-a-Simple-Car.html)
 - [6.4 Soft Landing Apollo 11 on the Moon](https://jckantor.github.io/ND-Pyomo-Cookbook/06.04-Soft-Landing-Apollo-11-on-the-Moon.html)
+- [6.5 Ascent from Lunar Surface](https://jckantor.github.io/ND-Pyomo-Cookbook/06.05-Launching-Apollo-11-from-the-Moon.html)
 
 ### [Chapter 7.0 Parameter Estimation](https://jckantor.github.io/ND-Pyomo-Cookbook/07.00-Parameter-Estimation.html)
 - [7.1 Parameter estimation](https://jckantor.github.io/ND-Pyomo-Cookbook/07.01-Parameter-Estimation-Catalytic-Reactor.html)
