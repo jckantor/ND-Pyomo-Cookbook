@@ -615,7 +615,7 @@ kpi(JOBS, SCHEDULE)
 # \end{align*}
 # $$
 
-# In[22]:
+# In[18]:
 
 
 MACHINES = ['A','B']
@@ -673,7 +673,7 @@ def schedule_machines(JOBS, MACHINES):
         SCHEDULE[j] = {
             'start': m.start[j](), 
             'finish': m.start[j]() + JOBS[j]['duration'],
-            'machine': [mach for mach in MACHINES if m.z[j,mach]][0]
+            'machine': [mach for mach in MACHINES if m.z[j,mach]()][0]
         }
         
     return SCHEDULE
@@ -685,7 +685,7 @@ kpi(JOBS, SCHEDULE)
 
 # ## Disjunctive Version
 
-# In[25]:
+# In[19]:
 
 
 MACHINES = ['A','B']
@@ -752,7 +752,7 @@ def schedule_machines(JOBS, MACHINES):
         SCHEDULE[j] = {
             'start': m.start[j](), 
             'finish': m.start[j]() + JOBS[j]['duration'],
-            'machine': [mach for mach in MACHINES if m.z[j,mach]][0]
+            'machine': [mach for mach in MACHINES if m.z[j,mach]()][0]
         }
         
     return SCHEDULE
