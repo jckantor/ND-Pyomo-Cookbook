@@ -1,0 +1,67 @@
+# Table of contents
+
+format: jb-book
+root: README.md
+
+options:
+  numbered: true
+
+chapters:
+- file: notebooks/01.00-Getting-Started-with-Pyomo.ipynb
+  sections:
+  - file: notebooks/01.01-Installing-Pyomo.ipynb
+  - file: notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb
+  - file: notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb
+  - file: notebooks/01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.ipynb
+  
+- file: notebooks/02.00-Linear-Programming.ipynb
+  sections:
+  - file: notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb
+  - file: notebooks/02.02-Production-Model-Sensitivity-Analysis.ipynb
+  - file: notebooks/02.03-Linear-Blending-Problem.ipynb
+  - file: notebooks/02.04-Mixture-Design-Cold-Weather-Fuel.ipynb
+  - file: notebooks/02.05-Gasoline-Blending.ipynb
+  - file: notebooks/02.06-Model-Predictive-Control-of-a-Double-Integrator.ipynb
+  - file: notebooks/02.07-Non-Continuous-Objective.ipynb
+  
+- file: notebooks/03.00-Assignment-Problems.ipynb
+  sections:
+  - file: notebooks/03.01-Transportation-Networks.ipynb
+  
+- file: notebooks/04.00-Scheduling-with-Disjunctive-Constraints.ipynb
+  sections:
+  - file: notebooks/04.01-Introduction_to_Disjunctive_Programming.ipynb
+
+  - file: notebooks/04.02-Machine-Bottleneck.ipynb
+  - file: notebooks/04.03-Job-Shop-Scheduling.ipynb
+  - file: notebooks/04.04-Maintenance-Planning.ipynb
+  - file: notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb
+#  - file: notebooks/04.06-Unit-Commitment.ipynb
+  
+- file: notebooks/05.00-Simulation.ipynb
+  sections:
+  - file: notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb
+  - file: notebooks/05.02-Exothermic-CSTR.ipynb
+  - file: notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb
+  
+- file: notebooks/06.00-Differential-Algebraic-Equations.ipynb
+  sections:
+  - file: notebooks/06.01-Unconstrained-Scalar-Optimization.ipynb
+  - file: notebooks/06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.ipynb
+  - file: notebooks/06.03-Path-Planning-for-a-Simple-Car.ipynb
+  - file: notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb
+  - file: notebooks/06.05-Launching-Apollo-11-from-the-Moon.ipynb
+  
+- file: notebooks/07.00-Parameter-Estimation.ipynb
+  sections:
+  - file: notebooks/07.01-Parameter-Estimation-Catalytic-Reactor.ipynb
+  
+- file: notebooks/08.00-Financial-Applications.ipynb
+  sections:
+  - file: notebooks/08.01-Obtaining-Historical-Stock_-ata.ipynb
+  - file: notebooks/08.02-Consolidating-and-Charting-Stock-Data.ipynb
+  - file: notebooks/08.03-Binomial-Model-for-Pricing-Options.ipynb
+  - file: notebooks/08.04-MAD-Portfolio-Optimization.ipynb
+  - file: notebooks/08.05-Real-Options.ipynb
+
+- file: notebooks/A.00-Style-Guide.ipynb
