@@ -827,7 +827,7 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.01
+  System time: 0.0
   Wallclock time: 0.0
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
@@ -838,7 +838,7 @@ Solver:
     Black box: 
       Number of iterations: 0
   Error rc: 0
-  Time: 0.020010948181152344
+  Time: 0.027508974075317383
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -852,14 +852,33 @@ Solution:
 <p>The results of the solution step show the solver has converged to an optimal solution. Next we display the particular components of the model of interest to us.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">(),</span> <span class="s2">&quot; per week&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="s2">&quot; units per week&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit =  1600.0  per week
-X =  40.0  units per week
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit : Size=1, Index=None, Active=True
+    Key  : Active : Value
+    None :   True : 1600.0
+x : Size=1, Index=None
+    Key  : Lower : Value : Upper : Fixed : Stale : Domain
+    None :     0 :  40.0 :  None : False : False : NonNegativeReals
+</pre></div>
+</div>
+</div>
+</div>
+<p>The values of variables, objectives, and constraints can be accessed and formatted using standard Python string and formatting functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profit = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2"> per week&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">()</span><span class="si">}</span><span class="s2"> units per week&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit = 1600.0 per week
+X = 40.0 units per week
 </pre></div>
 </div>
 </div>
@@ -920,7 +939,7 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.01
+  System time: 0.0
   Wallclock time: 0.0
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
@@ -931,7 +950,7 @@ Solver:
     Black box: 
       Number of iterations: 0
   Error rc: 0
-  Time: 0.024235963821411133
+  Time: 0.030994892120361328
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -944,14 +963,14 @@ Solution:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Units of Y = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profit = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Units of Y = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit =  2400.0
-Units of Y =  80.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit = 2400.0
+Units of Y = 80.0
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1034,7 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.01
+  System time: 0.0
   Wallclock time: 0.0
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
@@ -1026,7 +1045,7 @@ Solver:
     Black box: 
       Number of iterations: 2
   Error rc: 0
-  Time: 0.02437305450439453
+  Time: 0.02911996841430664
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1040,16 +1059,16 @@ Solution:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profit = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Units of X = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Units of Y = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profit = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Units of X = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Units of Y = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit =  2600.0
-Units of X =  20.0
-Units of Y =  60.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Profit = 2600.0
+Units of X = 20.0
+Units of Y = 60.0
 </pre></div>
 </div>
 </div>
@@ -1114,7 +1133,7 @@ Units of Y =  60.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Production-Models-with-Linear-Constraints_26_0.png" src="../_images/02.01-Production-Models-with-Linear-Constraints_26_0.png" />
+<img alt="../_images/02.01-Production-Models-with-Linear-Constraints_28_0.png" src="../_images/02.01-Production-Models-with-Linear-Constraints_28_0.png" />
 </div>
 </div>
 </section>
