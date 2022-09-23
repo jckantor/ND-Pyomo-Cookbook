@@ -335,7 +335,7 @@ kpi(JOBS, spt(JOBS))
 # $$
 # \begin{align*}
 # \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{k} + M y_{j, k}\\
-# \text{start}_{k}+\text{duration}_{k} & \leq \text{start}_{} + M (1 - y_{j,k})
+# \text{start}_{k}+\text{duration}_{k} & \leq \text{start}_{j} + M (1 - y_{j,k})
 # \end{align*}
 # $$
 # 
