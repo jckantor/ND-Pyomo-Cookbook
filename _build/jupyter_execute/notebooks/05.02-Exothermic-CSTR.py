@@ -10,7 +10,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -137,22 +136,27 @@ T0  = 350.0     # Initial temperature [K]
 Tc  = 300.0     # Coolant temperature [K]
 
 def cstr(cA0 = 0.5, T0 = 350.0):
-    m     = ConcreteModel()
-    m.t   = ContinuousSet(bounds=(0.0, 10.0))
-    m.cA  = Var(m.t)
-    m.T   = Var(m.t)
+    m = ConcreteModel()
+    m.t = ContinuousSet(bounds=(0.0, 10.0))
+    m.cA = Var(m.t)
+    m.T = Var(m.t)
     m.dcA = DerivativeVar(m.cA)
-    m.dT  = DerivativeVar(m.T)
+    m.dT = DerivativeVar(m.T)
 
     # Setting the initial conditions
-    m.cA[0.0] = cA0
-    m.T[0.0]  = T0
+    m.cA[0.0].fix(cA0)
+    m.T[0.0].fix(T0)
     
-    k = lambda T: k0*exp(-Ea/R/T)
-    m.ode1 = Constraint(m.t, rule=lambda m, t: 
-        V*m.dcA[t] == q*(cAi - m.cA[t]) - V*k(m.T[t])*m.cA[t])
-    m.ode2 = Constraint(m.t, rule=lambda m, t: 
-        V*rho*Cp*m.dT[t] == q*rho*Cp*(Ti - m.T[t]) + (-dHr)*V*k(m.T[t])*m.cA[t] + UA*(Tc - m.T[t]))
+    def k(T):
+        return k0*exp(-Ea/R/T)
+    
+    @m.Constraint(m.t)
+    def ode1(m, t):
+        return V*m.dcA[t] == q*(cAi - m.cA[t]) - V*k(m.T[t])*m.cA[t]
+    
+    @m.Constraint(m.t)
+    def ode2(m, t):
+        return V*rho*Cp*m.dT[t] == q*rho*Cp*(Ti - m.T[t]) + (-dHr)*V*k(m.T[t])*m.cA[t] + UA*(Tc - m.T[t])
 
     return m
 
@@ -167,36 +171,38 @@ def cstr(cA0 = 0.5, T0 = 350.0):
 # visualization function plots concentration and temperature
 def cstr_plot(t, y, ax=[]):
     if len(ax) == 0:
-        fig = plt.figure(figsize=(12,8))
+        fig = plt.figure(figsize=(12, 8))
 
-        ax1 = plt.subplot(2,2,1)
-        plt.xlabel('Time [min]')
-        plt.ylabel('Concentration [gmol/liter]')
-        plt.title('Concentration')
-        plt.ylim(0,1)
-        plt.grid(True)
+        ax1 = plt.subplot(2, 2, 1)
+        ax1.set_xlabel('Time [min]')
+        ax1.set_ylabel('Concentration [gmol/liter]')
+        ax1.set_title('Concentration')
+        ax1.set_ylim(0, 1)
+        ax1.grid(True)
     
-        ax2 = plt.subplot(2,2,2);
-        plt.xlabel('Time [min]')
-        plt.ylabel('Temperature [K]');
-        plt.title('Temperature')
-        plt.ylim(300,450)
-        plt.grid(True)
+        ax2 = plt.subplot(2, 2, 2);
+        ax2.set_xlabel('Time [min]')
+        ax2.set_ylabel('Temperature [K]');
+        ax2.set_title('Temperature')
+        ax2.set_ylim(300, 450)
+        ax2.grid(True)
         
-        ax3 = plt.subplot(2,2,3);
-        plt.xlabel('Concentration [gmol/liter]')
-        plt.ylabel('Temperature [K]');
-        plt.xlim(0,1)
-        plt.ylim(300,450)
-        plt.grid(True)
+        ax3 = plt.subplot(2, 2, 3);
+        ax3.set_xlabel('Concentration [gmol/liter]')
+        ax3.set_ylabel('Temperature [K]');
+        ax3.set_xlim(0, 1)
+        ax3.set_ylim(300, 450)
+        ax3.grid(True)
+        
     else:
         ax1, ax2, ax3 = ax
-    ax1.plot(t, y[:,0], label=str(Tc))
+        
+    ax1.plot(t, y[:, 0], label=str(Tc))
     ax1.legend()
-    ax2.plot(t, y[:,1], label=str(Tc))
+    ax2.plot(t, y[:, 1], label=str(Tc))
     ax2.legend()
-    ax3.plot(y[0,0],y[0,1],'r.',ms=20)
-    ax3.plot(y[:,0],y[:,1], lw=2, label=str(Tc))
+    ax3.plot(y[0, 0], y[0, 1], 'r.', ms=20)
+    ax3.plot(y[:, 0], y[:, 1], lw=2, label=str(Tc))
     ax3.legend()
     return [ax1, ax2, ax3]
 

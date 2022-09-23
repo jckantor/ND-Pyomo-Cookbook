@@ -22,7 +22,7 @@
 
 # ## Imports
 
-# In[1]:
+# In[11]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -76,7 +76,7 @@ from pyomo.dae import *
 # 
 # The following data is for the [Apollo 11 Lunar Module](https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C).
 
-# In[2]:
+# In[12]:
 
 
 # lunar module
@@ -103,7 +103,7 @@ g = 1.62                       # m/s**2
 # 
 # For this first attempt at a solution, we will choose an arbitrary value for the length of the landing mission. The integration will start with the initial conditions, and we'll see what happens.
 
-# In[3]:
+# In[13]:
 
 
 t_f = 100
@@ -160,7 +160,7 @@ solve(m)
 # 
 # This condition is implemented in Pyomo by fixing the terminal value of $h$.
 
-# In[4]:
+# In[14]:
 
 
 t_f = 100
@@ -198,7 +198,7 @@ solve(m)
 # 
 # These conditions are implement by fixing terminal values of the associated Pyomo variables.
 
-# In[5]:
+# In[15]:
 
 
 t_f = 100
@@ -232,7 +232,7 @@ solve(m)
 # 
 # Since less thrust is available, we may need to extend the length of the landing mission to find a feasible solution to the optimization problem.
 
-# In[6]:
+# In[16]:
 
 
 t_f = 3000
@@ -278,7 +278,7 @@ solve(m)
 # 
 # The net result is that an additional variable, $T$, denoting the duration of the descent mission has been introduced into the optimization problem.
 
-# In[7]:
+# In[17]:
 
 
 m = ConcreteModel()
@@ -338,7 +338,7 @@ solve(m)
 # \end{align*}
 # $$
 
-# In[8]:
+# In[18]:
 
 
 m = ConcreteModel()
@@ -393,7 +393,7 @@ solve(m)
 # 
 # $$\min_{u(\tau), T} T\int_0^1 u(\tau)\, d\tau$$
 
-# In[9]:
+# In[19]:
 
 
 m = ConcreteModel()
@@ -435,7 +435,7 @@ solve(m)
 
 # At this point we need to worry about nonsensical answers to the optimization for minimum fuel. For this purpose we add upper and lower bounds on $T$ that should restrict the solver to meaningful solutions.
 
-# In[10]:
+# In[20]:
 
 
 m = ConcreteModel()

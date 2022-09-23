@@ -13,7 +13,7 @@
 #    
 # command to install pyomo.  The following statement attempts to install the ipopt solver. This code is not bullet proof. If installation errors occur, try to install manually before proceeding further.
 
-# In[1]:
+# In[9]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -89,7 +89,7 @@ assert(shutil.which("ipopt") or os.path.isfile("ipopt"))
 
 # ## Pyomo model
 
-# In[2]:
+# In[10]:
 
 
 from pyomo.environ import *
@@ -172,7 +172,7 @@ SolverFactory('ipopt').solve(m).write()
 
 # ## Accessing solution data
 
-# In[3]:
+# In[11]:
 
 
 # access the results
@@ -207,7 +207,7 @@ plot_results(t, x, y, a, v, av, phi)
 
 # ## Visualizing the car path
 
-# In[4]:
+# In[12]:
 
 
 scl=0.3
@@ -310,7 +310,7 @@ plt.grid(True)
 # where an additional term $t_f$ has been included to incorporate a tradeoff between applied acceleration and corning forces and the time required to complete the maneuver.
 # 
 
-# In[5]:
+# In[13]:
 
 
 # parameters
@@ -388,7 +388,7 @@ TransformationFactory('dae.finite_difference').apply_to(m, wrt=m.t, nfe=30)
 SolverFactory('ipopt').solve(m).write()
 
 
-# In[6]:
+# In[14]:
 
 
 # access the results
@@ -407,7 +407,7 @@ ar = v**2 * np.sin(phi)/L
 plot_results(t, x, y, a, v, av, phi)
 
 
-# In[7]:
+# In[15]:
 
 
 scl=0.2
@@ -420,8 +420,14 @@ plt.axis('square')
 plt.grid(True)
 
 
-# In[8]:
+# In[16]:
 
 
 print(m.tf())
+
+
+# In[ ]:
+
+
+
 
