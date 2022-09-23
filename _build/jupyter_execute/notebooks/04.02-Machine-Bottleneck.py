@@ -300,7 +300,7 @@ kpi(JOBS, spt(JOBS))
 # | Symbol | Description |
 # | ------ | :---------- |
 # | $\text{start}_{j}$ | Start of task $j$
-# | $\mbox{makespan}$ | Time to complete *all* jobs.
+# | $\text{makespan}$ | Time to complete *all* jobs.
 # | $\text{pastdue}_{j}$ | Time by which task $j$ is past due
 # | $\text{early}_{j}$ | Time by which task $j$ is finished early
 # 
@@ -335,7 +335,7 @@ kpi(JOBS, spt(JOBS))
 # $$
 # \begin{align*}
 # \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{k} + M y_{j, k}\\
-# \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{k} + M (1 - y_{j,k})
+# \text{start}_{k}+\text{duration}_{k} & \leq \text{start}_{} + M (1 - y_{j,k})
 # \end{align*}
 # $$
 # 
