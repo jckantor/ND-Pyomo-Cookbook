@@ -805,13 +805,13 @@ title="Print to PDF"
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:center"><p>London</p></td>
-<td class="text-align:center"><p>n/a</p></td>
+<td class="text-align:center"><p>-</p></td>
 <td class="text-align:center"><p>2.5</p></td>
 <td class="text-align:center"><p>125</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p>Berlin</p></td>
 <td class="text-align:center"><p>2.5</p></td>
-<td class="text-align:center"><p>n/a</p></td>
+<td class="text-align:center"><p>-</p></td>
 <td class="text-align:center"><p>175</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:center"><p>Maastricht</p></td>
@@ -862,32 +862,32 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Demand</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s1">&#39;Lon&#39;</span><span class="p">:</span>   <span class="mi">125</span><span class="p">,</span>        <span class="c1"># London</span>
-   <span class="s1">&#39;Ber&#39;</span><span class="p">:</span>   <span class="mi">175</span><span class="p">,</span>        <span class="c1"># Berlin</span>
-   <span class="s1">&#39;Maa&#39;</span><span class="p">:</span>   <span class="mi">225</span><span class="p">,</span>        <span class="c1"># Maastricht</span>
-   <span class="s1">&#39;Ams&#39;</span><span class="p">:</span>   <span class="mi">250</span><span class="p">,</span>        <span class="c1"># Amsterdam</span>
-   <span class="s1">&#39;Utr&#39;</span><span class="p">:</span>   <span class="mi">225</span><span class="p">,</span>        <span class="c1"># Utrecht</span>
-   <span class="s1">&#39;Hag&#39;</span><span class="p">:</span>   <span class="mi">200</span>         <span class="c1"># The Hague</span>
+   <span class="s1">&#39;Lon&#39;</span><span class="p">:</span> <span class="mi">125</span><span class="p">,</span>        <span class="c1"># London</span>
+   <span class="s1">&#39;Ber&#39;</span><span class="p">:</span> <span class="mi">175</span><span class="p">,</span>        <span class="c1"># Berlin</span>
+   <span class="s1">&#39;Maa&#39;</span><span class="p">:</span> <span class="mi">225</span><span class="p">,</span>        <span class="c1"># Maastricht</span>
+   <span class="s1">&#39;Ams&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>        <span class="c1"># Amsterdam</span>
+   <span class="s1">&#39;Utr&#39;</span><span class="p">:</span> <span class="mi">225</span><span class="p">,</span>        <span class="c1"># Utrecht</span>
+   <span class="s1">&#39;Hag&#39;</span><span class="p">:</span> <span class="mi">200</span>         <span class="c1"># The Hague</span>
 <span class="p">}</span>
 
 <span class="n">Supply</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s1">&#39;Arn&#39;</span><span class="p">:</span>   <span class="mi">600</span><span class="p">,</span>        <span class="c1"># Arnhem</span>
-   <span class="s1">&#39;Gou&#39;</span><span class="p">:</span>   <span class="mi">650</span>         <span class="c1"># Gouda</span>
+   <span class="s1">&#39;Arn&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>        <span class="c1"># Arnhem</span>
+   <span class="s1">&#39;Gou&#39;</span><span class="p">:</span> <span class="mi">650</span>         <span class="c1"># Gouda</span>
 <span class="p">}</span>
 
 <span class="n">T</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">(</span><span class="s1">&#39;Lon&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Lon&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">2.5</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Ber&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">2.5</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Ber&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Maa&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.6</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Maa&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">2.0</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Ams&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.4</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Ams&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Utr&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">0.8</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Utr&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Hag&#39;</span><span class="p">,</span><span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.4</span><span class="p">,</span>
-    <span class="p">(</span><span class="s1">&#39;Hag&#39;</span><span class="p">,</span><span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">0.8</span>
+    <span class="p">(</span><span class="s1">&#39;Lon&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Lon&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">2.5</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Ber&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">2.5</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Ber&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Maa&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.6</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Maa&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Ams&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.4</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Ams&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Utr&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Utr&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Hag&#39;</span><span class="p">,</span> <span class="s1">&#39;Arn&#39;</span><span class="p">):</span> <span class="mf">1.4</span><span class="p">,</span>
+    <span class="p">(</span><span class="s1">&#39;Hag&#39;</span><span class="p">,</span> <span class="s1">&#39;Gou&#39;</span><span class="p">):</span> <span class="mf">0.8</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -910,18 +910,18 @@ title="Print to PDF"
 <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">CUS</span><span class="p">,</span> <span class="n">SRC</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">NonNegativeReals</span><span class="p">)</span>
 
 <span class="c1"># Step 3: Define Objective</span>
-<span class="n">model</span><span class="o">.</span><span class="n">Cost</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span>
-    <span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">T</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">]),</span>
-    <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">T</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">])</span>
 
 <span class="c1"># Step 4: Constraints</span>
-<span class="n">model</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="n">ConstraintList</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">:</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">Supply</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
-        
-<span class="n">model</span><span class="o">.</span><span class="n">dmd</span> <span class="o">=</span> <span class="n">ConstraintList</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">:</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">])</span> <span class="o">==</span> <span class="n">Demand</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">SRC</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">src</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">Supply</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">CUS</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dmd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">])</span> <span class="o">==</span> <span class="n">Demand</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
     
 <span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -961,7 +961,7 @@ Solver:
     Black box: 
       Number of iterations: 1
   Error rc: 0
-  Time: 0.01818227767944336
+  Time: 0.026685237884521484
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -976,6 +976,31 @@ Solution:
 </section>
 <section id="solution">
 <h2><span class="section-number">3.1.4. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x : Size=12, Index=x_index
+    Key            : Lower : Value : Upper : Fixed : Stale : Domain
+    (&#39;Ams&#39;, &#39;Arn&#39;) :     0 :   0.0 :  None : False : False : NonNegativeReals
+    (&#39;Ams&#39;, &#39;Gou&#39;) :     0 : 250.0 :  None : False : False : NonNegativeReals
+    (&#39;Ber&#39;, &#39;Arn&#39;) :     0 : 175.0 :  None : False : False : NonNegativeReals
+    (&#39;Ber&#39;, &#39;Gou&#39;) :     0 :   0.0 :  None : False : False : NonNegativeReals
+    (&#39;Hag&#39;, &#39;Arn&#39;) :     0 :   0.0 :  None : False : False : NonNegativeReals
+    (&#39;Hag&#39;, &#39;Gou&#39;) :     0 : 200.0 :  None : False : False : NonNegativeReals
+    (&#39;Lon&#39;, &#39;Arn&#39;) :     0 :   0.0 :  None : False : False : NonNegativeReals
+    (&#39;Lon&#39;, &#39;Gou&#39;) :     0 : 125.0 :  None : False : False : NonNegativeReals
+    (&#39;Maa&#39;, &#39;Arn&#39;) :     0 : 225.0 :  None : False : False : NonNegativeReals
+    (&#39;Maa&#39;, &#39;Gou&#39;) :     0 :   0.0 :  None : False : False : NonNegativeReals
+    (&#39;Utr&#39;, &#39;Arn&#39;) :     0 : 200.0 :  None : False : False : NonNegativeReals
+    (&#39;Utr&#39;, &#39;Gou&#39;) :     0 :  25.0 :  None : False : False : NonNegativeReals
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">:</span>
@@ -1004,7 +1029,7 @@ Hag Gou 200.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;ok&#39;</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">Solver</span><span class="o">.</span><span class="n">status</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Shipping Costs = &quot;</span><span class="p">,</span><span class="n">model</span><span class="o">.</span><span class="n">Cost</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Shipping Costs = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cost</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Shipping Table:&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">:</span>
@@ -1040,19 +1065,16 @@ Ship from  Gou  to  Hag : 200.0
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;ok&#39;</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">Solver</span><span class="o">.</span><span class="n">status</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sources:&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Source      Capacity   Shipped    Margin&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">SRC</span><span class="p">[</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:10s}{1:10.1f}{2:10.1f}{3:10.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">Supply</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="p">[</span><span class="n">m</span><span class="p">](),</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="p">[</span><span class="n">m</span><span class="p">]]))</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">10s</span><span class="si">}{</span><span class="n">Supply</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="si">:</span><span class="s2">10.1f</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="p">[</span><span class="n">s</span><span class="p">]()</span><span class="si">:</span><span class="s2">10.1f</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">src</span><span class="p">[</span><span class="n">s</span><span class="p">]]</span><span class="si">:</span><span class="s2">10.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No Valid Solution Found&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sources:
-Source      Capacity   Shipped    Margin
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Source      Capacity   Shipped    Margin
 Arn            600.0     600.0   -0.2000
 Gou            650.0     600.0    0.0000
 </pre></div>
@@ -1069,19 +1091,16 @@ Gou            650.0     600.0    0.0000
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;ok&#39;</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">Solver</span><span class="o">.</span><span class="n">status</span><span class="p">):</span>    
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Customers:&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Customer      Demand   Shipped    Margin&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">CUS</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:10s}{1:10.1f}{2:10.1f}{3:10.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">Demand</span><span class="p">[</span><span class="n">c</span><span class="p">],</span><span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="p">[</span><span class="n">n</span><span class="p">](),</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="p">[</span><span class="n">n</span><span class="p">]]))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">CUS</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">10s</span><span class="si">}{</span><span class="n">Demand</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="si">:</span><span class="s2">10.1f</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="p">[</span><span class="n">c</span><span class="p">]()</span><span class="si">:</span><span class="s2">10.1f</span><span class="si">}{</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">dmd</span><span class="p">[</span><span class="n">c</span><span class="p">]]</span><span class="si">:</span><span class="s2">10.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No Valid Solution Found&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Customers:
-Customer      Demand   Shipped    Margin
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Customer      Demand   Shipped    Margin
 Lon            125.0     125.0    2.5000
 Ber            175.0     175.0    2.7000
 Maa            225.0     225.0    1.8000
