@@ -300,7 +300,7 @@ kpi(JOBS, spt(JOBS))
 # | Symbol | Description |
 # | ------ | :---------- |
 # | $\text{start}_{j}$ | Start of task $j$
-# | $\text{makespan}$ | Time to complete *all* jobs.
+# | $\mbox{makespan}$ | Time to complete *all* jobs.
 # | $\text{pastdue}_{j}$ | Time by which task $j$ is past due
 # | $\text{early}_{j}$ | Time by which task $j$ is finished early
 # 
@@ -330,12 +330,12 @@ kpi(JOBS, spt(JOBS))
 # \end{align*}
 # $$
 # 
-# The final set of constraints requires that, for any given pair of jobs $j$ and $k$, that either $j$ starts before $k$ finishes, or $k$ finishes before $j$ starts. The boolean variable $y_{jk} = 1$ indicates $j$ finishes before $k$ starts, and is 0 for the opposing case. Note that we only need to consider cases $j > k$
+# The final set of constraints requires that, for any given pair of jobs $j$ and $k$, that either $j$ starts before $k$ finishes, or $k$ finishes before $j$ starts. The boolean variable $y_{j,k} = 0$ indicates $j$ finishes before $k$ starts, and is 1 for the opposing case. Note that we only need to consider cases $j > k$
 # 
 # $$
 # \begin{align*}
-# \text{start}_{i}+\text{duration}_{i} & \leq \text{start}_{j}+My_{i,j}\\
-# \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{i}+M(1-y_{i,j})
+# \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{k} + M y_{j, k}\\
+# \text{start}_{j}+\text{duration}_{j} & \leq \text{start}_{k} + M (1 - y_{j,k})
 # \end{align*}
 # $$
 # 
