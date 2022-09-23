@@ -101,8 +101,17 @@ SolverFactory('cbc').solve(model).write()
 # In[3]:
 
 
-print("Profit = ", model.profit(), " per week")
-print("X = ", model.x(), " units per week")
+model.profit.display()
+model.x.display()
+
+
+# The values of variables, objectives, and constraints can be accessed and formatted using standard Python string and formatting functions.
+
+# In[4]:
+
+
+print(f"Profit = {model.profit()} per week")
+print(f"X = {model.x()} units per week")
 
 
 # ### Exercises
@@ -117,7 +126,7 @@ print("X = ", model.x(), " units per week")
 # 
 # ![LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
 
-# In[4]:
+# In[5]:
 
 
 model = ConcreteModel()
@@ -138,11 +147,11 @@ model.laborB = Constraint(expr = model.y <= 100)
 SolverFactory('cbc').solve(model).write()
 
 
-# In[5]:
+# In[6]:
 
 
-print("Profit = ", model.profit())
-print("Units of Y = ", model.y())
+print(f"Profit = {model.profit()}")
+print(f"Units of Y = {model.y()}")
 
 
 # Compared to product X, we can manufacture and sell up 80 units per week for a total profit of \$2,400. This is very welcome news. 
@@ -161,7 +170,7 @@ print("Units of Y = ", model.y())
 # 
 # ![LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
 
-# In[6]:
+# In[7]:
 
 
 model = ConcreteModel()
@@ -184,20 +193,20 @@ model.laborB = Constraint(expr = 2*model.x + model.y <= 100)
 SolverFactory('cbc').solve(model).write()
 
 
-# In[7]:
+# In[8]:
 
 
 # display solution
-print("Profit = ", model.profit())
-print("Units of X = ", model.x())
-print("Units of Y = ", model.y())
+print(f"Profit = {model.profit()}")
+print(f"Units of X = {model.x()}")
+print(f"Units of Y = {model.y()}")
 
 
 # The mixed product strategy earns more profit than either of the single product srategies. Does this surprise you?  Before going further, try to explain why it is possible for a mixed product strategy to earn more profit than either of the possible single product strategies.
 
 # ## What are the active constraints?
 
-# In[8]:
+# In[9]:
 
 
 plt.figure(figsize=(6, 6))
