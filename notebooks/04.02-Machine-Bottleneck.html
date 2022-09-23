@@ -1306,7 +1306,7 @@ title="Print to PDF"
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{start}_{j}\)</span></p></td>
 <td class="text-align:left"><p>Start of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mbox{makespan}\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{makespan}\)</span></p></td>
 <td class="text-align:left"><p>Time to complete <em>all</em> jobs.</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{pastdue}_{j}\)</span></p></td>
@@ -1345,7 +1345,7 @@ title="Print to PDF"
 \[\begin{split}
 \begin{align*}
 \text{start}_{j}+\text{duration}_{j} &amp; \leq \text{start}_{k} + M y_{j, k}\\
-\text{start}_{j}+\text{duration}_{j} &amp; \leq \text{start}_{k} + M (1 - y_{j,k})
+\text{start}_{k}+\text{duration}_{k} &amp; \leq \text{start}_{} + M (1 - y_{j,k})
 \end{align*}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is a sufficiently large enough to assure the relaxed constraint is satisfied for all plausible values of the decision variables.</p>
