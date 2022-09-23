@@ -98,22 +98,23 @@ plt.grid(True)
 # 
 # which are the equations that will be integrated below.
 # 
-# | Quantity | Symbol | Value | Units | Comments |
-# | :------- | :----: | :---: | :---- | |
-# | Activation Energy | $E_a$ | 72,750 | J/gmol | |
-# | Arrehnius pre-exponential | $k_0$ | 7.2 x 10<sup>10</sup> | 1/min | |
-# | Gas Constant | $R$ | 8.314 | J/gmol/K | |
-# | Reactor Volume | $V$ | 100 | liters | |
-# | Density | $\rho$ | 1000 | g/liter | |
-# | Heat Capacity | $C_p$ | 0.239 | J/g/K | |
-# | Enthalpy of Reaction | $\Delta H_r$ | -50,000 | J/gmol | |
-# | Heat Transfer Coefficient | $UA$ | 50,000 | J/min/K | |
-# | Feed flowrate | $q$ | 100 | liters/min | |
-# | Feed concentration | $c_{A,f}$ | 1.0 | gmol/liter | |
-# | Feed temperature | $T_f$ | 350 | K | |
-# | Initial concentration | $c_{A,0}$ | 0.5 | gmol/liter | |
-# | Initial temperature | $T_0$ | 350 | K | |
-# | Coolant temperature | $T_c$ | 300 | K | Primary Manipulated Variable |
+# |Quantity | Symbol | Value | Units | Comments |
+# |:-------|:----:|:---:|:----|:--- |
+# |Activation Energy | $E_a$ | 72,750 | J/gmol | |
+# |Arrehnius pre-exponential | $k_0$ | 7.2 x 10<sup>10</sup> | 1/min | |
+# |Gas Constant | $R$ | 8.314 | J/gmol/K | |
+# |Reactor Volume | $V$ | 100 | liters | |
+# |Density | $\rho$ | 1000 | g/liter | |
+# |Heat Capacity | $C_p$ | 0.239 | J/g/K | |
+# |Enthalpy of Reaction | $\Delta H_r$ | -50,000 | J/gmol | |
+# |Heat Transfer Coefficient | $UA$ | 50,000 | J/min/K | |
+# |Feed flowrate | $q$ | 100 | liters/min | |
+# |Feed concentration | $c_{A,f}$ | 1.0 | gmol/liter | |
+# |Feed temperature | $T_f$ | 350 | K | |
+# |Initial concentration | $c_{A,0}$ | 0.5 | gmol/liter | |
+# |Initial temperature | $T_0$ | 350 | K | |
+# |Coolant temperature | $T_c$ | 300 | K | Primary Manipulated Variable |
+# 
 
 # ### Pyomo model
 
