@@ -36,7 +36,7 @@ chapters:
   - file: notebooks/04.03-Job-Shop-Scheduling.ipynb
   - file: notebooks/04.04-Maintenance-Planning.ipynb
   - file: notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb
-#  - file: notebooks/04.06-Unit-Commitment.ipynb
+  - file: notebooks/04.06-Unit-Commitment.ipynb
   
 - file: notebooks/05.00-Simulation.ipynb
   sections:
