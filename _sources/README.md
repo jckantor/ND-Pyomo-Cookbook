@@ -64,4 +64,7 @@ distributed during that event.
 - [8.4 MAD Portfolio Optimization](notebooks/08.04-MAD-Portfolio-Optimization.ipynb)
 - [8.5 Real Options](notebooks/08.05-Real-Options.ipynb)
 
-## [Appendix A. Style Guide](notebooks/A.00-Style-Guide.ipynb)
+## [9.0 Style Guide](notebooks/09.00-pyomo-coding-guide.md)
+- [9.1 Notebook Style Guide](notebooks/09.01-notebook-style-guide.ipynb)
+
+## [10.0 Index](genindex.md)

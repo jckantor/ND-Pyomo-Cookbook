@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Getting Started with Pyomo &#8212; ND Pyomo Cookbook</title>
+    <title>9.1. Notebook Style Guide &#8212; ND Pyomo Cookbook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.3. Installing a Pyomo/Python Development Environment" href="01.01-Installing-Pyomo.html" />
-    <link rel="prev" title="ND Pyomo Cookbook" href="../README.html" />
+    <link rel="next" title="10. Index" href="../genindex.html" />
+    <link rel="prev" title="9. Guide to Coding with Pyomo" href="09.00-pyomo-coding-guide.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,11 +116,11 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
    1. Getting Started with Pyomo
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -372,18 +372,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="09.00-pyomo-coding-guide.html">
    9. Guide to Coding with Pyomo
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09.01-notebook-style-guide.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      9.1. Notebook Style Guide
     </a>
    </li>
@@ -453,7 +453,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/01.00-Getting-Started-with-Pyomo.ipynb"
+        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/09.01-notebook-style-guide.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -471,7 +471,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/01.00-Getting-Started-with-Pyomo.ipynb"
+        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/09.01-notebook-style-guide.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -531,7 +531,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/01.00-Getting-Started-with-Pyomo.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/09.01-notebook-style-guide.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -559,7 +559,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/notebooks/01.00-Getting-Started-with-Pyomo.ipynb"
+        <a href="../_sources/notebooks/09.01-notebook-style-guide.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -619,13 +619,69 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-resources">
-   1.1. Online resources
+  <a class="reference internal nav-link" href="#notebook-naming-and-ancillary-generated-files">
+   9.1.1. Notebook naming and ancillary/generated files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   1.2. References
+  <a class="reference internal nav-link" href="#notebook-title-and-headers">
+   9.1.2. Notebook title and headers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#title">
+     9.1.2.1. Title
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subheadings">
+     9.1.2.2. Subheadings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keywords">
+     9.1.2.3. Keywords
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#external-files">
+   9.1.3. External Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figures">
+     9.1.3.1. Figures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     9.1.3.2. Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-for-portability">
+   9.1.4. Design for Portability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installations-and-imports">
+     9.1.4.1. Installations and Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown">
+     9.1.4.2. Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   9.1.5. Further reading
   </a>
  </li>
 </ul>
@@ -637,7 +693,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Getting Started with Pyomo</h1>
+                <h1>Notebook Style Guide</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -648,13 +704,69 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-resources">
-   1.1. Online resources
+  <a class="reference internal nav-link" href="#notebook-naming-and-ancillary-generated-files">
+   9.1.1. Notebook naming and ancillary/generated files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   1.2. References
+  <a class="reference internal nav-link" href="#notebook-title-and-headers">
+   9.1.2. Notebook title and headers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#title">
+     9.1.2.1. Title
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subheadings">
+     9.1.2.2. Subheadings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keywords">
+     9.1.2.3. Keywords
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#external-files">
+   9.1.3. External Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figures">
+     9.1.3.1. Figures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     9.1.3.2. Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-for-portability">
+   9.1.4. Design for Portability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installations-and-imports">
+     9.1.4.1. Installations and Imports
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown">
+     9.1.4.2. Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   9.1.5. Further reading
   </a>
  </li>
 </ul>
@@ -667,33 +779,130 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-pyomo">
-<h1><span class="section-number">1. </span>Getting Started with Pyomo<a class="headerlink" href="#getting-started-with-pyomo" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="http://www.pyomo.org/">Pyomo</a> is an cross-platform, open-source systems modeling language for Python available under the BSD free-software license. Pyomo is well suited to modeling simple and complex systems that can be described by linear or nonlinear algebraic, differential, and partial differential equations and constraints.</p>
-<p>This collection of notebooks demonstrates the use of Pyomo for typical applications.</p>
-<section id="online-resources">
-<h2><span class="section-number">1.1. </span>Online resources<a class="headerlink" href="#online-resources" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="http://www.pyomo.org/">Pyomo home page</a>.</p></li>
-<li><p><a class="reference external" href="https://pyomo.readthedocs.io/en/latest/">Read the Docs</a>. Official documentation for the latest release of Pyomo.</p></li>
-<li><p><a class="reference external" href="https://stackoverflow.com/questions/tagged/pyomo">Pyomo Questions on Stack Overflow</a></p></li>
-<li><p><a class="reference external" href="https://groups.google.com/forum/#%21forum/pyomo-forum">Pyomo Forum on Google Groups</a></p></li>
-<li><p><a class="reference external" href="https://github.com/Pyomo/pyomo/tree/master/examples">Pyomo Examples</a> from the official <a class="reference external" href="https://github.com/Pyomo/pyomo">Pyomo Github Repository</a>.</p></li>
-<li><p><a class="reference external" href="https://github.com/Pyomo/PyomoGallery/wiki">PyomoGallery</a></p></li>
-</ul>
-</section>
-<section id="references">
-<h2><span class="section-number">1.2. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Hart, William E., Carl D. Laird, Jean-Paul Watson, David L. Woodruff, Gabriel A. Hackebeil, Bethany L. Nicholson, and John D. Siirola. <a class="reference external" href="https://www.springer.com/gp/book/9783319588193">Pyomo – Optimization Modeling in Python. Second Edition.</a>  Vol. 67. Springer, 2017.</p></li>
-<li><p>Hart, William E., Jean-Paul Watson, and David L. Woodruff. <a class="reference external" href="https://link.springer.com/article/10.1007/s12532-011-0026-8">“Pyomo: modeling and solving mathematical programs in Python.”</a> Mathematical Programming Computation 3, no. 3 (2011): 219.</p></li>
-<li><p>Nicholson, Bethany, John D. Siirola, Jean-Paul Watson, Victor M. Zavala, and Lorenz T. Biegler. <a class="reference external" href="https://link.springer.com/article/10.1007/s12532-017-0127-0">“pyomo.dae: a modeling and automatic discretization framework for optimization with differential and algebraic equations.”</a> Mathematical Programming Computation 10(2) (2018): 187-223. <a class="reference external" href="https://www.osti.gov/servlets/purl/1392761">Presentation slides.</a></p></li>
-<li><p>Nicholson, Bethany L., Laird, Carl Damon, Siirola, John Daniel, Watson, Jean-Paul, and Hart, William E. Mon . <a class="reference external" href="https://www.osti.gov/servlets/purl/1376827">“Pyomo Tutorial.”</a> United States. Presentation slides in pdf format.</p></li>
-<li><p>Watson, Jean-Paul, David L. Woodruff, and William E. Hart. <a class="reference external" href="https://link.springer.com/article/10.1007/s12532-012-0036-1">“PySP: modeling and solving stochastic programs in Python.”</a> Mathematical Programming Computation 4(2) (2012): 109-149.</p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="notebook-style-guide">
+<h1><span class="section-number">9.1. </span>Notebook Style Guide<a class="headerlink" href="#notebook-style-guide" title="Permalink to this headline">#</a></h1>
+<p>Keywords: style guide, notebook format</p>
+<p>Maintaining a collection of Jupyter notebooks requires attention several important details, among them are the structure and style of the individual notebooks. Maintaining a consistent notebook structure and style enables the use of tools to automate management of the overall collection. The purpose of this notebook is document the standards adopted for this particular collection.</p>
+<section id="notebook-naming-and-ancillary-generated-files">
+<h2><span class="section-number">9.1.1. </span>Notebook naming and ancillary/generated files<a class="headerlink" href="#notebook-naming-and-ancillary-generated-files" title="Permalink to this headline">#</a></h2>
+<p>All notebooks in a repository should reside in a top-level directory named <code class="docutils literal notranslate"><span class="pre">notebooks</span></code>. The filenames begin with a prefix indicating their position in book-like organization. The first two digits indicate a chapter number with 00 reserved for front matter. Replacing the digits with a character indicates an appendix. Following a separating ‘.’, a second pair of digits indicates a section with the front matter, chapter, or appendix. A hyphen separates the prefix from the rest of the filename. The standard <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> Jupyter notebook suffix is required.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>my-repository-title/
+|-- notebooks/
+    |--data/
+    |--figures/
+    |--00.00-Front-Matter.ipynb
+    |--00.01-Preface.ipynb
+    |--00.02-Acknowledgments.ipynb
+    |--01.00-Getting-Started.ipynb
+    |--01.01-First-Section.ipynb
+    |--02.00-Second-Chapter.ipynb
+    |--A.00-Style-Guid
+</pre></div>
 </div>
+<p>This style guide assumes the use of software tools to manage the collection of notebooks. The software tools will perform the following tasks:</p>
+<ul class="simple">
+<li><p>Generate a <code class="docutils literal notranslate"><span class="pre">Readme.md</span></code> file to be written to the top-level directory.</p></li>
+<li><p>Generate a table of contents written to <code class="docutils literal notranslate"><span class="pre">toc.md</span></code> and <code class="docutils literal notranslate"><span class="pre">toc.ipynb</span></code> in the notebooks directory.</p></li>
+<li><p>Insert and update a common header for all notebooks</p></li>
+<li><p>Insert and update a navigation bar located in the second and terminal cell of each notebook.</p></li>
+<li><p>A listing of all links and figures found in the notebooks.</p></li>
+<li><p>A listing of stylistic <code class="docutils literal notranslate"><span class="pre">lint</span></code> encountered during the processing of the notebooks.</p></li>
+</ul>
+</section>
+<section id="notebook-title-and-headers">
+<h2><span class="section-number">9.1.2. </span>Notebook title and headers<a class="headerlink" href="#notebook-title-and-headers" title="Permalink to this headline">#</a></h2>
+<section id="title">
+<h3><span class="section-number">9.1.2.1. </span>Title<a class="headerlink" href="#title" title="Permalink to this headline">#</a></h3>
+<p>Each notebook begins with a markdown level 1 header containing the title of the corresponding chapter or section. This should be capitalized following the Chicago Manual of Style. The hashtag <code class="docutils literal notranslate"><span class="pre">#</span></code> appears as the first line in the cell, and there is one and only one level 1 header per notebook. The title cell may include a brief summary of the notebook contents.</p>
+</section>
+<section id="subheadings">
+<h3><span class="section-number">9.1.2.2. </span>Subheadings<a class="headerlink" href="#subheadings" title="Permalink to this headline">#</a></h3>
+<p>A notebook will typically consist of multiple sections.  The sections are organized hierarchically as markdown headings. Following the document title, the highest level heading begins as markdown level 2 (i.e., <code class="docutils literal notranslate"><span class="pre">##</span></code>). The hierarchy is strict meaning that the next level in the hierarchy, <code class="docutils literal notranslate"><span class="pre">###</span></code>, and must appear before the first heading of the next higher level. This, for example, is an allowable hierarchy:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Notebook Title
+## First section
+### First subsection
+#### First sub-subsection
+#### Second sub-subsection
+### Second subsection
+## Second section
+### Another subsection
+</pre></div>
+</div>
+<p>This is not allowable because it skips from <code class="docutils literal notranslate"><span class="pre">##</span></code> to <code class="docutils literal notranslate"><span class="pre">####</span></code> without an intervening <code class="docutils literal notranslate"><span class="pre">###</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Notebook Title
+## First section
+#### First sub-subsection
+#### Second sub-subsection
+### Second subsection
+## Second section
+### Another subsection
+</pre></div>
+</div>
+<p>The following guidelines apply to headings and subheadings:</p>
+<ul class="simple">
+<li><p>Following the Chicago Manual of Style, only the first word in headings and subheadings are capitalized.</p></li>
+<li><p>Each heading or subheading appears as the first line in a markdown cell.</p></li>
+<li><p>At this point in the development this style guide, titles, headings, and subheadings should remain unnumbered.</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h3><span class="section-number">9.1.2.3. </span>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">#</a></h3>
+<p>Keywords should be included in the level 1 headers designating a title. The keywords are specified in a new line beginning with <code class="docutils literal notranslate"><span class="pre">Keywords:</span></code> followed by a comma separated list of keyword phrases. Keywords are used to construct an index for the notebook collection.</p>
+</section>
+</section>
+<section id="external-files">
+<h2><span class="section-number">9.1.3. </span>External Files<a class="headerlink" href="#external-files" title="Permalink to this headline">#</a></h2>
+<p>Notebooks will often incorporate figures, data, or video. Any external files must be appropriately licensed for reuse. If that isn’t possible, then that information should be accessed by linking to a resource showing the user how to properly access that information.</p>
+<p>In general, external resources should be referenced by an external link whenever possible. If the resource is in the same repository, the link should be the public repository. This practice enables cross-platform use of notebooks, and streamlines the import and use of notebooks by other users.</p>
+<section id="figures">
+<h3><span class="section-number">9.1.3.1. </span>Figures<a class="headerlink" href="#figures" title="Permalink to this headline">#</a></h3>
+<p>Figures included within the repository should located within a common figures directory. This practice enables reuse of figures, and streamlines the editing and maintenance of figures. Figures should be <code class="docutils literal notranslate"><span class="pre">.png</span></code> or <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> format as appropriate, and resized for use with the standard markdown <code class="docutils literal notranslate"><span class="pre">![]()</span></code> markup.</p>
+</section>
+<section id="data">
+<h3><span class="section-number">9.1.3.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
+<p>Data files distributed with the repository should be located within a common data directory.</p>
+</section>
+</section>
+<section id="design-for-portability">
+<h2><span class="section-number">9.1.4. </span>Design for Portability<a class="headerlink" href="#design-for-portability" title="Permalink to this headline">#</a></h2>
+<p>Notebooks are intended as durable and robust means of communicating with a diverse audience. To this end, special effort attention must be given to making it possible to run the notebooks on multiple platforms.</p>
+<section id="installations-and-imports">
+<h3><span class="section-number">9.1.4.1. </span>Installations and Imports<a class="headerlink" href="#installations-and-imports" title="Permalink to this headline">#</a></h3>
+<p>It is good practice to include all necessary installations and imports in first few executable cells of a notebook, and may be included in a special section entitled <strong>Installations and imports</strong>.</p>
+<p>To the extent possible, the installation and import cells should be written to run cross-platform without raising exceptions. Code can written with the assumption that standard Python libraries, including Matplotlib, Numpy, Pandas, and Scipy, are present. Any needed installations should included in the first code cell of the notebook and written for cross-platform use. For example,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import sys
+if &#39;google.colab&#39; in sys.modules:
+    !pip install pyomo
+    !pin install glpk
+</pre></div>
+</div>
+<p>Conditional installs may have been previously installed on the user’s computer.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>try:
+    import glpk
+except
+    !pip install glpk
+    import glpk
+</pre></div>
+</div>
+</section>
+<section id="markdown">
+<h3><span class="section-number">9.1.4.2. </span>Markdown<a class="headerlink" href="#markdown" title="Permalink to this headline">#</a></h3>
+<p>Plain github-flavored markdown should be used wherever possible. Avoid use of non-markdown constructs, such as html tags.</p>
+<ul class="simple">
+<li><p>Any references should be collected under a separate heading entitled References, and formatted using the Chicago Manual of Style.</p></li>
+<li><p>Additional sections entitled Exercises, Additional resources, Further reading may be included in the notebooks. Each exercise should be given a separate subsection to be included in the table of contents.</p></li>
+</ul>
+</section>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">9.1.5. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/spacetelescope/style-guides/blob/master/guides/jupyter-notebooks.md">Space Telescope Science Institute Style Guide</a></p></li>
+<li><p><a class="reference external" href="https://github.com/chrisvoncsefalvay/jupyter-best-practices">Jupyter notebook best practices and style guide</a></p></li>
+<li><p><a class="reference external" href="https://www.dataquest.io/blog/data-science-project-style-guide/">Dataquest: An In-Depth Style Guide for Data Science Projects</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/about/newsroom/arcuser/coding-standards-for-jupyter-notebook/">ESRI: Coding Standards for Jupyter Notebook</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -723,17 +932,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../README.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="09.00-pyomo-coding-guide.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ND Pyomo Cookbook</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Guide to Coding with Pyomo</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01.01-Installing-Pyomo.html" title="next page">
+    <a class='right-next' id="next-link" href="../genindex.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Installing a Pyomo/Python Development Environment</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Index</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
