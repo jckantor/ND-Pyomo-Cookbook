@@ -1306,7 +1306,7 @@ title="Print to PDF"
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{start}_{j}\)</span></p></td>
 <td class="text-align:left"><p>Start of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{makespan}\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mbox{makespan}\)</span></p></td>
 <td class="text-align:left"><p>Time to complete <em>all</em> jobs.</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{pastdue}_{j}\)</span></p></td>
@@ -1340,12 +1340,12 @@ title="Print to PDF"
 \text{start}_{j} +\text{duration}_{j} \leq \text{makespan}
 \end{align*}
 \]</div>
-<p>The final set of constraints requires that, for any given pair of jobs <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, that either <span class="math notranslate nohighlight">\(j\)</span> starts before <span class="math notranslate nohighlight">\(k\)</span> finishes, or <span class="math notranslate nohighlight">\(k\)</span> finishes before <span class="math notranslate nohighlight">\(j\)</span> starts. The boolean variable <span class="math notranslate nohighlight">\(y_{jk} = 1\)</span> indicates <span class="math notranslate nohighlight">\(j\)</span> finishes before <span class="math notranslate nohighlight">\(k\)</span> starts, and is 0 for the opposing case. Note that we only need to consider cases <span class="math notranslate nohighlight">\(j &gt; k\)</span></p>
+<p>The final set of constraints requires that, for any given pair of jobs <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, that either <span class="math notranslate nohighlight">\(j\)</span> starts before <span class="math notranslate nohighlight">\(k\)</span> finishes, or <span class="math notranslate nohighlight">\(k\)</span> finishes before <span class="math notranslate nohighlight">\(j\)</span> starts. The boolean variable <span class="math notranslate nohighlight">\(y_{j,k} = 0\)</span> indicates <span class="math notranslate nohighlight">\(j\)</span> finishes before <span class="math notranslate nohighlight">\(k\)</span> starts, and is 1 for the opposing case. Note that we only need to consider cases <span class="math notranslate nohighlight">\(j &gt; k\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\text{start}_{i}+\text{duration}_{i} &amp; \leq \text{start}_{j}+My_{i,j}\\
-\text{start}_{j}+\text{duration}_{j} &amp; \leq \text{start}_{i}+M(1-y_{i,j})
+\text{start}_{j}+\text{duration}_{j} &amp; \leq \text{start}_{k} + M y_{j, k}\\
+\text{start}_{j}+\text{duration}_{j} &amp; \leq \text{start}_{k} + M (1 - y_{j,k})
 \end{align*}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is a sufficiently large enough to assure the relaxed constraint is satisfied for all plausible values of the decision variables.</p>
