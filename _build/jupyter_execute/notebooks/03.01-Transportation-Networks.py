@@ -50,8 +50,8 @@ from pyomo.environ import *
 # 
 # | Customer\Source | Arnhem [&euro;/ton] | Gouda [&euro;/ton] | Demand [tons]|
 # | :--: | :----: | :---: | :----: |
-# | London | n/a | 2.5 | 125 |
-# | Berlin | 2.5 | n/a | 175 |
+# | London | - | 2.5 | 125 |
+# | Berlin | 2.5 | - | 175 |
 # | Maastricht | 1.6 | 2.0 | 225 |
 # | Amsterdam | 1.4 | 1.0 | 250 |
 # | Utrecht | 0.8 | 1.0 | 225 |
@@ -84,32 +84,32 @@ from pyomo.environ import *
 
 
 Demand = {
-   'Lon':   125,        # London
-   'Ber':   175,        # Berlin
-   'Maa':   225,        # Maastricht
-   'Ams':   250,        # Amsterdam
-   'Utr':   225,        # Utrecht
-   'Hag':   200         # The Hague
+   'Lon': 125,        # London
+   'Ber': 175,        # Berlin
+   'Maa': 225,        # Maastricht
+   'Ams': 250,        # Amsterdam
+   'Utr': 225,        # Utrecht
+   'Hag': 200         # The Hague
 }
 
 Supply = {
-   'Arn':   600,        # Arnhem
-   'Gou':   650         # Gouda
+   'Arn': 600,        # Arnhem
+   'Gou': 650         # Gouda
 }
 
 T = {
-    ('Lon','Arn'): 1000,
-    ('Lon','Gou'): 2.5,
-    ('Ber','Arn'): 2.5,
-    ('Ber','Gou'): 1000,
-    ('Maa','Arn'): 1.6,
-    ('Maa','Gou'): 2.0,
-    ('Ams','Arn'): 1.4,
-    ('Ams','Gou'): 1.0,
-    ('Utr','Arn'): 0.8,
-    ('Utr','Gou'): 1.0,
-    ('Hag','Arn'): 1.4,
-    ('Hag','Gou'): 0.8
+    ('Lon', 'Arn'): 1000,
+    ('Lon', 'Gou'): 2.5,
+    ('Ber', 'Arn'): 2.5,
+    ('Ber', 'Gou'): 1000,
+    ('Maa', 'Arn'): 1.6,
+    ('Maa', 'Gou'): 2.0,
+    ('Ams', 'Arn'): 1.4,
+    ('Ams', 'Gou'): 1.0,
+    ('Utr', 'Arn'): 0.8,
+    ('Utr', 'Gou'): 1.0,
+    ('Hag', 'Arn'): 1.4,
+    ('Hag', 'Gou'): 0.8
 }
 
 
@@ -130,18 +130,18 @@ SRC = list(Supply.keys())
 model.x = Var(CUS, SRC, domain = NonNegativeReals)
 
 # Step 3: Define Objective
-model.Cost = Objective(
-    expr = sum([T[c,s]*model.x[c,s] for c in CUS for s in SRC]),
-    sense = minimize)
+@model.Objective(sense=minimize)
+def cost(m):
+    return sum([T[c,s]*model.x[c,s] for c in CUS for s in SRC])
 
 # Step 4: Constraints
-model.src = ConstraintList()
-for s in SRC:
-    model.src.add(sum([model.x[c,s] for c in CUS]) <= Supply[s])
-        
-model.dmd = ConstraintList()
-for c in CUS:
-    model.dmd.add(sum([model.x[c,s] for s in SRC]) == Demand[c])
+@model.Constraint(SRC)
+def src(m, s):
+    return sum([model.x[c,s] for c in CUS]) <= Supply[s]
+
+@model.Constraint(CUS)
+def dmd(m, c):
+    return sum([model.x[c,s] for s in SRC]) == Demand[c]
     
 results = SolverFactory('cbc').solve(model)
 results.write()
@@ -152,16 +152,22 @@ results.write()
 # In[4]:
 
 
-for c in CUS:
-    for s in SRC:
-        print(c, s, model.x[c,s]())
+model.x.display()
 
 
 # In[5]:
 
 
+for c in CUS:
+    for s in SRC:
+        print(c, s, model.x[c,s]())
+
+
+# In[6]:
+
+
 if 'ok' == str(results.Solver.status):
-    print("Total Shipping Costs = ",model.Cost())
+    print("Total Shipping Costs = ", model.cost())
     print("\nShipping Table:")
     for s in SRC:
         for c in CUS:
@@ -180,15 +186,13 @@ else:
 
 # ### Analysis by source
 
-# In[6]:
+# In[7]:
 
 
 if 'ok' == str(results.Solver.status):
-    print("\nSources:")
     print("Source      Capacity   Shipped    Margin")
-    for m in model.src.keys():
-        s = SRC[m-1]
-        print("{0:10s}{1:10.1f}{2:10.1f}{3:10.4f}".format(s,Supply[s],model.src[m](),model.dual[model.src[m]]))
+    for s in SRC:
+        print(f"{s:10s}{Supply[s]:10.1f}{model.src[s]():10.1f}{model.dual[model.src[s]]:10.4f}")
 else:
     print("No Valid Solution Found")
 
@@ -203,15 +207,13 @@ else:
 
 # ### Analysis by customer
 
-# In[7]:
+# In[8]:
 
 
 if 'ok' == str(results.Solver.status):    
-    print("\nCustomers:")
     print("Customer      Demand   Shipped    Margin")
-    for n in model.dmd.keys():
-        c = CUS[n-1]
-        print("{0:10s}{1:10.1f}{2:10.1f}{3:10.4f}".format(c,Demand[c],model.dmd[n](),model.dual[model.dmd[n]]))
+    for c in CUS:
+        print(f"{c:10s}{Demand[c]:10.1f}{model.dmd[c]():10.1f}{model.dual[model.dmd[c]]:10.4f}")
 else:
     print("No Valid Solution Found")
 
