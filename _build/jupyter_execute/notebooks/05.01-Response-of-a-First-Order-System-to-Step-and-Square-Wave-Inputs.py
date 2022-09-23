@@ -5,6 +5,11 @@
 # 
 # Keywords: Simulator, ipopt usage
 # 
+# ```{index} Simulator
+# ```
+# ```{index} ipopt
+# ```
+# 
 # This notebook demonstrates simulation of a linear first-order system in Pyomo using the `Simulator` class from Pyomo.  The notebook also demonstrates the construction and use of analytical approximations to step functions and square wave inputs.
 
 # ## Imports

@@ -64,4 +64,8 @@ chapters:
   - file: notebooks/08.04-MAD-Portfolio-Optimization.ipynb
   - file: notebooks/08.05-Real-Options.ipynb
 
-- file: notebooks/A.00-Style-Guide.ipynb
+- file: notebooks/09.00-pyomo-coding-guide.md
+  sections:
+  - file: notebooks/09.01-notebook-style-guide.ipynb
+  
+- file: genindex.md

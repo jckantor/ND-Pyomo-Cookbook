@@ -4,6 +4,9 @@
 # # Exothermic CSTR
 # 
 # Keywords: Simulator, dae, differential-algebraic equations, ipopt usage
+# 
+# ```{index} Simulator
+# ```
 
 # ## Imports
 
