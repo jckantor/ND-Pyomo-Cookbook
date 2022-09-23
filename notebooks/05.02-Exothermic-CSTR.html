@@ -834,22 +834,102 @@ V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 \end{align*}
 \end{split}\]</div>
 <p>which are the equations that will be integrated below.</p>
-<p>| Quantity | Symbol | Value | Units | Comments |
-| :——- | :—-: | :—: | :—- | |
-| Activation Energy | <span class="math notranslate nohighlight">\(E_a\)</span> | 72,750 | J/gmol | |
-| Arrehnius pre-exponential | <span class="math notranslate nohighlight">\(k_0\)</span> | 7.2 x 10<sup>10</sup> | 1/min | |
-| Gas Constant | <span class="math notranslate nohighlight">\(R\)</span> | 8.314 | J/gmol/K | |
-| Reactor Volume | <span class="math notranslate nohighlight">\(V\)</span> | 100 | liters | |
-| Density | <span class="math notranslate nohighlight">\(\rho\)</span> | 1000 | g/liter | |
-| Heat Capacity | <span class="math notranslate nohighlight">\(C_p\)</span> | 0.239 | J/g/K | |
-| Enthalpy of Reaction | <span class="math notranslate nohighlight">\(\Delta H_r\)</span> | -50,000 | J/gmol | |
-| Heat Transfer Coefficient | <span class="math notranslate nohighlight">\(UA\)</span> | 50,000 | J/min/K | |
-| Feed flowrate | <span class="math notranslate nohighlight">\(q\)</span> | 100 | liters/min | |
-| Feed concentration | <span class="math notranslate nohighlight">\(c_{A,f}\)</span> | 1.0 | gmol/liter | |
-| Feed temperature | <span class="math notranslate nohighlight">\(T_f\)</span> | 350 | K | |
-| Initial concentration | <span class="math notranslate nohighlight">\(c_{A,0}\)</span> | 0.5 | gmol/liter | |
-| Initial temperature | <span class="math notranslate nohighlight">\(T_0\)</span> | 350 | K | |
-| Coolant temperature | <span class="math notranslate nohighlight">\(T_c\)</span> | 300 | K | Primary Manipulated Variable |</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Quantity</p></th>
+<th class="text-align:center head"><p>Symbol</p></th>
+<th class="text-align:center head"><p>Value</p></th>
+<th class="text-align:left head"><p>Units</p></th>
+<th class="text-align:left head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Activation Energy</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(E_a\)</span></p></td>
+<td class="text-align:center"><p>72,750</p></td>
+<td class="text-align:left"><p>J/gmol</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Arrehnius pre-exponential</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(k_0\)</span></p></td>
+<td class="text-align:center"><p>7.2 x 10<sup>10</sup></p></td>
+<td class="text-align:left"><p>1/min</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Gas Constant</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(R\)</span></p></td>
+<td class="text-align:center"><p>8.314</p></td>
+<td class="text-align:left"><p>J/gmol/K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Reactor Volume</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(V\)</span></p></td>
+<td class="text-align:center"><p>100</p></td>
+<td class="text-align:left"><p>liters</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Density</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\rho\)</span></p></td>
+<td class="text-align:center"><p>1000</p></td>
+<td class="text-align:left"><p>g/liter</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Heat Capacity</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(C_p\)</span></p></td>
+<td class="text-align:center"><p>0.239</p></td>
+<td class="text-align:left"><p>J/g/K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Enthalpy of Reaction</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\Delta H_r\)</span></p></td>
+<td class="text-align:center"><p>-50,000</p></td>
+<td class="text-align:left"><p>J/gmol</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Heat Transfer Coefficient</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(UA\)</span></p></td>
+<td class="text-align:center"><p>50,000</p></td>
+<td class="text-align:left"><p>J/min/K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Feed flowrate</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
+<td class="text-align:center"><p>100</p></td>
+<td class="text-align:left"><p>liters/min</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Feed concentration</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(c_{A,f}\)</span></p></td>
+<td class="text-align:center"><p>1.0</p></td>
+<td class="text-align:left"><p>gmol/liter</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Feed temperature</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_f\)</span></p></td>
+<td class="text-align:center"><p>350</p></td>
+<td class="text-align:left"><p>K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Initial concentration</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(c_{A,0}\)</span></p></td>
+<td class="text-align:center"><p>0.5</p></td>
+<td class="text-align:left"><p>gmol/liter</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Initial temperature</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_0\)</span></p></td>
+<td class="text-align:center"><p>350</p></td>
+<td class="text-align:left"><p>K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Coolant temperature</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_c\)</span></p></td>
+<td class="text-align:center"><p>300</p></td>
+<td class="text-align:left"><p>K</p></td>
+<td class="text-align:left"><p>Primary Manipulated Variable</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="pyomo-model">
 <h3><span class="section-number">5.2.4.2. </span>Pyomo model<a class="headerlink" href="#pyomo-model" title="Permalink to this headline">#</a></h3>
