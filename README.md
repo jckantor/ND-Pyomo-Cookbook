@@ -20,20 +20,20 @@ distributed during that event.
 
 
 ### [Chapter 1.0 Getting Started with Pyomo](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
-- [1.1 Installing a Pyomo/Python Development Environment](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.01-Installing-Pyomo.ipynb)
-- [1.2 Running Pyomo on Google Colab](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb)
-- [1.3 Running Pyomo on the Notre Dame CRC Cluster](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb)
-- [1.4 Cross-Platform Installation of Pyomo and Solvers](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.ipynb)
+- [1.1 Installing a Pyomo/Python Development Environment](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.01-Installing-Pyomo.ipynb)
+- [1.2 Running Pyomo on Google Colab](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.02-Running-Pyomo-on-Google-Colab.ipynb)
+- [1.3 Running Pyomo on the Notre Dame CRC Cluster](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb)
+- [1.4 Cross-Platform Installation of Pyomo and Solvers](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.ipynb)
 
 ### [Chapter 2.0 Linear Programming](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.00-Linear-Programming.ipynb)
-- [2.1 Production Models with Linear Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb)
-- [2.2 Linear Blending Problem](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.02-Linear-Blending-Problem.ipynb)
-- [2.3 Design of a Cold Weather Fuel for a Camping Stove](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb)
-- [2.4 Gasoline Blending](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.04-Gasoline-Blending.ipynb)
+- [2.1 Production Models with Linear Constraints](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/02.01-Production-Models-with-Linear-Constraints.ipynb)
+- [2.2 Linear Blending Problem](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/02.02-Linear-Blending-Problem.ipynb)
+- [2.3 Design of a Cold Weather Fuel for a Camping Stove](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/02.03-Mixture-Design-Cold-Weather-Fuel.ipynb)
+- [2.4 Gasoline Blending](https://jckantor.github.io/ND-Pyomo-Cookbook/notebooks/02.04-Gasoline-Blending.ipynb)
 - [2.5 Model Predictive Control of a Double Integrator](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/02.05-Model-Predictive-Control-of-a-Double-Integrator.ipynb)
 
 ### [Chapter 3.0 Assignment Problems](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.00-Assignment-Problems.ipynb)
-- [3.1 Transportation Networks](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/03.01-Transportation-Networks.ipynb)
+- [3.1 Transportation Networks](notebooks/03.01-Transportation-Networks.ipynb)
 
 ### [Chapter 4.0 Scheduling with Disjunctive Constraints](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.00-Scheduling-with-Disjunctive-Constraints.ipynb)
 - [4.1 Machine Bottleneck](http://nbviewer.jupyter.org/github/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/04.01-Machine-Bottleneck.ipynb)
