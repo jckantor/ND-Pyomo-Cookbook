@@ -737,26 +737,40 @@ title="Print to PDF"
 <h2><span class="section-number">5.4.2. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h2>
 <p>Here we consider the diffusion of a small molecule into an immobile substrate with adsorption. Following the cited references:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
+\[\begin{split}
+\begin{align*}
 \frac{\partial (c + c_a)}{\partial t} &amp; = D \frac{\partial^2 c}{\partial x^2} \\
-\end{align*}\end{split}\]</div>
-<p>Langmuir isotherm:
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\end{split}\]</div>
+<p>Langmuir isotherm:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
 c_a &amp; = \frac{q K c}{1 + K c}
-\end{align*}\)</span>$</p>
-<p>After application of the chain rule:
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\]</div>
+<p>After application of the chain rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \left[1 + \frac{q K}{(1 + K c)^2}\right]\frac{\partial c}{\partial t} &amp; = D \frac{\partial^2 c}{\partial x^2} \\
-\end{align*}\)</span>$</p>
-<p>Initial conditions for <span class="math notranslate nohighlight">\(c(t, x)\)</span>:
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\end{split}\]</div>
+<p>Initial conditions for <span class="math notranslate nohighlight">\(c(t, x)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 c(0, x) &amp; = 0 &amp; 0 &lt; x \leq L \\
-\end{align*}\)</span>$</p>
-<p>Boundary conditions for <span class="math notranslate nohighlight">\(c(t, x)\)</span>:
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\end{split}\]</div>
+<p>Boundary conditions for <span class="math notranslate nohighlight">\(c(t, x)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 c(t, 0) &amp; = C_0 &amp; t \geq 0 \\
 c_x(t, L) &amp; = 0 &amp; t \geq 0 \\
-\end{align*}\)</span>$</p>
+\end{align*}
+\end{split}\]</div>
 <p><strong>Exercise 1</strong>: Verify the use of the chain rule. Generalize to an arbitrary isotherm <span class="math notranslate nohighlight">\(c = f(c_a)\)</span>.</p>
 <p><strong>Exercise 2</strong>: Compare the dimensional and dimensionless implementations by finding values for dimensionless value of <span class="math notranslate nohighlight">\(\alpha\)</span> and surface concentration that reproduce the simulation results observed in dimensional model.</p>
 <p><strong>Exercise 3</strong>: Implement a Pyomo model as a DAE without using the chain rule.</p>
