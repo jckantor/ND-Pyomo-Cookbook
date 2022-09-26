@@ -43,6 +43,7 @@ chapters:
   - file: notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb
   - file: notebooks/05.02-Exothermic-CSTR.ipynb
   - file: notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb
+  - file: notebooks/05.04-Diffusion_Adsorption_in_Polymers.ipynb
   
 - file: notebooks/06.00-Differential-Algebraic-Equations.ipynb
   sections:
