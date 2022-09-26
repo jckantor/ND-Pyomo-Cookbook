@@ -15,7 +15,7 @@ This collection was originally developed as a followup to PyomoFest at Notre Dam
 [slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
 
-**September, 2022 Update** This repository has been revised using [JupyterBook](https://jupyterbook.org/en/stable/intro.html). Some notebooks have been updated with more consistent use of Pyomo. Where appropriate, constraints, objectives, and expressions have been rewritten using the Pyomo decorator syntax. New notebooks include 5.4 Diffusion and Adsorption in Polymers.
+**September, 2022 Update.** This repository has been revised using [JupyterBook](https://jupyterbook.org/en/stable/intro.html). Some notebooks have been updated with more consistent use of Pyomo. Where appropriate, constraints, objectives, and expressions have been rewritten using the [Pyomo decorator](https://user-images.githubusercontent.com/18425615/157140834-5d4534ee-7666-46b3-877e-0576f2d47e69.png) syntax. New notebooks include 5.4 Diffusion and Adsorption in Polymers.
 
 
 ## [1.0 Getting Started with Pyomo](notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
