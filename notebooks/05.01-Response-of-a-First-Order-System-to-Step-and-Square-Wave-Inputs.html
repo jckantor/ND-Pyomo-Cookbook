@@ -707,8 +707,7 @@ title="Print to PDF"
 <h2><span class="section-number">5.1.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
 
@@ -772,7 +771,9 @@ title="Print to PDF"
 <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># define the differential equation as a constraint</span>
-<span class="n">model</span><span class="o">.</span><span class="n">ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">tau</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">dydt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">K</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ode</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tau</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">dydt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">K</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
 <span class="c1"># simulation using scipy integrators</span>
 <span class="n">tsim</span><span class="p">,</span> <span class="n">profiles</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">package</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -804,8 +805,9 @@ title="Print to PDF"
     <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">dydt</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
-                           <span class="n">tau</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">dydt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">K</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">ode</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tau</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">dydt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">K</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     
     <span class="n">tsim</span><span class="p">,</span> <span class="n">profiles</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">package</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
@@ -829,8 +831,8 @@ title="Print to PDF"
 </section>
 <section id="analytical-approximation-to-a-step-input">
 <h2><span class="section-number">5.1.4. </span>Analytical approximation to a step input<a class="headerlink" href="#analytical-approximation-to-a-step-input" title="Permalink to this headline">#</a></h2>
-<p>Keywords: step input</p>
-<p>The response to a step change is a common test giving insight into the dynamics of a given system. An infinitely differentiable approximation to a step change is given by the <em>Butterworth function</em> <span class="math notranslate nohighlight">\(b_n(t)\)</span></p>
+<p>The math functions supported by Pyomo  are limited to that are imported to the standard arithmetic operations of Python (*, /, *<em>, *=, /=, *</em>=) and a particular set of nonlinear functions from the Python <code class="docutils literal notranslate"><span class="pre">math</span></code> library. Simulating the response of a system to a discontinuous step input, for example, requires an approximate.</p>
+<p>An infinitely differentiable approximation to a step change is given by the <em>Butterworth function</em> <span class="math notranslate nohighlight">\(b_n(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[ b_n(t) = \frac{1}{1 + (\frac{t}{c})^n} \]</div>
 <p>where <span class="math notranslate nohighlight">\(n\)</span> is the order of a approximation, and <span class="math notranslate nohighlight">\(c\)</span> is value of <span class="math notranslate nohighlight">\(t\)</span> where the step change occurs.</p>
@@ -861,7 +863,6 @@ title="Print to PDF"
 </section>
 <section id="analytical-approximation-to-a-square-wave-input">
 <h2><span class="section-number">5.1.5. </span>Analytical approximation to a square wave input<a class="headerlink" href="#analytical-approximation-to-a-square-wave-input" title="Permalink to this headline">#</a></h2>
-<p>Keywords: square wave input</p>
 <p>An analytical approximation to a square wave with frequency <span class="math notranslate nohighlight">\(f\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[\frac{4}{\pi} \sum_{k=1, 3, 5,\ldots}^N \frac{sin(k\pi/N)}{k\pi/N}\frac{sin(2\pi ft)}{k}\]</div>
