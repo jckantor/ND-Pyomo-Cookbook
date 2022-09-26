@@ -47,6 +47,7 @@ distributed during that event.
 - [5.1 Response of a First Order System to Step and Square Wave Inputs](notebooks/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.ipynb)
 - [5.2 Exothermic CSTR](notebooks/05.02-Exothermic-CSTR.ipynb)
 - [5.3 Transient Heat Conduction in Various Geometries](notebooks/05.03-Heat_Conduction_in_Various_Geometries.ipynb)
+- [5.4 Diffusion with Adsorption in Polymers](05.04-Diffusion_Adsorption_in_Polymers.ipynb)
 
 ## [6.0 Differential-Algebraic Equations](notebooks/06.00-Differential-Algebraic-Equations.ipynb)
 - [6.1 Unconstrained Scalar Optimization](notebooks/06.01-Unconstrained-Scalar-Optimization.ipynb)

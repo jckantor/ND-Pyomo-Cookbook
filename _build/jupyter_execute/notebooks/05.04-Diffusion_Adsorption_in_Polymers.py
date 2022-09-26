@@ -14,30 +14,44 @@
 # 
 # Here we consider the diffusion of a small molecule into an immobile substrate with adsorption. Following the cited references:
 # 
-# $$\begin{align*}
+# $$
+# \begin{align*}
 # \frac{\partial (c + c_a)}{\partial t} & = D \frac{\partial^2 c}{\partial x^2} \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # Langmuir isotherm:
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # c_a & = \frac{q K c}{1 + K c}
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # After application of the chain rule:
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # \left[1 + \frac{q K}{(1 + K c)^2}\right]\frac{\partial c}{\partial t} & = D \frac{\partial^2 c}{\partial x^2} \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # Initial conditions for $c(t, x)$:
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # c(0, x) & = 0 & 0 < x \leq L \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # Boundary conditions for $c(t, x)$:
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # c(t, 0) & = C_0 & t \geq 0 \\
 # c_x(t, L) & = 0 & t \geq 0 \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # **Exercise 1**: Verify the use of the chain rule. Generalize to an arbitrary isotherm $c = f(c_a)$.
 # 
