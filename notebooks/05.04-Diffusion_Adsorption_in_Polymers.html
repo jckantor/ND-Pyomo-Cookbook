@@ -933,24 +933,34 @@ Solution:
 <section id="dimensional-analysis">
 <h2><span class="section-number">5.4.6. </span>Dimensional analysis<a class="headerlink" href="#dimensional-analysis" title="Permalink to this headline">#</a></h2>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
+\[\begin{split}
+\begin{align*}
 x &amp; = L x' \\
 c &amp; = C c' \\
 t &amp; = T t' \\
-\end{align*}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
+\[\begin{split}
+\begin{align*}
 \left[1 + \frac{q K}{(1 + K C c')^2}\right]\frac{\partial c'}{\partial t'} &amp; = \frac{TD}{L^2} \frac{\partial^2 c'}{\partial x'^2} \\
-\end{align*}\end{split}\]</div>
-<p>Assuming <span class="math notranslate nohighlight">\(L\)</span> is determined by the experimental apparatus, choose
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\end{split}\]</div>
+<p>Assuming <span class="math notranslate nohighlight">\(L\)</span> is determined by the experimental apparatus, choose</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 T &amp; = \frac{L^2}{D} \\
 C &amp; = \frac{1}{K} \\
-\end{align*}\)</span>$</p>
-<p>which results in a one parameter model
-$<span class="math notranslate nohighlight">\(\begin{align*}
+\end{align*}
+\end{split}\]</div>
+<p>which results in a one parameter model</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \left[1 + \frac{\alpha}{(1 + c')^2}\right]\frac{\partial c'}{\partial t'} &amp; =  \frac{\partial^2 c'}{\partial x'^2} \\
-\end{align*}\)</span>$</p>
+\end{align*}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha = q K\)</span> represents a dimensionless capacity of the substrate to absorb the diffusing molecule.</p>
 </section>
 <section id="dimensionless-pyomo-model">
