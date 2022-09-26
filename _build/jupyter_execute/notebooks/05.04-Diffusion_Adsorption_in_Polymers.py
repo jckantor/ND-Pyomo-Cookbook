@@ -178,26 +178,36 @@ model_plot(m)
 
 # ## Dimensional analysis
 # 
-# $$\begin{align*}
+# $$
+# \begin{align*}
 # x & = L x' \\
 # c & = C c' \\
 # t & = T t' \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
-# $$\begin{align*}
+# $$
+# \begin{align*}
 # \left[1 + \frac{q K}{(1 + K C c')^2}\right]\frac{\partial c'}{\partial t'} & = \frac{TD}{L^2} \frac{\partial^2 c'}{\partial x'^2} \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # Assuming $L$ is determined by the experimental apparatus, choose
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # T & = \frac{L^2}{D} \\
 # C & = \frac{1}{K} \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # which results in a one parameter model
-# $$\begin{align*}
+# 
+# $$
+# \begin{align*}
 # \left[1 + \frac{\alpha}{(1 + c')^2}\right]\frac{\partial c'}{\partial t'} & =  \frac{\partial^2 c'}{\partial x'^2} \\
-# \end{align*}$$
+# \end{align*}
+# $$
 # 
 # where $\alpha = q K$ represents a dimensionless capacity of the substrate to absorb the diffusing molecule.
 
