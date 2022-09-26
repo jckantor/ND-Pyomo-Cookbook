@@ -23,7 +23,7 @@
 
 # ## References
 # 
-# * Hart, William E., Carl D. Laird, Jean-Paul Watson, David L. Woodruff, Gabriel A. Hackebeil, Bethany L. Nicholson, and John D. Siirola. [Pyomo – Optimization Modeling in Python. Second Edition.](https://www.springer.com/gp/book/9783319588193)  Vol. 67. Springer, 2017.
+# * Bynum, M. L., Hackebeil, G. A., Hart, W. E., Laird, C. D., Nicholson, B. L., Siirola, J. D., Watson, J.-P. and Woodruff, D. L. (2021). Pyomo-optimization modeling in python (Vol. 67). Springer. [Pyomo – Optimization Modeling in Python. Third Edition.](https://link.springer.com/book/10.1007/978-3-030-68928-5)  Springer Optimization and Its Applications Vol. 67. Springer, 2021.
 # 
 # * Hart, William E., Jean-Paul Watson, and David L. Woodruff. ["Pyomo: modeling and solving mathematical programs in Python."](https://link.springer.com/article/10.1007/s12532-011-0026-8) Mathematical Programming Computation 3, no. 3 (2011): 219.
 # 
