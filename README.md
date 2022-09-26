@@ -1,21 +1,21 @@
 
 # ND Pyomo Cookbook
 
-**ND Pyomo Cookbook** is a collection of notebooks showing how to use [Pyomo](http://www.pyomo.org/) to solve
+**ND Pyomo Cookbook** is a collection of notebooks showing the use [Pyomo](http://www.pyomo.org/) to solve
 modeling and optimization problems. With Pyomo, one can embed within Python an optimization model consisting of
-**decision variables**, **constraints**, and an optimization **objective**. A rich set of features enables the modeling
-and analysis of complex systems.
+**decision variables**, **constraints**, and an optimization **objective**. Pyomo includes a rich set of features enables the modeling and analysis of complex systems.
 
 The notebooks in this collection were developed for instructional purposes at Notre Dame. Originally
 developed using the [Anaconda distribution of Python](https://www.anaconda.com/download/), the notebooks have been
 updated to open directly [Google Colaboratory](https://colab.research.google.com/) where they can be run using
-only a browser window.
+only a browser window. 
 
-PyomoFest at Notre Dame was held June 5-7, 2018. This repository contains the
+This collection was originally developed as a followup to PyomoFest at Notre Dame that was held June 5-7, 2018. Notes distributed at the event are included in this repository:
 [agenda](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/PyomoFest.md),
 [slides](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/slides) and
 [exercises](https://github.com/jckantor/ND-Pyomo-Cookbook/tree/master/PyomoFest/exercises_wo_soln/exercises)
-distributed during that event.
+
+**September, 2022 Update** This repository has been revised using [JupyterBook](https://jupyterbook.org/en/stable/intro.html). Some notebooks have been updated with more consistent use of Pyomo. Where appropriate, constraints, objectives, and expressions have been rewritten using the Pyomo decorator syntax. New notebooks include 5.4 Diffusion and Adsorption in Polymers.
 
 
 ## [1.0 Getting Started with Pyomo](notebooks/01.00-Getting-Started-with-Pyomo.ipynb)
