@@ -17,7 +17,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 
 from math import pi
@@ -82,7 +81,9 @@ model.dydt = DerivativeVar(model.y)
 model.y[0].fix(0)
 
 # define the differential equation as a constraint
-model.ode = Constraint(model.t, rule=lambda model, t: tau*model.dydt[t] + model.y[t] == K*u(t))
+@model.Constraint(model.t)
+def ode(m, t):
+    return tau*model.dydt[t] + model.y[t] == K*u(t)
 
 # simulation using scipy integrators
 tsim, profiles = Simulator(model, package='scipy').simulate(numpoints=1000)
@@ -110,8 +111,9 @@ def first_order(K=1, tau=1, tfinal=1, u=lambda t: 1):
     model.y = Var(model.t)
     model.dydt = DerivativeVar(model.y)
     model.y[0].fix(0)
-    model.ode = Constraint(model.t, rule=lambda model, t: 
-                           tau*model.dydt[t] + model.y[t] == K*u(t))
+    @model.Constraint(model.t)
+    def ode(m, t):
+        return tau*model.dydt[t] + model.y[t] == K*u(t)
     
     tsim, profiles = Simulator(model, package='scipy').simulate(numpoints=1000)
 
@@ -128,15 +130,16 @@ first_order(5, 1, 30, sin)
 
 
 # ## Analytical approximation to a step input
-# Keywords: step input
 # 
-# The response to a step change is a common test giving insight into the dynamics of a given system. An infinitely differentiable approximation to a step change is given by the *Butterworth function* $b_n(t)$
+# The math functions supported by Pyomo  are limited to that are imported to the standard arithmetic operations of Python (\*, /, \**, \*=, /=, \**=) and a particular set of nonlinear functions from the Python `math` library. Simulating the response of a system to a discontinuous step input, for example, requires an approximate.
+# 
+# An infinitely differentiable approximation to a step change is given by the *Butterworth function* $b_n(t)$
 # 
 # $$ b_n(t) = \frac{1}{1 + (\frac{t}{c})^n} $$
 # 
 # where $n$ is the order of a approximation, and $c$ is value of $t$ where the step change occurs.
 
-# In[4]:
+# In[11]:
 
 
 u = lambda t: 1/(1 + (t/10)**100)
@@ -144,7 +147,7 @@ u = lambda t: 1/(1 + (t/10)**100)
 first_order(5, 1, 30, u)
 
 
-# In[5]:
+# In[12]:
 
 
 u = lambda t: 1 - 1/(1 + (t/10)**100)
@@ -153,7 +156,6 @@ first_order(5, 1, 30, u)
 
 
 # ## Analytical approximation to a square wave input
-# Keywords: square wave input
 # 
 # An analytical approximation to a square wave with frequency $f$ is given by
 # 
@@ -161,7 +163,7 @@ first_order(5, 1, 30, u)
 # 
 # where the first term is the *Lanczos* sigma factor designed to suppress the Gibb's phenomenon associated with Fourier series approximations.
 
-# In[6]:
+# In[13]:
 
 
 def square(t, f=1, N=31):
@@ -170,4 +172,10 @@ def square(t, f=1, N=31):
 u = lambda t: square(t, 0.1)
 
 first_order(5, 1, 30, u)
+
+
+# In[ ]:
+
+
+
 
