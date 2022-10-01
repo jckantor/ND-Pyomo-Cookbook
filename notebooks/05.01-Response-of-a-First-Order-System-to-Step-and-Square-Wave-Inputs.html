@@ -281,6 +281,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.3. Transient Heat Conduction in Various Geometries
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -755,7 +760,8 @@ title="Print to PDF"
 <span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="c1"># define u(t)</span>
-<span class="n">u</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">1</span>
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span>
 
 <span class="c1"># create a model object</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
@@ -768,17 +774,149 @@ title="Print to PDF"
 <span class="n">model</span><span class="o">.</span><span class="n">dydt</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># fix the initial value of y</span>
-<span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="c1"># define the differential equation as a constraint</span>
 <span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ode</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">tau</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">dydt</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">K</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="c1"># simulation using scipy integrators</span>
-<span class="n">tsim</span><span class="p">,</span> <span class="n">profiles</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">package</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y : Size=2, Index=t
+    Key : Lower : Value : Upper : Fixed : Stale : Domain
+      0 :  None :     4 :  None :  True : False :  Reals
+     10 :  None :  None :  None : False :  True :  Reals
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulation using scipy integrators</span>
+<span class="n">tsim</span><span class="p">,</span> <span class="n">profiles</span> <span class="o">=</span> <span class="n">Simulator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">package</span><span class="o">=</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">tsim</span>
+<span class="n">profiles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4.        ],
+       [4.09516518],
+       [4.18126635],
+       [4.25917761],
+       [4.32967597],
+       [4.39346666],
+       [4.45118776],
+       [4.50341441],
+       [4.55067095],
+       [4.5934305 ],
+       [4.63212104],
+       [4.66713048],
+       [4.69880924],
+       [4.72747142],
+       [4.75340218],
+       [4.77686354],
+       [4.79809743],
+       [4.81731337],
+       [4.83469911],
+       [4.85042886],
+       [4.86466192],
+       [4.87754068],
+       [4.88919421],
+       [4.89973902],
+       [4.90928022],
+       [4.91791317],
+       [4.92572462],
+       [4.93279283],
+       [4.93918842],
+       [4.9449753 ],
+       [4.95021132],
+       [4.95494926],
+       [4.95923631],
+       [4.96311531],
+       [4.9666254 ],
+       [4.96980139],
+       [4.97267511],
+       [4.97527546],
+       [4.97762825],
+       [4.97975715],
+       [4.98168354],
+       [4.98342653],
+       [4.9850037 ],
+       [4.9864308 ],
+       [4.98772205],
+       [4.98889045],
+       [4.98994758],
+       [4.99090399],
+       [4.99176946],
+       [4.99255276],
+       [4.99326147],
+       [4.99390272],
+       [4.99448304],
+       [4.99500813],
+       [4.99548319],
+       [4.99591304],
+       [4.99630201],
+       [4.99665391],
+       [4.99697229],
+       [4.99726045],
+       [4.99752118],
+       [4.99775709],
+       [4.99797055],
+       [4.99816375],
+       [4.99833848],
+       [4.99849659],
+       [4.99863967],
+       [4.9987691 ],
+       [4.99888618],
+       [4.99899214],
+       [4.99908806],
+       [4.99917492],
+       [4.99925359],
+       [4.99932482],
+       [4.99938923],
+       [4.99944739],
+       [4.99950001],
+       [4.99954764],
+       [4.99959071],
+       [4.99962961],
+       [4.99966475],
+       [4.99969657],
+       [4.99972537],
+       [4.99975145],
+       [4.99977533],
+       [4.99979649],
+       [4.99981579],
+       [4.99983331],
+       [4.99984916],
+       [4.99986348],
+       [4.99987643],
+       [4.99988812],
+       [4.99989869],
+       [4.99990825],
+       [4.99991692],
+       [4.99992473],
+       [4.99993178],
+       [4.99993818],
+       [4.999944  ],
+       [4.99994935],
+       [4.99995422]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">profiles</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="p">[</span><span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tsim</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time / sec&#39;</span><span class="p">)</span>
@@ -790,7 +928,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_4_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_4_0.png" />
+<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_7_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_7_0.png" />
 </div>
 </div>
 </section>
@@ -825,7 +963,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_6_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_6_0.png" />
+<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_9_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_9_0.png" />
 </div>
 </div>
 </section>
@@ -845,7 +983,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_8_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_8_0.png" />
+<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_11_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_11_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -857,7 +995,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_9_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_9_0.png" />
+<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_12_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_12_0.png" />
 </div>
 </div>
 </section>
@@ -879,7 +1017,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_11_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_11_0.png" />
+<img alt="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_14_0.png" src="../_images/05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs_14_0.png" />
 </div>
 </div>
 </section>
