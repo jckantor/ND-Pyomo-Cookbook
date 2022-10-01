@@ -3,13 +3,13 @@
 
 # # Cross-Platform Installation of Pyomo and Solvers
 
-# The are significant differences on the installation and import of Pyomo and associated solvers on different platforms. While it is difficult to anticipate all situations, the following code snippets sho how to write Python/Pyomo code that will run on multiple platforms.
+# The are significant differences on how Pyomo and associated solvers are installed on different platforms. While it is difficult to anticipate all situations, the following code snippet show how to write Python/Pyomo code that will run and install Pyomo and selected solvers on multiple platforms.
 
 # ## Imports
 # 
-# The following cell can be included in a Jupyter notebook to provide cross-platform use of the ipopt solver. With the exception of use on Google Colaboratory, the code assumes ipopt has been previously installed and accessible on the system path. In the case of Google Colaboratory, ipopt is installed.
+# The following cell can be used in a Jupyter notebook to provide cross-platform use of the ipopt and cbc solvers. 
 
-# In[3]:
+# In[1]:
 
 
 import shutil
@@ -44,7 +44,7 @@ if not (shutil.which("cbc") or os.path.isfile("cbc")):
             pass
 assert(shutil.which("cbc") or os.path.isfile("cbc"))
 
-import pyomo.environ as aml
+import pyomo.environ as pyo
 
 
 # In[ ]:
