@@ -279,6 +279,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.3. Transient Heat Conduction in Various Geometries
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -659,10 +664,10 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="cross-platform-installation-of-pyomo-and-solvers">
 <h1><span class="section-number">1.6. </span>Cross-Platform Installation of Pyomo and Solvers<a class="headerlink" href="#cross-platform-installation-of-pyomo-and-solvers" title="Permalink to this headline">#</a></h1>
-<p>The are significant differences on the installation and import of Pyomo and associated solvers on different platforms. While it is difficult to anticipate all situations, the following code snippets sho how to write Python/Pyomo code that will run on multiple platforms.</p>
+<p>The are significant differences on how Pyomo and associated solvers are installed on different platforms. While it is difficult to anticipate all situations, the following code snippet show how to write Python/Pyomo code that will run and install Pyomo and selected solvers on multiple platforms.</p>
 <section id="imports">
 <h2><span class="section-number">1.6.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
-<p>The following cell can be included in a Jupyter notebook to provide cross-platform use of the ipopt solver. With the exception of use on Google Colaboratory, the code assumes ipopt has been previously installed and accessible on the system path. In the case of Google Colaboratory, ipopt is installed.</p>
+<p>The following cell can be used in a Jupyter notebook to provide cross-platform use of the ipopt and cbc solvers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shutil</span>
@@ -697,7 +702,7 @@ title="Print to PDF"
             <span class="k">pass</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">))</span>
 
-<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">aml</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
 </pre></div>
 </div>
 </div>
