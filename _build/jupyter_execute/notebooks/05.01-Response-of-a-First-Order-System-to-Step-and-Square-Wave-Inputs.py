@@ -57,7 +57,7 @@ from pyomo.dae import *
 # 
 # where $\tau$ and $K$ are model parameters, and $u(t)=1$ is an external process input.  
 
-# In[2]:
+# In[23]:
 
 
 tfinal = 10
@@ -65,7 +65,8 @@ tau = 1
 K = 5
 
 # define u(t)
-u = lambda t: 1
+def u(t):
+    return 1.0
 
 # create a model object
 model = ConcreteModel()
@@ -78,15 +79,31 @@ model.y = Var(model.t)
 model.dydt = DerivativeVar(model.y)
 
 # fix the initial value of y
-model.y[0].fix(0)
+model.y[0].fix(4)
 
 # define the differential equation as a constraint
 @model.Constraint(model.t)
 def ode(m, t):
     return tau*model.dydt[t] + model.y[t] == K*u(t)
 
+
+# In[24]:
+
+
+model.y.display()
+
+
+# In[25]:
+
+
 # simulation using scipy integrators
-tsim, profiles = Simulator(model, package='scipy').simulate(numpoints=1000)
+tsim, profiles = Simulator(model, package='scipy').simulate(numpoints=101)
+tsim
+profiles
+
+
+# In[26]:
+
 
 fig, ax = plt.subplots(1, 1)
 ax.plot(tsim, profiles, label='y')
