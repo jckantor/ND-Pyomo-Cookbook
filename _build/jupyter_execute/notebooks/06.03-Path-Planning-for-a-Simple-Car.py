@@ -7,39 +7,21 @@
 
 # ## Imports
 # 
-# The following cell checks if pyomo is installed amd, if not, executes a 
-# 
-#     !pip install -q pyomo
-#    
-# command to install pyomo.  The following statement attempts to install the ipopt solver. This code is not bullet proof. If installation errors occur, try to install manually before proceeding further.
+# The following cell checks if pyomo and ipopt are installed and, if not, executes commands to perform the necessary installation. This code is not bullet proof. If installation errors occur, try to install manually before proceeding further.
 
-# In[9]:
+# In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+# install Pyomo and solvers
+import requests
+import types
 
-import matplotlib.pyplot as plt
-import numpy as np
+url = "https://raw.githubusercontent.com/jckantor/ND-Pyomo-Cookbook/main/python/helper.py"
+helper = types.ModuleType("helper")
+exec(requests.get(url).content, helper.__dict__)
 
-import shutil
-import sys
-import os.path
-
-if not shutil.which("pyomo"):
-    get_ipython().system('pip install -q pyomo')
-    assert(shutil.which("pyomo"))
-
-if not (shutil.which("ipopt") or os.path.isfile("ipopt")):
-    if "google.colab" in sys.modules:
-        get_ipython().system('wget -N -q "https://ampl.com/dl/open/ipopt/ipopt-linux64.zip"')
-        get_ipython().system('unzip -o -q ipopt-linux64')
-    else:
-        try:
-            get_ipython().system('conda install -c conda-forge ipopt ')
-        except:
-            pass
-
-assert(shutil.which("ipopt") or os.path.isfile("ipopt"))
+helper.install_pyomo()
+helper.install_ipopt()
 
 
 # ## Mathematical model
@@ -89,7 +71,7 @@ assert(shutil.which("ipopt") or os.path.isfile("ipopt"))
 
 # ## Pyomo model
 
-# In[10]:
+# In[2]:
 
 
 from pyomo.environ import *
@@ -117,8 +99,8 @@ m.av = Var(m.t)
 m.phi = Var(m.t, bounds=(-phi_max, phi_max))
 
 # define the dependent variables
-m.x = Var(m.t)
-m.y = Var(m.t)
+m.x = Var(m.t, domain=NonNegativeReals)
+m.y = Var(m.t, domain=NonNegativeReals)
 m.a = Var(m.t)
 m.v = Var(m.t)
 
@@ -128,15 +110,25 @@ m.y_dot = DerivativeVar(m.y)
 m.a_dot = DerivativeVar(m.a)
 m.v_dot = DerivativeVar(m.v)
 
-# define the differential equation as constrainta
-m.ode_x = Constraint(m.t, rule=lambda m, t: m.x_dot[t] == m.v[t]*cos(m.a[t]))
-m.ode_y = Constraint(m.t, rule=lambda m, t: m.y_dot[t] == m.v[t]*sin(m.a[t]))
-m.ode_a = Constraint(m.t, rule=lambda m, t: m.a_dot[t] == m.v[t]*tan(m.phi[t])/L)
-m.ode_v = Constraint(m.t, rule=lambda m, t: m.v_dot[t] == m.av[t])
+# define the differential equation as constraints
+
+@m.Constraint(m.t)
+def ode_x(m, t):
+    return m.x_dot[t] == m.v[t]*cos(m.a[t])
+
+@m.Constraint(m.t)
+def ode_y(m, t):
+    return m.y_dot[t] == m.v[t]*sin(m.a[t])
+
+@m.Constraint(m.t)
+def ode_a(m, t):
+    return m.a_dot[t] == m.v[t]*tan(m.phi[t])/L
+
+@m.Constraint(m.t)
+def ode_v(m, t):
+    return m.v_dot[t] == m.av[t]
 
 # path constraints
-m.path_x1 = Constraint(m.t, rule=lambda m, t: m.x[t] >= 0)
-m.path_y1 = Constraint(m.t, rule=lambda m, t: m.y[t] >= 0)
 m.path_v1 = Constraint(m.t, rule=lambda m, t: m.v[t] <= v_max)
 m.path_v2 = Constraint(m.t, rule=lambda m, t: m.v[t] >= v_min)
 m.path_a1 = Constraint(m.t, rule=lambda m, t: m.av[t] <= av_max)
@@ -172,8 +164,11 @@ SolverFactory('ipopt').solve(m).write()
 
 # ## Accessing solution data
 
-# In[11]:
+# In[3]:
 
+
+import numpy as np
+import matplotlib.pyplot as plt
 
 # access the results
 t = np.array([t for t in m.t])
@@ -207,7 +202,7 @@ plot_results(t, x, y, a, v, av, phi)
 
 # ## Visualizing the car path
 
-# In[12]:
+# In[4]:
 
 
 scl=0.3
@@ -310,7 +305,7 @@ plt.grid(True)
 # where an additional term $t_f$ has been included to incorporate a tradeoff between applied acceleration and corning forces and the time required to complete the maneuver.
 # 
 
-# In[13]:
+# In[5]:
 
 
 # parameters
@@ -335,8 +330,8 @@ m.av = Var(m.t)
 m.phi = Var(m.t, bounds=(-phi_max, phi_max))
 
 # define the dependent variables
-m.x = Var(m.t)
-m.y = Var(m.t)
+m.x = Var(m.t, domain=NonNegativeReals)
+m.y = Var(m.t, domain=NonNegativeReals)
 m.a = Var(m.t)
 m.v = Var(m.t)
 
@@ -346,15 +341,25 @@ m.y_dot = DerivativeVar(m.y)
 m.a_dot = DerivativeVar(m.a)
 m.v_dot = DerivativeVar(m.v)
 
-# define the differential equation as constrainta
-m.ode_x = Constraint(m.t, rule=lambda m, t: m.x_dot[t] == m.v[t]*cos(m.a[t]))
-m.ode_y = Constraint(m.t, rule=lambda m, t: m.y_dot[t] == m.v[t]*sin(m.a[t]))
-m.ode_a = Constraint(m.t, rule=lambda m, t: m.a_dot[t] == m.v[t]*tan(m.phi[t])/L)
-m.ode_v = Constraint(m.t, rule=lambda m, t: m.v_dot[t] == m.av[t])
+# define the differential equation as constraints
+
+@m.Constraint(m.t)
+def ode_x(m, t):
+    return m.x_dot[t] == m.v[t]*cos(m.a[t])
+
+@m.Constraint(m.t)
+def ode_y(m, t):
+    return m.y_dot[t] == m.v[t]*sin(m.a[t])
+
+@m.Constraint(m.t)
+def ode_a(m, t):
+    return m.a_dot[t] == m.v[t]*tan(m.phi[t])/L
+
+@m.Constraint(m.t)
+def ode_v(m, t):
+    return m.v_dot[t] == m.av[t]
 
 # path constraints
-m.path_x1 = Constraint(m.t, rule=lambda m, t: m.x[t] >= 0)
-m.path_y1 = Constraint(m.t, rule=lambda m, t: m.y[t] >= 0)
 m.path_v1 = Constraint(m.t, rule=lambda m, t: m.v[t] <= m.tf*v_max/L)
 m.path_v2 = Constraint(m.t, rule=lambda m, t: m.v[t] >= m.tf*v_min/L)
 m.path_a1 = Constraint(m.t, rule=lambda m, t: m.av[t] <= m.tf**2*av_max/L)
@@ -363,21 +368,20 @@ m.path_a3 = Constraint(m.t, rule=lambda m, t: m.v[t]**2*sin(m.phi[t]) <= m.tf**2
 m.path_a4 = Constraint(m.t, rule=lambda m, t: m.v[t]**2*sin(m.phi[t]) >= -m.tf**2*ar_max/L)
 
 # initial conditions
-m.pc = ConstraintList()
-m.pc.add(m.x[0]==0)
-m.pc.add(m.y[0]==0)
-m.pc.add(m.a[0]==0)
-m.pc.add(m.v[0]==0)
+m.x[0].fix(0)
+m.y[0].fix(0)
+m.a[0].fix(0)
+m.v[0].fix(0)
 
 # final conditions
-m.pc.add(m.x[1]==0)
-m.pc.add(m.y[1]==4)
-m.pc.add(m.a[1]==0)
-m.pc.add(m.v[1]==0)
+m.x[1].fix(0)
+m.y[1].fix(4)
+m.a[1].fix(0)
+m.v[1].fix(0)
 
 # final conditions on the control inputs
-m.pc.add(m.av[1]==0)
-m.pc.add(m.phi[1]==0)
+m.av[1].fix(0)
+m.phi[1].fix(0)
 
 # define the optimization objective
 m.integral = Integral(m.t, wrt=m.t, rule=lambda m, t: m.av[t]**2 + (m.v[t]**2*sin(m.phi[t]))**2)
@@ -388,7 +392,7 @@ TransformationFactory('dae.finite_difference').apply_to(m, wrt=m.t, nfe=30)
 SolverFactory('ipopt').solve(m).write()
 
 
-# In[14]:
+# In[6]:
 
 
 # access the results
@@ -407,7 +411,7 @@ ar = v**2 * np.sin(phi)/L
 plot_results(t, x, y, a, v, av, phi)
 
 
-# In[15]:
+# In[7]:
 
 
 scl=0.2
@@ -420,7 +424,7 @@ plt.axis('square')
 plt.grid(True)
 
 
-# In[16]:
+# In[8]:
 
 
 print(m.tf())
