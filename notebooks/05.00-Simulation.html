@@ -627,6 +627,17 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="simulation">
 <h1><span class="section-number">5. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">#</a></h1>
+<p>Documention:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pyomo.readthedocs.io/en/stable/modeling_extensions/dae.html#dynamic-model-simulation">Dynamic Model Simulation</a></p></li>
+</ul>
+<p>Simulator Limitations:</p>
+<ul class="simple">
+<li><p>Differential equations must be first-order and separable</p></li>
+<li><p>Model can only contain a single ContinuousSet</p></li>
+<li><p>Can’t simulate constraints with if-statements in the construction rules</p></li>
+<li><p>Need to provide initial conditions for dynamic states by setting the value or using fix()</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
