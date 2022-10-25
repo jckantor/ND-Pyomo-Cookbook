@@ -9,10 +9,9 @@
 
 # ## Imports
 
-# In[1]:
+# In[40]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -74,7 +73,7 @@ from pyomo.environ import *
 
 # While this problem can be solved by inspection, here we show a Pyomo model that generates a solution to the problem.
 
-# In[2]:
+# In[41]:
 
 
 model = ConcreteModel()
@@ -98,7 +97,7 @@ SolverFactory('cbc').solve(model).write()
 
 # The results of the solution step show the solver has converged to an optimal solution. Next we display the particular components of the model of interest to us.
 
-# In[3]:
+# In[42]:
 
 
 model.profit.display()
@@ -107,7 +106,7 @@ model.x.display()
 
 # The values of variables, objectives, and constraints can be accessed and formatted using standard Python string and formatting functions.
 
-# In[4]:
+# In[43]:
 
 
 print(f"Profit = {model.profit()} per week")
@@ -126,7 +125,7 @@ print(f"X = {model.x()} units per week")
 # 
 # ![LP_ProductY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductY.png?raw=1)
 
-# In[5]:
+# In[44]:
 
 
 model = ConcreteModel()
@@ -147,7 +146,7 @@ model.laborB = Constraint(expr = model.y <= 100)
 SolverFactory('cbc').solve(model).write()
 
 
-# In[6]:
+# In[45]:
 
 
 print(f"Profit = {model.profit()}")
@@ -170,7 +169,7 @@ print(f"Units of Y = {model.y()}")
 # 
 # ![LP_ProductXY.png](https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1)
 
-# In[7]:
+# In[46]:
 
 
 model = ConcreteModel()
@@ -193,7 +192,7 @@ model.laborB = Constraint(expr = 2*model.x + model.y <= 100)
 SolverFactory('cbc').solve(model).write()
 
 
-# In[8]:
+# In[47]:
 
 
 # display solution
@@ -206,55 +205,51 @@ print(f"Units of Y = {model.y()}")
 
 # ## What are the active constraints?
 
-# In[9]:
+# In[48]:
 
 
-plt.figure(figsize=(6, 6))
-plt.subplot(111, aspect='equal')
-plt.axis([0, 100, 0, 100])
-plt.xlabel('Production Qty X')
-plt.ylabel('Production Qty Y')
+fig, ax = plt.subplots(1, 1, figsize=(6, 6))
+ax.set_aspect('equal')
+ax.axis([0, 100, 0, 100])
+ax.set_xlabel('X Production')
+ax.set_ylabel('Y Production')
 
 # Labor A constraint
 x = np.array([0, 80])
-y = 80 - x
-plt.plot(x, y, 'r', lw=2)
-plt.fill_between([0, 80, 100], [80, 0,0 ], [100, 100, 100], color='r', alpha=0.15)
+ax.plot(x, 80 - x, 'r', lw=2)
 
 # Labor B constraint
 x = np.array([0, 50])
-y = 100 - 2*x
-plt.plot(x, y, 'b', lw=2)
-plt.fill_between([0, 50, 100], [100, 0, 0], [100, 100, 100], color='b', alpha=0.15)
+ax.plot(x, 100 - 2*x, 'b', lw=2)
 
 # Demand constraint
-plt.plot([40, 40], [0, 100], 'g', lw=2)
-plt.fill_between([40, 100], [0, 0], [100, 100], color='g', alpha=0.15)
+ax.plot([40, 40], [0, 100], 'g', lw=2)
 
-plt.legend(['Labor A Constraint', 'Labor B Constraint', 'Demand Constraint'])
+ax.legend(['Labor A Constraint', 'Labor B Constraint', 'Demand Constraint'])
+ax.fill_between([0, 80, 100], [80, 0,0 ], [100, 100, 100], color='r', alpha=0.15)
+ax.fill_between([0, 50, 100], [100, 0, 0], [100, 100, 100], color='b', alpha=0.15)
+ax.fill_between([40, 100], [0, 0], [100, 100], color='g', alpha=0.15)
 
 # Contours of constant profit
 x = np.array([0, 100])
 for p in np.linspace(0, 3600, 10):
     y = (p - 40*x)/30
-    plt.plot(x, y, 'y--')
+    ax.plot(x, y, 'y--')
+    
+arrowprops = dict(shrink=.1, width=1, headwidth=5)
 
 # Optimum
-plt.plot(20, 60, 'r.', ms=20)
-plt.annotate('Mixed Product Strategy', xy=(20, 60), xytext=(50, 70), 
-             arrowprops=dict(shrink=.1, width=1, headwidth=5))
+ax.plot(20, 60, 'r.', ms=20)
+ax.annotate('Mixed Product Strategy', xy=(20, 60), xytext=(50, 70), arrowprops=arrowprops)
 
-plt.plot(0, 80, 'b.', ms=20)
-plt.annotate('Y Only', xy=(0, 80), xytext=(20, 90), 
-             arrowprops=dict(shrink=0.1, width=1, headwidth=5))
+ax.plot(0, 80, 'b.', ms=20)
+ax.annotate('Y Only', xy=(0, 80), xytext=(20, 90), arrowprops=arrowprops)
 
-plt.plot(40, 0, 'b.', ms=20)
-plt.annotate('X Only', xy=(40, 0), xytext=(70, 20), 
-             arrowprops=dict(shrink=0.1, width=1, headwidth=5))
+ax.plot(40, 0, 'b.', ms=20)
+ax.annotate('X Only', xy=(40, 0), xytext=(70, 20), arrowprops=arrowprops)
 
-plt.text(4, 23, 'Increasing Profit')
-plt.annotate('', xy=(20,15), xytext=(0,0), 
-             arrowprops=dict(width=0.5,headwidth=5))
+ax.text(4, 23, 'Increasing Profit')
+ax.annotate('', xy=(20, 15), xytext=(0,0), arrowprops=arrowprops)
 
 fname = 'LPprog01.png'
 fname = os.path.join('figures', fname) if os.path.exists('figures') else fname
