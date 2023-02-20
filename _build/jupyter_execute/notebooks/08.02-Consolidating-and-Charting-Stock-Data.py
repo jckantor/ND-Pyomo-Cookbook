@@ -9,7 +9,7 @@
 
 # ## Imports
 
-# In[110]:
+# In[1]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -22,7 +22,7 @@ import pandas as pd
 
 # ## Loading stock data from data directory
 
-# In[111]:
+# In[2]:
 
 
 data_dir = os.path.join('data', 'stocks')
@@ -40,7 +40,7 @@ stocks.keys()
 
 # ## Charting
 
-# In[143]:
+# In[3]:
 
 
 def stock_chart(symbol):
@@ -59,7 +59,7 @@ stock_chart('AAPL')
 
 # ## Consolidating adjusted close data
 
-# In[114]:
+# In[4]:
 
 
 S = pd.concat([stocks[s]['adjusted close'] for s in stocks.keys()], axis=1, keys=stocks.keys())
@@ -74,4 +74,10 @@ ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 ax.grid(True)
 
 S.to_csv(os.path.join('data','Historical_Adjusted_Close.csv'))
+
+
+# In[ ]:
+
+
+
 

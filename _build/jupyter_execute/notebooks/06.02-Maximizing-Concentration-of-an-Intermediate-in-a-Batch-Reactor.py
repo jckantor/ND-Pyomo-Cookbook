@@ -120,7 +120,7 @@ def CB(tf):
 # In[4]:
 
 
-minimize_scalar(lambda t: -CB(t), bracket=[0,50])
+minimize_scalar(lambda t: -CB(t), bracket=[0, 50])
 
 
 # In[5]:

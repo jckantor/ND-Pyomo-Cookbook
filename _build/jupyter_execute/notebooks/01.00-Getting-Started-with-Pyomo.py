@@ -7,7 +7,7 @@
 # 
 # This collection of notebooks demonstrates the use of Pyomo for typical applications.
 
-# ## Online resources
+# **Online resources**
 
 # * [Pyomo home page](http://www.pyomo.org/).
 # 
@@ -21,7 +21,7 @@
 # 
 # * [PyomoGallery](https://github.com/Pyomo/PyomoGallery/wiki)
 
-# ## References
+# **References**
 # 
 # * Bynum, M. L., Hackebeil, G. A., Hart, W. E., Laird, C. D., Nicholson, B. L., Siirola, J. D., Watson, J.-P. and Woodruff, D. L. (2021). Pyomo-optimization modeling in python (Vol. 67). Springer. [Pyomo – Optimization Modeling in Python. Third Edition.](https://link.springer.com/book/10.1007/978-3-030-68928-5)  Springer Optimization and Its Applications Vol. 67. Springer, 2021.
 # 

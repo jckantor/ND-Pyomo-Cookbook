@@ -22,7 +22,7 @@ import time
 
 # ## Select Stocks to Download
 
-# In[7]:
+# In[2]:
 
 
 djia = ['AXP','BA','CAT','CSCO','CVX','DD','DIS','GE',         'GS','HD','IBM','INTC','JNJ','JPM','KO','MCD',         'MMM','MRK','MSFT','NKE','PFE','PG','T','TRV',         'UNH','UTX','V','VZ','WMT','XOM']

@@ -8,7 +8,7 @@
 # For sustained development, however, it is more productive to install a complete python environment on your own laptop. This notebook explains how.
 # 
 # ---
-# 
+# |
 
 # ## Step 1. Install Anaconda
 # 
