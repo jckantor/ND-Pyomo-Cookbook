@@ -1,0 +1,1380 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.3. Running Pyomo on the Notre Dame CRC Cluster &#8212; ND Pyomo Cookbook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.4. Cross-Platform Installation of Pyomo and Solvers" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html" />
+    <link rel="prev" title="1.2. Running Pyomo on Google Colab" href="01.02-Running-Pyomo-on-Google-Colab.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ND Pyomo Cookbook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
+   1. Getting Started with Pyomo
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Installing-Pyomo.html">
+     1.1. Installing a Pyomo/Python Development Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
+     1.2. Running Pyomo on Google Colab
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.3. Running Pyomo on the Notre Dame CRC Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
+     1.4. Cross-Platform Installation of Pyomo and Solvers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Linear-Programming.html">
+   2. Linear Programming
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
+     2.1. Production Models with Linear Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">
+     2.2. Production Model Sensitivity Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
+     2.3. Linear Blending Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
+     2.4. Design of a Cold Weather Fuel for a Camping Stove
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.05-Gasoline-Blending.html">
+     2.5. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
+     2.6. Model Predictive Control of a Double Integrator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
+     2.7. Non-Continuous Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Assignment-Problems.html">
+   3. Assignment Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Transportation-Networks.html">
+     3.1. Transportation Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
+   4. Scheduling with Disjunctive Constraints
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
+     4.1. Introduction to Disjunctive Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Machine-Bottleneck.html">
+     4.2. Machine Bottleneck
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Job-Shop-Scheduling.html">
+     4.3. Job Shop Scheduling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Maintenance-Planning.html">
+     4.4. Maintenance Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">
+     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Unit-Commitment.html">
+     4.6. Unit Commitment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Simulation.html">
+   5. Simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
+     5.1. Response of a First Order System to Step and Square Wave Inputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
+     5.2. Exothermic CSTR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
+     5.3. Transient Heat Conduction in Various Geometries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
+   6. Differential-Algebraic Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
+     6.1. Unconstrained Scalar Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
+     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
+     6.3. Path Planning for a Simple Car
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">
+     6.4. Soft Landing Apollo 11 on the Moon
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
+     6.5. Ascent from Lunar Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Parameter-Estimation.html">
+   7. Parameter Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
+     7.1. Parameter estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08.00-Financial-Applications.html">
+   8. Financial Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
+     8.1. Obtaining Historical Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
+     8.2. Consolidating and Charting Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
+     8.3. Binomial Model for Pricing Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
+     8.5. MAD Portfolio Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.05-Real-Options.html">
+     8.6. Real Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
+   9. Guide to Coding with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09.01-notebook-style-guide.html">
+     9.1. Notebook Style Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   10. Index
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminaries">
+   1.3.1. Preliminaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-a-crc-account">
+     1.3.1.1. Request a CRC account
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-pyomo-on-crc-cluster">
+     1.3.1.2. Install Pyomo on CRC cluster
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-on-the-crc">
+   1.3.2. Running on the CRC
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-problem">
+     1.3.2.1. Test problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-from-the-command-line">
+     1.3.2.2. Running from the command line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submitting-to-a-queue">
+     1.3.2.3. Submitting to a queue
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-solvers">
+   1.3.3. Available solvers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cplex">
+     1.3.3.1. CPLEX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gurobi">
+     1.3.3.2. Gurobi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ipopt">
+     1.3.3.3. Ipopt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coin-or">
+     1.3.3.4. Coin-OR
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#clp">
+       1.3.3.4.1. Clp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cbc">
+       1.3.3.4.2. Cbc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bonmin">
+       1.3.3.4.3. Bonmin
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#couenne">
+       1.3.3.4.4. Couenne
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scip">
+     1.3.3.5. SCIP
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Running Pyomo on the Notre Dame CRC Cluster</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminaries">
+   1.3.1. Preliminaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-a-crc-account">
+     1.3.1.1. Request a CRC account
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-pyomo-on-crc-cluster">
+     1.3.1.2. Install Pyomo on CRC cluster
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-on-the-crc">
+   1.3.2. Running on the CRC
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-problem">
+     1.3.2.1. Test problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-from-the-command-line">
+     1.3.2.2. Running from the command line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submitting-to-a-queue">
+     1.3.2.3. Submitting to a queue
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-solvers">
+   1.3.3. Available solvers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cplex">
+     1.3.3.1. CPLEX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gurobi">
+     1.3.3.2. Gurobi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ipopt">
+     1.3.3.3. Ipopt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coin-or">
+     1.3.3.4. Coin-OR
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#clp">
+       1.3.3.4.1. Clp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cbc">
+       1.3.3.4.2. Cbc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bonmin">
+       1.3.3.4.3. Bonmin
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#couenne">
+       1.3.3.4.4. Couenne
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scip">
+     1.3.3.5. SCIP
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="running-pyomo-on-the-notre-dame-crc-cluster">
+<h1><span class="section-number">1.3. </span>Running Pyomo on the Notre Dame CRC Cluster<a class="headerlink" href="#running-pyomo-on-the-notre-dame-crc-cluster" title="Permalink to this headline">#</a></h1>
+<p>This documentation gives a brief overview for using Pyomo on the CRC clusters with a variety of solvers.</p>
+<section id="preliminaries">
+<h2><span class="section-number">1.3.1. </span>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">#</a></h2>
+<p>Before proceeding with this tutorial, you need to obtain a CRC account and install a private copy of Pyomo on the CRC cluster.</p>
+<section id="request-a-crc-account">
+<h3><span class="section-number">1.3.1.1. </span>Request a CRC account<a class="headerlink" href="#request-a-crc-account" title="Permalink to this headline">#</a></h3>
+<p>First, you must <a class="reference external" href="https://wiki.crc.nd.edu/w/index.php/How_to_Obtain_a_CRC_Account">register for a CRC account</a>. These are free for all ND researchers.</p>
+</section>
+<section id="install-pyomo-on-crc-cluster">
+<h3><span class="section-number">1.3.1.2. </span>Install Pyomo on CRC cluster<a class="headerlink" href="#install-pyomo-on-crc-cluster" title="Permalink to this headline">#</a></h3>
+<p>Per CRC policies, standalone Python packages such as Pyomo are not centrally installed or maintained. Instead, users must <a class="reference external" href="https://wiki.crc.nd.edu/w/index.php/Python#Installing_Python_Packages_Locally">install a private copy of standalone Python packages</a> on the CRC cluster. This can be easily done in a few steps:</p>
+<p>First, <code class="docutils literal notranslate"><span class="pre">ssh</span></code> into a CRC interactive node. For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh crcfe02.crc.nd.edu
+</pre></div>
+</div>
+<p>Next (optional), may load your preferred version of Python. If you do not, the system default (2.7) will be used. Pyomo supports both 2.7 and 3.x:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load python/3.6.4
+</pre></div>
+</div>
+<p>Then, install Pyomo using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a popular package manager for Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --user pyomo
+</pre></div>
+</div>
+<p>By default, Pyomo will be installed in <code class="docutils literal notranslate"><span class="pre">.local/bin</span></code>. See the <a class="reference external" href="https://wiki.crc.nd.edu/w/index.php/Python#Adding_.24.7BHOME.7D.2F.local.2Fbin_to_your_path">ND CRC wiki instructions for adding <code class="docutils literal notranslate"><span class="pre">.local/bin</span></code> to your PATH</a>.</p>
+</section>
+</section>
+<section id="running-on-the-crc">
+<h2><span class="section-number">1.3.2. </span>Running on the CRC<a class="headerlink" href="#running-on-the-crc" title="Permalink to this headline">#</a></h2>
+<p>There are two ways to run Pyomo on the CRC cluster: on an interactive mode (for testing only) or by submitting a job to the queue. The following shows how to do this for a simple optimization problem.</p>
+<section id="test-problem">
+<h3><span class="section-number">1.3.2.1. </span>Test problem<a class="headerlink" href="#test-problem" title="Permalink to this headline">#</a></h3>
+<p>We will consider the following simple linear program to test Pyomo on the CRC:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Load Pyomo</span>
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1">## Create model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">OBJ</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span> 
+
+<span class="c1">## Specify solver</span>
+<span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span>
+
+<span class="c1">## Solve model</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Copy this code and save it on your CRC AFS space as <code class="docutils literal notranslate"><span class="pre">pyomo_test.py</span></code>.</p>
+</section>
+<section id="running-from-the-command-line">
+<h3><span class="section-number">1.3.2.2. </span>Running from the command line<a class="headerlink" href="#running-from-the-command-line" title="Permalink to this headline">#</a></h3>
+<p>The easest option is to directly run this code on an interactive node on the CRC cluster.</p>
+<ol class="simple">
+<li><p>Login to the CRC cluster:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh crcfe02.crc.nd.edu
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Load your preferred version of python and your favorite optimization solver.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load ipopt
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Run the Python script</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python pyomo_test.py
+</pre></div>
+</div>
+<p>You should see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ipopt</span> <span class="mf">3.12.8</span><span class="p">:</span> 
+
+<span class="o">******************************************************************************</span>
+<span class="n">This</span> <span class="n">program</span> <span class="n">contains</span> <span class="n">Ipopt</span><span class="p">,</span> <span class="n">a</span> <span class="n">library</span> <span class="k">for</span> <span class="n">large</span><span class="o">-</span><span class="n">scale</span> <span class="n">nonlinear</span> <span class="n">optimization</span><span class="o">.</span>
+ <span class="n">Ipopt</span> <span class="ow">is</span> <span class="n">released</span> <span class="k">as</span> <span class="nb">open</span> <span class="n">source</span> <span class="n">code</span> <span class="n">under</span> <span class="n">the</span> <span class="n">Eclipse</span> <span class="n">Public</span> <span class="n">License</span> <span class="p">(</span><span class="n">EPL</span><span class="p">)</span><span class="o">.</span>
+         <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">visit</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">projects</span><span class="o">.</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Ipopt</span>
+<span class="o">******************************************************************************</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">Ipopt</span> <span class="n">version</span> <span class="mf">3.12.8</span><span class="p">,</span> <span class="n">running</span> <span class="k">with</span> <span class="n">linear</span> <span class="n">solver</span> <span class="n">ma27</span><span class="o">.</span>
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">Jacobian</span><span class="o">...</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">Jacobian</span><span class="o">.</span><span class="p">:</span>        <span class="mi">5</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">Lagrangian</span> <span class="n">Hessian</span><span class="o">.............</span><span class="p">:</span>        <span class="mi">0</span>
+
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">variables</span><span class="o">............................</span><span class="p">:</span>        <span class="mi">3</span>
+                     <span class="n">variables</span> <span class="k">with</span> <span class="n">only</span> <span class="n">lower</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">3</span>
+                <span class="n">variables</span> <span class="k">with</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+                     <span class="n">variables</span> <span class="k">with</span> <span class="n">only</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraints</span><span class="o">.................</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraints</span><span class="o">...............</span><span class="p">:</span>        <span class="mi">2</span>
+        <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">only</span> <span class="n">lower</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">1</span>
+   <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+        <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">only</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">1</span>
+
+<span class="nb">iter</span>    <span class="n">objective</span>    <span class="n">inf_pr</span>   <span class="n">inf_du</span> <span class="n">lg</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>  <span class="o">||</span><span class="n">d</span><span class="o">||</span>  <span class="n">lg</span><span class="p">(</span><span class="n">rg</span><span class="p">)</span> <span class="n">alpha_du</span> <span class="n">alpha_pr</span>  <span class="n">ls</span>
+   <span class="mi">0</span> <span class="o">-</span><span class="mf">9.9999900e-03</span> <span class="mf">2.70e-01</span> <span class="mf">6.00e-01</span>  <span class="o">-</span><span class="mf">1.0</span> <span class="mf">0.00e+00</span>    <span class="o">-</span>  <span class="mf">0.00e+00</span> <span class="mf">0.00e+00</span>   <span class="mi">0</span>
+   <span class="mi">1</span> <span class="o">-</span><span class="mf">2.3096613e-02</span> <span class="mf">1.48e-01</span> <span class="mf">3.42e+00</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.87e-01</span>    <span class="o">-</span>  <span class="mf">1.10e-01</span> <span class="mf">4.70e-01</span><span class="n">h</span>  <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">-</span><span class="mf">7.1865937e-02</span> <span class="mf">0.00e+00</span> <span class="mf">8.39e-01</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.42e-01</span>    <span class="o">-</span>  <span class="mf">4.87e-01</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">-</span><span class="mf">8.1191843e-01</span> <span class="mf">0.00e+00</span> <span class="mf">4.70e-01</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.47e+00</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">5.02e-01</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">-</span><span class="mf">7.9286713e-01</span> <span class="mf">0.00e+00</span> <span class="mf">2.00e-07</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.91e-02</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">-</span><span class="mf">8.4402296e-01</span> <span class="mf">0.00e+00</span> <span class="mf">3.48e-03</span>  <span class="o">-</span><span class="mf">3.8</span> <span class="mf">5.61e-02</span>    <span class="o">-</span>  <span class="mf">9.40e-01</span> <span class="mf">9.12e-01</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">-</span><span class="mf">8.4949514e-01</span> <span class="mf">0.00e+00</span> <span class="mf">1.50e-09</span>  <span class="o">-</span><span class="mf">3.8</span> <span class="mf">7.04e-03</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">-</span><span class="mf">8.4999437e-01</span> <span class="mf">0.00e+00</span> <span class="mf">1.84e-11</span>  <span class="o">-</span><span class="mf">5.7</span> <span class="mf">4.99e-04</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">-</span><span class="mf">8.5000001e-01</span> <span class="mf">0.00e+00</span> <span class="mf">2.51e-14</span>  <span class="o">-</span><span class="mf">8.6</span> <span class="mf">5.65e-06</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">Iterations</span><span class="o">....</span><span class="p">:</span> <span class="mi">8</span>
+
+                                   <span class="p">(</span><span class="n">scaled</span><span class="p">)</span>                 <span class="p">(</span><span class="n">unscaled</span><span class="p">)</span>
+<span class="n">Objective</span><span class="o">...............</span><span class="p">:</span>  <span class="o">-</span><span class="mf">8.5000001246787615e-01</span>   <span class="o">-</span><span class="mf">8.5000001246787615e-01</span>
+<span class="n">Dual</span> <span class="n">infeasibility</span><span class="o">......</span><span class="p">:</span>   <span class="mf">2.5143903682766679e-14</span>    <span class="mf">2.5143903682766679e-14</span>
+<span class="n">Constraint</span> <span class="n">violation</span><span class="o">....</span><span class="p">:</span>   <span class="mf">0.0000000000000000e+00</span>    <span class="mf">0.0000000000000000e+00</span>
+<span class="n">Complementarity</span><span class="o">.........</span><span class="p">:</span>   <span class="mf">2.5342284749259295e-09</span>    <span class="mf">2.5342284749259295e-09</span>
+<span class="n">Overall</span> <span class="n">NLP</span> <span class="n">error</span><span class="o">.......</span><span class="p">:</span>   <span class="mf">2.5342284749259295e-09</span>    <span class="mf">2.5342284749259295e-09</span>
+
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">objective</span> <span class="n">function</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">objective</span> <span class="n">gradient</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">evaluations</span>            <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">evaluations</span>          <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">Jacobian</span> <span class="n">evaluations</span>   <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">Jacobian</span> <span class="n">evaluations</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">Lagrangian</span> <span class="n">Hessian</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Total</span> <span class="n">CPU</span> <span class="n">secs</span> <span class="ow">in</span> <span class="n">IPOPT</span> <span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="n">o</span> <span class="n">function</span> <span class="n">evaluations</span><span class="p">)</span>   <span class="o">=</span>      <span class="mf">0.004</span>
+<span class="n">Total</span> <span class="n">CPU</span> <span class="n">secs</span> <span class="ow">in</span> <span class="n">NLP</span> <span class="n">function</span> <span class="n">evaluations</span>           <span class="o">=</span>      <span class="mf">0.000</span>
+
+<span class="n">EXIT</span><span class="p">:</span> <span class="n">Optimal</span> <span class="n">Solution</span> <span class="n">Found</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="submitting-to-a-queue">
+<h3><span class="section-number">1.3.2.3. </span>Submitting to a queue<a class="headerlink" href="#submitting-to-a-queue" title="Permalink to this headline">#</a></h3>
+<p>Per CRC policies, the interactive nodes should only be used for testing short computational jobs. All other jobs should be submitted to a queue.</p>
+<p>To submit the previous project on the CRC queue, write a script that contains the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/csh</span>
+
+<span class="c1">#$ -M netid@nd.edu		# Email address for job notification</span>
+<span class="c1">#$ -m abe		 		      # Send mail when job aborts, begins, and ends</span>
+<span class="c1">#$ -q long		 		     # Specify queue</span>
+<span class="c1">#$ -N job_name	     # Specify job name</span>
+
+<span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.4</span>     <span class="c1"># Required modules</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">ipopt</span>
+
+<span class="n">python3</span> <span class="n">pyomo_test</span><span class="o">.</span><span class="n">py</span> 		  <span class="c1"># Command to execute</span>
+</pre></div>
+</div>
+<p>Name it something logical, such as <code class="docutils literal notranslate"><span class="pre">submission_script</span></code>. Then type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">submission_script</span>
+</pre></div>
+</div>
+<p>You should get an email when your job begins/ends/aborts. You can also monitor its process through</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> qstat –u username
+</pre></div>
+</div>
+<p>More info is available at the <a class="reference external" href="https://wiki.crc.nd.edu/w/index.php/CRC_Quick_Start_Guide">ND CRC wiki Quick Start Guide</a>.</p>
+</section>
+</section>
+<section id="available-solvers">
+<h2><span class="section-number">1.3.3. </span>Available solvers<a class="headerlink" href="#available-solvers" title="Permalink to this headline">#</a></h2>
+<p>The CRC clusters supports several large-scale optimization solvers that are directly callable from Pyomo. This makes it increadily easy - often one only needs to change a few lines of code - to try different solvers for an optimization problem.</p>
+<p>The following contains instructions on using solvers currently available on the CRC cluster. By modifying the <code class="docutils literal notranslate"><span class="pre">SolverFactory</span></code> in <code class="docutils literal notranslate"><span class="pre">pyomo_test.py</span></code>, you can try all of these solvers on the simple test problem.</p>
+<section id="cplex">
+<h3><span class="section-number">1.3.3.1. </span>CPLEX<a class="headerlink" href="#cplex" title="Permalink to this headline">#</a></h3>
+<p>First load the module:</p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">cplex</span></code></p>
+<p>This will update your environmental variables and the Gurobi executable should be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cplex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is the output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Welcome</span> <span class="n">to</span> <span class="n">IBM</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">ILOG</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">CPLEX</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Interactive</span> <span class="n">Optimizer</span> <span class="mf">12.7.1.0</span>
+  <span class="k">with</span> <span class="n">Simplex</span><span class="p">,</span> <span class="n">Mixed</span> <span class="n">Integer</span> <span class="o">&amp;</span> <span class="n">Barrier</span> <span class="n">Optimizers</span>
+<span class="mi">5725</span><span class="o">-</span><span class="n">A06</span> <span class="mi">5725</span><span class="o">-</span><span class="n">A29</span> <span class="mi">5724</span><span class="o">-</span><span class="n">Y48</span> <span class="mi">5724</span><span class="o">-</span><span class="n">Y49</span> <span class="mi">5724</span><span class="o">-</span><span class="n">Y54</span> <span class="mi">5724</span><span class="o">-</span><span class="n">Y55</span> <span class="mi">5655</span><span class="o">-</span><span class="n">Y21</span>
+<span class="n">Copyright</span> <span class="n">IBM</span> <span class="n">Corp</span><span class="o">.</span> <span class="mi">1988</span><span class="p">,</span> <span class="mf">2017.</span>  <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span><span class="o">.</span>
+
+<span class="n">Type</span> <span class="s1">&#39;help&#39;</span> <span class="k">for</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">available</span> <span class="n">commands</span><span class="o">.</span>
+<span class="n">Type</span> <span class="s1">&#39;help&#39;</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">a</span> <span class="n">command</span> <span class="n">name</span> <span class="k">for</span> <span class="n">more</span>
+<span class="n">information</span> <span class="n">on</span> <span class="n">commands</span><span class="o">.</span>
+
+<span class="n">CPLEX</span><span class="o">&gt;</span> <span class="n">Logfile</span> <span class="s1">&#39;cplex.log&#39;</span> <span class="n">closed</span><span class="o">.</span>
+<span class="n">Logfile</span> <span class="s1">&#39;/afs/crc.nd.edu/user/a/adowling/Private/tmp103f3a.cplex.log&#39;</span> <span class="nb">open</span><span class="o">.</span>
+<span class="n">CPLEX</span><span class="o">&gt;</span> <span class="n">Problem</span> <span class="s1">&#39;/afs/crc.nd.edu/user/a/adowling/Private/tmpdhMJXY.pyomo.lp&#39;</span> <span class="n">read</span><span class="o">.</span>
+<span class="n">Read</span> <span class="n">time</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="n">sec</span><span class="o">.</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">ticks</span><span class="p">)</span>
+<span class="n">CPLEX</span><span class="o">&gt;</span> <span class="n">Problem</span> <span class="n">name</span>         <span class="p">:</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">adowling</span><span class="o">/</span><span class="n">Private</span><span class="o">/</span><span class="n">tmpdhMJXY</span><span class="o">.</span><span class="n">pyomo</span><span class="o">.</span><span class="n">lp</span>
+<span class="n">Objective</span> <span class="n">sense</span>      <span class="p">:</span> <span class="n">Maximize</span>
+<span class="n">Variables</span>            <span class="p">:</span>       <span class="mi">4</span>
+<span class="n">Objective</span> <span class="n">nonzeros</span>   <span class="p">:</span>       <span class="mi">1</span>
+<span class="n">Linear</span> <span class="n">constraints</span>   <span class="p">:</span>       <span class="mi">3</span>  <span class="p">[</span><span class="n">Less</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">Greater</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">Equal</span><span class="p">:</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="n">Nonzeros</span>           <span class="p">:</span>       <span class="mi">6</span>
+  <span class="n">RHS</span> <span class="n">nonzeros</span>       <span class="p">:</span>       <span class="mi">3</span>
+
+<span class="n">Variables</span>            <span class="p">:</span> <span class="n">Min</span> <span class="n">LB</span><span class="p">:</span> <span class="mf">0.000000</span>         <span class="n">Max</span> <span class="n">UB</span><span class="p">:</span> <span class="nb">all</span> <span class="n">infinite</span>   
+<span class="n">Objective</span> <span class="n">nonzeros</span>   <span class="p">:</span> <span class="n">Min</span>   <span class="p">:</span> <span class="mf">1.000000</span>         <span class="n">Max</span>   <span class="p">:</span> <span class="mf">1.000000</span>       
+<span class="n">Linear</span> <span class="n">constraints</span>   <span class="p">:</span>
+  <span class="n">Nonzeros</span>           <span class="p">:</span> <span class="n">Min</span>   <span class="p">:</span> <span class="mf">1.000000</span>         <span class="n">Max</span>   <span class="p">:</span> <span class="mf">2.000000</span>       
+  <span class="n">RHS</span> <span class="n">nonzeros</span>       <span class="p">:</span> <span class="n">Min</span>   <span class="p">:</span> <span class="mf">0.3000000</span>        <span class="n">Max</span>   <span class="p">:</span> <span class="mf">1.000000</span>       
+<span class="n">CPLEX</span><span class="o">&gt;</span> <span class="n">CPXPARAM_Read_APIEncoding</span>                        <span class="s2">&quot;UTF-8&quot;</span>
+<span class="n">Tried</span> <span class="n">aggregator</span> <span class="mi">1</span> <span class="n">time</span><span class="o">.</span>
+<span class="n">LP</span> <span class="n">Presolve</span> <span class="n">eliminated</span> <span class="mi">1</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">1</span> <span class="n">columns</span><span class="o">.</span>
+<span class="n">Reduced</span> <span class="n">LP</span> <span class="n">has</span> <span class="mi">2</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="n">columns</span><span class="p">,</span> <span class="ow">and</span> <span class="mi">5</span> <span class="n">nonzeros</span><span class="o">.</span>
+<span class="n">Presolve</span> <span class="n">time</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="n">sec</span><span class="o">.</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">ticks</span><span class="p">)</span>
+<span class="n">Initializing</span> <span class="n">dual</span> <span class="n">steep</span> <span class="n">norms</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+
+<span class="n">Iteration</span> <span class="n">log</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">Iteration</span><span class="p">:</span>     <span class="mi">1</span>   <span class="n">Dual</span> <span class="n">objective</span>     <span class="o">=</span>             <span class="mf">0.850000</span>
+
+<span class="n">Dual</span> <span class="n">simplex</span> <span class="o">-</span> <span class="n">Optimal</span><span class="p">:</span>  <span class="n">Objective</span> <span class="o">=</span>  <span class="mf">8.5000000000e-01</span>
+<span class="n">Solution</span> <span class="n">time</span> <span class="o">=</span>    <span class="mf">0.00</span> <span class="n">sec</span><span class="o">.</span>  <span class="n">Iterations</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Deterministic</span> <span class="n">time</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="n">ticks</span>  <span class="p">(</span><span class="mf">4.51</span> <span class="n">ticks</span><span class="o">/</span><span class="n">sec</span><span class="p">)</span>
+
+<span class="n">CPLEX</span><span class="o">&gt;</span> <span class="n">Solution</span> <span class="n">written</span> <span class="n">to</span> <span class="n">file</span> <span class="s1">&#39;/afs/crc.nd.edu/user/a/adowling/Private/tmp0ryhXG.cplex.sol&#39;</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="gurobi">
+<h3><span class="section-number">1.3.3.2. </span>Gurobi<a class="headerlink" href="#gurobi" title="Permalink to this headline">#</a></h3>
+<p>First load the module:</p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">gurobi</span></code></p>
+<p>This will update your environmental variables and the Gurobi executable should be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;gurobi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is the output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Optimize</span> <span class="n">a</span> <span class="n">model</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">4</span> <span class="n">columns</span> <span class="ow">and</span> <span class="mi">6</span> <span class="n">nonzeros</span>
+<span class="n">Coefficient</span> <span class="n">statistics</span><span class="p">:</span>
+  <span class="n">Matrix</span> <span class="nb">range</span>     <span class="p">[</span><span class="mf">1e+00</span><span class="p">,</span> <span class="mf">2e+00</span><span class="p">]</span>
+  <span class="n">Objective</span> <span class="nb">range</span>  <span class="p">[</span><span class="mf">1e+00</span><span class="p">,</span> <span class="mf">1e+00</span><span class="p">]</span>
+  <span class="n">Bounds</span> <span class="nb">range</span>     <span class="p">[</span><span class="mf">0e+00</span><span class="p">,</span> <span class="mf">0e+00</span><span class="p">]</span>
+  <span class="n">RHS</span> <span class="nb">range</span>        <span class="p">[</span><span class="mf">3e-01</span><span class="p">,</span> <span class="mf">1e+00</span><span class="p">]</span>
+<span class="n">Presolve</span> <span class="n">removed</span> <span class="mi">1</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">1</span> <span class="n">columns</span>
+<span class="n">Presolve</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.02</span><span class="n">s</span>
+<span class="n">Presolved</span><span class="p">:</span> <span class="mi">2</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="n">columns</span><span class="p">,</span> <span class="mi">5</span> <span class="n">nonzeros</span>
+
+<span class="n">Iteration</span>    <span class="n">Objective</span>       <span class="n">Primal</span> <span class="n">Inf</span><span class="o">.</span>    <span class="n">Dual</span> <span class="n">Inf</span><span class="o">.</span>      <span class="n">Time</span>
+       <span class="mi">0</span>    <span class="mf">1.0000000e+00</span>   <span class="mf">1.500000e-01</span>   <span class="mf">0.000000e+00</span>      <span class="mi">0</span><span class="n">s</span>
+       <span class="mi">1</span>    <span class="mf">8.5000000e-01</span>   <span class="mf">0.000000e+00</span>   <span class="mf">0.000000e+00</span>      <span class="mi">0</span><span class="n">s</span>
+
+<span class="n">Solved</span> <span class="ow">in</span> <span class="mi">1</span> <span class="n">iterations</span> <span class="ow">and</span> <span class="mf">0.02</span> <span class="n">seconds</span>
+<span class="n">Optimal</span> <span class="n">objective</span>  <span class="mf">8.500000000e-01</span>
+<span class="n">Freed</span> <span class="n">default</span> <span class="n">Gurobi</span> <span class="n">environment</span>
+</pre></div>
+</div>
+</section>
+<section id="ipopt">
+<h3><span class="section-number">1.3.3.3. </span>Ipopt<a class="headerlink" href="#ipopt" title="Permalink to this headline">#</a></h3>
+<p>Two versions (modules) of Ipopt are available to CRC users: <code class="docutils literal notranslate"><span class="pre">ipopt/3.12.8</span></code> and <code class="docutils literal notranslate"><span class="pre">ipopt/hsl/3.12.8</span></code>. The latter supports HSL linear algebra routines whereas the former does not (and relies on the open-source library MUMPS). In general, the HSL linear algebra routines are more stable and are significantly faster for large-scale problems. All IPOPT users are strongly encouraged to use the HSL libraries. To obtain access to <code class="docutils literal notranslate"><span class="pre">ipopt/hsl/3.12.8</span></code>, ND users must apply for a <a class="reference external" href="http://www.hsl.rl.ac.uk/download/coinhsl/2015.06.23/">free HSL academic license</a> and then forward the approval email to <a class="reference external" href="mailto:CRCSupport&#37;&#52;&#48;nd&#46;edu">CRCSupport<span>&#64;</span>nd<span>&#46;</span>edu</a>.</p>
+<p>To use either version of Ipopt, first load the module. For example,</p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">ipopt/hsl/3.12.8</span></code></p>
+<p>This will update your environmental variables and the ipopt executable should be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If needed, you can also directly specify the path to the Ipopt executable to Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;/afs/crc.nd.edu/x86_64_linux/i/ipopt/3.12.8-hsl/bin/ipopt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, you may want to customize some of the <a class="reference external" href="https://www.coin-or.org/Ipopt/documentation/node40.html">Ipopt options</a>. For example, specify the linear algebra routine (use MA57 from the HSL library):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;linear_solver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ma57&quot;</span>
+</pre></div>
+</div>
+<p>Here is the output when using MA57:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ipopt</span> <span class="mf">3.12.8</span><span class="p">:</span> <span class="n">linear_solver</span><span class="o">=</span><span class="n">ma57</span>
+
+
+<span class="o">******************************************************************************</span>
+<span class="n">This</span> <span class="n">program</span> <span class="n">contains</span> <span class="n">Ipopt</span><span class="p">,</span> <span class="n">a</span> <span class="n">library</span> <span class="k">for</span> <span class="n">large</span><span class="o">-</span><span class="n">scale</span> <span class="n">nonlinear</span> <span class="n">optimization</span><span class="o">.</span>
+ <span class="n">Ipopt</span> <span class="ow">is</span> <span class="n">released</span> <span class="k">as</span> <span class="nb">open</span> <span class="n">source</span> <span class="n">code</span> <span class="n">under</span> <span class="n">the</span> <span class="n">Eclipse</span> <span class="n">Public</span> <span class="n">License</span> <span class="p">(</span><span class="n">EPL</span><span class="p">)</span><span class="o">.</span>
+         <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">visit</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">projects</span><span class="o">.</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Ipopt</span>
+<span class="o">******************************************************************************</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">Ipopt</span> <span class="n">version</span> <span class="mf">3.12.8</span><span class="p">,</span> <span class="n">running</span> <span class="k">with</span> <span class="n">linear</span> <span class="n">solver</span> <span class="n">ma57</span><span class="o">.</span>
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">Jacobian</span><span class="o">...</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">Jacobian</span><span class="o">.</span><span class="p">:</span>        <span class="mi">5</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">nonzeros</span> <span class="ow">in</span> <span class="n">Lagrangian</span> <span class="n">Hessian</span><span class="o">.............</span><span class="p">:</span>        <span class="mi">0</span>
+
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">variables</span><span class="o">............................</span><span class="p">:</span>        <span class="mi">3</span>
+                     <span class="n">variables</span> <span class="k">with</span> <span class="n">only</span> <span class="n">lower</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">3</span>
+                <span class="n">variables</span> <span class="k">with</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+                     <span class="n">variables</span> <span class="k">with</span> <span class="n">only</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraints</span><span class="o">.................</span><span class="p">:</span>        <span class="mi">0</span>
+<span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraints</span><span class="o">...............</span><span class="p">:</span>        <span class="mi">2</span>
+        <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">only</span> <span class="n">lower</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">1</span>
+   <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">0</span>
+        <span class="n">inequality</span> <span class="n">constraints</span> <span class="k">with</span> <span class="n">only</span> <span class="n">upper</span> <span class="n">bounds</span><span class="p">:</span>        <span class="mi">1</span>
+
+<span class="nb">iter</span>    <span class="n">objective</span>    <span class="n">inf_pr</span>   <span class="n">inf_du</span> <span class="n">lg</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>  <span class="o">||</span><span class="n">d</span><span class="o">||</span>  <span class="n">lg</span><span class="p">(</span><span class="n">rg</span><span class="p">)</span> <span class="n">alpha_du</span> <span class="n">alpha_pr</span>  <span class="n">ls</span>
+   <span class="mi">0</span> <span class="o">-</span><span class="mf">9.9999900e-03</span> <span class="mf">2.70e-01</span> <span class="mf">6.00e-01</span>  <span class="o">-</span><span class="mf">1.0</span> <span class="mf">0.00e+00</span>    <span class="o">-</span>  <span class="mf">0.00e+00</span> <span class="mf">0.00e+00</span>   <span class="mi">0</span>
+   <span class="mi">1</span> <span class="o">-</span><span class="mf">2.3096613e-02</span> <span class="mf">1.48e-01</span> <span class="mf">3.42e+00</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.87e-01</span>    <span class="o">-</span>  <span class="mf">1.10e-01</span> <span class="mf">4.70e-01</span><span class="n">h</span>  <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">-</span><span class="mf">7.1865937e-02</span> <span class="mf">0.00e+00</span> <span class="mf">8.39e-01</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.42e-01</span>    <span class="o">-</span>  <span class="mf">4.87e-01</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">-</span><span class="mf">8.1191843e-01</span> <span class="mf">0.00e+00</span> <span class="mf">4.70e-01</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.47e+00</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">5.02e-01</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">-</span><span class="mf">7.9286713e-01</span> <span class="mf">0.00e+00</span> <span class="mf">2.00e-07</span>  <span class="o">-</span><span class="mf">1.7</span> <span class="mf">1.91e-02</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">-</span><span class="mf">8.4402296e-01</span> <span class="mf">0.00e+00</span> <span class="mf">3.48e-03</span>  <span class="o">-</span><span class="mf">3.8</span> <span class="mf">5.61e-02</span>    <span class="o">-</span>  <span class="mf">9.40e-01</span> <span class="mf">9.12e-01</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">-</span><span class="mf">8.4949514e-01</span> <span class="mf">0.00e+00</span> <span class="mf">1.50e-09</span>  <span class="o">-</span><span class="mf">3.8</span> <span class="mf">7.04e-03</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">7</span> <span class="o">-</span><span class="mf">8.4999437e-01</span> <span class="mf">0.00e+00</span> <span class="mf">1.84e-11</span>  <span class="o">-</span><span class="mf">5.7</span> <span class="mf">4.99e-04</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+   <span class="mi">8</span> <span class="o">-</span><span class="mf">8.5000001e-01</span> <span class="mf">0.00e+00</span> <span class="mf">2.51e-14</span>  <span class="o">-</span><span class="mf">8.6</span> <span class="mf">5.65e-06</span>    <span class="o">-</span>  <span class="mf">1.00e+00</span> <span class="mf">1.00e+00</span><span class="n">f</span>  <span class="mi">1</span>
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">Iterations</span><span class="o">....</span><span class="p">:</span> <span class="mi">8</span>
+
+                                   <span class="p">(</span><span class="n">scaled</span><span class="p">)</span>                 <span class="p">(</span><span class="n">unscaled</span><span class="p">)</span>
+<span class="n">Objective</span><span class="o">...............</span><span class="p">:</span>  <span class="o">-</span><span class="mf">8.5000001246787615e-01</span>   <span class="o">-</span><span class="mf">8.5000001246787615e-01</span>
+<span class="n">Dual</span> <span class="n">infeasibility</span><span class="o">......</span><span class="p">:</span>   <span class="mf">2.5143903682766679e-14</span>    <span class="mf">2.5143903682766679e-14</span>
+<span class="n">Constraint</span> <span class="n">violation</span><span class="o">....</span><span class="p">:</span>   <span class="mf">0.0000000000000000e+00</span>    <span class="mf">0.0000000000000000e+00</span>
+<span class="n">Complementarity</span><span class="o">.........</span><span class="p">:</span>   <span class="mf">2.5342284749259295e-09</span>    <span class="mf">2.5342284749259295e-09</span>
+<span class="n">Overall</span> <span class="n">NLP</span> <span class="n">error</span><span class="o">.......</span><span class="p">:</span>   <span class="mf">2.5342284749259295e-09</span>    <span class="mf">2.5342284749259295e-09</span>
+
+
+<span class="n">Number</span> <span class="n">of</span> <span class="n">objective</span> <span class="n">function</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">objective</span> <span class="n">gradient</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">evaluations</span>            <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">evaluations</span>          <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">equality</span> <span class="n">constraint</span> <span class="n">Jacobian</span> <span class="n">evaluations</span>   <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">inequality</span> <span class="n">constraint</span> <span class="n">Jacobian</span> <span class="n">evaluations</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">Lagrangian</span> <span class="n">Hessian</span> <span class="n">evaluations</span>             <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Total</span> <span class="n">CPU</span> <span class="n">secs</span> <span class="ow">in</span> <span class="n">IPOPT</span> <span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="n">o</span> <span class="n">function</span> <span class="n">evaluations</span><span class="p">)</span>   <span class="o">=</span>      <span class="mf">0.004</span>
+<span class="n">Total</span> <span class="n">CPU</span> <span class="n">secs</span> <span class="ow">in</span> <span class="n">NLP</span> <span class="n">function</span> <span class="n">evaluations</span>           <span class="o">=</span>      <span class="mf">0.000</span>
+
+<span class="n">EXIT</span><span class="p">:</span> <span class="n">Optimal</span> <span class="n">Solution</span> <span class="n">Found</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="coin-or">
+<h3><span class="section-number">1.3.3.4. </span>Coin-OR<a class="headerlink" href="#coin-or" title="Permalink to this headline">#</a></h3>
+<p>Several solvers are availabe in the COIN-OR module.</p>
+<p>The first step to using any of these solvers is loading the module:</p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">coin-or</span></code></p>
+<section id="clp">
+<h4><span class="section-number">1.3.3.4.1. </span>Clp<a class="headerlink" href="#clp" title="Permalink to this headline">#</a></h4>
+<p>The Clp solver executable should now be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;clp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If needed, you can explicitly specify the path to the executable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;clp&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;/afs/crc.nd.edu/x86_64_linux/c/coin-or/clp/1.16.11/bin/clp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Coin</span> <span class="n">LP</span> <span class="n">version</span> <span class="mf">1.16.11</span><span class="p">,</span> <span class="n">build</span> <span class="n">Jun</span>  <span class="mi">4</span> <span class="mi">2018</span>
+<span class="n">command</span> <span class="n">line</span> <span class="o">-</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">x86_64_linux</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">/</span><span class="n">clp</span><span class="o">/</span><span class="mf">1.16.11</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">clp</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">adowling</span><span class="o">/</span><span class="n">Private</span><span class="o">/</span><span class="n">tmpEsGwQH</span><span class="o">.</span><span class="n">pyomo</span><span class="o">.</span><span class="n">nl</span> <span class="o">-</span><span class="n">AMPL</span>
+</pre></div>
+</div>
+</section>
+<section id="cbc">
+<h4><span class="section-number">1.3.3.4.2. </span>Cbc<a class="headerlink" href="#cbc" title="Permalink to this headline">#</a></h4>
+<p>The Cbc solver executable should now be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If needed, you can explicitly specify the path to the executable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;/afs/crc.nd.edu/x86_64_linux/c/coin-or/cbc/2.9.9/bin/cbc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">CBC</span> <span class="n">MILP</span> <span class="n">Solver</span> 
+<span class="n">Version</span><span class="p">:</span> <span class="mf">2.9.6</span> 
+<span class="n">Build</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Jun</span>  <span class="mi">3</span> <span class="mi">2018</span> 
+
+<span class="n">command</span> <span class="n">line</span> <span class="o">-</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">x86_64_linux</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">/</span><span class="n">cbc</span><span class="o">/</span><span class="mf">2.9.9</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">cbc</span> <span class="o">-</span><span class="n">printingOptions</span> <span class="nb">all</span> <span class="o">-</span><span class="kn">import</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">adowling</span><span class="o">/</span><span class="n">Private</span><span class="o">/</span><span class="n">tmp5jMyQq</span><span class="o">.</span><span class="n">pyomo</span><span class="o">.</span><span class="n">lp</span> <span class="o">-</span><span class="n">stat</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">solve</span> <span class="o">-</span><span class="n">solu</span> <span class="o">/</span><span class="n">afs</span><span class="o">/</span><span class="n">crc</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">adowling</span><span class="o">/</span><span class="n">Private</span><span class="o">/</span><span class="n">tmp5jMyQq</span><span class="o">.</span><span class="n">pyomo</span><span class="o">.</span><span class="n">soln</span> <span class="p">(</span><span class="n">default</span> <span class="n">strategy</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Option</span> <span class="k">for</span> <span class="n">printingOptions</span> <span class="n">changed</span> <span class="kn">from</span> <span class="nn">normal</span> <span class="n">to</span> <span class="nb">all</span>
+ <span class="n">CoinLpIO</span><span class="p">::</span><span class="n">readLp</span><span class="p">():</span> <span class="n">Maximization</span> <span class="n">problem</span> <span class="n">reformulated</span> <span class="k">as</span> <span class="n">minimization</span>
+<span class="n">Presolve</span> <span class="mi">2</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">columns</span> <span class="ow">and</span> <span class="mi">5</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">elements</span>
+<span class="n">Statistics</span> <span class="k">for</span> <span class="n">presolved</span> <span class="n">model</span>
+
+
+<span class="n">Problem</span> <span class="n">has</span> <span class="mi">2</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="n">columns</span> <span class="p">(</span><span class="mi">1</span> <span class="k">with</span> <span class="n">objective</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">5</span> <span class="n">elements</span>
+<span class="n">There</span> <span class="n">are</span> <span class="mi">1</span> <span class="n">singletons</span> <span class="k">with</span> <span class="n">objective</span> 
+<span class="n">Column</span> <span class="n">breakdown</span><span class="p">:</span>
+<span class="mi">3</span> <span class="n">of</span> <span class="nb">type</span> <span class="mf">0.0</span><span class="o">-&gt;</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="mf">0.0</span><span class="o">-&gt;</span><span class="n">up</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">lo</span><span class="o">-&gt;</span><span class="n">inf</span><span class="p">,</span> 
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">lo</span><span class="o">-&gt;</span><span class="n">up</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">free</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">fixed</span><span class="p">,</span> 
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="o">-</span><span class="n">inf</span><span class="o">-&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="o">-</span><span class="n">inf</span><span class="o">-&gt;</span><span class="n">up</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="mf">0.0</span><span class="o">-&gt;</span><span class="mf">1.0</span> 
+<span class="n">Row</span> <span class="n">breakdown</span><span class="p">:</span>
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">E</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">1</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">E</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">E</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> 
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">E</span> <span class="n">other</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">G</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">G</span> <span class="mf">1.0</span><span class="p">,</span> 
+<span class="mi">1</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">G</span> <span class="n">other</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">L</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">L</span> <span class="mf">1.0</span><span class="p">,</span> 
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">L</span> <span class="n">other</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">Range</span> <span class="mf">0.0</span><span class="o">-&gt;</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">Range</span> <span class="n">other</span><span class="p">,</span> 
+<span class="mi">0</span> <span class="n">of</span> <span class="nb">type</span> <span class="n">Free</span> 
+<span class="n">Presolve</span> <span class="mi">2</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">columns</span> <span class="ow">and</span> <span class="mi">5</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">elements</span>
+<span class="mi">0</span>  <span class="n">Obj</span> <span class="mi">0</span> <span class="n">Primal</span> <span class="n">inf</span> <span class="mf">1.299998</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">Dual</span> <span class="n">inf</span> <span class="mf">0.999999</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">2</span>  <span class="n">Obj</span> <span class="o">-</span><span class="mf">0.85</span>
+<span class="n">Optimal</span> <span class="o">-</span> <span class="n">objective</span> <span class="n">value</span> <span class="o">-</span><span class="mf">0.85</span>
+<span class="n">After</span> <span class="n">Postsolve</span><span class="p">,</span> <span class="n">objective</span> <span class="o">-</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">infeasibilities</span> <span class="o">-</span> <span class="n">dual</span> <span class="mi">0</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">primal</span> <span class="mi">0</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Optimal</span> <span class="n">objective</span> <span class="o">-</span><span class="mf">0.85</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">iterations</span> <span class="n">time</span> <span class="mf">0.002</span><span class="p">,</span> <span class="n">Presolve</span> <span class="mf">0.00</span>
+<span class="n">Total</span> <span class="n">time</span> <span class="p">(</span><span class="n">CPU</span> <span class="n">seconds</span><span class="p">):</span>       <span class="mf">0.00</span>   <span class="p">(</span><span class="n">Wallclock</span> <span class="n">seconds</span><span class="p">):</span>       <span class="mf">0.01</span>
+</pre></div>
+</div>
+</section>
+<section id="bonmin">
+<h4><span class="section-number">1.3.3.4.3. </span>Bonmin<a class="headerlink" href="#bonmin" title="Permalink to this headline">#</a></h4>
+<p><strong>Warning</strong>: Bonmin has been compiled using the HSL linear algebra routines. All users that have access to Ipopt with HSL also have access to Bonmin.</p>
+<p>After you submit your HSL license approval email to <a class="reference external" href="mailto:CRCsupport&#37;&#52;&#48;nd&#46;edu">CRCsupport<span>&#64;</span>nd<span>&#46;</span>edu</a>, the Bonmin solver executable will be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;bonmin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If needed, you can explicitly specify the path to the executable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;bonmin&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;/afs/crc.nd.edu/x86_64_linux/c/coin-or/bonmin/1.8.6/bin/bonmin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bonmin</span> <span class="mf">1.8.6</span> <span class="n">using</span> <span class="n">Cbc</span> <span class="mf">2.9.9</span> <span class="ow">and</span> <span class="n">Ipopt</span> <span class="mf">3.12.8</span>
+<span class="n">bonmin</span><span class="p">:</span> 
+<span class="n">Cbc3007W</span> <span class="n">No</span> <span class="n">integer</span> <span class="n">variables</span> <span class="o">-</span> <span class="n">nothing</span> <span class="n">to</span> <span class="n">do</span>
+
+<span class="o">******************************************************************************</span>
+<span class="n">This</span> <span class="n">program</span> <span class="n">contains</span> <span class="n">Ipopt</span><span class="p">,</span> <span class="n">a</span> <span class="n">library</span> <span class="k">for</span> <span class="n">large</span><span class="o">-</span><span class="n">scale</span> <span class="n">nonlinear</span> <span class="n">optimization</span><span class="o">.</span>
+ <span class="n">Ipopt</span> <span class="ow">is</span> <span class="n">released</span> <span class="k">as</span> <span class="nb">open</span> <span class="n">source</span> <span class="n">code</span> <span class="n">under</span> <span class="n">the</span> <span class="n">Eclipse</span> <span class="n">Public</span> <span class="n">License</span> <span class="p">(</span><span class="n">EPL</span><span class="p">)</span><span class="o">.</span>
+         <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">visit</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">projects</span><span class="o">.</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Ipopt</span>
+<span class="o">******************************************************************************</span>
+
+<span class="n">NLP0012I</span> 
+              <span class="n">Num</span>      <span class="n">Status</span>      <span class="n">Obj</span>             <span class="n">It</span>       <span class="n">time</span>                 <span class="n">Location</span>
+<span class="n">NLP0014I</span>             <span class="mi">1</span>         <span class="n">OPT</span> <span class="o">-</span><span class="mf">0.85000002</span>        <span class="mi">6</span> <span class="mf">0.00295</span>
+<span class="n">Cbc3007W</span> <span class="n">No</span> <span class="n">integer</span> <span class="n">variables</span> <span class="o">-</span> <span class="n">nothing</span> <span class="n">to</span> <span class="n">do</span>
+
+ 	<span class="s2">&quot;Finished&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="couenne">
+<h4><span class="section-number">1.3.3.4.4. </span>Couenne<a class="headerlink" href="#couenne" title="Permalink to this headline">#</a></h4>
+<p><strong>Warning</strong>: Couenne has been compiled using the HSL linear algebra routines. All users that have access to Ipopt with HSL also have access to Couenne.</p>
+<p>After you submit your HSL license approval email to <a class="reference external" href="mailto:CRCsupport&#37;&#52;&#48;nd&#46;edu">CRCsupport<span>&#64;</span>nd<span>&#46;</span>edu</a>, the Couenne solver executable will be callable from Pyomo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;couenne&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If needed, you can explicitly specify the path to the executable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span><span class="o">=</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;couenne&#39;</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="s2">&quot;/afs/crc.nd.edu/x86_64_linux/c/coin-or/couenne/0.5.6/bin/couenne&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output for the test problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Couenne</span> <span class="mf">0.5.6</span> <span class="o">--</span> <span class="n">an</span> <span class="n">Open</span><span class="o">-</span><span class="n">Source</span> <span class="n">solver</span> <span class="k">for</span> <span class="n">Mixed</span> <span class="n">Integer</span> <span class="n">Nonlinear</span> <span class="n">Optimization</span>
+<span class="n">Mailing</span> <span class="nb">list</span><span class="p">:</span> <span class="n">couenne</span><span class="nd">@list</span><span class="o">.</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Instructions</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">coin</span><span class="o">-</span><span class="ow">or</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">Couenne</span>
+<span class="n">couenne</span><span class="p">:</span> 
+<span class="n">ANALYSIS</span> <span class="n">TEST</span><span class="p">:</span> <span class="n">Couenne</span><span class="p">:</span> <span class="n">new</span> <span class="n">cutoff</span> <span class="n">value</span> <span class="o">-</span><span class="mf">8.5000000000e-01</span> <span class="p">(</span><span class="mf">0.045811</span> <span class="n">seconds</span><span class="p">)</span>
+<span class="n">NLP0012I</span> 
+              <span class="n">Num</span>      <span class="n">Status</span>      <span class="n">Obj</span>             <span class="n">It</span>       <span class="n">time</span>                 <span class="n">Location</span>
+<span class="n">NLP0014I</span>             <span class="mi">1</span>         <span class="n">OPT</span> <span class="o">-</span><span class="mf">0.85000002</span>        <span class="mi">9</span> <span class="mf">0.004882</span>
+<span class="n">Loaded</span> <span class="n">instance</span> <span class="s2">&quot;/afs/crc.nd.edu/user/a/adowling/Private/tmps3yXIf.pyomo.nl&quot;</span>
+<span class="n">Constraints</span><span class="p">:</span>            <span class="mi">2</span>
+<span class="n">Variables</span><span class="p">:</span>              <span class="mi">3</span> <span class="p">(</span><span class="mi">0</span> <span class="n">integer</span><span class="p">)</span>
+<span class="n">Auxiliaries</span><span class="p">:</span>            <span class="mi">1</span> <span class="p">(</span><span class="mi">0</span> <span class="n">integer</span><span class="p">)</span>
+
+<span class="n">Coin0506I</span> <span class="n">Presolve</span> <span class="mi">2</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">3</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">columns</span> <span class="ow">and</span> <span class="mi">5</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">elements</span>
+<span class="n">Clp0006I</span> <span class="mi">0</span>  <span class="n">Obj</span> <span class="o">-</span><span class="mf">0.849815</span> <span class="n">Primal</span> <span class="n">inf</span> <span class="mf">0.00018408442</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">Dual</span> <span class="n">inf</span> <span class="mf">0.999999</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Clp0006I</span> <span class="mi">2</span>  <span class="n">Obj</span> <span class="o">-</span><span class="mf">0.85</span>
+<span class="n">Clp0000I</span> <span class="n">Optimal</span> <span class="o">-</span> <span class="n">objective</span> <span class="n">value</span> <span class="o">-</span><span class="mf">0.85</span>
+<span class="n">Clp0032I</span> <span class="n">Optimal</span> <span class="n">objective</span> <span class="o">-</span><span class="mf">0.85</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">iterations</span> <span class="n">time</span> <span class="mf">0.002</span><span class="p">,</span> <span class="n">Presolve</span> <span class="mf">0.00</span>
+<span class="n">Cbc3007W</span> <span class="n">No</span> <span class="n">integer</span> <span class="n">variables</span> <span class="o">-</span> <span class="n">nothing</span> <span class="n">to</span> <span class="n">do</span>
+<span class="n">Clp0000I</span> <span class="n">Optimal</span> <span class="o">-</span> <span class="n">objective</span> <span class="n">value</span> <span class="o">-</span><span class="mf">0.85</span>
+
+ 	<span class="s2">&quot;Finished&quot;</span>
+
+<span class="n">Linearization</span> <span class="n">cuts</span> <span class="n">added</span> <span class="n">at</span> <span class="n">root</span> <span class="n">node</span><span class="p">:</span>          <span class="mi">3</span>
+<span class="n">Linearization</span> <span class="n">cuts</span> <span class="n">added</span> <span class="ow">in</span> <span class="n">total</span><span class="p">:</span>              <span class="mi">3</span>  <span class="p">(</span><span class="n">separation</span> <span class="n">time</span><span class="p">:</span> <span class="mf">6.5e-05</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Total</span> <span class="n">solve</span> <span class="n">time</span><span class="p">:</span>                        <span class="mf">0.001362</span><span class="n">s</span> <span class="p">(</span><span class="mf">0.001362</span><span class="n">s</span> <span class="ow">in</span> <span class="n">branch</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">bound</span><span class="p">)</span>
+<span class="n">Lower</span> <span class="n">bound</span><span class="p">:</span>                                <span class="o">-</span><span class="mf">0.85</span>
+<span class="n">Upper</span> <span class="n">bound</span><span class="p">:</span>                                <span class="o">-</span><span class="mf">0.85</span>  <span class="p">(</span><span class="n">gap</span><span class="p">:</span> <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>
+<span class="n">Branch</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">bound</span> <span class="n">nodes</span><span class="p">:</span>                         <span class="mi">0</span>
+<span class="n">Performance</span> <span class="n">of</span>                           <span class="n">FBBT</span><span class="p">:</span>	    <span class="mf">2.6e-05</span><span class="n">s</span><span class="p">,</span>        <span class="mi">3</span> <span class="n">runs</span><span class="o">.</span> <span class="n">fix</span><span class="p">:</span>          <span class="mi">0</span> <span class="n">shrnk</span><span class="p">:</span>    <span class="mf">10.7635</span> <span class="n">ubd</span><span class="p">:</span>   <span class="mf">0.666667</span> <span class="mi">2</span><span class="n">ubd</span><span class="p">:</span>          <span class="mi">0</span> <span class="n">infeas</span><span class="p">:</span>          <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="scip">
+<h3><span class="section-number">1.3.3.5. </span>SCIP<a class="headerlink" href="#scip" title="Permalink to this headline">#</a></h3>
+<p>Coming soon.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01.02-Running-Pyomo-on-Google-Colab.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.2. </span>Running Pyomo on Google Colab</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Cross-Platform Installation of Pyomo and Solvers</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey C. Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.2. Production Model Sensitivity Analysis &#8212; ND Pyomo Cookbook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. Linear Blending Problem" href="02.03-Linear-Blending-Problem.html" />
+    <link rel="prev" title="2.1. Production Models with Linear Constraints" href="02.01-Production-Models-with-Linear-Constraints.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ND Pyomo Cookbook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
+   1. Getting Started with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Installing-Pyomo.html">
+     1.3. Installing a Pyomo/Python Development Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
+     1.4. Running Pyomo on Google Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">
+     1.5. Running Pyomo on the Notre Dame CRC Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
+     1.6. Cross-Platform Installation of Pyomo and Solvers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02.00-Linear-Programming.html">
+   2. Linear Programming
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
+     2.1. Production Models with Linear Constraints
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. Production Model Sensitivity Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
+     2.3. Linear Blending Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
+     2.4. Design of a Cold Weather Fuel for a Camping Stove
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.05-Gasoline-Blending.html">
+     2.5. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
+     2.6. Model Predictive Control of a Double Integrator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
+     2.7. Non-Continuous Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Assignment-Problems.html">
+   3. Assignment Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Transportation-Networks.html">
+     3.1. Transportation Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
+   4. Scheduling with Disjunctive Constraints
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
+     4.1. Introduction to Disjunctive Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Machine-Bottleneck.html">
+     4.2. Machine Bottleneck
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Job-Shop-Scheduling.html">
+     4.3. Job Shop Scheduling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Maintenance-Planning.html">
+     4.4. Maintenance Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">
+     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Unit-Commitment.html">
+     4.6. Unit Commitment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Simulation.html">
+   5. Simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
+     5.1. Response of a First Order System to Step and Square Wave Inputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
+     5.2. Exothermic CSTR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
+     5.3. Transient Heat Conduction in Various Geometries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
+   6. Differential-Algebraic Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
+     6.1. Unconstrained Scalar Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
+     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
+     6.3. Path Planning for a Simple Car
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">
+     6.4. Soft Landing Apollo 11 on the Moon
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
+     6.5. Ascent from Lunar Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Parameter-Estimation.html">
+   7. Parameter Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
+     7.1. Parameter estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08.00-Financial-Applications.html">
+   8. Financial Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
+     8.1. Obtaining Historical Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
+     8.2. Consolidating and Charting Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
+     8.3. Binomial Model for Pricing Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
+     8.5. MAD Portfolio Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.05-Real-Options.html">
+     8.6. Real Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
+   9. Guide to Coding with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09.01-notebook-style-guide.html">
+     9.1. Notebook Style Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   10. Index
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/02.02-Production-Model-Sensitivity-Analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/02.02-Production-Model-Sensitivity-Analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02.02-Production-Model-Sensitivity-Analysis.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/02.02-Production-Model-Sensitivity-Analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   2.2.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#production-plan-mixed-product-strategy">
+   2.2.2. Production plan: Mixed product strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-the-active-constraints">
+   2.2.3. What are the active constraints?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensitivity-analysis">
+   2.2.4. Sensitivity analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjoint-sensitivity">
+   2.2.5. Adjoint sensitivity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-sensitivity-coefficients-in-pyomo">
+   2.2.6. Accessing sensitivity coefficients in Pyomo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-of-constraints">
+   2.2.7. Theory of constraints
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Production Model Sensitivity Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   2.2.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#production-plan-mixed-product-strategy">
+   2.2.2. Production plan: Mixed product strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-the-active-constraints">
+   2.2.3. What are the active constraints?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensitivity-analysis">
+   2.2.4. Sensitivity analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjoint-sensitivity">
+   2.2.5. Adjoint sensitivity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-sensitivity-coefficients-in-pyomo">
+   2.2.6. Accessing sensitivity coefficients in Pyomo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-of-constraints">
+   2.2.7. Theory of constraints
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="production-model-sensitivity-analysis">
+<h1><span class="section-number">2.2. </span>Production Model Sensitivity Analysis<a class="headerlink" href="#production-model-sensitivity-analysis" title="Permalink to this headline">#</a></h1>
+<p>This notebook revisits the simple production model for the purpose of sensitivity analysis. The notebook uses <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> to represent the model with the <a class="reference external" href="https://github.com/coin-or/Cbc">COINOR-CBC</a> solver to calculate solutions.</p>
+<section id="imports">
+<h2><span class="section-number">2.2.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">):</span>
+    <span class="o">!</span>pip install -q pyomo
+    <span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="o">!</span>apt-get install -y -qq coinor-cbc
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="o">!</span>conda install -c conda-forge coincbc 
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="production-plan-mixed-product-strategy">
+<h2><span class="section-number">2.2.2. </span>Production plan: Mixed product strategy<a class="headerlink" href="#production-plan-mixed-product-strategy" title="Permalink to this headline">#</a></h2>
+<p>So far we have learned that we can make $1,600 per week by manufacturing product X, and $2,400 per week manufacturing product Y.  Is it possible to do even better?</p>
+<p>To answer this question, we consider the possibilty of manufacturing both products in the same plant. The marketing department assures us that product Y will not affect the sales of product X.  So the same constraints hold as before, but now we have two decision variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p><img alt="LP_ProductXY.png" src="https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/LP_ProductXY.png?raw=1" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># declare decision variables</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="c1"># declare objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span>
+    <span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">sense</span> <span class="o">=</span> <span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># declare constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P = 2600.0
+x = 20.0
+y = 60.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The mixed product strategy earns more profit than either of the single product srategies. Does this surprise you?  Before going further, try to explain why it is possible for a mixed product strategy to earn more profit than either of the possible single product strategies.</p>
+</section>
+<section id="what-are-the-active-constraints">
+<h2><span class="section-number">2.2.3. </span>What are the active constraints?<a class="headerlink" href="#what-are-the-active-constraints" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Production Qty X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Production Qty Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labor A constraint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">80</span> <span class="o">-</span> <span class="n">x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="c1"># Labor B constraint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="c1"># Demand constraint</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Labor A Constraint&#39;</span><span class="p">,</span> <span class="s1">&#39;Labor B Constraint&#39;</span><span class="p">,</span> <span class="s1">&#39;Demand Constraint&#39;</span><span class="p">])</span>
+
+<span class="c1"># Contours of constant profit</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">40</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">30</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;y--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optimum</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Mixed Product Strategy&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span> 
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Y Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> 
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;X Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> 
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;Increasing Profit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> 
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;LPprog01.png&#39;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;figures&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;figures&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">fname</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Production-Model-Sensitivity-Analysis_9_0.png" src="../_images/02.02-Production-Model-Sensitivity-Analysis_9_0.png" />
+</div>
+</div>
+</section>
+<section id="sensitivity-analysis">
+<h2><span class="section-number">2.2.4. </span>Sensitivity analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this headline">#</a></h2>
+<p>Sensitivity analysis is the process of determining how the solution to a linear programming problem (or for that matter, any optimization problem) depends on parameter values. This can lead to important insights. In this toy application, for example, sensitivity analysis will reveal the extra profit obtained by adding additional hours of labor. For many applications, the information obtained from sensitivity analysis can be the primary reason to create the linear program.</p>
+<p>For the general case, assume that the linear program can be written in the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P = \max c^Tx \\
+\end{align*}
+\end{split}\]</div>
+<p>subject to
+$<span class="math notranslate nohighlight">\(
+\begin{align*}
+A x \leq b \\
+x \geq 0 
+\end{align*}
+\)</span>$</p>
+<p>The inequality constraints can be combined into a single matrix expression</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\begin{bmatrix} A \\ -I \end{bmatrix} x \leq \begin{bmatrix} b \\ 0 \end{bmatrix}
+\end{align*}
+\end{split}\]</div>
+<p>A general feature of linear programming problems with <span class="math notranslate nohighlight">\(n\)</span> decision variables is that the optimal value of the objective is found at the intersection of <span class="math notranslate nohighlight">\(n\)</span> active constraints. At the optimal solution, the active constraints can be treated as linear equalities. Let the matrix <span class="math notranslate nohighlight">\(A_a\)</span> refer to the subset of <span class="math notranslate nohighlight">\(n\)</span> rows of <span class="math notranslate nohighlight">\(\begin{bmatrix} A \\ -I \end{bmatrix}\)</span> comprising the active constraints, and <span class="math notranslate nohighlight">\(b_a\)</span> be the corresponding elements of <span class="math notranslate nohighlight">\(b\)</span>. The solution to the linear program is then given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P &amp; = c^T x \\
+A_ax &amp; = b_a
+\end{align*}
+\end{split}\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(x {A_a}^{-1}b_a\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+P &amp; = c^T {A_a}^{-1} b_a 
+\end{align*}
+\]</div>
+<p>The quantities in the vector <span class="math notranslate nohighlight">\(c^T {A_a}^{-1}\)</span> show how the profit <span class="math notranslate nohighlight">\(P\)</span> depends on small changes in the available resources given in <span class="math notranslate nohighlight">\(b_a\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+P + \delta P  = c^T {A_a}^{-1} (b_a + \delta b_a) \implies \delta P  = \underbrace{c^T {A_a}^{-1}}_{y^T} \delta b_a
+\end{align*}
+\]</div>
+<p>The vector <span class="math notranslate nohighlight">\(y^T = c^T {A_a}^{-1}\)</span> are the sensitivity coefficients.</p>
+<p>Let’s see how this works out for the toy problem in this notebook. First we define the ‘augmented’ matrices corresponding to the inequality constraints.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_augment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">b_augment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">80</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A = </span><span class="si">{</span><span class="n">A_augment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">b = </span><span class="si">{</span><span class="n">b_augment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [[ 1  0]
+ [ 1  1]
+ [ 2  1]
+ [-1  0]
+ [ 0 -1]]
+
+b = [[ 40]
+ [ 80]
+ [100]
+ [  0]
+ [  0]]
+
+c = [40 30]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The active constraints are rows 2 and 3 that correspond to the labor constraints. Since Python uses zero-indexing,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">A_active</span> <span class="o">=</span> <span class="n">A_augment</span><span class="p">[</span><span class="n">active_constraints</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">b_active</span> <span class="o">=</span> <span class="n">b_augment</span><span class="p">[</span><span class="n">active_constraints</span><span class="p">,</span> <span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next let’s verify that we are getting the expected solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A_active</span><span class="p">),</span> <span class="n">b_active</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">P = </span><span class="si">{</span><span class="n">P</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = [[20.]
+ [60.]]
+
+P = [2600.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compute the sensitivity coefficients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A_active</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = [20. 10.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>These coefficients describe the incremental profit that can be obtained for each additional unit of the corresponding resource in <span class="math notranslate nohighlight">\(b_a\)</span>.</p>
+</section>
+<section id="adjoint-sensitivity">
+<h2><span class="section-number">2.2.5. </span>Adjoint sensitivity<a class="headerlink" href="#adjoint-sensitivity" title="Permalink to this headline">#</a></h2>
+<p>The sensitivity coefficients can be computed as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+y^T = c^T {A_a}^{-1}
+\end{align*}
+\]</div>
+<p>which involves inversion of a linear matrix. This is an expensive and potentially sensitive numerical operation which can be avoided.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+y^T = c^T {A_a}^{-1} \implies y^T A_a = c^T \implies A_a^T y = c
+\end{align*}
+\]</div>
+<p>In other words, <span class="math notranslate nohighlight">\(y\)</span> can be computed by solving a system of equations involving the transposed matrix <span class="math notranslate nohighlight">\(A_a^T\)</span> with the coefficients of the objective function on the right hand side.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A_active</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20., 10.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="accessing-sensitivity-coefficients-in-pyomo">
+<h2><span class="section-number">2.2.6. </span>Accessing sensitivity coefficients in Pyomo<a class="headerlink" href="#accessing-sensitivity-coefficients-in-pyomo" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># for access to dual solution for constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">dual</span> <span class="o">=</span> <span class="n">Suffix</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">Suffix</span><span class="o">.</span><span class="n">IMPORT</span><span class="p">)</span>
+
+<span class="c1"># declare decision variables</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="c1"># declare objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span>
+    <span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">sense</span> <span class="o">=</span> <span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># declare constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Solution&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sensitivity Analysis&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_demand = </span><span class="si">{</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborA = </span><span class="si">{</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_laborB = </span><span class="si">{</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution
+x = 20.0
+y = 60.0
+
+Sensitivity Analysis
+y_demand = -0.0
+y_laborA = 20.0
+y_laborB = 10.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Analysis of the constraints.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;   </span><span class="si">{0:7.2f}</span><span class="s2"> </span><span class="si">{1:7.2f}</span><span class="s2"> </span><span class="si">{2:7.2f}</span><span class="s2"> </span><span class="si">{3:7.2f}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Constraint  value  lslack  uslack    dual&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">lslack</span><span class="p">(),</span> <span class="n">c</span><span class="o">.</span><span class="n">uslack</span><span class="p">(),</span> <span class="n">model</span><span class="o">.</span><span class="n">dual</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Constraint  value  lslack  uslack    dual
+demand      20.00     inf   20.00    0.00
+laborA      80.00     inf    0.00  -20.00
+laborB     100.00     inf    0.00  -10.00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="theory-of-constraints">
+<h2><span class="section-number">2.2.7. </span>Theory of constraints<a class="headerlink" href="#theory-of-constraints" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(n\)</span> decisions you should expect to find <span class="math notranslate nohighlight">\(n\)</span> ‘active’ constraints.</p></li>
+<li><p>Each inactive constraint has an associated ‘slack.’  The associated resources have no incremental value.</p></li>
+<li><p>Each active constraint has an associated ‘shadow price’.  This is additional value of additional resources.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02.01-Production-Models-with-Linear-Constraints.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>Production Models with Linear Constraints</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02.03-Linear-Blending-Problem.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Linear Blending Problem</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey C. Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

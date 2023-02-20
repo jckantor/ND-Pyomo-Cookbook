@@ -1,0 +1,1346 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6.4. Soft Landing Apollo 11 on the Moon &#8212; ND Pyomo Cookbook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.5. Ascent from Lunar Surface" href="06.05-Launching-Apollo-11-from-the-Moon.html" />
+    <link rel="prev" title="6.3. Path Planning for a Simple Car" href="06.03-Path-Planning-for-a-Simple-Car.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ND Pyomo Cookbook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
+   1. Getting Started with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Installing-Pyomo.html">
+     1.3. Installing a Pyomo/Python Development Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
+     1.4. Running Pyomo on Google Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">
+     1.5. Running Pyomo on the Notre Dame CRC Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
+     1.6. Cross-Platform Installation of Pyomo and Solvers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Linear-Programming.html">
+   2. Linear Programming
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
+     2.1. Production Models with Linear Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">
+     2.2. Production Model Sensitivity Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
+     2.3. Linear Blending Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
+     2.4. Design of a Cold Weather Fuel for a Camping Stove
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.05-Gasoline-Blending.html">
+     2.5. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
+     2.6. Model Predictive Control of a Double Integrator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
+     2.7. Non-Continuous Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Assignment-Problems.html">
+   3. Assignment Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Transportation-Networks.html">
+     3.1. Transportation Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
+   4. Scheduling with Disjunctive Constraints
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
+     4.1. Introduction to Disjunctive Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Machine-Bottleneck.html">
+     4.2. Machine Bottleneck
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Job-Shop-Scheduling.html">
+     4.3. Job Shop Scheduling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Maintenance-Planning.html">
+     4.4. Maintenance Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">
+     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Unit-Commitment.html">
+     4.6. Unit Commitment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Simulation.html">
+   5. Simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
+     5.1. Response of a First Order System to Step and Square Wave Inputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
+     5.2. Exothermic CSTR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
+     5.3. Transient Heat Conduction in Various Geometries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
+   6. Differential-Algebraic Equations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
+     6.1. Unconstrained Scalar Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
+     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
+     6.3. Path Planning for a Simple Car
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.4. Soft Landing Apollo 11 on the Moon
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
+     6.5. Ascent from Lunar Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Parameter-Estimation.html">
+   7. Parameter Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
+     7.1. Parameter estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08.00-Financial-Applications.html">
+   8. Financial Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
+     8.1. Obtaining Historical Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
+     8.2. Consolidating and Charting Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
+     8.3. Binomial Model for Pricing Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
+     8.5. MAD Portfolio Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.05-Real-Options.html">
+     8.6. Real Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
+   9. Guide to Coding with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09.01-notebook-style-guide.html">
+     9.1. Notebook Style Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   10. Index
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/06.04-Soft-Landing-Apollo-11-on-the-Moon.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   6.4.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-1-vertical-dynamics-of-a-rocket-with-constant-mass">
+   6.4.2. Version 1: Vertical dynamics of a rocket with constant mass
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-attempt-at-a-solution">
+     6.4.2.1. First attempt at a solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#land-on-the-surface-not-above-or-below-the-surface">
+     6.4.2.2. Land on the surface, not above or below the surface.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-that-a-soft-landing">
+     6.4.2.3. Make that a soft landing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restrict-fuel-flow-to-engine-capacity">
+     6.4.2.4. Restrict fuel flow to engine capacity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-2-rescaled-model">
+   6.4.3. Version 2: Rescaled model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-much-fuel-is-burned">
+     6.4.3.1. How much fuel is burned?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimize-fuel-consumption">
+     6.4.3.2. Minimize fuel consumption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-3-rocket-model">
+   6.4.4. Version 3: Rocket model
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Soft Landing Apollo 11 on the Moon</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   6.4.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-1-vertical-dynamics-of-a-rocket-with-constant-mass">
+   6.4.2. Version 1: Vertical dynamics of a rocket with constant mass
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-attempt-at-a-solution">
+     6.4.2.1. First attempt at a solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#land-on-the-surface-not-above-or-below-the-surface">
+     6.4.2.2. Land on the surface, not above or below the surface.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-that-a-soft-landing">
+     6.4.2.3. Make that a soft landing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restrict-fuel-flow-to-engine-capacity">
+     6.4.2.4. Restrict fuel flow to engine capacity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-2-rescaled-model">
+   6.4.3. Version 2: Rescaled model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-much-fuel-is-burned">
+     6.4.3.1. How much fuel is burned?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimize-fuel-consumption">
+     6.4.3.2. Minimize fuel consumption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-3-rocket-model">
+   6.4.4. Version 3: Rocket model
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="soft-landing-apollo-11-on-the-moon">
+<h1><span class="section-number">6.4. </span>Soft Landing Apollo 11 on the Moon<a class="headerlink" href="#soft-landing-apollo-11-on-the-moon" title="Permalink to this headline">#</a></h1>
+<p>Keywords: optimal control, ipopt usage, dae, differential-algebraic equations, rescaling time</p>
+<p>Landing a rocket on the surface of a planet was once a staple of science fiction, and then realized in the 1960’s through multiple manned and unmanned landings on the moon. It’s hard to overestimate the degree to which these missions inspired a new generation</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg/368px-Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg" /></p>
+<p><a title="NASA Michael Collins [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Eagle_In_Lunar_Orbit_-_GPN-2000-001210.jpg"></a>
+NASA Michael Collins [Public domain]</p>
+<p><strong>Rocket Landing Videos</strong> (these never get old):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/k_OD2V6fMLQ">Apollo 11 Landing on the Moon, July 20, 1969</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/u0-pfzKbh2k">SpaceX Falcon Heavy Side Boosters Landing at Kennedy Space Center, February 6, 2018 </a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/9pillaOxGCo?t=103">Blue Origin, November 24, 2014</a></p></li>
+</ul>
+<p>Inspired by these examples, this notebook uses Pyomo and a simple model of a rocket to compute a control policy for a soft landing. The parameters used correspond to the descent of the Apollo 11 Lunar Module to the moon on July 20, 1969.</p>
+<section id="imports">
+<h2><span class="section-number">6.4.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">):</span>
+    <span class="o">!</span>pip install -q pyomo
+    <span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;ipopt&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;ipopt&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="o">!</span>wget -N -q <span class="s2">&quot;https://ampl.com/dl/open/ipopt/ipopt-linux64.zip&quot;</span>
+        <span class="o">!</span>unzip -o -q ipopt-linux64
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="o">!</span>conda install -c conda-forge ipopt 
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;ipopt&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;ipopt&quot;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="version-1-vertical-dynamics-of-a-rocket-with-constant-mass">
+<h2><span class="section-number">6.4.2. </span>Version 1: Vertical dynamics of a rocket with constant mass<a class="headerlink" href="#version-1-vertical-dynamics-of-a-rocket-with-constant-mass" title="Permalink to this headline">#</a></h2>
+<p>For a rocket with a mass <span class="math notranslate nohighlight">\(m\)</span> in vertical flight at altitude <span class="math notranslate nohighlight">\(h\)</span>, a momentum balance yields the model</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+m\frac{d^2h}{dt^2} &amp; = - m g + v_eu \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\)</span> is the mass flow of propellant and <span class="math notranslate nohighlight">\(v_e\)</span> is the velocity of the exhaust relative to the rocket. In this first attempt at modeling and control we will neglect the change in rocket mass due to fuel burn.</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LM_illustration_02-IT.png/368px-LM_illustration_02-IT.png" /></p>
+<p><a title="LM_illustration_02.jpg: NASA Marshall Space Flight Center (NASA-MSFC)
+derivative work: Adert [Public domain], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:LM_illustration_02-IT.png"></a></p>
+<p>LM_illustration_02.jpg: NASA Marshall Space Flight Center (NASA-MSFC)derivative work: Adert [Public domain]</p>
+<p>The complete Apollo lunar module was composed of descent and ascent stages, each containing a rocket engine and associated fuel tanks. The descent stage carried the entire assembly to the lunar surface.  The total mass <span class="math notranslate nohighlight">\(m\)</span> in the above model therefore consists of the dry and fuel masses of both stages. For the purpose of analyzing the descent of the lunar module to the lunar surface, the ‘dry’ mass consists of the total mass of the ascent stage plus the dry mass of the descent stage.</p>
+<p>The following data is for the <a class="reference external" href="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C">Apollo 11 Lunar Module</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lunar module</span>
+<span class="n">m_ascent_dry</span> <span class="o">=</span> <span class="mf">2445.0</span>          <span class="c1"># kg mass of ascent stage without fuel</span>
+<span class="n">m_ascent_fuel</span> <span class="o">=</span> <span class="mf">2376.0</span>         <span class="c1"># kg mass of ascent stage fuel</span>
+<span class="n">m_descent_dry</span> <span class="o">=</span> <span class="mf">2034.0</span>         <span class="c1"># kg mass of descent stage without fuel</span>
+<span class="n">m_descent_fuel</span> <span class="o">=</span> <span class="mf">8248.0</span>        <span class="c1"># kg mass of descent stage fuel</span>
+
+<span class="n">m_fuel</span> <span class="o">=</span> <span class="n">m_descent_fuel</span>
+<span class="n">m_dry</span> <span class="o">=</span> <span class="n">m_ascent_dry</span> <span class="o">+</span> <span class="n">m_ascent_fuel</span> <span class="o">+</span> <span class="n">m_descent_dry</span>
+<span class="n">m_total</span> <span class="o">=</span> <span class="n">m_dry</span> <span class="o">+</span> <span class="n">m_fuel</span>
+
+<span class="c1"># descent engine characteristics</span>
+<span class="n">v_exhaust</span> <span class="o">=</span> <span class="mf">3050.0</span>             <span class="c1"># m/s</span>
+<span class="n">u_max</span> <span class="o">=</span> <span class="mf">45050.0</span><span class="o">/</span><span class="n">v_exhaust</span>      <span class="c1"># 45050 newtons / exhaust velocity</span>
+
+<span class="c1"># landing mission specifications</span>
+<span class="n">h_initial</span> <span class="o">=</span> <span class="mf">100000.0</span>           <span class="c1"># meters</span>
+<span class="n">v_initial</span> <span class="o">=</span> <span class="mi">1520</span>               <span class="c1"># orbital velocity m/s</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">1.62</span>                       <span class="c1"># m/s**2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="first-attempt-at-a-solution">
+<h3><span class="section-number">6.4.2.1. </span>First attempt at a solution<a class="headerlink" href="#first-attempt-at-a-solution" title="Permalink to this headline">#</a></h3>
+<p>For this first attempt at a solution, we will choose an arbitrary value for the length of the landing mission. The integration will start with the initial conditions, and we’ll see what happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_f</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_f</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+  
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;FORWARD&#39;</span><span class="p">)</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    
+    <span class="n">tsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">hsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">usim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">hsim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;altitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">usim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;engine mass flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;kg/sec&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_7_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_7_0.png" />
+</div>
+</div>
+<p>This first attempt at a solution included no specification related to landing on the lunar surface. The solver reported a solution where the engine doesn’t fire, and the lunar module crashes into the lunar surface at full speed about 66 seconds after the start of the descent mission.</p>
+</section>
+<section id="land-on-the-surface-not-above-or-below-the-surface">
+<h3><span class="section-number">6.4.2.2. </span>Land on the surface, not above or below the surface.<a class="headerlink" href="#land-on-the-surface-not-above-or-below-the-surface" title="Permalink to this headline">#</a></h3>
+<p>The mission crashed!  It’s clear now that we haven’t fully specified the desired outcome of the mission.  Let’s start by specifying the final condition as being on the surface</p>
+<div class="math notranslate nohighlight">
+\[h(t_f) = 0\]</div>
+<p>This condition is implemented in Pyomo by fixing the terminal value of <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_f</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_f</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t_f</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_11_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_11_0.png" />
+</div>
+</div>
+<p>The descent mission now finishes the descent at the lunar surface, but unfortunately arrives with sufficient velocity to still be considered a crash.</p>
+</section>
+<section id="make-that-a-soft-landing">
+<h3><span class="section-number">6.4.2.3. </span>Make that a soft landing<a class="headerlink" href="#make-that-a-soft-landing" title="Permalink to this headline">#</a></h3>
+<p>To ensure a soft landing, we also need to specify a terminal velocity.  The terminal conditions are now</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+h(t_f) &amp; = 0 \\
+v(t_f) &amp; = 0
+\end{align*}
+\end{split}\]</div>
+<p>These conditions are implement by fixing terminal values of the associated Pyomo variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_f</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_f</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t_f</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">t_f</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_14_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_14_0.png" />
+</div>
+</div>
+<p>The lunar module now is now successfully landing on the lunar surface, but the fuel flow requirement exceeds the maximum capacity of the descent engine.</p>
+</section>
+<section id="restrict-fuel-flow-to-engine-capacity">
+<h3><span class="section-number">6.4.2.4. </span>Restrict fuel flow to engine capacity<a class="headerlink" href="#restrict-fuel-flow-to-engine-capacity" title="Permalink to this headline">#</a></h3>
+<p>The next step is establish constraints on the control action by limiting fuel flow to the mass flow limits of the descent engine.</p>
+<div class="math notranslate nohighlight">
+\[ 0 \leq u(t) \leq u_{max}\]</div>
+<p>Since less thrust is available, we may need to extend the length of the landing mission to find a feasible solution to the optimization problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_f</span> <span class="o">=</span> <span class="mi">3000</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_f</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_max</span><span class="p">))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t_f</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">t_f</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_17_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_17_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="version-2-rescaled-model">
+<h2><span class="section-number">6.4.3. </span>Version 2: Rescaled model<a class="headerlink" href="#version-2-rescaled-model" title="Permalink to this headline">#</a></h2>
+<p>At this point, it’s now clear the first version of this model has run into some serious problems:</p>
+<ul class="simple">
+<li><p>The calculated trajectory takes us through a crash landing and trip through the interior of the moon.</p></li>
+<li><p>The engine thrust never goes to zero, even when the lander is at zero velocity and on the surface. The reason is that the model doesn’t account for the reaction force of the surface on the lander. So the lander is really just hoovering rather than landing.</p></li>
+<li><p>There is no obvious means of estimating the time required for the mission.</p></li>
+</ul>
+<p>Let’s begin with the last issue. We will introduce an additional decision variable <span class="math notranslate nohighlight">\(T\)</span> denoting the length of the mission. Time is then rescaled as</p>
+<div class="math notranslate nohighlight">
+\[\tau = \frac{t}{T}\quad\implies\quad t =\tau T\]</div>
+<p>The differential equation model then becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{m}{T^2}\frac{d^2h}{d\tau^2} &amp; = - m g + v_eu \\
+\end{align*}
+\end{split}\]</div>
+<p>The net result is that an additional variable, <span class="math notranslate nohighlight">\(T\)</span>, denoting the duration of the descent mission has been introduced into the optimization problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_max</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+    <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+  
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;FORWARD&#39;</span><span class="p">)</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    
+    <span class="n">tsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">hsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">usim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">hsim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;altitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;mission length =&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; seconds&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">usim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;engine mass flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;kg/sec&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_19_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_19_0.png" />
+</div>
+</div>
+<section id="how-much-fuel-is-burned">
+<h3><span class="section-number">6.4.3.1. </span>How much fuel is burned?<a class="headerlink" href="#how-much-fuel-is-burned" title="Permalink to this headline">#</a></h3>
+<p>Fuel consumption can be calculated as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\mbox{fuel consumed} &amp; = \int_0^T u(t)\,dt  = T \int_0^1u(\tau)\,d\tau
+\end{align*}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_max</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">fuel</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+    <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;FORWARD&#39;</span><span class="p">)</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    
+    <span class="n">tsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">hsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">usim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">hsim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;altitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;mission length = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; seconds&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">usim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;engine mass flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;kg/sec&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;fuel burned = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">fuel</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; kg&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_21_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_21_0.png" />
+</div>
+</div>
+</section>
+<section id="minimize-fuel-consumption">
+<h3><span class="section-number">6.4.3.2. </span>Minimize fuel consumption<a class="headerlink" href="#minimize-fuel-consumption" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\min_{u(\tau), T} T\int_0^1 u(\tau)\, d\tau\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_max</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">fuel</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">fuel</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m_total</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="o">-</span><span class="n">m_total</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_23_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_23_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="version-3-rocket-model">
+<h2><span class="section-number">6.4.4. </span>Version 3: Rocket model<a class="headerlink" href="#version-3-rocket-model" title="Permalink to this headline">#</a></h2>
+<p>The first version of the rocket model has run into a serious problem because it appears not to provide enough mass flow to the engine to prevent a crash landing. But that may be an artifact of the assumption of constant mass. For Apollo 11 Lunar Module, for example, the fuel in the descent engine comprises more than 50% of the total mass of the lander.</p>
+<p>For the second version of the rocket model, we augment the model with a mass balance for fuel. This yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{m(t)}{T^2}\frac{d^2h}{d\tau^2} &amp; = - m(t)g + v_eu \\
+\\
+\frac{1}{T}\frac{dm}{d\tau} &amp; = -u
+\end{align*}
+\end{split}\]</div>
+<p>At this point we need to worry about nonsensical answers to the optimization for minimum fuel. For this purpose we add upper and lower bounds on <span class="math notranslate nohighlight">\(T\)</span> that should restrict the solver to meaningful solutions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_max</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">3000</span><span class="p">))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">mdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">fuel</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">wrt</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">fuel</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ode1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">*</span><span class="n">g</span> <span class="o">+</span> <span class="n">v_exhaust</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ode2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">mdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">/</span><span class="n">m</span><span class="o">.</span><span class="n">T</span> <span class="o">==</span> <span class="o">-</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">h_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="o">-</span><span class="n">v_initial</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">m_total</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># land on surface</span>
+<span class="n">m</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># soft landing</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;FORWARD&#39;</span><span class="p">)</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    
+    <span class="n">m_nonfuel</span> <span class="o">=</span> <span class="n">m_ascent_dry</span> <span class="o">+</span> <span class="n">m_ascent_fuel</span> <span class="o">+</span> <span class="n">m_descent_dry</span>
+    
+    <span class="n">tsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">hsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">usim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">fsim</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="o">-</span> <span class="n">m_nonfuel</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">hsim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;altitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;meters&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;mission length = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">T</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; seconds&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">usim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;engine mass flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;kg/sec&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;fuel burned = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">fuel</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; kg&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">fsim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;fuel remaining&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;kg&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;fuel remaining = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fsim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; kg&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_26_0.png" src="../_images/06.04-Soft-Landing-Apollo-11-on-the-Moon_26_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="06.03-Path-Planning-for-a-Simple-Car.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.3. </span>Path Planning for a Simple Car</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="06.05-Launching-Apollo-11-from-the-Moon.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.5. </span>Ascent from Lunar Surface</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey C. Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

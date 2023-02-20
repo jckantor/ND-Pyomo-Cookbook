@@ -1,0 +1,1742 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4.3. Job Shop Scheduling &#8212; ND Pyomo Cookbook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.4. Maintenance Planning" href="04.04-Maintenance-Planning.html" />
+    <link rel="prev" title="4.2. Machine Bottleneck" href="04.02-Machine-Bottleneck.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    ND Pyomo Cookbook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
+   1. Getting Started with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Installing-Pyomo.html">
+     1.3. Installing a Pyomo/Python Development Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
+     1.4. Running Pyomo on Google Colab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">
+     1.5. Running Pyomo on the Notre Dame CRC Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
+     1.6. Cross-Platform Installation of Pyomo and Solvers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Linear-Programming.html">
+   2. Linear Programming
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
+     2.1. Production Models with Linear Constraints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">
+     2.2. Production Model Sensitivity Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
+     2.3. Linear Blending Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
+     2.4. Design of a Cold Weather Fuel for a Camping Stove
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.05-Gasoline-Blending.html">
+     2.5. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
+     2.6. Model Predictive Control of a Double Integrator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
+     2.7. Non-Continuous Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Assignment-Problems.html">
+   3. Assignment Problems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Transportation-Networks.html">
+     3.1. Transportation Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
+   4. Scheduling with Disjunctive Constraints
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
+     4.1. Introduction to Disjunctive Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Machine-Bottleneck.html">
+     4.2. Machine Bottleneck
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.3. Job Shop Scheduling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Maintenance-Planning.html">
+     4.4. Maintenance Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">
+     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Unit-Commitment.html">
+     4.6. Unit Commitment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Simulation.html">
+   5. Simulation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
+     5.1. Response of a First Order System to Step and Square Wave Inputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
+     5.2. Exothermic CSTR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
+     5.3. Transient Heat Conduction in Various Geometries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
+     5.4. Diffusion with Adsorption in Polymers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
+   6. Differential-Algebraic Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
+     6.1. Unconstrained Scalar Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
+     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
+     6.3. Path Planning for a Simple Car
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">
+     6.4. Soft Landing Apollo 11 on the Moon
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
+     6.5. Ascent from Lunar Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Parameter-Estimation.html">
+   7. Parameter Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
+     7.1. Parameter estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08.00-Financial-Applications.html">
+   8. Financial Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
+     8.1. Obtaining Historical Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
+     8.2. Consolidating and Charting Stock Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
+     8.3. Binomial Model for Pricing Options
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
+     8.5. MAD Portfolio Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.05-Real-Options.html">
+     8.6. Real Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
+   9. Guide to Coding with Pyomo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09.01-notebook-style-guide.html">
+     9.1. Notebook Style Guide
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   10. Index
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/04.03-Job-Shop-Scheduling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/04.03-Job-Shop-Scheduling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.03-Job-Shop-Scheduling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/04.03-Job-Shop-Scheduling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   4.3.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   4.3.2. Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#job-shop-example">
+   4.3.3. Job shop example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-decomposition">
+   4.3.4. Task decomposition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-formulation">
+   4.3.5. Model formulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyomo-implementation">
+   4.3.6. Pyomo implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#printing-schedules">
+   4.3.7. Printing schedules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-results-with-gantt-charts">
+   4.3.8. Visualizing Results with Gantt Charts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-to-the-scheduling-of-batch-processes">
+   4.3.9. Application to the scheduling of batch processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-product-strategies">
+     4.3.9.1. Single product strategies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-overlapping-tasks">
+     4.3.9.2. Multiple Overlapping tasks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-time-for-unit-clean-out">
+     4.3.9.3. Adding time for unit clean out
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-zero-wait-policy">
+     4.3.9.4. Adding a zero wait policy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-la19-benchmark-problem-with-neos">
+   4.3.10. Solving the LA19 benchmark problem with NEOS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.3.11. References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   4.3.12. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-specific-cleanout">
+     4.3.12.1. Task specific cleanout
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computational-impact-of-a-zero-wait-policy">
+     4.3.12.2. Computational impact of a zero-wait policy
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Job Shop Scheduling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   4.3.1. Imports
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   4.3.2. Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#job-shop-example">
+   4.3.3. Job shop example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-decomposition">
+   4.3.4. Task decomposition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-formulation">
+   4.3.5. Model formulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyomo-implementation">
+   4.3.6. Pyomo implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#printing-schedules">
+   4.3.7. Printing schedules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-results-with-gantt-charts">
+   4.3.8. Visualizing Results with Gantt Charts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-to-the-scheduling-of-batch-processes">
+   4.3.9. Application to the scheduling of batch processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-product-strategies">
+     4.3.9.1. Single product strategies
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-overlapping-tasks">
+     4.3.9.2. Multiple Overlapping tasks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-time-for-unit-clean-out">
+     4.3.9.3. Adding time for unit clean out
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-a-zero-wait-policy">
+     4.3.9.4. Adding a zero wait policy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-the-la19-benchmark-problem-with-neos">
+   4.3.10. Solving the LA19 benchmark problem with NEOS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.3.11. References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   4.3.12. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-specific-cleanout">
+     4.3.12.1. Task specific cleanout
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computational-impact-of-a-zero-wait-policy">
+     4.3.12.2. Computational impact of a zero-wait policy
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="job-shop-scheduling">
+<h1><span class="section-number">4.3. </span>Job Shop Scheduling<a class="headerlink" href="#job-shop-scheduling" title="Permalink to this headline">#</a></h1>
+<p>Keywords: job shop, scheduling, cbc usage, neos usage, cplex, gdp, disjunctive programming, batch processes</p>
+<section id="imports">
+<h2><span class="section-number">4.3.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<p>The following cell specifies the solver to used in the subsequent calculations. Some of these problems can become quite larger, and therefore the <code class="docutils literal notranslate"><span class="pre">gurobi</span></code> solver has been set as a default. If you don’t have the <code class="docutils literal notranslate"><span class="pre">gurobi</span></code> solver then adjust the code to use the <code class="docutils literal notranslate"><span class="pre">glpk</span></code> solver, but know the calculations may take longer (and the benchmark problem will not solve at all). If you do have the <code class="docutils literal notranslate"><span class="pre">gurobi</span></code> solver, edit the location of the executable to match the location on your computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">):</span>
+    <span class="o">!</span>pip install -q pyomo
+    <span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="o">!</span>apt-get install -y -qq coinor-cbc
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="o">!</span>conda install -c conda-forge coincbc 
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.gdp</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="background">
+<h2><span class="section-number">4.3.2. </span>Background<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h2>
+<p>A job shop consists of a set of distinct machines that process jobs. Each job is a series of tasks that require use of particular machines for known duration, and which must be completed in specified order. The job shop scheduling problem is to schedule the jobs on the machines to minimize the time necessary to process all jobs (i.e, the makespan) or some other metric of productivity. Job shop scheduling is one of the classic problems in Operations Research.</p>
+<p>Data consists of two tables. The first table is decomposition of the jobs into a series of tasks. Each task lists a job name, name of the required machine, and task duration. The second table list task pairs where the first task must be completed before the second task can be started. This formulation is quite general, but can also specify situations with no feasible solutions.</p>
+</section>
+<section id="job-shop-example">
+<h2><span class="section-number">4.3.3. </span>Job shop example<a class="headerlink" href="#job-shop-example" title="Permalink to this headline">#</a></h2>
+<p>The following example of a job shop is from from Christelle Gueret, Christian Prins, Marc Sevaux, “Applications of Optimization with Xpress-MP,” Dash Optimization, 2000.</p>
+<p>In this example, there are three printed paper products that must pass through color printing presses in a particular order. The given data consists of a flowsheet showing the order in which each job passes through the color presses</p>
+<p><img alt="jobshopdiagram.jpg" src="https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/jobshopdiagram.jpg?raw=1" /></p>
+<p>and a table of data showing, in minutes, the amount of time each job requires on each machine.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Machine</p></th>
+<th class="text-align:center head"><p>Color</p></th>
+<th class="text-align:center head"><p>Paper 1</p></th>
+<th class="text-align:center head"><p>Paper 2</p></th>
+<th class="text-align:center head"><p>Paper 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>Blue</p></td>
+<td class="text-align:center"><p>45</p></td>
+<td class="text-align:center"><p>20</p></td>
+<td class="text-align:center"><p>12</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>Green</p></td>
+<td class="text-align:center"><p>-</p></td>
+<td class="text-align:center"><p>10</p></td>
+<td class="text-align:center"><p>17</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>Yellow</p></td>
+<td class="text-align:center"><p>10</p></td>
+<td class="text-align:center"><p>34</p></td>
+<td class="text-align:center"><p>28</p></td>
+</tr>
+</tbody>
+</table>
+<p>What is the minimum amount of time (i.e, what is the makespan) for this set of jobs?</p>
+</section>
+<section id="task-decomposition">
+<h2><span class="section-number">4.3.4. </span>Task decomposition<a class="headerlink" href="#task-decomposition" title="Permalink to this headline">#</a></h2>
+<p>The first step in the analysis is to decompose the process into a series of tasks. Each task is a (job,machine) pair. Some tasks cannot start until a prerequisite task is completed.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Task (Job,Machine)</p></th>
+<th class="text-align:center head"><p>Duration</p></th>
+<th class="text-align:center head"><p>Prerequisite Task</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>(Paper 1, Blue)</p></td>
+<td class="text-align:center"><p>45</p></td>
+<td class="text-align:center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>(Paper 1, Yellow)</p></td>
+<td class="text-align:center"><p>10</p></td>
+<td class="text-align:center"><p>(Paper 1,Blue)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>(Paper 2, Blue)</p></td>
+<td class="text-align:center"><p>20</p></td>
+<td class="text-align:center"><p>(Paper 2, Green)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>(Paper 2, Green)</p></td>
+<td class="text-align:center"><p>10</p></td>
+<td class="text-align:center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>(Paper 2, Yellow)</p></td>
+<td class="text-align:center"><p>34</p></td>
+<td class="text-align:center"><p>(Paper 2, Blue)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>(Paper 3, Blue)</p></td>
+<td class="text-align:center"><p>12</p></td>
+<td class="text-align:center"><p>(Paper 3, Yellow)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>(Paper 3, Green)</p></td>
+<td class="text-align:center"><p>17</p></td>
+<td class="text-align:center"><p>(Paper 3, Blue)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>(Paper 3, Yellow)</p></td>
+<td class="text-align:center"><p>28</p></td>
+<td class="text-align:center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+<p>We convert this to a JSON style representation where tasks are denoted by (Job,Machine) tuples in Python. The task data is stored in a Python dictionary indexed by (Job,Machine) tuples. The task data conists of a dictionary with duration (‘dur’) and (Job,Machine) pair for any prerequisite task.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TASKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_1&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)</span>   <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_1&#39;</span><span class="p">,</span><span class="s1">&#39;Yellow&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Paper_1&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_2&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)</span>   <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Paper_2&#39;</span><span class="p">,</span><span class="s1">&#39;Green&#39;</span><span class="p">)},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_2&#39;</span><span class="p">,</span><span class="s1">&#39;Green&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_2&#39;</span><span class="p">,</span><span class="s1">&#39;Yellow&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Paper_2&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_3&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)</span>   <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Paper_3&#39;</span><span class="p">,</span><span class="s1">&#39;Yellow&#39;</span><span class="p">)},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_3&#39;</span><span class="p">,</span><span class="s1">&#39;Green&#39;</span><span class="p">)</span>  <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;Paper_3&#39;</span><span class="p">,</span><span class="s1">&#39;Blue&#39;</span><span class="p">)},</span>
+    <span class="p">(</span><span class="s1">&#39;Paper_3&#39;</span><span class="p">,</span><span class="s1">&#39;Yellow&#39;</span><span class="p">)</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span>   
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-formulation">
+<h2><span class="section-number">4.3.5. </span>Model formulation<a class="headerlink" href="#model-formulation" title="Permalink to this headline">#</a></h2>
+<p>Each task is indexed by an ordered pair <span class="math notranslate nohighlight">\((j,m)\)</span> where <span class="math notranslate nohighlight">\(j\)</span> is a job, and <span class="math notranslate nohighlight">\(m\)</span> is a machine. Associated with each task is data describing the time needed to perform the task, and a preceding task that must be completed before the index task can start.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Parameter</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\text{dur}_{j,m}\)</span></p></td>
+<td class="text-align:left"><p>Duration of task <span class="math notranslate nohighlight">\((j,m)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\text{prec}_{j,m}\)</span></p></td>
+<td class="text-align:left"><p>A task <span class="math notranslate nohighlight">\((k,n) = \text{prec}_{j,m}\)</span> that must be completed before task <span class="math notranslate nohighlight">\((j,m)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The choice of decision variables for this problem are key to modeling. We introduce <span class="math notranslate nohighlight">\(makespan\)</span> as the time needed to complete all tasks. <span class="math notranslate nohighlight">\(makespan\)</span> is a candidate objective function. Variable <span class="math notranslate nohighlight">\(start_{j,m}\)</span> denotes the time when task <span class="math notranslate nohighlight">\((j,m)\)</span> begins.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Decision Variables</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\text{makespan}\)</span></p></td>
+<td class="text-align:left"><p>Completion of all jobs</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\text{start}_{j,m}\)</span></p></td>
+<td class="text-align:left"><p>Start time for task <span class="math notranslate nohighlight">\((j,m)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The constraints include lower bounda on the start and an upper bound on the completion of each task <span class="math notranslate nohighlight">\((j,m)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{start}_{j,m} &amp; \geq 0\\
+\text{start}_{j,m}+\text{dur}_{j,m} &amp; \leq \text{makespan}
+\end{align}
+\end{split}\]</div>
+<p>Any preceding tasks must be completed before task <span class="math notranslate nohighlight">\((j,m)\)</span> can start.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\text{start}_{k,n}+\text{dur}_{k,n}\leq\text{start}_{j,m}\ \ \ \ \text{for } (k,n) =\text{prec}_{j,m}
+\end{align}
+\]</div>
+<p>Finally, for every task performed on machine <span class="math notranslate nohighlight">\(m\)</span>, there can be no overlap among those tasks. This leads to a set of pair-wise disjunctive constraints for each machine.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\left[\text{start}_{j,m}+\text{dur}_{j,m} \leq \text{start}_{k,m}\right] \vee \left[\text{start}_{k,m}+\text{dur}_{k,m} \leq \text{start}_{j,m}\right]
+\end{align}
+\]</div>
+<p>avoids conflicts for use of the same machine.</p>
+</section>
+<section id="pyomo-implementation">
+<h2><span class="section-number">4.3.6. </span>Pyomo implementation<a class="headerlink" href="#pyomo-implementation" title="Permalink to this headline">#</a></h2>
+<p>The job shop scheduling problem is implemented below in Pyomo. The implementation consists of of a function JobShopModel(TASKS) that accepts a dictionary of tasks and returns a Pyomo model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jobshop_model</span><span class="p">(</span><span class="n">TASKS</span><span class="p">):</span>
+    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+    <span class="c1"># tasks is a two dimensional set of (j,m) constructed from the dictionary keys</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">TASKS</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># the set of jobs is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># set of machines is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># the order of tasks is constructed as a cross-product of tasks and filtering</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># the set of disjunctions is cross-product of jobs, jobs, and machines</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">)</span>
+    
+    <span class="c1"># load duration data into a model parameter for later access</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">dur</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;dur&#39;</span><span class="p">])</span>
+
+    <span class="c1"># establish an upper bound on makespan</span>
+    <span class="n">ub</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])</span>
+    
+    <span class="c1"># create decision variables</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">makespan</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span>  
+        <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">preceding</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> 
+        <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">])</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">disjunctions</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">],</span> 
+         <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]])</span>
+    
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;gdp.hull&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="n">jobshop_model</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pyomo.core.base.PyomoModel.ConcreteModel at 0x7f8082e1a400&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jobshop_solve</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;Job&#39;</span><span class="p">:</span> <span class="n">j</span><span class="p">,</span>
+                <span class="s1">&#39;Machine&#39;</span><span class="p">:</span> <span class="n">m</span><span class="p">,</span>
+                <span class="s1">&#39;Start&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">](),</span> 
+                <span class="s1">&#39;Duration&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">],</span> 
+                <span class="s1">&#39;Finish&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">)]()</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]}</span>
+               <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="k">def</span> <span class="nf">jobshop</span><span class="p">(</span><span class="n">TASKS</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jobshop_solve</span><span class="p">(</span><span class="n">jobshop_model</span><span class="p">(</span><span class="n">TASKS</span><span class="p">))</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;Job&#39;: &#39;Paper_1&#39;,
+  &#39;Machine&#39;: &#39;Blue&#39;,
+  &#39;Start&#39;: 42.0,
+  &#39;Duration&#39;: 45,
+  &#39;Finish&#39;: 87.0},
+ {&#39;Job&#39;: &#39;Paper_1&#39;,
+  &#39;Machine&#39;: &#39;Yellow&#39;,
+  &#39;Start&#39;: 87.0,
+  &#39;Duration&#39;: 10,
+  &#39;Finish&#39;: 97.0},
+ {&#39;Job&#39;: &#39;Paper_2&#39;,
+  &#39;Machine&#39;: &#39;Blue&#39;,
+  &#39;Start&#39;: 10.0,
+  &#39;Duration&#39;: 20,
+  &#39;Finish&#39;: 30.0},
+ {&#39;Job&#39;: &#39;Paper_2&#39;,
+  &#39;Machine&#39;: &#39;Green&#39;,
+  &#39;Start&#39;: 0.0,
+  &#39;Duration&#39;: 10,
+  &#39;Finish&#39;: 10.0},
+ {&#39;Job&#39;: &#39;Paper_2&#39;,
+  &#39;Machine&#39;: &#39;Yellow&#39;,
+  &#39;Start&#39;: 30.0,
+  &#39;Duration&#39;: 34,
+  &#39;Finish&#39;: 64.0},
+ {&#39;Job&#39;: &#39;Paper_3&#39;,
+  &#39;Machine&#39;: &#39;Blue&#39;,
+  &#39;Start&#39;: 30.0,
+  &#39;Duration&#39;: 12,
+  &#39;Finish&#39;: 42.0},
+ {&#39;Job&#39;: &#39;Paper_3&#39;,
+  &#39;Machine&#39;: &#39;Green&#39;,
+  &#39;Start&#39;: 42.0,
+  &#39;Duration&#39;: 17,
+  &#39;Finish&#39;: 59.0},
+ {&#39;Job&#39;: &#39;Paper_3&#39;,
+  &#39;Machine&#39;: &#39;Yellow&#39;,
+  &#39;Start&#39;: 0.0,
+  &#39;Duration&#39;: 28,
+  &#39;Finish&#39;: 28.0}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="printing-schedules">
+<h2><span class="section-number">4.3.7. </span>Printing schedules<a class="headerlink" href="#printing-schedules" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">schedule</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Schedule by Job&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">schedule</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Job&#39;</span><span class="p">,</span><span class="s1">&#39;Start&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Job&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine&#39;</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Schedule by Machine&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">schedule</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Machine&#39;</span><span class="p">,</span><span class="s1">&#39;Start&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Machine&#39;</span><span class="p">,</span> <span class="s1">&#39;Job&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Schedule by Job
+                 Start  Duration  Finish
+Job     Machine                         
+Paper_1 Blue      42.0        45    87.0
+        Yellow    87.0        10    97.0
+Paper_2 Green      0.0        10    10.0
+        Blue      10.0        20    30.0
+        Yellow    30.0        34    64.0
+Paper_3 Yellow     0.0        28    28.0
+        Blue      30.0        12    42.0
+        Green     42.0        17    59.0
+
+Schedule by Machine
+                 Start  Duration  Finish
+Machine Job                             
+Blue    Paper_2   10.0        20    30.0
+        Paper_3   30.0        12    42.0
+        Paper_1   42.0        45    87.0
+Green   Paper_2    0.0        10    10.0
+        Paper_3   42.0        17    59.0
+Yellow  Paper_3    0.0        28    28.0
+        Paper_2   30.0        34    64.0
+        Paper_1   87.0        10    97.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-results-with-gantt-charts">
+<h2><span class="section-number">4.3.8. </span>Visualizing Results with Gantt Charts<a class="headerlink" href="#visualizing-results-with-gantt-charts" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+    
+    <span class="n">schedule</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="n">JOBS</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s1">&#39;Job&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">MACHINES</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">schedule</span><span class="p">[</span><span class="s1">&#39;Machine&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+    <span class="n">makespan</span> <span class="o">=</span> <span class="n">schedule</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    
+    <span class="n">bar_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;lw&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;solid_capstyle&#39;</span><span class="p">:</span><span class="s1">&#39;butt&#39;</span><span class="p">}</span>
+    <span class="n">text_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;ha&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;va&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">}</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Dark2</span><span class="o">.</span><span class="n">colors</span>
+
+    <span class="n">schedule</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Job&#39;</span><span class="p">,</span> <span class="s1">&#39;Start&#39;</span><span class="p">])</span>
+    <span class="n">schedule</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Job&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">JOBS</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">MACHINES</span><span class="p">))</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">jdx</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">JOBS</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">mdx</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">MACHINES</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">schedule</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+                <span class="n">xs</span> <span class="o">=</span> <span class="n">schedule</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">),</span> <span class="s1">&#39;Start&#39;</span><span class="p">]</span>
+                <span class="n">xf</span> <span class="o">=</span> <span class="n">schedule</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">),</span> <span class="s1">&#39;Finish&#39;</span><span class="p">]</span>
+                <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xf</span><span class="p">],</span> <span class="p">[</span><span class="n">jdx</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">mdx</span><span class="o">%</span><span class="k">7</span>], **bar_style)
+                <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">xs</span> <span class="o">+</span> <span class="n">xf</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">jdx</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="o">**</span><span class="n">text_style</span><span class="p">)</span>
+                <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">xf</span><span class="p">],</span> <span class="p">[</span><span class="n">mdx</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">jdx</span><span class="o">%</span><span class="k">7</span>], **bar_style)
+                <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">xs</span> <span class="o">+</span> <span class="n">xf</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">mdx</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="o">**</span><span class="n">text_style</span><span class="p">)</span>
+                
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Job Schedule&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Job&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Machine Schedule&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Machine&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">MACHINES</span><span class="p">]):</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">makespan</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{0:0.1f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">makespan</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">makespan</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-Job-Shop-Scheduling_14_0.png" src="../_images/04.03-Job-Shop-Scheduling_14_0.png" />
+</div>
+</div>
+</section>
+<section id="application-to-the-scheduling-of-batch-processes">
+<h2><span class="section-number">4.3.9. </span>Application to the scheduling of batch processes<a class="headerlink" href="#application-to-the-scheduling-of-batch-processes" title="Permalink to this headline">#</a></h2>
+<p>We will now turn our attention to the application of the job shop scheduling problem to the short term scheduling of batch processes. We illustrate these techniques using Example II from Dunn (2013).</p>
+<p><img alt="flowshop-Dunn-2013.png" src="https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/flowshop-Dunn-2013.png?raw=1" /></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Recipe</p></th>
+<th class="text-align:center head"><p>Mixer</p></th>
+<th class="text-align:center head"><p>Reactor</p></th>
+<th class="text-align:center head"><p>Separator</p></th>
+<th class="text-align:center head"><p>Packaging</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>A</p></td>
+<td class="text-align:center"><p>1.0</p></td>
+<td class="text-align:center"><p>5.0</p></td>
+<td class="text-align:center"><p>4.0</p></td>
+<td class="text-align:center"><p>1.5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>B</p></td>
+<td class="text-align:center"><p>-</p></td>
+<td class="text-align:center"><p>-</p></td>
+<td class="text-align:center"><p>4.5</p></td>
+<td class="text-align:center"><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>C</p></td>
+<td class="text-align:center"><p>-</p></td>
+<td class="text-align:center"><p>3.0</p></td>
+<td class="text-align:center"><p>5.0</p></td>
+<td class="text-align:center"><p>1.5</p></td>
+</tr>
+</tbody>
+</table>
+<section id="single-product-strategies">
+<h3><span class="section-number">4.3.9.1. </span>Single product strategies<a class="headerlink" href="#single-product-strategies" title="Permalink to this headline">#</a></h3>
+<p>Before going further, we create a function to streamline the generation of the TASKS dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recipe_to_tasks</span><span class="p">(</span><span class="n">jobs</span><span class="p">,</span> <span class="n">machines</span><span class="p">,</span> <span class="n">durations</span><span class="p">):</span>
+    <span class="n">TASKS</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jobs</span><span class="p">:</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">m</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">machines</span><span class="p">,</span><span class="n">durations</span><span class="p">):</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">prec</span> <span class="o">==</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">):</span>
+                <span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">({(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">):</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}})</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">({(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">):</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span> <span class="n">prec</span><span class="p">}})</span>
+            <span class="n">prec</span> <span class="o">=</span> <span class="n">task</span>
+    <span class="k">return</span> <span class="n">TASKS</span>
+        
+<span class="n">recipeA</span> <span class="o">=</span> <span class="n">recipe_to_tasks</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Mixer&#39;</span><span class="p">,</span> <span class="s1">&#39;Reactor&#39;</span><span class="p">,</span> <span class="s1">&#39;Separator&#39;</span><span class="p">,</span> <span class="s1">&#39;Packaging&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">jobshop</span><span class="p">(</span><span class="n">recipeA</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-Job-Shop-Scheduling_17_0.png" src="../_images/04.03-Job-Shop-Scheduling_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recipeB</span> <span class="o">=</span> <span class="n">recipe_to_tasks</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span> <span class="s1">&#39;Packaging&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">jobshop</span><span class="p">(</span><span class="n">recipeB</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-Job-Shop-Scheduling_18_0.png" src="../_images/04.03-Job-Shop-Scheduling_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recipeC</span> <span class="o">=</span> <span class="n">recipe_to_tasks</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span> <span class="s1">&#39;Reactor&#39;</span><span class="p">,</span> <span class="s1">&#39;Packaging&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">jobshop</span><span class="p">(</span><span class="n">recipeC</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-Job-Shop-Scheduling_19_0.png" src="../_images/04.03-Job-Shop-Scheduling_19_0.png" />
+</div>
+</div>
+</section>
+<section id="multiple-overlapping-tasks">
+<h3><span class="section-number">4.3.9.2. </span>Multiple Overlapping tasks<a class="headerlink" href="#multiple-overlapping-tasks" title="Permalink to this headline">#</a></h3>
+<p>Let’s now consider an optimal scheduling problem where we are wish to make two batches of Product A.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TASKS</span> <span class="o">=</span> <span class="n">recipe_to_tasks</span><span class="p">([</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span> <span class="s1">&#39;A4&#39;</span><span class="p">],[</span><span class="s1">&#39;Mixer&#39;</span><span class="p">,</span><span class="s1">&#39;Reactor&#39;</span><span class="p">,</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span><span class="s1">&#39;Packaging&#39;</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Makespan =&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">([</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Makespan = 26.5
+</pre></div>
+</div>
+<img alt="../_images/04.03-Job-Shop-Scheduling_21_1.png" src="../_images/04.03-Job-Shop-Scheduling_21_1.png" />
+</div>
+</div>
+<p>Earlier we found it tood 11.5 hours to produce one batch of product A.  As we see here, we can produce a second batch with only 5.0 additional hours because some of the tasks overlap.  The overlapping of tasks is the key to gaining efficiency in batch processing facilities.</p>
+<p>Let’s next consider production of a single batch each of products A, B, and C.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># update is used to append dictionaries</span>
+<span class="n">TASKS</span> <span class="o">=</span> <span class="n">recipeA</span>
+<span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">recipeB</span><span class="p">)</span>
+<span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">recipeC</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">TASKS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Makespan =&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">([</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;A&#39;, &#39;Mixer&#39;) {&#39;dur&#39;: 1, &#39;prec&#39;: None}
+(&#39;A&#39;, &#39;Reactor&#39;) {&#39;dur&#39;: 5, &#39;prec&#39;: (&#39;A&#39;, &#39;Mixer&#39;)}
+(&#39;A&#39;, &#39;Separator&#39;) {&#39;dur&#39;: 4, &#39;prec&#39;: (&#39;A&#39;, &#39;Reactor&#39;)}
+(&#39;A&#39;, &#39;Packaging&#39;) {&#39;dur&#39;: 1.5, &#39;prec&#39;: (&#39;A&#39;, &#39;Separator&#39;)}
+(&#39;B&#39;, &#39;Separator&#39;) {&#39;dur&#39;: 4.5, &#39;prec&#39;: None}
+(&#39;B&#39;, &#39;Packaging&#39;) {&#39;dur&#39;: 1, &#39;prec&#39;: (&#39;B&#39;, &#39;Separator&#39;)}
+(&#39;C&#39;, &#39;Separator&#39;) {&#39;dur&#39;: 5, &#39;prec&#39;: None}
+(&#39;C&#39;, &#39;Reactor&#39;) {&#39;dur&#39;: 3, &#39;prec&#39;: (&#39;C&#39;, &#39;Separator&#39;)}
+(&#39;C&#39;, &#39;Packaging&#39;) {&#39;dur&#39;: 1.5, &#39;prec&#39;: (&#39;C&#39;, &#39;Reactor&#39;)}
+Makespan = 15.0
+</pre></div>
+</div>
+<img alt="../_images/04.03-Job-Shop-Scheduling_23_1.png" src="../_images/04.03-Job-Shop-Scheduling_23_1.png" />
+</div>
+</div>
+<p>The individual production of A, B, and C required 11.5, 5.5, and 9.5 hours, respectively, for a total of 25.5 hours. As we see here, by scheduling the production simultaneously, we can get all three batches done in just 15 hours.</p>
+<p>As we see below, each additional set of three products takes an additionl 13 hours.  So there is considerable efficiency gained by scheduling over longer intervals whenever possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TASKS</span> <span class="o">=</span> <span class="n">recipe_to_tasks</span><span class="p">([</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">],[</span><span class="s1">&#39;Mixer&#39;</span><span class="p">,</span><span class="s1">&#39;Reactor&#39;</span><span class="p">,</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span><span class="s1">&#39;Packaging&#39;</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">recipe_to_tasks</span><span class="p">([</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">],[</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span><span class="s1">&#39;Packaging&#39;</span><span class="p">],[</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">TASKS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">recipe_to_tasks</span><span class="p">([</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">],[</span><span class="s1">&#39;Separator&#39;</span><span class="p">,</span><span class="s1">&#39;Reactor&#39;</span><span class="p">,</span><span class="s1">&#39;Packaging&#39;</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.5</span><span class="p">]))</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Makespan =&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">([</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Makespan = 28.0
+</pre></div>
+</div>
+<img alt="../_images/04.03-Job-Shop-Scheduling_25_1.png" src="../_images/04.03-Job-Shop-Scheduling_25_1.png" />
+</div>
+</div>
+</section>
+<section id="adding-time-for-unit-clean-out">
+<h3><span class="section-number">4.3.9.3. </span>Adding time for unit clean out<a class="headerlink" href="#adding-time-for-unit-clean-out" title="Permalink to this headline">#</a></h3>
+<p>A common feature of batch unit operations is a requirement that equipment be cleaned prior to reuse.</p>
+<p>In most cases the time needed for clean out would be specific to the equipment and product. But for the purposes this notebook, we implement can implement a simple clean out policy with a single non-negative parameter <span class="math notranslate nohighlight">\(t_{clean} \geq 0\)</span> which, if specified, requires a period no less than <span class="math notranslate nohighlight">\(t_{clean}\)</span> between the finish of one task and the start of another on every piece of equipment.</p>
+<p>This policy is implemented by modifying the usual disjunctive constraints to avoid machine conflicts to read</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\left[\text{start}_{j,m}+\text{dur}_{j,m} + t_{clean} \leq \text{start}_{k,m}\right] \vee \left[\text{start}_{k,m}+\text{dur}_{k,m} + t_{clean} \leq \text{start}_{j,m}\right]
+\end{align}
+\]</div>
+<p>For this purpose, we write a new JobShopModel_Clean</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jobshop_model_clean</span><span class="p">(</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">tclean</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+   
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+    <span class="c1"># tasks is a two dimensional set of (j,m) constructed from the dictionary keys</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">TASKS</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># the set of jobs is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># set of machines is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># the order of tasks is constructed as a cross-product of tasks and filtering</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># the set of disjunctions is cross-product of jobs, jobs, and machines</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">)</span>
+    
+    <span class="c1"># load duration data into a model parameter for later access</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">dur</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;dur&#39;</span><span class="p">])</span>
+
+    <span class="c1"># establish an upper bound on makespan</span>
+    <span class="n">ub</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">makespan</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span>  
+        <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">preceding</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> 
+        <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">])</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">disjunctions</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">tclean</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">],</span> 
+         <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">tclean</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]])</span>
+
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;gdp.hull&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">jobshop_model_clean</span><span class="p">(</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">tclean</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop_solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Makespan =&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">([</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Makespan = 30.5
+</pre></div>
+</div>
+<img alt="../_images/04.03-Job-Shop-Scheduling_27_1.png" src="../_images/04.03-Job-Shop-Scheduling_27_1.png" />
+</div>
+</div>
+</section>
+<section id="adding-a-zero-wait-policy">
+<h3><span class="section-number">4.3.9.4. </span>Adding a zero wait policy<a class="headerlink" href="#adding-a-zero-wait-policy" title="Permalink to this headline">#</a></h3>
+<p>One of the issues in the use of job shop scheduling for chemical process operations are situations where there it is not possible to store intermediate materials. If there is no way to store intermediates, either in the processing equipment or in external vessels, then a <strong>zero-wait</strong> policy may be required.</p>
+<p>A zero-wait policy requires subsequent processing machines to be available immediately upon completion of any task. To implement this policy, the usual precident sequencing constraint of a job shop scheduling problem, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\text{start}_{k,n}+\text{Dur}_{k,n} \leq \text{start}_{j,m}\ \ \ \ \text{for } (k,n) =\text{Prec}_{j,m}
+\end{align*}
+\]</div>
+<p>is changed to</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\text{start}_{k,n}+\text{Dur}_{k,n} = \text{start}_{j,m}\ \ \ \ \text{for } (k,n) =\text{Prec}_{j,m}\text{ and ZW is True}
+\end{align*}
+\]</div>
+<p>if the zero-wait policy is in effect.</p>
+<p>While this could be implemented on an equipment or product specific basis, here we add an optional ZW flag to the JobShop function that, by default, is set to False.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jobshop_model_clean_zw</span><span class="p">(</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">tclean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ZW</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+   
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+    
+    <span class="c1"># tasks is a two dimensional set of (j,m) constructed from the dictionary keys</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">TASKS</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># the set of jobs is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># set of machines is constructed from a python set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])))</span>
+    
+    <span class="c1"># the order of tasks is constructed as a cross-product of tasks and filtering</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;prec&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># the set of disjunctions is cross-product of jobs, jobs, and machines</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span> <span class="o">=</span> <span class="n">Set</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">JOBS</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">MACHINES</span><span class="p">,</span> <span class="n">dimen</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="nb">filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">)</span>
+    
+    <span class="c1"># load duration data into a model parameter for later access</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">dur</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="n">TASKS</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)][</span><span class="s1">&#39;dur&#39;</span><span class="p">])</span>
+
+    <span class="c1"># establish an upper bound on makespan</span>
+    <span class="n">ub</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">)</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">])</span>
+    
+    <span class="c1"># to implement a zero-wait policy</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">bigM</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">ub</span> <span class="k">if</span> <span class="n">ZW</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">makespan</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ub</span><span class="p">))</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span>  
+        <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">makespan</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">_preceding</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ZW</span><span class="p">:</span>
+            <span class="k">return</span>  <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">preceding</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">TASKORDER</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">_preceding</span><span class="p">)</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">disjunctions</span> <span class="o">=</span> <span class="n">Disjunction</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">DISJUNCTIONS</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="k">lambda</span> <span class="n">model</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">tclean</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">],</span> 
+         <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">tclean</span> <span class="o">&lt;=</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]])</span>
+
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;gdp.hull&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">jobshop_model_clean_zw</span><span class="p">(</span><span class="n">TASKS</span><span class="p">,</span> <span class="n">tclean</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ZW</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop_solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Makespan =&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">([</span><span class="n">task</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Makespan = 32.0
+</pre></div>
+</div>
+<img alt="../_images/04.03-Job-Shop-Scheduling_29_1.png" src="../_images/04.03-Job-Shop-Scheduling_29_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="solving-the-la19-benchmark-problem-with-neos">
+<h2><span class="section-number">4.3.10. </span>Solving the LA19 benchmark problem with NEOS<a class="headerlink" href="#solving-the-la19-benchmark-problem-with-neos" title="Permalink to this headline">#</a></h2>
+<p>The file <a class="reference external" href="http://people.brunel.ac.uk/~mastjjb/jeb/orlib/files/jobshop1.txt"><code class="docutils literal notranslate"><span class="pre">jobshop1.txt</span></code> contains 82 benchmark problems</a> from a well-known collection of job shop scheduling problems in the <a class="reference external" href="http://people.brunel.ac.uk/~mastjjb/jeb/info.html">OR-Library maintained by J. E. Beasley</a>. The data format for each example consists of a single line for each job.  The data on each line is a sequence of (machine number, time) pairs showing the order in which machines process each job.</p>
+<p>LA19 is a benchmark problem for job shop scheduling introduced by Lawrence in 1984, and a solution presented by Cook and Applegate in 1991. The following cell may take many minutes to hours to run, depending on the choice of solver and hardware. To run, uncomment the the last lines in the cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">2  44  3   5  5  58  4  97  0   9  7  84  8  77  9  96  1  58  6  89</span>
+<span class="s2">4  15  7  31  1  87  8  57  0  77  3  85  2  81  5  39  9  73  6  21</span>
+<span class="s2">9  82  6  22  4  10  3  70  1  49  0  40  8  34  2  48  7  80  5  71</span>
+<span class="s2">1  91  2  17  7  62  5  75  8  47  4  11  3   7  6  72  9  35  0  55</span>
+<span class="s2">6  71  1  90  3  75  0  64  2  94  8  15  4  12  7  67  9  20  5  50</span>
+<span class="s2">7  70  5  93  8  77  2  29  4  58  6  93  3  68  1  57  9   7  0  52</span>
+<span class="s2">6  87  1  63  4  26  5   6  2  82  3  27  7  56  8  48  9  36  0  95</span>
+<span class="s2">0  36  5  15  8  41  9  78  3  76  6  84  4  30  7  76  2  36  1   8</span>
+<span class="s2">5  88  2  81  3  13  6  82  4  54  7  13  8  29  9  40  1  78  0  75</span>
+<span class="s2">9  88  4  54  6  64  7  32  0  52  2   6  8  54  5  82  3   6  1  26</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">TASKS</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">job</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="n">nums</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">dur</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nums</span><span class="p">[::</span><span class="mi">2</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;J</span><span class="si">{</span><span class="n">job</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="sa">f</span><span class="s2">&quot;M</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">TASKS</span><span class="p">[</span><span class="n">task</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dur&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">dur</span><span class="p">),</span> <span class="s1">&#39;prec&#39;</span><span class="p">:</span><span class="n">prec</span><span class="p">}</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">task</span>
+    
+<span class="c1">#pd.DataFrame(TASKS).T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Depending on the choice of solver, this benchmark example may require from minutes to hours of computational effort on a laptop. An alternative to solving on a laptop is to submit the job to <a class="reference external" href="https://neos-server.org/neos/">NEOS</a>, a free internet-based service for solving optimization problems hosted by the University of Wisconsin and utilizing high performance servers at locations across the globe.</p>
+<p>The following cell shows how to solve a model using <a class="reference external" href="https://www.ibm.com/analytics/cplex-optimizer">CPLEX</a>, a high performance commericial solver, on NEOS. The solution may take several minutes, and depends on the current length of the NEOS job queue.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jobshop_solve_neos</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">solver_manager</span> <span class="o">=</span> <span class="n">SolverManagerFactory</span><span class="p">(</span><span class="s1">&#39;neos&#39;</span><span class="p">)</span>
+    <span class="n">solver_manager</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s1">&#39;cplex&#39;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;Job&#39;</span><span class="p">:</span> <span class="n">j</span><span class="p">,</span>
+                <span class="s1">&#39;Machine&#39;</span><span class="p">:</span> <span class="n">m</span><span class="p">,</span>
+                <span class="s1">&#39;Start&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">](),</span> 
+                <span class="s1">&#39;Duration&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">],</span> 
+                <span class="s1">&#39;Finish&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">start</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">)]()</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">dur</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">m</span><span class="p">]}</span>
+               <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">TASKS</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">jobshop_model</span><span class="p">(</span><span class="n">TASKS</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">jobshop_solve_neos</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">visualize</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-Job-Shop-Scheduling_33_0.png" src="../_images/04.03-Job-Shop-Scheduling_33_0.png" />
+</div>
+</div>
+</section>
+<section id="references">
+<h2><span class="section-number">4.3.11. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Applegate, David, and William Cook. <a class="reference external" href="https://doi.org/10.1287/ijoc.3.2.149">“A computational study of the job-shop scheduling problem.”</a> ORSA Journal on computing 3, no. 2 (1991): 149-156. <a class="reference external" href="http://www.math.uwaterloo.ca/~bico/papers/jobshop.pdf">pdf available</a></p></li>
+<li><p>Beasley, John E. <a class="reference external" href="https://www.jstor.org/stable/pdf/2582903.pdf?casa_token=RWUXQ6e2VngAAAAA:g-dwMXjJfCUWqoLJk5y-MpDDhLmJKSGE36YU5kpkXZ71dmos25vntN0RlDFLxDme_QsOw8Oc3oi6juXCkVCfm2gcycCK0SYNoOnOZqRYDp3EqSrXP6nDeQ">“OR-Library: distributing test problems by electronic mail.”</a> Journal of the operational research society 41, no. 11 (1990): 1069-1072. <a class="reference external" href="http://people.brunel.ac.uk/~mastjjb/jeb/info.html">OR-Library</a></p></li>
+<li><p>Guéret, Christelle, Christian Prins, and Marc Sevaux. <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.9634&amp;rep=rep1&amp;type=pdf">“Applications of optimization with Xpress-MP.”</a> contract (1999): 00034.</p></li>
+<li><p>Manne, Alan S. <a class="reference external" href="https://doi.org/10.1287/opre.8.2.219">“On the job-shop scheduling problem.”</a> Operations Research 8, no. 2 (1960): 219-223.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2><span class="section-number">4.3.12. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="task-specific-cleanout">
+<h3><span class="section-number">4.3.12.1. </span>Task specific cleanout<a class="headerlink" href="#task-specific-cleanout" title="Permalink to this headline">#</a></h3>
+<p>Clean out operations are often slow and time consuming. Further more, the time required to perform a clean out frequently depends on the type of machine, and the task performed by the machine. For this exercise, create a data format to include task-specific clean out times, and model the job shop model to accomodate this additional informaton.</p>
+</section>
+<section id="computational-impact-of-a-zero-wait-policy">
+<h3><span class="section-number">4.3.12.2. </span>Computational impact of a zero-wait policy<a class="headerlink" href="#computational-impact-of-a-zero-wait-policy" title="Permalink to this headline">#</a></h3>
+<p>Repeat the benchmark problem calculation, but with a zero-wait policy. Does the execution time increase or descrease as a consequence of specifying zero-wait?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="04.02-Machine-Bottleneck.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.2. </span>Machine Bottleneck</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04.04-Maintenance-Planning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Maintenance Planning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey C. Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
