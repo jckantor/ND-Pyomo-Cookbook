@@ -10,8 +10,8 @@
 # | Solver | Description |
 # | :-- | :-- |
 # | GLPK | MILP |
-# | [COIN-OR CLP](https://github.com/coin-or/Clp) | LP
-# | [COIN-OR CBC](https://github.com/coin-or/Cbc) | MILP |
+# | [COIN-OR Clp](https://github.com/coin-or/Clp) | LP
+# | [COIN-OR Cbc](https://github.com/coin-or/Cbc) | MILP |
 # | [COIN-OR Ipopt](https://github.com/coin-or/Ipopt) | NLP | |
 # | [COIN-OR Bonmin](https://github.com/coin-or/Bonmin) | MINLP |
 # | [COIN-OR Couenne](https://github.com/coin-or/Couenne) | Global MINLP |
