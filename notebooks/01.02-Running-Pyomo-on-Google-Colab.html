@@ -632,33 +632,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glpk">
-   1.2.3. GLPK
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-clp">
-   1.2.4. COIN-OR Clp
+   1.2.3. COIN-OR Clp
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-cbc">
-   1.2.5. COIN-OR Cbc
+   1.2.4. COIN-OR Cbc
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-ipopt-installation">
-   1.2.6. COIN-OR Ipopt installation
+   1.2.5. COIN-OR Ipopt installation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-bonmin-installation">
-   1.2.7. COIN-OR Bonmin installation
+   1.2.6. COIN-OR Bonmin installation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-couenne-installation">
-   1.2.8. COIN-OR Couenne installation
+   1.2.7. COIN-OR Couenne installation
   </a>
  </li>
 </ul>
@@ -691,33 +686,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glpk">
-   1.2.3. GLPK
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-clp">
-   1.2.4. COIN-OR Clp
+   1.2.3. COIN-OR Clp
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-cbc">
-   1.2.5. COIN-OR Cbc
+   1.2.4. COIN-OR Cbc
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-ipopt-installation">
-   1.2.6. COIN-OR Ipopt installation
+   1.2.5. COIN-OR Ipopt installation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-bonmin-installation">
-   1.2.7. COIN-OR Bonmin installation
+   1.2.6. COIN-OR Bonmin installation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coin-or-couenne-installation">
-   1.2.8. COIN-OR Couenne installation
+   1.2.7. COIN-OR Couenne installation
   </a>
  </li>
 </ul>
@@ -741,22 +731,19 @@ title="Print to PDF"
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>GLPK</p></td>
-<td class="text-align:left"><p>MILP</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Clp">COIN-OR Clp</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Clp">COIN-OR Clp</a></p></td>
 <td class="text-align:left"><p>LP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Cbc">COIN-OR Cbc</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Cbc">COIN-OR Cbc</a></p></td>
 <td class="text-align:left"><p>MILP</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Ipopt">COIN-OR Ipopt</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Ipopt">COIN-OR Ipopt</a></p></td>
 <td class="text-align:left"><p>NLP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Bonmin">COIN-OR Bonmin</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Bonmin">COIN-OR Bonmin</a></p></td>
 <td class="text-align:left"><p>MINLP</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Couenne">COIN-OR Couenne</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference external" href="https://github.com/coin-or/Couenne">COIN-OR Couenne</a></p></td>
 <td class="text-align:left"><p>Global MINLP</p></td>
 </tr>
 </tbody>
@@ -774,9 +761,8 @@ import os
 
 if &#39;google.colab&#39; in sys.modules:
     !pip install idaes-pse --pre
-    !idaes get-extensions
-    !apt-get install -y -qq glpk-utils  
-    os.environ[&#39;PATH&#39;] += &#39;:/usr/bin:/root/.idaes/bin&#39;
+    !idaes get-extensions --to ./bin 
+    os.environ[&#39;PATH&#39;] += &#39;:bin&#39;
 </pre></div>
 </div>
 </div>
@@ -784,7 +770,7 @@ if &#39;google.colab&#39; in sys.modules:
 </section>
 <section id="test-model">
 <h2><span class="section-number">1.2.2. </span>Test Model<a class="headerlink" href="#test-model" title="Permalink to this headline">#</a></h2>
-<p>The installation of pyomo can be verified by entering a simple model. We’ll use the model again in subsequent cells to demonstrate the installation and execution of various solvers.</p>
+<p>The installation of pyomo can be verified by entering a simple model. This model is used in subsequent cells to demonstrate the installation and operation of the solvers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -853,106 +839,9 @@ if &#39;google.colab&#39; in sys.modules:
 </div>
 </div>
 </section>
-<section id="glpk">
-<h2><span class="section-number">1.2.3. </span>GLPK<a class="headerlink" href="#glpk" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://en.wikibooks.org/wiki/GLPK">GLPK</a> is a the open-source <strong>G</strong>NU <strong>L</strong>inear <strong>P</strong>rogramming <strong>K</strong>it available for use under the GNU General Public License 3. GLPK is a single-threaded simplex solver generally suited to small to medium scale linear-integer programming problems. It is written in C with minimal dependencies and therefore is highly portable among computers and operating systems</p>
-<p>GLPK is often ‘good enough’ for many examples. For larger problem, however, users should consider higher-performance solvers, such as COIN-OR CLP, that take advantage of multi-threaded processors.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-
-<span class="c1"># display solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL: GLPK LP/MIP Solver, v4.65
-Parameter(s) specified in the command line:
- --write /tmp/tmp5gh9fdaw.glpk.raw --wglp /tmp/tmpx0pp6dga.glpk.glp --cpxlp
- /tmp/tmps9u3tv5o.pyomo.lp
-Reading problem data from &#39;/tmp/tmps9u3tv5o.pyomo.lp&#39;...
-4 rows, 3 columns, 6 non-zeros
-30 lines were read
-Writing problem data to &#39;/tmp/tmpx0pp6dga.glpk.glp&#39;...
-22 lines were written
-GLPK Simplex Optimizer, v4.65
-4 rows, 3 columns, 6 non-zeros
-Preprocessing...
-2 rows, 2 columns, 4 non-zeros
-Scaling...
- A: min|aij| =  1.000e+00  max|aij| =  2.000e+00  ratio =  2.000e+00
-Problem data seem to be well scaled
-Constructing initial basis...
-Size of triangular part is 2
-*     0: obj =  -0.000000000e+00 inf =   0.000e+00 (2)
-*     3: obj =   2.600000000e+03 inf =   0.000e+00 (0)
-OPTIMAL LP SOLUTION FOUND
-Time used:   0.0 secs
-Memory used: 0.0 Mb (40412 bytes)
-Writing basic solution to &#39;/tmp/tmp5gh9fdaw.glpk.raw&#39;...
-16 lines were written
-# ==========================================================
-# = Solver Results                                         =
-# ==========================================================
-# ----------------------------------------------------------
-#   Problem Information
-# ----------------------------------------------------------
-Problem: 
-- Name: unknown
-  Lower bound: 2600.0
-  Upper bound: 2600.0
-  Number of objectives: 1
-  Number of constraints: 4
-  Number of variables: 3
-  Number of nonzeros: 6
-  Sense: maximize
-# ----------------------------------------------------------
-#   Solver Information
-# ----------------------------------------------------------
-Solver: 
-- Status: ok
-  Termination condition: optimal
-  Statistics: 
-    Branch and bound: 
-      Number of bounded subproblems: 0
-      Number of created subproblems: 0
-  Error rc: 0
-  Time: 0.01231074333190918
-# ----------------------------------------------------------
-#   Solution Information
-# ----------------------------------------------------------
-Solution: 
-- number of solutions: 0
-  number of solutions displayed: 0
-
-Profit =  2600.0
-
-Decision Variables
-x =  20.0
-y =  60.0
-
-Constraints
-Demand  =  20.0
-Labor A =  80.0
-Labor B =  100.0
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="coin-or-clp">
-<h2><span class="section-number">1.2.4. </span>COIN-OR Clp<a class="headerlink" href="#coin-or-clp" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://github.com/coin-or/Clp">COIN-OR Clp</a> is a multi-threaded open-source linear programming solver written in C++ and distributed under the Eclipse Public License (EPL). Clp is generally a good choice for linear programs that do not include any binary or integer variables.</p>
+<h2><span class="section-number">1.2.3. </span>COIN-OR Clp<a class="headerlink" href="#coin-or-clp" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/coin-or/Clp">COIN-OR Clp</a> is a multi-threaded open-source linear programming solver written in C++ and distributed under the Eclipse Public License (EPL). Clp is generally a good choice for linear programs that do not include any binary or integer variables. It is generally a superior alternative to GLPK for linear programming applications.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;clp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -963,7 +852,7 @@ Labor B =  100.0
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coin LP version 1.17.4, build Nov  3 2022
-command line - /root/.idaes/bin/clp /tmp/tmpzl39eu31.pyomo.nl -AMPL 
+command line - /content/bin/clp /tmp/tmpwpxnevc3.pyomo.nl -AMPL 
 CLP 1.17.4: # ==========================================================
 # = Solver Results                                         =
 # ==========================================================
@@ -986,7 +875,7 @@ Solver:
   Termination condition: optimal
   Id: 0
   Error rc: 0
-  Time: 0.01854109764099121
+  Time: 0.025131702423095703
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1010,8 +899,8 @@ Labor B =  100.0
 </div>
 </section>
 <section id="coin-or-cbc">
-<h2><span class="section-number">1.2.5. </span>COIN-OR Cbc<a class="headerlink" href="#coin-or-cbc" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://github.com/coin-or/Cbc">COIN-OR CBC</a> is a multi-threaded open-source <strong>C</strong>oin-or <strong>b</strong>ranch and <strong>c</strong>ut mixed-integer linear programming solver written in C++ under the Eclipse Public License (EPL). CBC is generally a good choice for a general purpose MILP solver for medium to large scale problems.</p>
+<h2><span class="section-number">1.2.4. </span>COIN-OR Cbc<a class="headerlink" href="#coin-or-cbc" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/coin-or/Cbc">COIN-OR CBC</a> is a multi-threaded open-source <strong>C</strong>oin-or <strong>b</strong>ranch and <strong>c</strong>ut mixed-integer linear programming solver written in C++ under the Eclipse Public License (EPL). CBC is generally a good choice for a general purpose MILP solver for medium to large scale problems. It is generally a superior alternative to GLPK for mixed-integer linear programming applications.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -1025,7 +914,7 @@ Labor B =  100.0
 Version: 2.10.4 
 Build Date: Nov  3 2022 
 
-command line - /root/.idaes/bin/cbc -printingOptions all -import /tmp/tmpmdebou2l.pyomo.lp -stat=1 -solve -solu /tmp/tmpmdebou2l.pyomo.soln (default strategy 1)
+command line - /content/bin/cbc -printingOptions all -import /tmp/tmpvigqpod5.pyomo.lp -stat=1 -solve -solu /tmp/tmpvigqpod5.pyomo.soln (default strategy 1)
 Option for printingOptions changed from normal to all
  CoinLpIO::readLp(): Maximization problem reformulated as minimization
 Coin0009I Switching back to maximization to get correct duals etc
@@ -1084,7 +973,7 @@ Solver:
     Black box: 
       Number of iterations: 2
   Error rc: 0
-  Time: 0.024440288543701172
+  Time: 0.046584367752075195
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1108,8 +997,8 @@ Labor B =  100.0
 </div>
 </section>
 <section id="coin-or-ipopt-installation">
-<h2><span class="section-number">1.2.6. </span>COIN-OR Ipopt installation<a class="headerlink" href="#coin-or-ipopt-installation" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://github.com/coin-or/Ipopt">COIN-OR Ipopt</a> is an open-source <strong>I</strong>nterior <strong>P</strong>oint <strong>Opt</strong>imizer for large-scale nonlinear optimization available under the Eclipse Public License (EPL). It is well-suited to solving nonlinear programming problems without integer or binary constraints.</p>
+<h2><span class="section-number">1.2.5. </span>COIN-OR Ipopt installation<a class="headerlink" href="#coin-or-ipopt-installation" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/coin-or/Ipopt">COIN-OR Ipopt</a> is an open-source <strong>I</strong>nterior <strong>P</strong>oint <strong>Opt</strong>imizer for large-scale nonlinear optimization available under the Eclipse Public License (EPL). It can solve medium to large scale nonlinear programming problems without integer or binary constraints. Note that performance of Ipopt is dependent on the software library used for the underlying linear algebra computations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -1182,7 +1071,7 @@ Number of inequality constraint evaluations          = 8
 Number of equality constraint Jacobian evaluations   = 0
 Number of inequality constraint Jacobian evaluations = 8
 Number of Lagrangian Hessian evaluations             = 7
-Total CPU secs in IPOPT (w/o function evaluations)   =      0.004
+Total CPU secs in IPOPT (w/o function evaluations)   =      0.005
 Total CPU secs in NLP function evaluations           =      0.000
 
 EXIT: Optimal Solution Found.
@@ -1208,7 +1097,7 @@ Solver:
   Termination condition: optimal
   Id: 0
   Error rc: 0
-  Time: 0.03908705711364746
+  Time: 0.0486142635345459
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1232,7 +1121,7 @@ Labor B =  100.0000009997494
 </div>
 </section>
 <section id="coin-or-bonmin-installation">
-<h2><span class="section-number">1.2.7. </span>COIN-OR Bonmin installation<a class="headerlink" href="#coin-or-bonmin-installation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.6. </span>COIN-OR Bonmin installation<a class="headerlink" href="#coin-or-bonmin-installation" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://www.coin-or.org/Bonmin/Intro.html">COIN-OR Bonmin</a> is a <strong>b</strong>asic <strong>o</strong>pen-source solver for <strong>n</strong>onlinear <strong>m</strong>ixed-<strong>in</strong>teger programming problems (MINLP). It utilizes CBC and Ipopt for solving relaxed subproblems.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1267,7 +1156,7 @@ This version of Ipopt was compiled using HSL, a collection of Fortran codes
 
 NLP0012I 
               Num      Status      Obj             It       time                 Location
-NLP0014I             1         OPT -2600        6 0.001858
+NLP0014I             1         OPT -2600        6 0.001228
 Cbc3007W No integer variables - nothing to do
 
  	&quot;Finished&quot;
@@ -1293,7 +1182,7 @@ Solver:
   Termination condition: optimal
   Id: 3
   Error rc: 0
-  Time: 0.025009870529174805
+  Time: 0.07909822463989258
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1317,7 +1206,7 @@ Labor B =  100.000000999999
 </div>
 </section>
 <section id="coin-or-couenne-installation">
-<h2><span class="section-number">1.2.8. </span>COIN-OR Couenne installation<a class="headerlink" href="#coin-or-couenne-installation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.7. </span>COIN-OR Couenne installation<a class="headerlink" href="#coin-or-couenne-installation" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://www.coin-or.org/Couenne/">COIN-OR Couenne</a>  is attempts to find global optima for mixed-integer nonlinear programming problems (MINLP).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1332,12 +1221,12 @@ Labor B =  100.000000999999
 Mailing list: couenne@list.coin-or.org
 Instructions: http://www.coin-or.org/Couenne
 couenne: 
-ANALYSIS TEST: Couenne: new cutoff value -2.6000000020e+03 (0.009072 seconds)
+ANALYSIS TEST: Couenne: new cutoff value -2.6000000020e+03 (0.01268 seconds)
 NLP0012I 
               Num      Status      Obj             It       time                 Location
-NLP0014I             1         OPT -2600        6 0.002238
-Couenne: new cutoff value -2.6000000260e+03 (0.011897 seconds)
-Loaded instance &quot;/tmp/tmpit3p06db.pyomo.nl&quot;
+NLP0014I             1         OPT -2600        6 0.003378
+Couenne: new cutoff value -2.6000000260e+03 (0.016797 seconds)
+Loaded instance &quot;/tmp/tmpo639i8wk.pyomo.nl&quot;
 Constraints:            3
 Variables:              2 (0 integer)
 Auxiliaries:            2 (0 integer)
@@ -1351,12 +1240,12 @@ Clp0000I Optimal - objective value -2600
  	&quot;Finished&quot;
 
 Linearization cuts added at root node:          3
-Linearization cuts added in total:              3  (separation time: 5.4e-05s)
-Total solve time:                         0.00035s (0.00035s in branch-and-bound)
+Linearization cuts added in total:              3  (separation time: 6.6e-05s)
+Total solve time:                         0.00059s (0.000588s in branch-and-bound)
 Lower bound:                                -2600
 Upper bound:                                -2600  (gap: 0.00%)
 Branch-and-bound nodes:                         0
-Performance of                           FBBT:	    6.3e-05s,        3 runs. fix:          0 shrnk:    8.10732 ubd:          0 2ubd:          0 infeas:          0
+Performance of                           FBBT:	     0.0002s,        3 runs. fix:          0 shrnk:    8.10732 ubd:          0 2ubd:          0 infeas:          0
 # ==========================================================
 # = Solver Results                                         =
 # ==========================================================
@@ -1379,7 +1268,7 @@ Solver:
   Termination condition: optimal
   Id: 3
   Error rc: 0
-  Time: 0.03031015396118164
+  Time: 0.048601627349853516
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
