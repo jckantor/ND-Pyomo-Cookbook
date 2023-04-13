@@ -9,7 +9,6 @@
 # 
 # | Solver | Description |
 # | :-- | :-- |
-# | GLPK | MILP |
 # | [COIN-OR Clp](https://github.com/coin-or/Clp) | LP
 # | [COIN-OR Cbc](https://github.com/coin-or/Cbc) | MILP |
 # | [COIN-OR Ipopt](https://github.com/coin-or/Ipopt) | NLP | |
@@ -27,12 +26,12 @@
 # In[1]:
 
 
-get_ipython().run_cell_magic('capture', '', "import sys\nimport os\n\nif 'google.colab' in sys.modules:\n    !pip install idaes-pse --pre\n    !idaes get-extensions\n    !apt-get install -y -qq glpk-utils  \n    os.environ['PATH'] += ':/usr/bin:/root/.idaes/bin'")
+get_ipython().run_cell_magic('capture', '', "import sys\nimport os\n\nif 'google.colab' in sys.modules:\n    !pip install idaes-pse --pre\n    !idaes get-extensions --to ./bin \n    os.environ['PATH'] += ':bin'")
 
 
 # ## Test Model
 
-# The installation of pyomo can be verified by entering a simple model. We'll use the model again in subsequent cells to demonstrate the installation and execution of various solvers.
+# The installation of pyomo can be verified by entering a simple model. This model is used in subsequent cells to demonstrate the installation and operation of the solvers.
 
 # In[2]:
 
@@ -71,35 +70,11 @@ def display_solution(model):
     print('Labor B = ', model.laborB())
 
 
-# ## GLPK
-# 
-# [GLPK](https://en.wikibooks.org/wiki/GLPK) is a the open-source **G**NU **L**inear **P**rogramming **K**it available for use under the GNU General Public License 3. GLPK is a single-threaded simplex solver generally suited to small to medium scale linear-integer programming problems. It is written in C with minimal dependencies and therefore is highly portable among computers and operating systems
-# 
-# GLPK is often 'good enough' for many examples. For larger problem, however, users should consider higher-performance solvers, such as COIN-OR CLP, that take advantage of multi-threaded processors.
-
-# In[3]:
-
-
-SolverFactory('glpk').solve(model, tee=True).write()
-
-# display solution
-print('\nProfit = ', model.profit())
-
-print('\nDecision Variables')
-print('x = ', model.x())
-print('y = ', model.y())
-
-print('\nConstraints')
-print('Demand  = ', model.demand())
-print('Labor A = ', model.laborA())
-print('Labor B = ', model.laborB())
-
-
 # ## COIN-OR Clp
 # 
-# [COIN-OR Clp](https://github.com/coin-or/Clp) is a multi-threaded open-source linear programming solver written in C++ and distributed under the Eclipse Public License (EPL). Clp is generally a good choice for linear programs that do not include any binary or integer variables. 
+# [COIN-OR Clp](https://github.com/coin-or/Clp) is a multi-threaded open-source linear programming solver written in C++ and distributed under the Eclipse Public License (EPL). Clp is generally a good choice for linear programs that do not include any binary or integer variables. It is generally a superior alternative to GLPK for linear programming applications.
 
-# In[4]:
+# In[3]:
 
 
 SolverFactory('clp').solve(model, tee=True).write()
@@ -109,9 +84,9 @@ display_solution(model)
 
 # ## COIN-OR Cbc
 # 
-# [COIN-OR CBC](https://github.com/coin-or/Cbc) is a multi-threaded open-source **C**oin-or **b**ranch and **c**ut mixed-integer linear programming solver written in C++ under the Eclipse Public License (EPL). CBC is generally a good choice for a general purpose MILP solver for medium to large scale problems.
+# [COIN-OR CBC](https://github.com/coin-or/Cbc) is a multi-threaded open-source **C**oin-or **b**ranch and **c**ut mixed-integer linear programming solver written in C++ under the Eclipse Public License (EPL). CBC is generally a good choice for a general purpose MILP solver for medium to large scale problems. It is generally a superior alternative to GLPK for mixed-integer linear programming applications.
 
-# In[5]:
+# In[4]:
 
 
 SolverFactory('cbc').solve(model, tee=True).write()
@@ -121,9 +96,9 @@ display_solution(model)
 
 # ## COIN-OR Ipopt installation
 # 
-# [COIN-OR Ipopt](https://github.com/coin-or/Ipopt) is an open-source **I**nterior **P**oint **Opt**imizer for large-scale nonlinear optimization available under the Eclipse Public License (EPL). It is well-suited to solving nonlinear programming problems without integer or binary constraints.
+# [COIN-OR Ipopt](https://github.com/coin-or/Ipopt) is an open-source **I**nterior **P**oint **Opt**imizer for large-scale nonlinear optimization available under the Eclipse Public License (EPL). It can solve medium to large scale nonlinear programming problems without integer or binary constraints. Note that performance of Ipopt is dependent on the software library used for the underlying linear algebra computations.
 
-# In[6]:
+# In[5]:
 
 
 SolverFactory('ipopt').solve(model, tee=True).write()
@@ -135,7 +110,7 @@ display_solution(model)
 # 
 # [COIN-OR Bonmin](https://www.coin-or.org/Bonmin/Intro.html) is a **b**asic **o**pen-source solver for **n**onlinear **m**ixed-**in**teger programming problems (MINLP). It utilizes CBC and Ipopt for solving relaxed subproblems.
 
-# In[7]:
+# In[6]:
 
 
 SolverFactory('bonmin').solve(model, tee=True).write()
@@ -147,7 +122,7 @@ display_solution(model)
 # 
 # [COIN-OR Couenne](https://www.coin-or.org/Couenne/)  is attempts to find global optima for mixed-integer nonlinear programming problems (MINLP).
 
-# In[8]:
+# In[7]:
 
 
 SolverFactory('couenne').solve(model, tee=True).write()
@@ -155,7 +130,7 @@ SolverFactory('couenne').solve(model, tee=True).write()
 display_solution(model)
 
 
-# In[8]:
+# In[7]:
 
 
 
