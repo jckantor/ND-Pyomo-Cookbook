@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4.5. Scheduling Multipurpose Batch Processes using State-Task Networks &#8212; ND Pyomo Cookbook</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.6. Unit Commitment" href="04.06-Unit-Commitment.html" />
     <link rel="prev" title="4.4. Maintenance Planning" href="04.04-Maintenance-Planning.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/Kondili_1993.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/Kondili_1993.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,744 +159,336 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
-   1. Getting Started with Pyomo
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Installing-Pyomo.html">
-     1.3. Installing a Pyomo/Python Development Environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
-     1.4. Running Pyomo on Google Colab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">
-     1.5. Running Pyomo on the Notre Dame CRC Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
-     1.6. Cross-Platform Installation of Pyomo and Solvers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="02.00-Linear-Programming.html">
-   2. Linear Programming
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
-     2.1. Production Models with Linear Constraints
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">
-     2.2. Production Model Sensitivity Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
-     2.3. Linear Blending Problem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
-     2.4. Design of a Cold Weather Fuel for a Camping Stove
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.05-Gasoline-Blending.html">
-     2.5. Gasoline Blending
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
-     2.6. Model Predictive Control of a Double Integrator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
-     2.7. Non-Continuous Objectives
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Assignment-Problems.html">
-   3. Assignment Problems
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.01-Transportation-Networks.html">
-     3.1. Transportation Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
-   4. Scheduling with Disjunctive Constraints
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
-     4.1. Introduction to Disjunctive Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.02-Machine-Bottleneck.html">
-     4.2. Machine Bottleneck
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.03-Job-Shop-Scheduling.html">
-     4.3. Job Shop Scheduling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Maintenance-Planning.html">
-     4.4. Maintenance Planning
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.06-Unit-Commitment.html">
-     4.6. Unit Commitment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05.00-Simulation.html">
-   5. Simulation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
-     5.1. Response of a First Order System to Step and Square Wave Inputs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
-     5.2. Exothermic CSTR
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
-     5.3. Transient Heat Conduction in Various Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
-     5.4. Diffusion with Adsorption in Polymers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
-   6. Differential-Algebraic Equations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
-     6.1. Unconstrained Scalar Optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
-     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
-     6.3. Path Planning for a Simple Car
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">
-     6.4. Soft Landing Apollo 11 on the Moon
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
-     6.5. Ascent from Lunar Surface
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="07.00-Parameter-Estimation.html">
-   7. Parameter Estimation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
-     7.1. Parameter estimation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="08.00-Financial-Applications.html">
-   8. Financial Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
-     8.1. Obtaining Historical Stock Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
-     8.2. Consolidating and Charting Stock Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
-     8.3. Binomial Model for Pricing Options
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
-     8.5. MAD Portfolio Optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.05-Real-Options.html">
-     8.6. Real Options
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
-   9. Guide to Coding with Pyomo
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09.01-notebook-style-guide.html">
-     9.1. Notebook Style Guide
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../genindex.html">
-   10. Index
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">1. Getting Started with Pyomo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.01-Installing-Pyomo.html">1.1. Installing a Pyomo/Python Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">1.2. Running Pyomo on Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">1.3. Running Pyomo on the Notre Dame CRC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">1.4. Cross-Platform Installation of Pyomo and Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02.00-Linear-Programming.html">2. Linear Programming</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">2.1. Production Models with Linear Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">2.2. Production Model Sensitivity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.03-Linear-Blending-Problem.html">2.3. Linear Blending Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">2.4. Design of a Cold Weather Fuel for a Camping Stove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.05-Gasoline-Blending.html">2.5. Gasoline Blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">2.6. Model Predictive Control of a Double Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.07-Non-Continuous-Objective.html">2.7. Non-Continuous Objectives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="03.00-Assignment-Problems.html">3. Assignment Problems</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.01-Transportation-Networks.html">3.1. Transportation Networks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">4. Scheduling with Disjunctive Constraints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">4.1. Introduction to Disjunctive Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.02-Machine-Bottleneck.html">4.2. Machine Bottleneck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.03-Job-Shop-Scheduling.html">4.3. Job Shop Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.04-Maintenance-Planning.html">4.4. Maintenance Planning</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. Scheduling Multipurpose Batch Processes using State-Task Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.06-Unit-Commitment.html">4.6. Unit Commitment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="05.00-Simulation.html">5. Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">5.1. Response of a First Order System to Step and Square Wave Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.02-Exothermic-CSTR.html">5.2. Exothermic CSTR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">5.3. Transient Heat Conduction in Various Geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">5.4. Diffusion with Adsorption in Polymers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">6. Differential-Algebraic Equations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">6.1. Unconstrained Scalar Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">6.2. Maximizing Concentration of an Intermediate in a Batch Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">6.3. Path Planning for a Simple Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">6.4. Soft Landing Apollo 11 on the Moon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">6.5. Ascent from Lunar Surface</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="07.00-Parameter-Estimation.html">7. Parameter Estimation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">7.1. Parameter estimation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="08.00-Financial-Applications.html">8. Financial Applications</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">8.1. Obtaining Historical Stock Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">8.2. Consolidating and Charting Stock Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">8.3. Binomial Model for Pricing Options</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">8.5. MAD Portfolio Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.05-Real-Options.html">8.6. Real Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="09.00-pyomo-coding-guide.html">9. Guide to Coding with Pyomo</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="09.01-notebook-style-guide.html">9.1. Notebook Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">10. Index</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jckantor/ND-Pyomo-Cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/notebooks/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   4.5.1. Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   4.5.2. References
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-kondili-et-al-1993">
-   4.5.3. Example (Kondili, et al., 1993)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     4.5.3.1. Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encoding-the-stn-data">
-   4.5.4. Encoding the STN data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-a-time-grid">
-     4.5.4.1. Setting a time grid
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-pyomo-model">
-   4.5.5. Creating a Pyomo model
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-tasks">
-     4.5.5.1. Characterization of tasks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-states">
-     4.5.5.2. Characterization of states
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-units">
-     4.5.5.3. Characterization of units
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pyomo-model">
-     4.5.5.4. Pyomo model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis">
-   4.5.6. Analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#profitability">
-     4.5.6.1. Profitability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unit-assignment">
-     4.5.6.2. Unit assignment
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#state-inventories">
-     4.5.6.3. State inventories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unit-batch-inventories">
-     4.5.6.4. Unit batch inventories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gannt-chart">
-     4.5.6.5. Gannt chart
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trace-of-events-and-states">
-   4.5.7. Trace of events and states
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Scheduling Multipurpose Batch Processes using State-Task Networks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   4.5.1. Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   4.5.2. References
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-kondili-et-al-1993">
-   4.5.3. Example (Kondili, et al., 1993)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     4.5.3.1. Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encoding-the-stn-data">
-   4.5.4. Encoding the STN data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-a-time-grid">
-     4.5.4.1. Setting a time grid
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-pyomo-model">
-   4.5.5. Creating a Pyomo model
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-tasks">
-     4.5.5.1. Characterization of tasks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-states">
-     4.5.5.2. Characterization of states
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#characterization-of-units">
-     4.5.5.3. Characterization of units
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pyomo-model">
-     4.5.5.4. Pyomo model
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analysis">
-   4.5.6. Analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#profitability">
-     4.5.6.1. Profitability
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unit-assignment">
-     4.5.6.2. Unit assignment
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#state-inventories">
-     4.5.6.3. State inventories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unit-batch-inventories">
-     4.5.6.4. Unit batch inventories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gannt-chart">
-     4.5.6.5. Gannt chart
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trace-of-events-and-states">
-   4.5.7. Trace of events and states
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scheduling Multipurpose Batch Processes using State-Task Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">4.5.1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.5.2. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-kondili-et-al-1993">4.5.3. Example (Kondili, et al., 1993)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.5.3.1. Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-the-stn-data">4.5.4. Encoding the STN data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-a-time-grid">4.5.4.1. Setting a time grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pyomo-model">4.5.5. Creating a Pyomo model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-tasks">4.5.5.1. Characterization of tasks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-states">4.5.5.2. Characterization of states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-units">4.5.5.3. Characterization of units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyomo-model">4.5.5.4. Pyomo model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">4.5.6. Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profitability">4.5.6.1. Profitability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-assignment">4.5.6.2. Unit assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-inventories">4.5.6.3. State inventories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-batch-inventories">4.5.6.4. Unit batch inventories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gannt-chart">4.5.6.5. Gannt chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-of-events-and-states">4.5.7. Trace of events and states</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="scheduling-multipurpose-batch-processes-using-state-task-networks">
-<h1><span class="section-number">4.5. </span>Scheduling Multipurpose Batch Processes using State-Task Networks<a class="headerlink" href="#scheduling-multipurpose-batch-processes-using-state-task-networks" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.5. </span>Scheduling Multipurpose Batch Processes using State-Task Networks<a class="headerlink" href="#scheduling-multipurpose-batch-processes-using-state-task-networks" title="Permalink to this heading">#</a></h1>
 <p>Keywords: cbc usage, state-task networks, gdp, disjunctive programming, batch processes</p>
 <p>The State-Task Network (STN) is an approach to modeling multipurpose batch process for the purpose of short term scheduling. It was first developed by Kondili, et al., in 1993, and subsequently developed and extended by others.</p>
 <section id="imports">
-<h2><span class="section-number">4.5.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -887,7 +522,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="references">
-<h2><span class="section-number">4.5.2. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.2. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>Floudas, C. A., &amp; Lin, X. (2005). Mixed integer linear programming in process scheduling: Modeling, algorithms, and applications. Annals of Operations Research, 139(1), 131-162.</p>
 <p>Harjunkoski, I., Maravelias, C. T., Bongers, P., Castro, P. M., Engell, S., Grossmann, I. E., … &amp; Wassick, J. (2014). Scope for industrial applications of production scheduling models and solution methods. Computers &amp; Chemical Engineering, 62, 161-193.</p>
 <p>Kondili, E., Pantelides, C. C., &amp; Sargent, R. W. H. (1993). A general algorithm for short-term scheduling of batch operations—I. MILP formulation. Computers &amp; Chemical Engineering, 17(2), 211-227.</p>
@@ -896,7 +531,7 @@ title="Print to PDF"
 <p>Wassick, J. M., &amp; Ferrio, J. (2011). Extending the resource task network for industrial applications. Computers &amp; chemical engineering, 35(10), 2124-2140.</p>
 </section>
 <section id="example-kondili-et-al-1993">
-<h2><span class="section-number">4.5.3. </span>Example (Kondili, et al., 1993)<a class="headerlink" href="#example-kondili-et-al-1993" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.3. </span>Example (Kondili, et al., 1993)<a class="headerlink" href="#example-kondili-et-al-1993" title="Permalink to this heading">#</a></h2>
 <p>A state-task network is a graphical representation of the activities in a multi-product batch process. The representation includes the minimum details needed for short term scheduling of batch operations.</p>
 <p>A well-studied example due to Kondili (1993) is shown below. Other examples are available in the references cited above.</p>
 <p><img alt="Kondili_1993.png" src="https://github.com/jckantor/ND-Pyomo-Cookbook/blob/master/notebooks/figures/Kondili_1993.png?raw=1" /></p>
@@ -904,12 +539,12 @@ title="Print to PDF"
 <p>The rectangular nodes denote process tasks. When scheduled for execution, each task is assigned an appropriate piece of equipment, and assigned a batch of material according to the incoming arcs. Each incoming arc begins at a state where the associated label indicates the mass fraction of the batch coming from that particular state. Outgoing arcs indicate the disposition of the batch to product states. The outgoing are labels indicate the fraction of the batch assigned to each product state, and the time necessary to produce that product.</p>
 <p>Not shown in the diagram is the process equipment used to execute the tasks. A separate list of process units is available, each characterized by a capacity and list of tasks which can be performed in that unit.</p>
 <section id="exercise">
-<h3><span class="section-number">4.5.3.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.3.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>Read this recipe for Hollandaise Sauce: <a class="reference external" href="http://www.foodnetwork.com/recipes/tyler-florence/hollandaise-sauce-recipe-1910043">http://www.foodnetwork.com/recipes/tyler-florence/hollandaise-sauce-recipe-1910043</a>. Assume the available equipment consists of one sauce pan and a double-boiler on a stove. Draw a state-task network outlining the basic steps in the recipe.</p>
 </section>
 </section>
 <section id="encoding-the-stn-data">
-<h2><span class="section-number">4.5.4. </span>Encoding the STN data<a class="headerlink" href="#encoding-the-stn-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.4. </span>Encoding the STN data<a class="headerlink" href="#encoding-the-stn-data" title="Permalink to this heading">#</a></h2>
 <p>The basic data structure specifies the states, tasks, and units comprising a state-task network. The intention is for all relevant problem data to be contained in a single JSON-like structure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1037,12 +672,12 @@ title="Print to PDF"
 </div>
 </div>
 <section id="setting-a-time-grid">
-<h3><span class="section-number">4.5.4.1. </span>Setting a time grid<a class="headerlink" href="#setting-a-time-grid" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.4.1. </span>Setting a time grid<a class="headerlink" href="#setting-a-time-grid" title="Permalink to this heading">#</a></h3>
 <p>The following computations can be done on any time grid, including real-valued time points. TIME is a list of time points commencing at 0.</p>
 </section>
 </section>
 <section id="creating-a-pyomo-model">
-<h2><span class="section-number">4.5.5. </span>Creating a Pyomo model<a class="headerlink" href="#creating-a-pyomo-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.5. </span>Creating a Pyomo model<a class="headerlink" href="#creating-a-pyomo-model" title="Permalink to this heading">#</a></h2>
 <p>The following Pyomo model closely follows the development in Kondili, et al. (1993). In particular, the first step in the model is to process the STN data to create sets as given in Kondili.</p>
 <p>One important difference from Kondili is the adoption of a more natural time scale that starts at <span class="math notranslate nohighlight">\(t = 0\)</span> and extends to <span class="math notranslate nohighlight">\(t = H\)</span> (rather than from 1 to H+1).</p>
 <p>A second difference is the introduction of an additional decision variable denoted by <span class="math notranslate nohighlight">\(Q_{j,t}\)</span> indicating the amount of material in unit <span class="math notranslate nohighlight">\(j\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>. A material balance then reads</p>
@@ -1075,7 +710,7 @@ B_{ij}^{min}W_{ijt} &amp; \leq B_{ijt} \leq  B_{ij}^{max}W_{ijt} \qquad \forall 
 \end{align*}
 \]</div>
 <section id="characterization-of-tasks">
-<h3><span class="section-number">4.5.5.1. </span>Characterization of tasks<a class="headerlink" href="#characterization-of-tasks" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.5.1. </span>Characterization of tasks<a class="headerlink" href="#characterization-of-tasks" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">STATES</span> <span class="o">=</span> <span class="n">STN</span><span class="p">[</span><span class="s1">&#39;STATES&#39;</span><span class="p">]</span>
@@ -1125,7 +760,7 @@ B_{ij}^{min}W_{ijt} &amp; \leq B_{ijt} \leq  B_{ij}^{max}W_{ijt} \qquad \forall 
 </div>
 </section>
 <section id="characterization-of-states">
-<h3><span class="section-number">4.5.5.2. </span>Characterization of states<a class="headerlink" href="#characterization-of-states" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.5.2. </span>Characterization of states<a class="headerlink" href="#characterization-of-states" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># T[s] set of tasks receiving material from state s</span>
@@ -1146,7 +781,7 @@ B_{ij}^{min}W_{ijt} &amp; \leq B_{ijt} \leq  B_{ij}^{max}W_{ijt} \qquad \forall 
 </div>
 </section>
 <section id="characterization-of-units">
-<h3><span class="section-number">4.5.5.3. </span>Characterization of units<a class="headerlink" href="#characterization-of-units" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.5.3. </span>Characterization of units<a class="headerlink" href="#characterization-of-units" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">UNITS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="ow">in</span> <span class="n">UNIT_TASKS</span><span class="p">])</span>
@@ -1167,7 +802,7 @@ B_{ij}^{min}W_{ijt} &amp; \leq B_{ijt} \leq  B_{ij}^{max}W_{ijt} \qquad \forall 
 </div>
 </section>
 <section id="pyomo-model">
-<h3><span class="section-number">4.5.5.4. </span>Pyomo model<a class="headerlink" href="#pyomo-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.5.4. </span>Pyomo model<a class="headerlink" href="#pyomo-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TIME</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">TIME</span><span class="p">)</span>
@@ -1303,9 +938,9 @@ Solution:
 </section>
 </section>
 <section id="analysis">
-<h2><span class="section-number">4.5.6. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.6. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this heading">#</a></h2>
 <section id="profitability">
-<h3><span class="section-number">4.5.6.1. </span>Profitability<a class="headerlink" href="#profitability" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.6.1. </span>Profitability<a class="headerlink" href="#profitability" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value of State Inventories = </span><span class="si">{0:12.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Value</span><span class="p">()))</span>
@@ -1324,7 +959,7 @@ Solution:
 </div>
 </section>
 <section id="unit-assignment">
-<h3><span class="section-number">4.5.6.2. </span>Unit assignment<a class="headerlink" href="#unit-assignment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.6.2. </span>Unit assignment<a class="headerlink" href="#unit-assignment" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">UnitAssignment</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">j</span><span class="p">:[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TIME</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">UNITS</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
@@ -1495,7 +1130,7 @@ Solution:
 </div>
 </section>
 <section id="state-inventories">
-<h3><span class="section-number">4.5.6.3. </span>State inventories<a class="headerlink" href="#state-inventories" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.6.3. </span>State inventories<a class="headerlink" href="#state-inventories" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">model</span><span class="o">.</span><span class="n">S</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">STATES</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TIME</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">STATES</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">TIME</span><span class="p">)</span>
@@ -1759,12 +1394,12 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks_27_0.png" src="../_images/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks_27_0.png" />
+<img alt="../_images/8e665fcc1a79c4febef2d9380428bd508d9d66237cdbee6c6e4b3b0ae3c10efb.png" src="../_images/8e665fcc1a79c4febef2d9380428bd508d9d66237cdbee6c6e4b3b0ae3c10efb.png" />
 </div>
 </div>
 </section>
 <section id="unit-batch-inventories">
-<h3><span class="section-number">4.5.6.4. </span>Unit batch inventories<a class="headerlink" href="#unit-batch-inventories" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.6.4. </span>Unit batch inventories<a class="headerlink" href="#unit-batch-inventories" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">model</span><span class="o">.</span><span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">UNITS</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TIME</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">UNITS</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">TIME</span><span class="p">)</span>
@@ -1922,7 +1557,7 @@ Solution:
 </div>
 </section>
 <section id="gannt-chart">
-<h3><span class="section-number">4.5.6.5. </span>Gannt chart<a class="headerlink" href="#gannt-chart" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.6.5. </span>Gannt chart<a class="headerlink" href="#gannt-chart" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1950,13 +1585,13 @@ Solution:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks_31_0.png" src="../_images/04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks_31_0.png" />
+<img alt="../_images/96873eae5d88f2ed43e341dcab45cb6a6385d5e282364b68468e77d38d88d008.png" src="../_images/96873eae5d88f2ed43e341dcab45cb6a6385d5e282364b68468e77d38d88d008.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="trace-of-events-and-states">
-<h2><span class="section-number">4.5.7. </span>Trace of events and states<a class="headerlink" href="#trace-of-events-and-states" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5.7. </span>Trace of events and states<a class="headerlink" href="#trace-of-events-and-states" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--------------------------------------------------------------------------------------------</span><span class="se">\n</span><span class="s1">&#39;</span>
@@ -2366,50 +2001,124 @@ Final Conditions
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04.04-Maintenance-Planning.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.4. </span>Maintenance Planning</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04.04-Maintenance-Planning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Maintenance Planning</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04.06-Unit-Commitment.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04.06-Unit-Commitment.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">4.6. </span>Unit Commitment</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">4.5.1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.5.2. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-kondili-et-al-1993">4.5.3. Example (Kondili, et al., 1993)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.5.3.1. Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-the-stn-data">4.5.4. Encoding the STN data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-a-time-grid">4.5.4.1. Setting a time grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pyomo-model">4.5.5. Creating a Pyomo model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-tasks">4.5.5.1. Characterization of tasks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-states">4.5.5.2. Characterization of states</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characterization-of-units">4.5.5.3. Characterization of units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyomo-model">4.5.5.4. Pyomo model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">4.5.6. Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profitability">4.5.6.1. Profitability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-assignment">4.5.6.2. Unit assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-inventories">4.5.6.3. State inventories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-batch-inventories">4.5.6.4. Unit batch inventories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gannt-chart">4.5.6.5. Gannt chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-of-events-and-states">4.5.7. Trace of events and states</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Jeffrey C. Kantor<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Jeffrey C. Kantor
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

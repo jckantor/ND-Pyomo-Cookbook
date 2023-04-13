@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4.2. Machine Bottleneck &#8212; ND Pyomo Cookbook</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/04.02-Machine-Bottleneck';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.3. Job Shop Scheduling" href="04.03-Job-Shop-Scheduling.html" />
     <link rel="prev" title="4.1. Introduction to Disjunctive Programming" href="04.01-Introduction_to_Disjunctive_Programming.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/Kondili_1993.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">ND Pyomo Cookbook</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/Kondili_1993.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/Kondili_1993.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,791 +159,344 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">
-   1. Getting Started with Pyomo
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Installing-Pyomo.html">
-     1.3. Installing a Pyomo/Python Development Environment
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">
-     1.4. Running Pyomo on Google Colab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">
-     1.5. Running Pyomo on the Notre Dame CRC Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">
-     1.6. Cross-Platform Installation of Pyomo and Solvers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="02.00-Linear-Programming.html">
-   2. Linear Programming
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">
-     2.1. Production Models with Linear Constraints
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">
-     2.2. Production Model Sensitivity Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-Linear-Blending-Problem.html">
-     2.3. Linear Blending Problem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">
-     2.4. Design of a Cold Weather Fuel for a Camping Stove
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.05-Gasoline-Blending.html">
-     2.5. Gasoline Blending
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">
-     2.6. Model Predictive Control of a Double Integrator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.07-Non-Continuous-Objective.html">
-     2.7. Non-Continuous Objectives
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Assignment-Problems.html">
-   3. Assignment Problems
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.01-Transportation-Networks.html">
-     3.1. Transportation Networks
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">
-   4. Scheduling with Disjunctive Constraints
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">
-     4.1. Introduction to Disjunctive Programming
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.2. Machine Bottleneck
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.03-Job-Shop-Scheduling.html">
-     4.3. Job Shop Scheduling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Maintenance-Planning.html">
-     4.4. Maintenance Planning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">
-     4.5. Scheduling Multipurpose Batch Processes using State-Task Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.06-Unit-Commitment.html">
-     4.6. Unit Commitment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05.00-Simulation.html">
-   5. Simulation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">
-     5.1. Response of a First Order System to Step and Square Wave Inputs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.02-Exothermic-CSTR.html">
-     5.2. Exothermic CSTR
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">
-     5.3. Transient Heat Conduction in Various Geometries
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">
-     5.4. Diffusion with Adsorption in Polymers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">
-   6. Differential-Algebraic Equations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">
-     6.1. Unconstrained Scalar Optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">
-     6.2. Maximizing Concentration of an Intermediate in a Batch Reactor
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">
-     6.3. Path Planning for a Simple Car
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">
-     6.4. Soft Landing Apollo 11 on the Moon
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">
-     6.5. Ascent from Lunar Surface
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="07.00-Parameter-Estimation.html">
-   7. Parameter Estimation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">
-     7.1. Parameter estimation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="08.00-Financial-Applications.html">
-   8. Financial Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">
-     8.1. Obtaining Historical Stock Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">
-     8.2. Consolidating and Charting Stock Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">
-     8.3. Binomial Model for Pricing Options
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">
-     8.5. MAD Portfolio Optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.05-Real-Options.html">
-     8.6. Real Options
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="09.00-pyomo-coding-guide.html">
-   9. Guide to Coding with Pyomo
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09.01-notebook-style-guide.html">
-     9.1. Notebook Style Guide
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../genindex.html">
-   10. Index
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01.00-Getting-Started-with-Pyomo.html">1. Getting Started with Pyomo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01.01-Installing-Pyomo.html">1.1. Installing a Pyomo/Python Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.02-Running-Pyomo-on-Google-Colab.html">1.2. Running Pyomo on Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.03-Running-Pyomo-on-the-Notre-Dame-CRC-Cluster.html">1.3. Running Pyomo on the Notre Dame CRC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01.04-Cross-Platform-Installation-of-Pyomo-and-Solvers.html">1.4. Cross-Platform Installation of Pyomo and Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02.00-Linear-Programming.html">2. Linear Programming</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.01-Production-Models-with-Linear-Constraints.html">2.1. Production Models with Linear Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.02-Production-Model-Sensitivity-Analysis.html">2.2. Production Model Sensitivity Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.03-Linear-Blending-Problem.html">2.3. Linear Blending Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.04-Mixture-Design-Cold-Weather-Fuel.html">2.4. Design of a Cold Weather Fuel for a Camping Stove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.05-Gasoline-Blending.html">2.5. Gasoline Blending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.06-Model-Predictive-Control-of-a-Double-Integrator.html">2.6. Model Predictive Control of a Double Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.07-Non-Continuous-Objective.html">2.7. Non-Continuous Objectives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="03.00-Assignment-Problems.html">3. Assignment Problems</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="03.01-Transportation-Networks.html">3.1. Transportation Networks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="04.00-Scheduling-with-Disjunctive-Constraints.html">4. Scheduling with Disjunctive Constraints</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04.01-Introduction_to_Disjunctive_Programming.html">4.1. Introduction to Disjunctive Programming</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Machine Bottleneck</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.03-Job-Shop-Scheduling.html">4.3. Job Shop Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.04-Maintenance-Planning.html">4.4. Maintenance Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.05-Scheduling-Multipurpose-Batch-Processes-using-State-Task_Networks.html">4.5. Scheduling Multipurpose Batch Processes using State-Task Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04.06-Unit-Commitment.html">4.6. Unit Commitment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="05.00-Simulation.html">5. Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.01-Response-of-a-First-Order-System-to-Step-and-Square-Wave-Inputs.html">5.1. Response of a First Order System to Step and Square Wave Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.02-Exothermic-CSTR.html">5.2. Exothermic CSTR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.03-Heat_Conduction_in_Various_Geometries.html">5.3. Transient Heat Conduction in Various Geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05.04-Diffusion_Adsorption_in_Polymers.html">5.4. Diffusion with Adsorption in Polymers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="06.00-Differential-Algebraic-Equations.html">6. Differential-Algebraic Equations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="06.01-Unconstrained-Scalar-Optimization.html">6.1. Unconstrained Scalar Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.02-Maximizing-Concentration-of-an-Intermediate-in-a-Batch-Reactor.html">6.2. Maximizing Concentration of an Intermediate in a Batch Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.03-Path-Planning-for-a-Simple-Car.html">6.3. Path Planning for a Simple Car</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.04-Soft-Landing-Apollo-11-on-the-Moon.html">6.4. Soft Landing Apollo 11 on the Moon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06.05-Launching-Apollo-11-from-the-Moon.html">6.5. Ascent from Lunar Surface</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="07.00-Parameter-Estimation.html">7. Parameter Estimation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="07.01-Parameter-Estimation-Catalytic-Reactor.html">7.1. Parameter estimation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="08.00-Financial-Applications.html">8. Financial Applications</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="08.01-Obtaining-Historical-Stock_-ata.html">8.1. Obtaining Historical Stock Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.02-Consolidating-and-Charting-Stock-Data.html">8.2. Consolidating and Charting Stock Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.03-Binomial-Model-for-Pricing-Options.html">8.3. Binomial Model for Pricing Options</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="08.04-MAD-Portfolio-Optimization.html">8.5. MAD Portfolio Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08.05-Real-Options.html">8.6. Real Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="09.00-pyomo-coding-guide.html">9. Guide to Coding with Pyomo</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="09.01-notebook-style-guide.html">9.1. Notebook Style Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">10. Index</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/jckantor/ND-Pyomo-Cookbook/main?urlpath=tree/notebooks/04.02-Machine-Bottleneck.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/04.02-Machine-Bottleneck.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jckantor/ND-Pyomo-Cookbook/blob/main/notebooks/04.02-Machine-Bottleneck.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jckantor/ND-Pyomo-Cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.02-Machine-Bottleneck.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/04.02-Machine-Bottleneck.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/jckantor/ND-Pyomo-Cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.02-Machine-Bottleneck.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/notebooks/04.02-Machine-Bottleneck.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   4.2.1. Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   4.2.2. Example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gantt-chart">
-     4.2.2.1. Gantt chart
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-machine-scheduling-problem">
-   4.2.3. The machine scheduling problem
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key-performance-indicators">
-     4.2.3.1. Key performance indicators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     4.2.3.2. Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#empirical-scheduling">
-   4.2.4. Empirical scheduling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-in-first-out">
-     4.2.4.1. First-in first-out
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#last-in-first-out">
-     4.2.4.2. Last-in, first-out
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#earliest-due-date">
-     4.2.4.3. Earliest due date
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shortest-processing-time">
-     4.2.4.4. Shortest processing time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modeling">
-   4.2.5. Modeling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data">
-     4.2.5.1. Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#decision-variables">
-     4.2.5.2. Decision variables
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#big-m-model">
-   4.2.6. Big-M model
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-1-an-incomplete-bare-bones-model">
-     4.2.6.1. Step 1. An incomplete bare-bones model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-2-add-release-time-information">
-     4.2.6.2. Step 2.  Add release time information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-3-machine-conflict-constraints">
-     4.2.6.3. Step 3. Machine conflict constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-4-improve-the-objective-function">
-     4.2.6.4. Step 4. Improve the objective function
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pyomo-model">
-   4.2.7. Pyomo model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-machines">
-   4.2.8. Multiple machines
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#disjunctive-version">
-   4.2.9. Disjunctive Version
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Machine Bottleneck</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   4.2.1. Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   4.2.2. Example
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gantt-chart">
-     4.2.2.1. Gantt chart
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-machine-scheduling-problem">
-   4.2.3. The machine scheduling problem
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key-performance-indicators">
-     4.2.3.1. Key performance indicators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     4.2.3.2. Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#empirical-scheduling">
-   4.2.4. Empirical scheduling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-in-first-out">
-     4.2.4.1. First-in first-out
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#last-in-first-out">
-     4.2.4.2. Last-in, first-out
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#earliest-due-date">
-     4.2.4.3. Earliest due date
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shortest-processing-time">
-     4.2.4.4. Shortest processing time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modeling">
-   4.2.5. Modeling
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data">
-     4.2.5.1. Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#decision-variables">
-     4.2.5.2. Decision variables
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#big-m-model">
-   4.2.6. Big-M model
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-1-an-incomplete-bare-bones-model">
-     4.2.6.1. Step 1. An incomplete bare-bones model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-2-add-release-time-information">
-     4.2.6.2. Step 2.  Add release time information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-3-machine-conflict-constraints">
-     4.2.6.3. Step 3. Machine conflict constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-4-improve-the-objective-function">
-     4.2.6.4. Step 4. Improve the objective function
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pyomo-model">
-   4.2.7. Pyomo model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-machines">
-   4.2.8. Multiple machines
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#disjunctive-version">
-   4.2.9. Disjunctive Version
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Machine Bottleneck</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">4.2.1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">4.2.2. Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gantt-chart">4.2.2.1. Gantt chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-machine-scheduling-problem">4.2.3. The machine scheduling problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-performance-indicators">4.2.3.1. Key performance indicators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.2.3.2. Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-scheduling">4.2.4. Empirical scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-in-first-out">4.2.4.1. First-in first-out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-in-first-out">4.2.4.2. Last-in, first-out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earliest-due-date">4.2.4.3. Earliest due date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-processing-time">4.2.4.4. Shortest processing time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4.2.5. Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">4.2.5.1. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variables">4.2.5.2. Decision variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-m-model">4.2.6. Big-M model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-an-incomplete-bare-bones-model">4.2.6.1. Step 1. An incomplete bare-bones model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-release-time-information">4.2.6.2. Step 2.  Add release time information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-machine-conflict-constraints">4.2.6.3. Step 3. Machine conflict constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-improve-the-objective-function">4.2.6.4. Step 4. Improve the objective function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyomo-model">4.2.7. Pyomo model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-machines">4.2.8. Multiple machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disjunctive-version">4.2.9. Disjunctive Version</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="machine-bottleneck">
-<h1><span class="section-number">4.2. </span>Machine Bottleneck<a class="headerlink" href="#machine-bottleneck" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.2. </span>Machine Bottleneck<a class="headerlink" href="#machine-bottleneck" title="Permalink to this heading">#</a></h1>
 <p>This notebook demonstrates the formulation and solution of the a machine bottleneck problem using Pyomo. The task is to schedule a set of jobs on a single machine given the release time, duration, and due time for each job. Date for the example problem is from Christelle Gueret, Christian Prins, Marc Sevaux, “Applications of Optimization with Xpress-MP,” Chapter 5, Dash Optimization, 2000.</p>
 <section id="imports">
-<h2><span class="section-number">4.2.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -908,10 +504,12 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 
+<span class="c1"># test for pyomo and install if necessary</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">):</span>
     <span class="o">!</span>pip install -q pyomo
     <span class="k">assert</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;pyomo&quot;</span><span class="p">))</span>
 
+<span class="c1"># test for cbc and install if necessary</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;cbc&quot;</span><span class="p">)):</span>
     <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
         <span class="o">!</span>apt-get install -y -qq coinor-cbc
@@ -931,7 +529,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="example">
-<h2><span class="section-number">4.2.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
 <p>The problem is to schedule a sequence of jobs for a single machine. The data consists of a Python dictionary of jobs. Each job is labeled by a key, and an associated data dictionary provides the time at which the job is released to the for machine processing, the expected duration of the job, and the due date. The problem is to sequence the jobs on the machine to meet the due dates, or show that no such sequence is possible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -961,7 +559,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="gantt-chart">
-<h3><span class="section-number">4.2.2.1. </span>Gantt chart<a class="headerlink" href="#gantt-chart" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.2.1. </span>Gantt chart<a class="headerlink" href="#gantt-chart" title="Permalink to this heading">#</a></h3>
 <p>A traditional means of visualizing scheduling data in the form of a Gantt chart. The next cell presents a function <code class="docutils literal notranslate"><span class="pre">gantt</span></code> that plots a Gantt chart given JOBS and SCHEDULE information. Two charts are presented showing job schedule and machine schedule. If no machine information is contained in SCHEDULE, then it assumed to be a single machine operation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1019,13 +617,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.02-Machine-Bottleneck_6_0.png" src="../_images/04.02-Machine-Bottleneck_6_0.png" />
+<img alt="../_images/92ddeb58cf8cc51eb8c4040574c7f8235f11f7c7929420da6a1b3351cfba58f4.png" src="../_images/92ddeb58cf8cc51eb8c4040574c7f8235f11f7c7929420da6a1b3351cfba58f4.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="the-machine-scheduling-problem">
-<h2><span class="section-number">4.2.3. </span>The machine scheduling problem<a class="headerlink" href="#the-machine-scheduling-problem" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.3. </span>The machine scheduling problem<a class="headerlink" href="#the-machine-scheduling-problem" title="Permalink to this heading">#</a></h2>
 <p>A schedule consists of a dictionary listing the start and finish times for each job. Once the order of jobs has been determined, the start time can be no earlier than when the job is released for processing, and no earlier than the finish of the previous job.</p>
 <p>The following cell presents a function which, given the JOBS data and an order list of jobs indices, computes the start and finish times for all jobs on a single machine. We use this to determine the schedule if the jobs are executed in alphabetical order.</p>
 <div class="cell docutils container">
@@ -1066,8 +664,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.02-Machine-Bottleneck_10_0.png" src="../_images/04.02-Machine-Bottleneck_10_0.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_10_1.png" src="../_images/04.02-Machine-Bottleneck_10_1.png" />
+<img alt="../_images/a2617c4a8d2eed695cdd0fcdccd65a1acfe9c1a620f252e9c16d3a71328a1873.png" src="../_images/a2617c4a8d2eed695cdd0fcdccd65a1acfe9c1a620f252e9c16d3a71328a1873.png" />
+<img alt="../_images/40fe96eff5f5393a32c70ef2836e475e38bc7d717b2bf229053452b1394231ff.png" src="../_images/40fe96eff5f5393a32c70ef2836e475e38bc7d717b2bf229053452b1394231ff.png" />
 </div>
 </div>
 <p>Here’s a schedule where jobs are done in alphabetical order.</p>
@@ -1078,12 +676,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.02-Machine-Bottleneck_12_0.png" src="../_images/04.02-Machine-Bottleneck_12_0.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_12_1.png" src="../_images/04.02-Machine-Bottleneck_12_1.png" />
+<img alt="../_images/18be72a90ee5e96a5aa10a46fce344e4cb40e0d66a73bdf9cd4362f591ed4d39.png" src="../_images/18be72a90ee5e96a5aa10a46fce344e4cb40e0d66a73bdf9cd4362f591ed4d39.png" />
+<img alt="../_images/4480c2ee9fa6e2a4a4f658b6bf1ebb4f8512f8975ba39bdf28dd1bbdc99a0f37.png" src="../_images/4480c2ee9fa6e2a4a4f658b6bf1ebb4f8512f8975ba39bdf28dd1bbdc99a0f37.png" />
 </div>
 </div>
 <section id="key-performance-indicators">
-<h3><span class="section-number">4.2.3.1. </span>Key performance indicators<a class="headerlink" href="#key-performance-indicators" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.3.1. </span>Key performance indicators<a class="headerlink" href="#key-performance-indicators" title="Permalink to this heading">#</a></h3>
 <p>As presented above, a given schedule may not meet all of the due time requirements. In fact, a schedule meeting all of the requirements might not even be possible. So given a schedule, it is useful to have a function that computes key performance indicators.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1114,7 +712,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="exercise">
-<h3><span class="section-number">4.2.3.2. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.3.2. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>Show the Gantt chart and key performance metrics if the jobs are executed in reverse alphabetical order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1133,14 +731,14 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.2857142857142857}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_16_1.png" src="../_images/04.02-Machine-Bottleneck_16_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_16_2.png" src="../_images/04.02-Machine-Bottleneck_16_2.png" />
+<img alt="../_images/e1c6e32eeebe0bf78bc01cfacadc2662103019e2dc9bb117a39fd2cfffaff751.png" src="../_images/e1c6e32eeebe0bf78bc01cfacadc2662103019e2dc9bb117a39fd2cfffaff751.png" />
+<img alt="../_images/6d92fbd225f84a28da3bdaa87c3cf4df85778aa91fd74179033b813d4166165a.png" src="../_images/6d92fbd225f84a28da3bdaa87c3cf4df85778aa91fd74179033b813d4166165a.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="empirical-scheduling">
-<h2><span class="section-number">4.2.4. </span>Empirical scheduling<a class="headerlink" href="#empirical-scheduling" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.4. </span>Empirical scheduling<a class="headerlink" href="#empirical-scheduling" title="Permalink to this heading">#</a></h2>
 <p>There are a number of commonly encountered empirical rules for scheduling jobs on a single machine. These include:</p>
 <ul class="simple">
 <li><p>First-In First-Out (FIFO)</p></li>
@@ -1149,7 +747,7 @@ title="Print to PDF"
 <li><p>Earliest Due Data (EDD)</p></li>
 </ul>
 <section id="first-in-first-out">
-<h3><span class="section-number">4.2.4.1. </span>First-in first-out<a class="headerlink" href="#first-in-first-out" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.4.1. </span>First-in first-out<a class="headerlink" href="#first-in-first-out" title="Permalink to this heading">#</a></h3>
 <p>As an example, we’ll first look at ‘First-In-First-Out’ scheduling which executes job in the order they are released. The following function sorts jobs by release time, then schedules the jobs to execute in that order. A job can only be started no earlier than when it is released.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1172,13 +770,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.14285714285714285}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_19_1.png" src="../_images/04.02-Machine-Bottleneck_19_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_19_2.png" src="../_images/04.02-Machine-Bottleneck_19_2.png" />
+<img alt="../_images/8857a7f878b9c815e08db6f76c9f90fc18bd9d9abcf4df2cf7e024bc62c37988.png" src="../_images/8857a7f878b9c815e08db6f76c9f90fc18bd9d9abcf4df2cf7e024bc62c37988.png" />
+<img alt="../_images/78a683c7824caad0bbf371dce3b589efc7e6dba43f54d182d24b4d2a8f0121df.png" src="../_images/78a683c7824caad0bbf371dce3b589efc7e6dba43f54d182d24b4d2a8f0121df.png" />
 </div>
 </div>
 </section>
 <section id="last-in-first-out">
-<h3><span class="section-number">4.2.4.2. </span>Last-in, first-out<a class="headerlink" href="#last-in-first-out" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.4.2. </span>Last-in, first-out<a class="headerlink" href="#last-in-first-out" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lifo</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1208,13 +806,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.42857142857142855}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_21_1.png" src="../_images/04.02-Machine-Bottleneck_21_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_21_2.png" src="../_images/04.02-Machine-Bottleneck_21_2.png" />
+<img alt="../_images/643ec0391d2296b8ad4fd902c870a5af6f434ec1f81fbb512fde936645668b75.png" src="../_images/643ec0391d2296b8ad4fd902c870a5af6f434ec1f81fbb512fde936645668b75.png" />
+<img alt="../_images/642d8fbf10bc044b5da5ccc3d5abb33e8843a927cf0385537f69e8a7e02281c2.png" src="../_images/642d8fbf10bc044b5da5ccc3d5abb33e8843a927cf0385537f69e8a7e02281c2.png" />
 </div>
 </div>
 </section>
 <section id="earliest-due-date">
-<h3><span class="section-number">4.2.4.3. </span>Earliest due date<a class="headerlink" href="#earliest-due-date" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.4.3. </span>Earliest due date<a class="headerlink" href="#earliest-due-date" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">edd</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1244,13 +842,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.42857142857142855}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_23_1.png" src="../_images/04.02-Machine-Bottleneck_23_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_23_2.png" src="../_images/04.02-Machine-Bottleneck_23_2.png" />
+<img alt="../_images/1523ece230560f7ee6c509199ac9638170ec8ce78c3f265868de1c3fad1d2c12.png" src="../_images/1523ece230560f7ee6c509199ac9638170ec8ce78c3f265868de1c3fad1d2c12.png" />
+<img alt="../_images/9ff527724e4dec79afffd6415190a2746f5e97d5cf0bcfe3a95d1528043bb9fa.png" src="../_images/9ff527724e4dec79afffd6415190a2746f5e97d5cf0bcfe3a95d1528043bb9fa.png" />
 </div>
 </div>
 </section>
 <section id="shortest-processing-time">
-<h3><span class="section-number">4.2.4.4. </span>Shortest processing time<a class="headerlink" href="#shortest-processing-time" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.4.4. </span>Shortest processing time<a class="headerlink" href="#shortest-processing-time" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spt</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1280,60 +878,60 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.42857142857142855}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_25_1.png" src="../_images/04.02-Machine-Bottleneck_25_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_25_2.png" src="../_images/04.02-Machine-Bottleneck_25_2.png" />
+<img alt="../_images/8575f97089d98f2e380c90ed7b71850b9421d4f8081ca2aebb32452dfea8a850.png" src="../_images/8575f97089d98f2e380c90ed7b71850b9421d4f8081ca2aebb32452dfea8a850.png" />
+<img alt="../_images/f6d436f90aa528ca3e1c32123be85fb1f3f3e3830f11c80337b17aaebf925cde.png" src="../_images/f6d436f90aa528ca3e1c32123be85fb1f3f3e3830f11c80337b17aaebf925cde.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="modeling">
-<h2><span class="section-number">4.2.5. </span>Modeling<a class="headerlink" href="#modeling" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.5. </span>Modeling<a class="headerlink" href="#modeling" title="Permalink to this heading">#</a></h2>
 <section id="data">
-<h3><span class="section-number">4.2.5.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.5.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h3>
 <p>The data for this problem consists of a list of jobs. Each job is tagged with a unique ID along with numerical data giving the time at which the job will be released for machine processing, the expected duration, and the time at which it is due.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Symbol</p></th>
-<th class="text-align:left head"><p>Description</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Symbol</p></th>
+<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{ID}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Unique ID for task <span class="math notranslate nohighlight">\(j\)</span></p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{ID}_{j}\)</span></p></td>
+<td class="text-left"><p>Unique ID for task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{due}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Due time for task <span class="math notranslate nohighlight">\(j\)</span></p></td>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{due}_{j}\)</span></p></td>
+<td class="text-left"><p>Due time for task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{duration}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Duration of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{duration}_{j}\)</span></p></td>
+<td class="text-left"><p>Duration of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{release}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Time task <span class="math notranslate nohighlight">\(j\)</span> becomes available for processing</p></td>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{release}_{j}\)</span></p></td>
+<td class="text-left"><p>Time task <span class="math notranslate nohighlight">\(j\)</span> becomes available for processing</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="decision-variables">
-<h3><span class="section-number">4.2.5.2. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.5.2. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this heading">#</a></h3>
 <p>For a single machine, the essential decision variable is the start time at which the job begins processing.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Symbol</p></th>
-<th class="text-align:left head"><p>Description</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Symbol</p></th>
+<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{start}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Start of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{start}_{j}\)</span></p></td>
+<td class="text-left"><p>Start of task <span class="math notranslate nohighlight">\(j\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{makespan}\)</span></p></td>
-<td class="text-align:left"><p>Time to complete <em>all</em> jobs.</p></td>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{makespan}\)</span></p></td>
+<td class="text-left"><p>Time to complete <em>all</em> jobs</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{pastdue}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Time by which task <span class="math notranslate nohighlight">\(j\)</span> is past due</p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{pastdue}_{j}\)</span></p></td>
+<td class="text-left"><p>Time by which task <span class="math notranslate nohighlight">\(j\)</span> is past due</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{early}_{j}\)</span></p></td>
-<td class="text-align:left"><p>Time by which task <span class="math notranslate nohighlight">\(j\)</span> is finished early</p></td>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\text{early}_{j}\)</span></p></td>
+<td class="text-left"><p>Time by which task <span class="math notranslate nohighlight">\(j\)</span> is finished early</p></td>
 </tr>
 </tbody>
 </table>
@@ -1360,7 +958,7 @@ title="Print to PDF"
 \text{start}_{j} +\text{duration}_{j} \leq \text{makespan}
 \end{align*}
 \]</div>
-<p>The final set of constraints requires that, for any given pair of jobs <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, that either <span class="math notranslate nohighlight">\(j\)</span> starts before <span class="math notranslate nohighlight">\(k\)</span> finishes, or <span class="math notranslate nohighlight">\(k\)</span> finishes before <span class="math notranslate nohighlight">\(j\)</span> starts. The boolean variable <span class="math notranslate nohighlight">\(y_{j,k} = 0\)</span> indicates <span class="math notranslate nohighlight">\(j\)</span> finishes before <span class="math notranslate nohighlight">\(k\)</span> starts, and is 1 for the opposing case. Note that we only need to consider cases <span class="math notranslate nohighlight">\(j &gt; k\)</span></p>
+<p>The final set of constraints requires that, for any given pair of jobs <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, that either <span class="math notranslate nohighlight">\(j\)</span> starts before <span class="math notranslate nohighlight">\(k\)</span> finishes, or <span class="math notranslate nohighlight">\(k\)</span> finishes before <span class="math notranslate nohighlight">\(j\)</span> starts. The binary variable <span class="math notranslate nohighlight">\(y_{j,k} = 0\)</span> indicates <span class="math notranslate nohighlight">\(j\)</span> finishes before <span class="math notranslate nohighlight">\(k\)</span> starts, and is 1 for the opposing case. Note that we only need to consider cases <span class="math notranslate nohighlight">\(j &gt; k\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1372,10 +970,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="big-m-model">
-<h2><span class="section-number">4.2.6. </span>Big-M model<a class="headerlink" href="#big-m-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.6. </span>Big-M model<a class="headerlink" href="#big-m-model" title="Permalink to this heading">#</a></h2>
 <p>We’ll take a step-by-step approach to the construction of a “Big-M” model.</p>
 <section id="step-1-an-incomplete-bare-bones-model">
-<h3><span class="section-number">4.2.6.1. </span>Step 1. An incomplete bare-bones model<a class="headerlink" href="#step-1-an-incomplete-bare-bones-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.6.1. </span>Step 1. An incomplete bare-bones model<a class="headerlink" href="#step-1-an-incomplete-bare-bones-model" title="Permalink to this heading">#</a></h3>
 <p>We’ll start this model building exercise with just enough variables and constraints to get an answer. This is not a complete model and will therefore give non-physical answers. But it does give a scaffold for further model building.</p>
 <p>This first model includes decision variables for the start and finish of each job, a decision variable for makespan, and constraints that define the relationships among these decision variables. The objective function is to minimize makespan.</p>
 <div class="cell docutils container">
@@ -1427,13 +1025,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 1.0}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_31_1.png" src="../_images/04.02-Machine-Bottleneck_31_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_31_2.png" src="../_images/04.02-Machine-Bottleneck_31_2.png" />
+<img alt="../_images/f45a371fd2b2cdd366f9b579748efee78a96b56708ee605e760d6f7da044c752.png" src="../_images/f45a371fd2b2cdd366f9b579748efee78a96b56708ee605e760d6f7da044c752.png" />
+<img alt="../_images/63f9a06c34e5a79d8c5ab1e2f7d0b7179b7c7ec2ead25bc486e301934fe18c16.png" src="../_images/63f9a06c34e5a79d8c5ab1e2f7d0b7179b7c7ec2ead25bc486e301934fe18c16.png" />
 </div>
 </div>
 </section>
 <section id="step-2-add-release-time-information">
-<h3><span class="section-number">4.2.6.2. </span>Step 2.  Add release time information<a class="headerlink" href="#step-2-add-release-time-information" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.6.2. </span>Step 2.  Add release time information<a class="headerlink" href="#step-2-add-release-time-information" title="Permalink to this heading">#</a></h3>
 <p>Obviously some jobs are being started before they are released for processing. The next version of the model adds that constraint.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1485,13 +1083,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 1.0}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_33_1.png" src="../_images/04.02-Machine-Bottleneck_33_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_33_2.png" src="../_images/04.02-Machine-Bottleneck_33_2.png" />
+<img alt="../_images/49e366410c5fa3afb789c770284de228ad76125772279cdc28e78ce4fb07c2e8.png" src="../_images/49e366410c5fa3afb789c770284de228ad76125772279cdc28e78ce4fb07c2e8.png" />
+<img alt="../_images/6f6eddd25658b6a06ab7f14ed5c94c9f158b191682e278883e8887812d7d3089.png" src="../_images/6f6eddd25658b6a06ab7f14ed5c94c9f158b191682e278883e8887812d7d3089.png" />
 </div>
 </div>
 </section>
 <section id="step-3-machine-conflict-constraints">
-<h3><span class="section-number">4.2.6.3. </span>Step 3. Machine conflict constraints<a class="headerlink" href="#step-3-machine-conflict-constraints" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.6.3. </span>Step 3. Machine conflict constraints<a class="headerlink" href="#step-3-machine-conflict-constraints" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1506,7 +1104,7 @@ title="Print to PDF"
     <span class="c1"># decision variables</span>
     <span class="n">m</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
     <span class="n">m</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Boolean</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
     
     <span class="c1"># additional decision variables for use in the objecive</span>
     <span class="n">m</span><span class="o">.</span><span class="n">makespan</span>   <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
@@ -1549,13 +1147,13 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.42857142857142855}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_35_1.png" src="../_images/04.02-Machine-Bottleneck_35_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_35_2.png" src="../_images/04.02-Machine-Bottleneck_35_2.png" />
+<img alt="../_images/d41c1365559c6ec84400d602db532f5be568926b78e4bb5ef18c77e0388c3a74.png" src="../_images/d41c1365559c6ec84400d602db532f5be568926b78e4bb5ef18c77e0388c3a74.png" />
+<img alt="../_images/ed267189719be0daa925fe09d858a380018919637cd5c0c65d434eca57dad520.png" src="../_images/ed267189719be0daa925fe09d858a380018919637cd5c0c65d434eca57dad520.png" />
 </div>
 </div>
 </section>
 <section id="step-4-improve-the-objective-function">
-<h3><span class="section-number">4.2.6.4. </span>Step 4. Improve the objective function<a class="headerlink" href="#step-4-improve-the-objective-function" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.2.6.4. </span>Step 4. Improve the objective function<a class="headerlink" href="#step-4-improve-the-objective-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1571,7 +1169,7 @@ title="Print to PDF"
     <span class="n">m</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
     <span class="n">m</span><span class="o">.</span><span class="n">finish</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
     <span class="n">m</span><span class="o">.</span><span class="n">pastdue</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">JOBS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Boolean</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PAIRS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">Binary</span><span class="p">)</span>
     
     <span class="c1"># additional decision variables for use in the objecive</span>
     <span class="n">m</span><span class="o">.</span><span class="n">makespan</span>   <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
@@ -1615,14 +1213,14 @@ title="Print to PDF"
  &#39;Fraction on Time&#39;: 0.7142857142857143}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_37_1.png" src="../_images/04.02-Machine-Bottleneck_37_1.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_37_2.png" src="../_images/04.02-Machine-Bottleneck_37_2.png" />
+<img alt="../_images/cdb23e218ef2e4a7625be49cd74d416e878c337cdc2edfaa93da346e0a971c50.png" src="../_images/cdb23e218ef2e4a7625be49cd74d416e878c337cdc2edfaa93da346e0a971c50.png" />
+<img alt="../_images/55b5243f4cf5890173f82b244f45b2e631209f3f3ebbbdbfd5d41f298e82cb54.png" src="../_images/55b5243f4cf5890173f82b244f45b2e631209f3f3ebbbdbfd5d41f298e82cb54.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="pyomo-model">
-<h2><span class="section-number">4.2.7. </span>Pyomo model<a class="headerlink" href="#pyomo-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.7. </span>Pyomo model<a class="headerlink" href="#pyomo-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">opt_schedule</span><span class="p">(</span><span class="n">JOBS</span><span class="p">):</span>
@@ -1679,8 +1277,9 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: DEPRECATED: The &#39;gdp.chull&#39; name is deprecated. Please use the more
-    apt &#39;gdp.hull&#39; instead.  (deprecated in 5.7) (called from /var/folders/cm/
-    z3t28j296f98jdp1vqyplkz00000gn/T/ipykernel_40244/3310811304.py:38)
+    apt &#39;gdp.hull&#39; instead.  (deprecated in 5.7) (called from
+    /Users/jeff/opt/anaconda3/lib/python3.9/site-
+    packages/pyomo/common/factory.py:41)
 # ==========================================================
 # = Solver Results                                         =
 # ==========================================================
@@ -1704,18 +1303,18 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.35
-  Wallclock time: 0.36
+  System time: 1.33
+  Wallclock time: 1.31
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
     Branch and bound: 
-      Number of bounded subproblems: 30
-      Number of created subproblems: 30
+      Number of bounded subproblems: 34
+      Number of created subproblems: 34
     Black box: 
-      Number of iterations: 4834
+      Number of iterations: 6643
   Error rc: 0
-  Time: 0.39235997200012207
+  Time: 1.3995108604431152
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1732,13 +1331,13 @@ Solution:
  &#39;Fraction on Time&#39;: 0.7142857142857143}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_39_2.png" src="../_images/04.02-Machine-Bottleneck_39_2.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_39_3.png" src="../_images/04.02-Machine-Bottleneck_39_3.png" />
+<img alt="../_images/cdb23e218ef2e4a7625be49cd74d416e878c337cdc2edfaa93da346e0a971c50.png" src="../_images/cdb23e218ef2e4a7625be49cd74d416e878c337cdc2edfaa93da346e0a971c50.png" />
+<img alt="../_images/55b5243f4cf5890173f82b244f45b2e631209f3f3ebbbdbfd5d41f298e82cb54.png" src="../_images/55b5243f4cf5890173f82b244f45b2e631209f3f3ebbbdbfd5d41f298e82cb54.png" />
 </div>
 </div>
 </section>
 <section id="multiple-machines">
-<h2><span class="section-number">4.2.8. </span>Multiple machines<a class="headerlink" href="#multiple-machines" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.8. </span>Multiple machines<a class="headerlink" href="#multiple-machines" title="Permalink to this heading">#</a></h2>
 <p>The case of multiple machines requires a modest extension of model described above. Given a set <span class="math notranslate nohighlight">\(M\)</span> of machines, we introduce an additional decision binary variable <span class="math notranslate nohighlight">\(z_{j,m}\)</span> indicating if job <span class="math notranslate nohighlight">\(j\)</span> has been assigned to machine <span class="math notranslate nohighlight">\(m\)</span>. The additional constraints</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1847,8 +1446,8 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.39
-  Wallclock time: 0.42
+  System time: 1.05
+  Wallclock time: 1.06
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
@@ -1858,7 +1457,7 @@ Solver:
     Black box: 
       Number of iterations: 2921
   Error rc: 0
-  Time: 0.44847798347473145
+  Time: 1.1501669883728027
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -1875,13 +1474,13 @@ Solution:
  &#39;Fraction on Time&#39;: 1.0}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_41_2.png" src="../_images/04.02-Machine-Bottleneck_41_2.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_41_3.png" src="../_images/04.02-Machine-Bottleneck_41_3.png" />
+<img alt="../_images/0f09a7add7692a8910f56f2baf255b96522b3b15cc51fb6551798e41fdb10f0c.png" src="../_images/0f09a7add7692a8910f56f2baf255b96522b3b15cc51fb6551798e41fdb10f0c.png" />
+<img alt="../_images/cadfbd31316f1e7e48490bf585e482ed95e2be15e7c9f4cb37e06ababab9ca5d.png" src="../_images/cadfbd31316f1e7e48490bf585e482ed95e2be15e7c9f4cb37e06ababab9ca5d.png" />
 </div>
 </div>
 </section>
 <section id="disjunctive-version">
-<h2><span class="section-number">4.2.9. </span>Disjunctive Version<a class="headerlink" href="#disjunctive-version" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.9. </span>Disjunctive Version<a class="headerlink" href="#disjunctive-version" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MACHINES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
@@ -1983,18 +1582,18 @@ Problem:
 Solver: 
 - Status: ok
   User time: -1.0
-  System time: 0.8
-  Wallclock time: 0.81
+  System time: 5.62
+  Wallclock time: 6.11
   Termination condition: optimal
   Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
   Statistics: 
     Branch and bound: 
-      Number of bounded subproblems: 83
-      Number of created subproblems: 83
+      Number of bounded subproblems: 608
+      Number of created subproblems: 608
     Black box: 
-      Number of iterations: 2981
+      Number of iterations: 10628
   Error rc: 0
-  Time: 0.837306022644043
+  Time: 6.1755430698394775
 # ----------------------------------------------------------
 #   Solution Information
 # ----------------------------------------------------------
@@ -2011,8 +1610,8 @@ Solution:
  &#39;Fraction on Time&#39;: 1.0}
 </pre></div>
 </div>
-<img alt="../_images/04.02-Machine-Bottleneck_43_2.png" src="../_images/04.02-Machine-Bottleneck_43_2.png" />
-<img alt="../_images/04.02-Machine-Bottleneck_43_3.png" src="../_images/04.02-Machine-Bottleneck_43_3.png" />
+<img alt="../_images/0f09a7add7692a8910f56f2baf255b96522b3b15cc51fb6551798e41fdb10f0c.png" src="../_images/0f09a7add7692a8910f56f2baf255b96522b3b15cc51fb6551798e41fdb10f0c.png" />
+<img alt="../_images/cadfbd31316f1e7e48490bf585e482ed95e2be15e7c9f4cb37e06ababab9ca5d.png" src="../_images/cadfbd31316f1e7e48490bf585e482ed95e2be15e7c9f4cb37e06ababab9ca5d.png" />
 </div>
 </div>
 </section>
@@ -2038,50 +1637,130 @@ Solution:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04.01-Introduction_to_Disjunctive_Programming.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.1. </span>Introduction to Disjunctive Programming</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04.01-Introduction_to_Disjunctive_Programming.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Introduction to Disjunctive Programming</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04.03-Job-Shop-Scheduling.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04.03-Job-Shop-Scheduling.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">4.3. </span>Job Shop Scheduling</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">4.2.1. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">4.2.2. Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gantt-chart">4.2.2.1. Gantt chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-machine-scheduling-problem">4.2.3. The machine scheduling problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-performance-indicators">4.2.3.1. Key performance indicators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.2.3.2. Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-scheduling">4.2.4. Empirical scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-in-first-out">4.2.4.1. First-in first-out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#last-in-first-out">4.2.4.2. Last-in, first-out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earliest-due-date">4.2.4.3. Earliest due date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-processing-time">4.2.4.4. Shortest processing time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4.2.5. Modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">4.2.5.1. Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variables">4.2.5.2. Decision variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-m-model">4.2.6. Big-M model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-an-incomplete-bare-bones-model">4.2.6.1. Step 1. An incomplete bare-bones model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-release-time-information">4.2.6.2. Step 2.  Add release time information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-machine-conflict-constraints">4.2.6.3. Step 3. Machine conflict constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-improve-the-objective-function">4.2.6.4. Step 4. Improve the objective function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyomo-model">4.2.7. Pyomo model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-machines">4.2.8. Multiple machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disjunctive-version">4.2.9. Disjunctive Version</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Jeffrey C. Kantor<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Jeffrey C. Kantor
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
